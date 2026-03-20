@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>我的旅行计划</title>
+
+  <!--
+  ╔════════════════════════════════════════════════════════════════╗
+  ║  配置说明（只需修改下方 TRIP_GROUPS 和 RECOMMENDATIONS）        ║
+  ║                                                                ║
+  ║  旅行计划（主要展示区域）：                                      ║
+  ║  单方案：                                                      ║
+  ║  { title:"行程名", emoji:"🏔️", file:"list/xxx.html" }         ║
+  ║                                                                ║
+  ║  多方案旅行（主方案 + 备选）：                                   ║
+  ║  {                                                             ║
+  ║    title: "川西旅游",                                           ║
+  ║    emoji: "🏔️",                                               ║
+  ║    plans: [                                                    ║
+  ║      { label:"主线方案", tag:"主线", file:"list/川西主线.html" },║
+  ║      { label:"高反备选", tag:"备选", file:"list/川西备选.html" },║
+  ║    ]                                                           ║
+  ║  }                                                             ║
+  ║                                                                ║
+  ║  旅行推荐（底部展示区域）：                                      ║
+  ║  { title:"推荐名", emoji:"🌱", file:"list/xxx.html" }          ║
+  ║                                                                ║
+  ║  每个 HTML 文件 <head> 里需要有：                               ║
+  ║  <meta name="trip-title"  content="行程名称">                  ║
+  ║  <meta name="trip-emoji"  content="🏔️">                       ║
+  ║  <meta name="trip-date"   content="日期范围">                  ║
+  ║  <meta name="trip-days"   content="天数">                      ║
+  ║  <meta name="trip-people" content="人数">                      ║
+  ║  <meta name="trip-desc"   content="一句话描述">                 ║
+  ╚════════════════════════════════════════════════════════════════╝
+  -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:          #0c0d0b;
+      --surface:     #141510;
+      --surface2:    #1b1d17;
+      --border:      #252620;
+      --accent:      #d4f050;
+      --accent2:     #f0c840;
+      --accent3:     #60d4b8;
+      --text:        #eae8e0;
+      --muted:       #6e6c62;
+      --muted2:      #3e3d38;
+      --font-display:'Noto Serif SC', serif;
+      --font-mono:   'DM Mono', monospace;
+      --card-radius: 0px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* grain */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 999; opacity: .45;
+    }
+
+    /* ── THEME BADGE ── */
+    .theme-badge {
+      position: fixed; top: 16px; right: 18px; z-index: 100;
+      font-family: var(--font-mono);
+      font-size: .58rem; letter-spacing: .1em;
+      padding: 5px 12px; border-radius: 20px;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--muted);
+      animation: fadeUp .6s .9s ease both;
+      opacity: 0;
+    }
+    .theme-badge span { color: var(--accent); }
+
+    /* ── HEADER ── */
+    header {
+      position: relative; z-index: 1;
+      padding: clamp(40px,6vw,72px) clamp(24px,5vw,56px) clamp(32px,4vw,48px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      animation: fadeUp .5s ease both;
+    }
+
+    .logo {
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      font-weight: 700; line-height: 1.1; letter-spacing: -.02em;
+      font-family: var(--font-display);
+    }
+    .logo em { font-style: normal; color: var(--accent); }
+
+    .subtitle {
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: .68rem; letter-spacing: .1em;
+      color: var(--muted); text-transform: uppercase;
+    }
+
+    .counter-box { text-align: right; font-family: var(--font-mono); }
+    .counter-num {
+      font-size: clamp(2rem,5vw,3rem); font-weight: 500; line-height: 1;
+      color: var(--accent); letter-spacing: -.03em;
+    }
+    .counter-label { font-size: .63rem; letter-spacing: .1em; color: var(--muted); margin-top: 4px; }
+
+    /* ── STATUS ── */
+    #statusMsg {
+      position: relative; z-index: 1;
+      padding: 72px clamp(24px,5vw,56px);
+      font-family: var(--font-mono); font-size: .78rem; color: var(--muted);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .spinner {
+      width: 14px; height: 14px; flex-shrink: 0;
+      border: 2px solid var(--border); border-top-color: var(--accent);
+      border-radius: 50%; animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── GRID ── */
+    #grid {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(clamp(280px,30vw,360px),1fr));
+      gap: 1px; background: var(--border);
+    }
+
+    /* ── CARD BASE ── */
+    .card {
+      background: var(--surface);
+      padding: 34px 30px 30px;
+      display: flex; flex-direction: column; gap: 16px;
+      position: relative; overflow: hidden;
+      border-radius: var(--card-radius);
+      animation: fadeUp .5s ease both;
+      transition: background .18s;
+    }
+    .card::before {
+      content: '';
+      position: absolute; left: 0; top: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform .24s ease;
+    }
+    .card:hover { background: var(--surface2); }
+    .card:hover::before { transform: scaleY(1); }
+
+    .card-top {
+      display: flex; align-items: flex-start;
+      justify-content: space-between;
+    }
+    .card-emoji { font-size: 2rem; line-height: 1; }
+    .card-title { font-size: 1.1rem; font-weight: 700; line-height: 1.35; }
+    .card-desc  { font-size: .8rem; color: var(--muted); line-height: 1.75; flex: 1; }
+
+    .card-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+    .tag {
+      font-family: var(--font-mono); font-size: .62rem; letter-spacing: .05em;
+      padding: 3px 9px; border-radius: calc(var(--card-radius) + 2px);
+      border: 1px solid var(--border); color: var(--muted);
+    }
+    .tag-date   { color: var(--accent2); border-color: rgba(240,200,64,.22); }
+    .tag-people { color: var(--accent);  border-color: rgba(212,240,80,.22); }
+    .tag-days   { color: var(--accent3); border-color: rgba(96,212,184,.22); }
+
+    /* ── SINGLE CARD ── */
+    a.card {
+      text-decoration: none; color: inherit; cursor: pointer;
+    }
+    .card-arrow {
+      font-size: 1.1rem; color: var(--muted);
+      transition: transform .18s, color .18s;
+    }
+    a.card:hover .card-arrow { transform: translate(4px,-4px); color: var(--accent); }
+
+    /* ── MULTI-PLAN BADGE ── */
+    .plans-count-badge {
+      font-family: var(--font-mono); font-size: .6rem; letter-spacing: .08em;
+      padding: 3px 10px; border-radius: 12px;
+      background: rgba(212,240,80,.1); color: var(--accent);
+      border: 1px solid rgba(212,240,80,.28);
+    }
+
+    /* ── TOGGLE BUTTON ── */
+    .multi-toggle {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: var(--font-mono); font-size: .68rem; letter-spacing: .06em;
+      color: var(--accent); cursor: pointer; user-select: none;
+      background: none; border: 1px solid rgba(212,240,80,.25);
+      border-radius: calc(var(--card-radius) + 2px);
+      padding: 7px 14px; width: 100%;
+      transition: background .15s, border-color .15s;
+    }
+    .multi-toggle:hover { background: rgba(212,240,80,.06); border-color: rgba(212,240,80,.5); }
+    .toggle-arrow {
+      display: inline-block; transition: transform .22s ease;
+      font-style: normal; line-height: 1;
+    }
+    .multi-toggle.open .toggle-arrow { transform: rotate(90deg); }
+    .toggle-text { flex: 1; }
+
+    /* ── PLAN LIST ── */
+    .plan-list {
+      display: none; flex-direction: column; gap: 6px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+    .plan-list.open { display: flex; }
+
+    .plan-item {
+      display: flex; align-items: center; justify-content: space-between;
+      text-decoration: none; color: var(--text);
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: calc(var(--card-radius) + 2px);
+      transition: background .15s, border-color .15s;
+    }
+    .plan-item:hover { background: var(--surface2); border-color: var(--accent); }
+
+    .plan-item-body { flex: 1; min-width: 0; }
+    .plan-item-label {
+      font-size: .85rem; font-weight: 600; line-height: 1.3;
+      display: flex; align-items: center; gap: 7px; flex-wrap: wrap;
+    }
+    .plan-item-sub {
+      font-family: var(--font-mono); font-size: .6rem;
+      color: var(--muted); margin-top: 3px; line-height: 1.5;
+    }
+    .plan-item-arrow {
+      font-size: 1rem; color: var(--muted); flex-shrink: 0; margin-left: 12px;
+      transition: color .15s, transform .15s;
+    }
+    .plan-item:hover .plan-item-arrow { color: var(--accent); transform: translateX(3px); }
+
+    .plan-tag {
+      font-family: var(--font-mono); font-size: .55rem; letter-spacing: .06em;
+      padding: 2px 7px; border-radius: 10px;
+      background: rgba(212,240,80,.12); color: var(--accent);
+      border: 1px solid rgba(212,240,80,.25);
+    }
+    .plan-tag.alt {
+      background: rgba(240,200,64,.1); color: var(--accent2);
+      border-color: rgba(240,200,64,.25);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      padding: 20px clamp(24px,5vw,56px);
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      font-family: var(--font-mono); font-size: .65rem; color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 560px) {
+      #grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── RECOMMENDATIONS ── */
+    #recSection {
+      position: relative; z-index: 1;
+      padding: 48px clamp(24px,5vw,56px);
+      border-top: 1px solid var(--border);
+    }
+    .rec-header {
+      margin-bottom: 24px;
+    }
+    .rec-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .rec-subtitle {
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      color: var(--muted);
+      letter-spacing: .05em;
+      margin-top: 4px;
+    }
+    #recGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px,30vw,360px));
+      gap: 1px;
+      background: var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<div class="theme-badge">今日风格：<span id="themeName">—</span></div>
+
+<header>
+  <div>
+    <div class="logo">我的<em>旅行</em>计划</div>
+    <div class="subtitle">AI Generated Travel Plans · Share with Your Crew</div>
+  </div>
+  <div class="counter-box">
+    <div class="counter-num" id="counterNum">—</div>
+    <div class="counter-label">次旅行记录</div>
+  </div>
+</header>
+
+<div id="statusMsg"><div class="spinner"></div><span>正在加载旅行计划…</span></div>
+<div id="grid"></div>
+
+<!-- 旅行推荐区域 -->
+<div id="recSection" style="display:none">
+  <div class="rec-header">
+    <div class="rec-title">旅行灵感</div>
+    <div class="rec-subtitle">精选目的地推荐 · 仅供参考</div>
+  </div>
+  <div id="recGrid"></div>
+</div>
+
+<footer>
+  <span>旅行计划由 AI 生成 · 仅供参考</span>
+  <span id="footerDate"></span>
+</footer>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  ★ 在这里配置你的旅行 ★
+//
+//  单方案：
+//  { title:"行程名", emoji:"🏜️", file:"list/xxx.html" }
+//
+//  多方案（主线 + 备选）：
+//  {
+//    title: "川西高原",
+//    emoji: "🏔️",
+//    plans: [
+//      { label:"主线方案", tag:"主线", file:"list/川西主线.html" },
+//      { label:"高反备选方案", tag:"备选", file:"list/川西备选.html" },
+//    ]
+//  }
+// ════════════════════════════════════════════════════════
+const TRIP_GROUPS = [
+  {
+    title: "川西高原",
+    emoji: "🏔️",
+    plans: [
+      { label: "主线方案",     tag: "主线", file: "list/southern_xinjiang.html" },
+      { label: "高反备选方案", tag: "备选", file: "list/chuanxi_main.html" },
+    ],
+  },
+  {
+    title: "西域南疆 · 丝路春行",
+    emoji: "🏜️",
+    file:  "list/chuanxi_alt_backup.html",
+  },
+  {
+    title: "伊犁河谷 · 赛里木湖",
+    emoji: "🌸",
+    file:  "list/ili_sayram.html",
+  },
+  {
+    title: "春季旅行完整攻略",
+    emoji: "📖",
+    file:  "list/travel_guide_full.html",
+  },
+  // ── 继续在下面添加 ──
+  // { title: "西藏环线", emoji: "🕌", file: "list/西藏.html" },
+  // {
+  //   title: "云南大理",
+  //   emoji: "🌸",
+  //   plans: [
+  //     { label: "古城深度游",   tag: "主线", file: "list/大理主线.html" },
+  //     { label: "雨季替代方案", tag: "备选", file: "list/大理备选.html" },
+  //   ],
+  // },
+];
+
+// 旅行推荐（展示在底部）
+const RECOMMENDATIONS = [
+  {
+    title: "春季旅行推荐",
+    emoji: "🌱",
+    file:  "list/spring_recommendations.html",
+  },
+];
+// ════════════════════════════════════════════════════════
+
+
+// ──────────────────────────────────────────────────────
+//  THEMES：4 种风格，每天轮换
+// ──────────────────────────────────────────────────────
+const THEMES = [
+  {
+    name: "午夜墨境",
+    vars: {
+      "--bg":           "#0c0d0b",
+      "--surface":      "#141510",
+      "--surface2":     "#1b1d17",
+      "--border":       "#252620",
+      "--accent":       "#d4f050",
+      "--accent2":      "#f0c840",
+      "--accent3":      "#60d4b8",
+      "--text":         "#eae8e0",
+      "--muted":        "#6a6860",
+      "--font-display": "'Noto Serif SC', serif",
+      "--card-radius":  "0px",
+    },
+  },
+  {
+    name: "丝路黄沙",
+    vars: {
+      "--bg":           "#16100a",
+      "--surface":      "#1e1610",
+      "--surface2":     "#261e16",
+      "--border":       "#3a2e20",
+      "--accent":       "#e8a040",
+      "--accent2":      "#f0d080",
+      "--accent3":      "#a0c880",
+      "--text":         "#f0e8d8",
+      "--muted":        "#7a6a50",
+      "--font-display": "'Playfair Display', 'Noto Serif SC', serif",
+      "--card-radius":  "4px",
+    },
+  },
+  {
+    name: "云杉深林",
+    vars: {
+      "--bg":           "#080f0c",
+      "--surface":      "#0e1812",
+      "--surface2":     "#152018",
+      "--border":       "#1e3028",
+      "--accent":       "#50e890",
+      "--accent2":      "#90d860",
+      "--accent3":      "#60c8d0",
+      "--text":         "#dceee4",
+      "--muted":        "#587868",
+      "--font-display": "'Space Grotesk', 'Noto Serif SC', sans-serif",
+      "--card-radius":  "6px",
+    },
+  },
+  {
+    name: "极地冰蓝",
+    vars: {
+      "--bg":           "#080c12",
+      "--surface":      "#0e1420",
+      "--surface2":     "#141c2a",
+      "--border":       "#1e2a3e",
+      "--accent":       "#60b8f8",
+      "--accent2":      "#a080f8",
+      "--accent3":      "#60e8c8",
+      "--text":         "#d8e8f8",
+      "--muted":        "#5878a0",
+      "--font-display": "'Space Grotesk', 'Noto Serif SC', sans-serif",
+      "--card-radius":  "8px",
+    },
+  },
+];
+
+function pickTheme() {
+  const d = new Date();
+  const idx = (d.getFullYear() * 366 + d.getMonth() * 31 + d.getDate()) % THEMES.length;
+  return THEMES[idx];
+}
+
+function applyTheme(theme) {
+  const root = document.documentElement;
+  for (const [k, v] of Object.entries(theme.vars)) root.style.setProperty(k, v);
+  document.getElementById('themeName').textContent = theme.name;
+}
+
+
+// ──────────────────────────────────────────────────────
+//  META PARSER
+// ──────────────────────────────────────────────────────
+function getMeta(html, name) {
+  const re1 = new RegExp(`<meta[^>]+name=["']${name}["'][^>]+content=["']([^"']+)["']`, 'i');
+  const re2 = new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+name=["']${name}["']`, 'i');
+  return (html.match(re1) || html.match(re2))?.[1]?.trim() || '';
+}
+
+function parseMeta(html, fallback) {
+  return {
+    title:  getMeta(html,'trip-title')  || html.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim() || fallback,
+    emoji:  getMeta(html,'trip-emoji')  || '🗺️',
+    date:   getMeta(html,'trip-date')   || '',
+    days:   getMeta(html,'trip-days')   || '',
+    people: getMeta(html,'trip-people') || '',
+    desc:   getMeta(html,'trip-desc')   || '',
+  };
+}
+
+
+// ──────────────────────────────────────────────────────
+//  CARD BUILDERS
+// ──────────────────────────────────────────────────────
+function renderTags(meta) {
+  return [
+    meta.date   ? `<span class="tag tag-date">📅 ${meta.date}</span>` : '',
+    meta.days   ? `<span class="tag tag-days">⏱ ${meta.days} 天</span>` : '',
+    meta.people ? `<span class="tag tag-people">👥 ${meta.people} 人</span>` : '',
+  ].filter(Boolean).join('');
+}
+
+function buildSingleCard(file, emoji, meta, idx) {
+  const tags  = renderTags(meta);
+  const delay = (idx * 0.07).toFixed(2);
+  return `
+    <a class="card" href="${file}" style="animation-delay:${delay}s">
+      <div class="card-top">
+        <div class="card-emoji">${emoji || meta.emoji}</div>
+        <div class="card-arrow">↗</div>
+      </div>
+      <div class="card-title">${meta.title}</div>
+      ${meta.desc ? `<div class="card-desc">${meta.desc}</div>` : ''}
+      ${tags ? `<div class="card-tags">${tags}</div>` : ''}
+    </a>`;
+}
+
+function buildMultiCard(group, plansData, idx) {
+  const delay   = (idx * 0.07).toFixed(2);
+  const firstM  = plansData[0].meta;
+  const tags    = renderTags(firstM);
+  const uid     = `pl-${idx}`;
+
+  const items = plansData.map((p, i) => {
+    const tagClass = i === 0 ? 'plan-tag' : 'plan-tag alt';
+    const badge    = p.plan.tag ? `<span class="${tagClass}">${p.plan.tag}</span>` : '';
+    const subParts = [p.meta.date, p.meta.days && p.meta.days+'天', p.meta.people && p.meta.people+'人'].filter(Boolean);
+    const sub      = subParts.join(' · ');
+    return `
+      <a class="plan-item" href="${p.plan.file}">
+        <div class="plan-item-body">
+          <div class="plan-item-label">${p.plan.label}${badge}</div>
+          ${sub  ? `<div class="plan-item-sub">${sub}</div>` : ''}
+          ${p.meta.desc ? `<div class="plan-item-sub">${p.meta.desc}</div>` : ''}
+        </div>
+        <div class="plan-item-arrow">→</div>
+      </a>`;
+  }).join('');
+
+  return `
+    <div class="card" style="animation-delay:${delay}s">
+      <div class="card-top">
+        <div class="card-emoji">${group.emoji}</div>
+        <span class="plans-count-badge">${plansData.length} 个方案</span>
+      </div>
+      <div class="card-title">${group.title}</div>
+      ${firstM.desc ? `<div class="card-desc">${firstM.desc}</div>` : ''}
+      ${tags ? `<div class="card-tags">${tags}</div>` : ''}
+      <button class="multi-toggle" onclick="togglePlans('${uid}',this)">
+        <em class="toggle-arrow">›</em>
+        <span class="toggle-text">查看所有方案</span>
+      </button>
+      <div class="plan-list" id="${uid}">${items}</div>
+    </div>`;
+}
+
+
+// ──────────────────────────────────────────────────────
+//  TOGGLE
+// ──────────────────────────────────────────────────────
+function togglePlans(uid, btn) {
+  const list = document.getElementById(uid);
+  const open = list.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.querySelector('.toggle-text').textContent = open ? '收起方案' : '查看所有方案';
+}
+
+
+// ──────────────────────────────────────────────────────
+//  LOADER
+// ──────────────────────────────────────────────────────
+async function loadTrips() {
+  const statusEl  = document.getElementById('statusMsg');
+  const grid      = document.getElementById('grid');
+  const counterEl = document.getElementById('counterNum');
+
+  // Collect all unique files to fetch
+  const allFiles = [...new Set(
+    TRIP_GROUPS.flatMap(g => g.file ? [g.file] : (g.plans||[]).map(p => p.file))
+  )];
+
+  // Fetch all in parallel
+  const htmlMap = {};
+  await Promise.all(allFiles.map(async f => {
+    try {
+      const r = await fetch(f);
+      htmlMap[f] = r.ok ? await r.text() : null;
+    } catch { htmlMap[f] = null; }
+  }));
+
+  statusEl.style.display = 'none';
+  let count = 0;
+
+  TRIP_GROUPS.forEach((group, idx) => {
+    if (group.file) {
+      // ── Single plan ──
+      const html = htmlMap[group.file];
+      if (!html) return;
+      const meta = parseMeta(html, group.title || group.file);
+      grid.insertAdjacentHTML('beforeend', buildSingleCard(group.file, group.emoji, meta, idx));
+      count++;
+
+    } else if (group.plans) {
+      // ── Multi plan ──
+      const plansData = group.plans
+        .filter(p => htmlMap[p.file])
+        .map(p => ({ plan: p, meta: parseMeta(htmlMap[p.file], p.label) }));
+
+      if (!plansData.length) return;
+
+      if (plansData.length === 1) {
+        // Only one loaded — degrade to single card
+        const p = plansData[0];
+        grid.insertAdjacentHTML('beforeend', buildSingleCard(p.plan.file, group.emoji, p.meta, idx));
+      } else {
+        grid.insertAdjacentHTML('beforeend', buildMultiCard(group, plansData, idx));
+      }
+      count++;
+    }
+  });
+
+  counterEl.textContent = count;
+
+  if (count === 0) {
+    statusEl.style.display = 'flex';
+    statusEl.innerHTML = '<span>未能加载任何旅行文件，请检查 list/ 目录和文件名是否正确。</span>';
+  }
+
+  // 加载旅行推荐
+  loadRecommendations();
+}
+
+async function loadRecommendations() {
+  const recSection = document.getElementById('recSection');
+  const recGrid = document.getElementById('recGrid');
+  if (!RECOMMENDATIONS.length) return;
+
+  const allFiles = RECOMMENDATIONS.map(r => r.file);
+  const htmlMap = {};
+  await Promise.all(allFiles.map(async f => {
+    try {
+      const r = await fetch(f);
+      htmlMap[f] = r.ok ? await r.text() : null;
+    } catch { htmlMap[f] = null; }
+  }));
+
+  let recCount = 0;
+  RECOMMENDATIONS.forEach((rec, idx) => {
+    const html = htmlMap[rec.file];
+    if (!html) return;
+    const meta = parseMeta(html, rec.title);
+    const delay = (idx * 0.07).toFixed(2);
+    recGrid.insertAdjacentHTML('beforeend', buildSingleCard(rec.file, rec.emoji, meta, idx));
+    recCount++;
+  });
+
+  if (recCount > 0) {
+    recSection.style.display = 'block';
+  }
+}
+
+
+// ──────────────────────────────────────────────────────
+//  INIT
+// ──────────────────────────────────────────────────────
+applyTheme(pickTheme());
+
+document.getElementById('footerDate').textContent =
+  '更新于 ' + new Date().toLocaleDateString('zh-CN', { year:'numeric', month:'long', day:'numeric' });
+
+loadTrips();
+</script>
+</body>
+</html>

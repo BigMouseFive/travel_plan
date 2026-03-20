@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="trip-title" content="春季旅行完整攻略">
+<meta name="trip-emoji" content="📖">
+<meta name="trip-date" content="3月底-4月">
+<meta name="trip-days" content="">
+<meta name="trip-people" content="2人">
+<meta name="trip-desc" content="深圳出发春季旅行攻略">
+<title>春季旅行完整攻略 · 深圳出发</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0;
+  --bg2: #efecea;
+  --card: #ffffff;
+  --text: #1e1c18;
+  --text2: #5a5750;
+  --text3: #999690;
+  --border: rgba(0,0,0,0.09);
+  --accent1: #2d5a8e;
+  --accent2: #c05a28;
+  --accent3: #3d7a4f;
+  --accent4: #6b4fa0;
+  --accent5: #1a7a6e;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+  background: #1a1814;
+  color: #f0ede6;
+  padding: 60px 24px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 60%, rgba(45,90,142,0.25) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 30%, rgba(192,90,40,0.2) 0%, transparent 55%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #a09a8e; margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(26px, 5vw, 40px);
+  font-weight: 600; line-height: 1.3;
+  margin-bottom: 12px;
+}
+.hero-sub {
+  font-size: 14px; color: #8a847a; line-height: 1.7;
+}
+.hero-meta {
+  display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+  margin-top: 28px;
+}
+.hero-meta span {
+  font-size: 12px; color: #706a62;
+  border: 0.5px solid rgba(255,255,255,0.12);
+  padding: 5px 14px; border-radius: 20px;
+  background: rgba(255,255,255,0.04);
+}
+
+/* ── TABS ── */
+.tabs-wrap {
+  position: sticky; top: 0; z-index: 100;
+  background: #1a1814;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+.tabs {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  max-width: 900px; margin: 0 auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex: 0 0 auto; padding: 14px 20px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px; font-weight: 400;
+  color: #706a62; border: none; background: none;
+  cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  scroll-snap-align: start;
+}
+.tab-btn:hover { color: #c8c0b2; }
+.tab-btn.active { color: #f0ede6; border-bottom-color: currentColor; }
+.tab-btn .tab-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; border-radius: 50%;
+  font-size: 10px; margin-right: 6px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* ── SECTIONS ── */
+.section { display: none; max-width: 900px; margin: 0 auto; padding: 32px 16px 60px; }
+.section.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── DEST HEADER ── */
+.dest-header {
+  display: flex; align-items: flex-start; gap: 16px;
+  margin-bottom: 28px;
+}
+.dest-num {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px; font-weight: 600;
+  flex-shrink: 0; margin-top: 4px;
+}
+.dest-info h2 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 26px; font-weight: 600; line-height: 1.2;
+}
+.dest-info .loc { font-size: 13px; color: var(--text3); margin-top: 4px; }
+.dest-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.dest-tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500; }
+
+/* ── NOTICE BLOCK ── */
+.notice {
+  border-radius: 10px; padding: 14px 16px; margin-bottom: 24px;
+  font-size: 13px; line-height: 1.7;
+  border-left: 3px solid;
+}
+.notice.warning { background: #fff8f0; border-color: #e07030; color: #6a3010; }
+.notice.info { background: #f0f6ff; border-color: #3060a0; color: #1a3860; }
+
+/* ── OVERVIEW CARDS ── */
+.overview-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px; margin-bottom: 28px;
+}
+.ov-card {
+  background: var(--card); border: 0.5px solid var(--border);
+  border-radius: 10px; padding: 14px 16px;
+}
+.ov-card .ov-label { font-size: 10px; letter-spacing: 0.1em; color: var(--text3); text-transform: uppercase; margin-bottom: 6px; }
+.ov-card .ov-val { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.ov-card .ov-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+/* ── SECTION TITLE ── */
+.sec-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px; font-weight: 600;
+  margin: 28px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 0.5px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+.sec-title .ic { font-size: 16px; }
+
+/* ── DAY CARDS ── */
+.day-card {
+  background: var(--card); border: 0.5px solid var(--border);
+  border-radius: 12px; margin-bottom: 12px; overflow: hidden;
+}
+.day-header {
+  padding: 14px 18px; display: flex; align-items: center; gap: 12px;
+  border-bottom: 0.5px solid var(--border);
+  cursor: pointer; user-select: none;
+}
+.day-header:hover { background: var(--bg2); }
+.day-num-badge {
+  font-size: 11px; font-weight: 500; padding: 3px 10px;
+  border-radius: 20px; white-space: nowrap;
+}
+.day-title { font-size: 15px; font-weight: 500; flex: 1; }
+.day-date { font-size: 12px; color: var(--text3); }
+.day-toggle { font-size: 12px; color: var(--text3); transition: transform 0.2s; }
+.day-header.open .day-toggle { transform: rotate(180deg); }
+.day-body { display: none; padding: 16px 18px; }
+.day-body.open { display: block; }
+
+/* ── ITINERARY ITEMS ── */
+.itin-item {
+  display: flex; gap: 12px; margin-bottom: 14px;
+}
+.itin-item:last-child { margin-bottom: 0; }
+.itin-time {
+  font-size: 11px; color: var(--text3); white-space: nowrap;
+  padding-top: 2px; min-width: 72px; text-align: right;
+}
+.itin-dot {
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: 5px;
+}
+.itin-dot-circle {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  border: 1.5px solid;
+}
+.itin-dot-line {
+  width: 1px; flex: 1; min-height: 16px;
+  background: var(--border); margin-top: 4px;
+}
+.itin-content { flex: 1; padding-bottom: 4px; }
+.itin-content .itin-what { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+.itin-content .itin-note { font-size: 12px; color: var(--text2); line-height: 1.6; }
+.itin-content .itin-tip {
+  font-size: 11px; color: var(--text3); margin-top: 4px;
+  padding: 4px 8px; background: var(--bg2); border-radius: 6px;
+  display: inline-block;
+}
+
+/* ── INFO ROWS ── */
+.info-table { width: 100%; border-collapse: collapse; }
+.info-table tr { border-bottom: 0.5px solid var(--border); }
+.info-table tr:last-child { border-bottom: none; }
+.info-table td { padding: 10px 12px; font-size: 13px; vertical-align: top; }
+.info-table td:first-child { color: var(--text3); white-space: nowrap; width: 90px; font-size: 12px; }
+.info-table td:last-child { color: var(--text2); line-height: 1.7; }
+
+.info-box {
+  background: var(--card); border: 0.5px solid var(--border);
+  border-radius: 10px; overflow: hidden; margin-bottom: 16px;
+}
+
+/* ── COST TABLE ── */
+.cost-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.cost-table th {
+  text-align: left; padding: 10px 12px;
+  background: var(--bg2); font-size: 11px; letter-spacing: 0.05em;
+  color: var(--text3); font-weight: 500;
+}
+.cost-table td { padding: 10px 12px; border-bottom: 0.5px solid var(--border); vertical-align: top; }
+.cost-table tr:last-child td { border-bottom: none; }
+.cost-table td:last-child { text-align: right; color: var(--text); font-weight: 500; }
+.cost-total { background: var(--bg2); }
+.cost-total td { font-weight: 600; color: var(--text); }
+
+/* ── FITNESS BLOCK ── */
+.fitness-block {
+  border-radius: 10px; padding: 16px 18px; margin-bottom: 16px;
+}
+.fitness-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
+.fitness-bar-wrap { background: var(--bg2); border-radius: 4px; height: 6px; margin: 6px 0 10px; overflow: hidden; }
+.fitness-bar { height: 100%; border-radius: 4px; }
+.fitness-desc { font-size: 13px; color: var(--text2); line-height: 1.7; }
+
+/* ── TIPS LIST ── */
+.tips-list { list-style: none; }
+.tips-list li {
+  padding: 10px 0; border-bottom: 0.5px solid var(--border);
+  font-size: 13px; color: var(--text2); line-height: 1.6;
+  display: flex; gap: 10px;
+}
+.tips-list li:last-child { border-bottom: none; }
+.tips-list li .tip-icon { flex-shrink: 0; margin-top: 1px; }
+
+/* ── COLOR THEMES PER DESTINATION ── */
+/* 1 稻城 blue */
+.theme-1 { --ac: #2d5a8e; --acl: #e6f1fb; --act: #0c447c; }
+.theme-1 .dest-num { background: #e6f1fb; color: #0c447c; }
+.theme-1 .dest-tag { background: #b5d4f4; color: #0c447c; }
+.theme-1 .day-num-badge { background: #e6f1fb; color: #0c447c; }
+.theme-1 .itin-dot-circle { border-color: #2d5a8e; background: #e6f1fb; }
+.theme-1 .fitness-block { background: #f0f6ff; }
+.theme-1 .fitness-bar { background: #2d5a8e; }
+
+/* 2 张家界 green */
+.theme-2 { --ac: #3d7a4f; --acl: #eaf3de; --act: #3b6d11; }
+.theme-2 .dest-num { background: #eaf3de; color: #3b6d11; }
+.theme-2 .dest-tag { background: #c0dd97; color: #3b6d11; }
+.theme-2 .day-num-badge { background: #eaf3de; color: #3b6d11; }
+.theme-2 .itin-dot-circle { border-color: #3d7a4f; background: #eaf3de; }
+.theme-2 .fitness-block { background: #f2f8ec; }
+.theme-2 .fitness-bar { background: #3d7a4f; }
+
+/* 3 林芝 amber */
+.theme-3 { --ac: #c05a28; --acl: #faeeda; --act: #633806; }
+.theme-3 .dest-num { background: #faeeda; color: #633806; }
+.theme-3 .dest-tag { background: #fac775; color: #633806; }
+.theme-3 .day-num-badge { background: #faeeda; color: #633806; }
+.theme-3 .itin-dot-circle { border-color: #c05a28; background: #faeeda; }
+.theme-3 .fitness-block { background: #fffaf0; }
+.theme-3 .fitness-bar { background: #c05a28; }
+
+/* 4 祁连 purple */
+.theme-4 { --ac: #6b4fa0; --acl: #eeedfe; --act: #3c3489; }
+.theme-4 .dest-num { background: #eeedfe; color: #3c3489; }
+.theme-4 .dest-tag { background: #cecbf6; color: #3c3489; }
+.theme-4 .day-num-badge { background: #eeedfe; color: #3c3489; }
+.theme-4 .itin-dot-circle { border-color: #6b4fa0; background: #eeedfe; }
+.theme-4 .fitness-block { background: #f5f3ff; }
+.theme-4 .fitness-bar { background: #6b4fa0; }
+
+/* 5 神农架 teal */
+.theme-5 { --ac: #1a7a6e; --acl: #e1f5ee; --act: #085041; }
+.theme-5 .dest-num { background: #e1f5ee; color: #085041; }
+.theme-5 .dest-tag { background: #9fe1cb; color: #085041; }
+.theme-5 .day-num-badge { background: #e1f5ee; color: #085041; }
+.theme-5 .itin-dot-circle { border-color: #1a7a6e; background: #e1f5ee; }
+.theme-5 .fitness-block { background: #f0faf7; }
+.theme-5 .fitness-bar { background: #1a7a6e; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .itin-time { min-width: 58px; font-size: 10px; }
+  .overview-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">深圳出发 · 两人行 · 身体健康普通上班族</div>
+  <h1>五条春季旅行完整攻略</h1>
+  <p class="hero-sub">包含完整日程 · 交通住宿 · 费用估算 · 体力适配说明</p>
+  <div class="hero-meta">
+    <span>📅 3月29日 – 4月6日（8天7夜）</span>
+    <span>✈️ 出发地：深圳（深圳宝安 / 深圳北）</span>
+    <span>👫 两人同行</span>
+  </div>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab(0)"><span class="tab-num">1</span>稻城亚丁</button>
+    <button class="tab-btn" onclick="switchTab(1)"><span class="tab-num">2</span>张家界</button>
+    <button class="tab-btn" onclick="switchTab(2)"><span class="tab-num">3</span>林芝</button>
+    <button class="tab-btn" onclick="switchTab(3)"><span class="tab-num">4</span>祁连山</button>
+    <button class="tab-btn" onclick="switchTab(4)"><span class="tab-num">5</span>神农架</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECTION 1：稻城亚丁
+══════════════════════════════════════════ -->
+<div class="section active theme-1" id="sec-0">
+
+  <div class="dest-header">
+    <div class="dest-num">1</div>
+    <div class="dest-info">
+      <h2>四川·稻城亚丁</h2>
+      <div class="loc">四川省甘孜藏族自治州稻城县 · 海拔 3700–4700m</div>
+      <div class="dest-tags">
+        <span class="dest-tag">雪山湖泊</span>
+        <span class="dest-tag">藏区风情</span>
+        <span class="dest-tag">4月初最美</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice warning">
+    ⚠️ <strong>高原特别提示（必读）：</strong>稻城县城海拔3750m，亚丁景区核心区超4000m。无特殊锻炼习惯的普通人初次进入高原须谨慎。建议第1天抵达只休息，不做任何景区活动；随身备好高原安（乙酰唑胺）或红景天；如有严重头痛、呕吐、呼吸困难需立刻下撤。
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card"><div class="ov-label">行程天数</div><div class="ov-val">8天7夜</div><div class="ov-sub">含往返</div></div>
+    <div class="ov-card"><div class="ov-label">深圳往返交通</div><div class="ov-val">飞机</div><div class="ov-sub">深圳→稻城亚丁机场</div></div>
+    <div class="ov-card"><div class="ov-label">飞行时间</div><div class="ov-val">约3h</div><div class="ov-sub">或经成都中转约5h</div></div>
+    <div class="ov-card"><div class="ov-label">人均预算</div><div class="ov-val">5500–7500元</div><div class="ov-sub">含机票酒店餐饮</div></div>
+    <div class="ov-card"><div class="ov-label">体力要求</div><div class="ov-val">中等偏低</div><div class="ov-sub">乘景区摆渡车为主</div></div>
+    <div class="ov-card"><div class="ov-label">最佳看点</div><div class="ov-val">三神山·牛奶海</div><div class="ov-sub">积雪+初春野花</div></div>
+  </div>
+
+  <div class="sec-title"><span class="ic">📋</span>完整日程安排</div>
+
+  <!-- Day 1 -->
+  <div class="day-card">
+    <div class="day-header open" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 1</span>
+      <span class="day-title">深圳出发 → 抵达稻城 · 适应高原</span>
+      <span class="day-date">3月29日（周六）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body open">
+      <div class="itin-item">
+        <div class="itin-time">06:00–07:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">前往深圳宝安国际机场</div><div class="itin-note">建议乘地铁11号线至机场，提前2小时到达办理值机。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">08:00–11:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">深圳→稻城亚丁机场（直飞/经成都）</div><div class="itin-note">建议查深圳→稻城直飞（约3小时）或深圳→成都双流→稻城（共约5小时）。推荐出发前一天到深圳住机场附近，避免赶早班机的疲劳。</div><div class="itin-tip">💡 稻城亚丁机场海拔4411m，是世界最高高原机场之一。飞机落地后会有轻微不适，属正常现象。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">11:30–13:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">机场→稻城县城（约1.5小时车程）</div><div class="itin-note">机场有大巴，也可预约酒店接送。车窗外已是高原草甸和雪山风光。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">13:00–14:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">入住稻城县城酒店·午餐</div><div class="itin-note">推荐住稻城县城（海拔3750m），比亚丁村更利于适应高原。点清淡食物，喝热汤，不喝酒。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">14:00–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">【只休息】卧床或轻微散步</div><div class="itin-note">第一天高原适应最关键。不要去任何景区，不要洗澡太久，多喝水，可服用红景天或高原安（提前3天开始服用效果最佳）。</div><div class="itin-tip">⚠️ 若出现头痛，属正常反应；若头痛剧烈+恶心请告知酒店。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 2</span>
+      <span class="day-title">稻城周边半日 · 冲古寺区域轻游</span>
+      <span class="day-date">3月30日（周日）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">07:00–08:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">早餐·身体评估</div><div class="itin-note">问问自己头痛程度（0–10分），低于4分可以轻度活动，超过6分继续休息。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">09:00–14:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">稻城→亚丁村，游冲古寺区域</div><div class="itin-note">稻城→亚丁村约2小时车程。冲古寺片区（海拔约3800m）可坐景区摆渡车到达，不需要徒步。看仙乃日神山正面、冲古草甸（3月底开始泛绿）。</div><div class="itin-tip">💡 体力还没完全适应高原，冲古寺半天游刚好，步行量约3–5km，慢慢走。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">14:30–16:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">亚丁村午餐·休息</div><div class="itin-note">亚丁村有藏餐，推荐牦牛肉、糌粑。下午小睡。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">16:30–17:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">亚丁村周边漫步·日落</div><div class="itin-note">村子边有小路，可走到视野开阔处看神山日落，色彩变化非常壮观。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 3</span>
+      <span class="day-title">核心景区：洛绒牛场 · 央迈勇近景</span>
+      <span class="day-date">3月31日（周一）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">07:00–08:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">早起早饭·出发前往景区</div><div class="itin-note">越早越好，早晨云少，神山更清晰。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">08:30–16:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">洛绒牛场区域游览（摆渡车+步行）</div><div class="itin-note">乘景区摆渡车到洛绒牛场（海拔约4180m）。这里是三神山的正面最佳观景地。草甸+雪山+蓝天是标志性画面。步行量约5–7km，尽量慢走不赶。央迈勇神山正面朝西，午后光线最美。</div><div class="itin-tip">💡 带好登山杖（景区可租）减轻膝盖和高反压力；中途多休息，不要逞强。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">16:30–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">返回亚丁村·晚餐休息</div><div class="itin-note">今天是体力消耗最大的一天，早睡。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 4</span>
+      <span class="day-title">最美高原湖：牛奶海 · 五色海</span>
+      <span class="day-date">4月1日（周二）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">06:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">极早出发（务必赶上第一班摆渡车）</div><div class="itin-note">牛奶海在洛绒牛场基础上再徒步约3–4小时（单程约5km，海拔爬升约500m至4700m）。这是全程最高、最累的一天，必须早出发。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">07:00–12:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">洛绒牛场→牛奶海→五色海（徒步上行）</div><div class="itin-note">全程山路，海拔持续升高，步行5km，约3–4小时上行。牛奶海（4600m）因富含矿物质呈乳白色，周围有仙乃日雪山倒影；五色海（4700m）水色随天气呈现墨绿/碧蓝/金色变化。建议全程慢行，每30分钟休息5分钟。</div><div class="itin-tip">💡 对体力有限的普通上班族：若感觉海拔反应加重，在牛奶海停止折返即可，不必强行登顶。五色海可等第二次来再挑战。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">12:00–16:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">下山返回亚丁村·下午休息</div><div class="itin-note">下山约2–2.5小时。回来后大量补充水和食物，早休息。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 5</span>
+      <span class="day-title">稻城古村·藏寨 · 格聂神山远景</span>
+      <span class="day-date">4月2日（周三）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">09:00–12:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">亚丁→稻城县城路上：桑堆红草地</div><div class="itin-note">3月底桑堆红草地颜色会比秋季浅，但仍有独特暖黄色调，配合雪山背景，可停车拍照约1小时。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">12:00–15:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">稻城县城午餐·逛古村藏寨</div><div class="itin-note">皮洛考古遗址附近有藏式民居，街道色彩鲜艳。可以找藏族人家吃一顿正宗藏餐。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">15:00–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">格聂神山远观（驾车前往观景台）</div><div class="itin-note">格聂神山（6204m）在稻城西北约60km，开车可达观景台远眺，不需要徒步，景色壮观，傍晚金光打在雪山极美。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 6</span>
+      <span class="day-title">稻城→理塘（可选）或稻城自由日</span>
+      <span class="day-date">4月3日（周四）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">全天</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">方案A：前往理塘（海拔4014m）</div><div class="itin-note">理塘素有"世界高城"之称，丁真的家乡。距稻城约2.5小时车程，可参观藏传佛教寺院（长青春科尔寺），高原草甸开阔壮美。傍晚返回稻城。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">全天</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">方案B：稻城休闲日（推荐）</div><div class="itin-note">如前几天体力消耗较大，建议这天纯休息：逛稻城市集、拍照、按摩、整理照片，为次日返程做准备。</div><div class="itin-tip">💡 不建议强行安排满满当当，高原旅行最佳策略是"慢即是快"。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 7</span>
+      <span class="day-title">稻城→机场→深圳返程</span>
+      <span class="day-date">4月4日（周五）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">06:00–08:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">早起·酒店早餐·出发前往机场</div><div class="itin-note">稻城到机场约1.5小时，须提前出发。注意清明节前后班次可能较满，提前购票。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">09:00–12:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">飞回深圳/成都转机</div><div class="itin-note">抵达深圳后休息，身体从高原恢复到平原，部分人会感到疲劳，正常现象。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="ic">🚗</span>交通攻略</div>
+  <div class="info-box">
+    <table class="info-table">
+      <tr><td>深圳→稻城</td><td>深圳宝安机场直飞稻城亚丁机场（约3小时），或经成都双流/天府中转（约5–6小时）。票价单程500–1200元不等，建议提前1–2个月购票，旺季票紧。</td></tr>
+      <tr><td>景区内部</td><td>亚丁景区强制乘坐景区摆渡车（票价含在门票内）。从亚丁村到洛绒牛场乘摆渡车约20分钟，冲古寺方向约10分钟。牛奶海、五色海需自己步行前往，无代步工具。</td></tr>
+      <tr><td>稻城县城内</td><td>建议包一辆当地司机私家车（200–400元/天），可灵活前往桑堆红草地、格聂观景台等非景区地点。</td></tr>
+      <tr><td>门票</td><td>亚丁景区门票约270元/人（含摆渡车），建议提前在官方App购买，避免现场排队。</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title"><span class="ic">🏨</span>住宿推荐</div>
+  <div class="info-box">
+    <table class="info-table">
+      <tr><td>Day1–2</td><td><strong>稻城县城</strong>：推荐带暖气/地暖的民宿或精品酒店（如稻城·亚丁主题精品民宿），海拔3750m，比亚丁村适合初期高原适应。均价200–400元/晚。</td></tr>
+      <tr><td>Day3–5</td><td><strong>亚丁村（香格里拉镇）</strong>：距景区最近，方便早出发。选有供氧设备的酒店，均价300–600元/晚。推荐带景观阳台的房型——晚上星空极美。</td></tr>
+      <tr><td>Tips</td><td>亚丁村三四月份住宿须提前2–4周预订，旺季前后可能售罄；稻城县城选择更多，可作为备选。</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title"><span class="ic">💰</span>费用估算（两人）</div>
+  <div class="info-box">
+    <table class="cost-table">
+      <thead><tr><th>项目</th><th>说明</th><th>两人合计</th></tr></thead>
+      <tbody>
+        <tr><td>机票（往返）</td><td>深圳↔稻城，约500–1200元/人</td><td>2000–4800元</td></tr>
+        <tr><td>景区门票</td><td>亚丁约270元/人×2</td><td>540元</td></tr>
+        <tr><td>住宿（6晚）</td><td>均价300–500元/晚</td><td>1800–3000元</td></tr>
+        <tr><td>包车/交通</td><td>机场大巴+景区内+包车3天</td><td>600–900元</td></tr>
+        <tr><td>餐饮</td><td>6天，约100–150元/人/天</td><td>1200–1800元</td></tr>
+        <tr><td>其他</td><td>高原药品、登山杖租用、纪念品等</td><td>300–500元</td></tr>
+        <tr class="cost-total"><td><strong>合计</strong></td><td></td><td><strong>6440–11540元</strong></td></tr>
+        <tr><td>人均</td><td></td><td>3200–5770元</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title"><span class="ic">💪</span>体力适配分析</div>
+  <div class="fitness-block">
+    <div class="fitness-label">综合体力需求</div>
+    <div class="fitness-bar-wrap"><div class="fitness-bar" style="width:62%"></div></div>
+    <div class="fitness-desc">
+      <strong>适合度：中等（需要做好高原准备）</strong><br><br>
+      对于没有特殊锻炼习惯的普通上班族，稻城亚丁最大的挑战不是体力，而是<strong>高原反应</strong>。景区内大量使用摆渡车，实际步行量并不大（最多一天约7km慢走），但海拔4000–4700m会让普通人感到明显疲劳和呼吸费力。<br><br>
+      <strong>关键建议：</strong>第一天严格休息、全程慢行、不强迫自己登顶牛奶海以上区域，按自身感受调整。牛奶海一日是全程最挑战的一天，量力而为。
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="ic">📝</span>实用贴士</div>
+  <ul class="tips-list">
+    <li><span class="tip-icon">💊</span>提前3天开始服用高原安（乙酰唑胺）或红景天，到稻城后随身携带备用；不适合对磺胺类药物过敏者。</li>
+    <li><span class="tip-icon">🧴</span>3月底高原紫外线极强，需备防晒霜SPF50+、太阳镜、防晒帽；气温日差大（0–14°C），需带羽绒服。</li>
+    <li><span class="tip-icon">🥢</span>高原饮食以藏餐为主，牦牛肉、糌粑、甜茶是特色。初到高原建议吃七分饱，不要暴饮暴食。</li>
+    <li><span class="tip-icon">📱</span>景区内手机信号较差，提前下载离线地图（奥维互动地图/Maps.me）和景区地图。</li>
+    <li><span class="tip-icon">💧</span>高原需大量补水，每天至少3升；不喝酒，不剧烈运动，不泡澡（容易加重高反）。</li>
+    <li><span class="tip-icon">📷</span>3月底神山积雪未融，配合初绿草甸，是全年最有层次感的季节之一。建议带充电宝（低温掉电快）。</li>
+  </ul>
+
+</div><!-- end sec-0 -->
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 2：张家界
+══════════════════════════════════════════ -->
+<div class="section theme-2" id="sec-1">
+
+  <div class="dest-header">
+    <div class="dest-num">2</div>
+    <div class="dest-info">
+      <h2>湖南·张家界</h2>
+      <div class="loc">湖南省张家界市武陵源区 · 海拔约500–1260m</div>
+      <div class="dest-tags">
+        <span class="dest-tag">奇峰云雾</span>
+        <span class="dest-tag">石英岩地貌</span>
+        <span class="dest-tag">春雨仙境</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice info">
+    ℹ️ <strong>时节提示：</strong>3月底至4月初是张家界最美的季节之一。春雨带来云雾缭绕的仙境效果，峰林间薄雾流动，比晴天更有意境。但春季天气多变，建议多准备一套防水外套，备弹性行程。
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card"><div class="ov-label">行程天数</div><div class="ov-val">8天7夜</div><div class="ov-sub">含往返</div></div>
+    <div class="ov-card"><div class="ov-label">深圳往返交通</div><div class="ov-val">高铁</div><div class="ov-sub">深圳北→张家界西</div></div>
+    <div class="ov-card"><div class="ov-label">车程</div><div class="ov-val">约4–5小时</div><div class="ov-sub">高铁直达</div></div>
+    <div class="ov-card"><div class="ov-label">人均预算</div><div class="ov-val">3500–5000元</div><div class="ov-sub">含交通酒店餐饮</div></div>
+    <div class="ov-card"><div class="ov-label">体力要求</div><div class="ov-val">低–中</div><div class="ov-sub">缆车电梯代步多</div></div>
+    <div class="ov-card"><div class="ov-label">最佳看点</div><div class="ov-val">云雾峰林·天门山</div><div class="ov-sub">春雾+索道绝景</div></div>
+  </div>
+
+  <div class="sec-title"><span class="ic">📋</span>完整日程安排</div>
+
+  <div class="day-card">
+    <div class="day-header open" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 1</span>
+      <span class="day-title">深圳出发 → 张家界市区</span>
+      <span class="day-date">3月29日（周六）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body open">
+      <div class="itin-item">
+        <div class="itin-time">08:00–09:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">深圳北站出发</div><div class="itin-note">深圳北→张家界西高铁，约4–5小时。早班车建议7:00–9:00出发的车次，下午2–3点抵达。全程舒适无需担心高原反应，可在车上休息。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">13:30–15:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">抵达张家界·前往武陵源核心景区</div><div class="itin-note">张家界西站到武陵源约50km，约50分钟车程（网约车/大巴均可）。入住武陵源附近酒店。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">15:00–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">武陵源镇逛街·傍晚逛老街</div><div class="itin-note">武陵源老街有大量湘西特色小吃：土家腊肉、粑粑、葛根粉、岩耳炖鸡，傍晚适合轻松逛逛。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 2</span>
+      <span class="day-title">袁家界 · 哈利路亚山 · 天下第一桥</span>
+      <span class="day-date">3月30日（周日）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">07:30–09:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">早起·乘百龙天梯上山</div><div class="itin-note">百龙天梯（世界最高全暴露户外电梯，垂直高度335m）将游客直接送到袁家界台地，免去大量爬坡，适合普通体力游客。运行时间约2分钟，体验感极好。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">09:00–13:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">袁家界台地游览</div><div class="itin-note">「哈利路亚山」观景台（《阿凡达》取景地原型），天下第一桥（天然岩桥，高达357m），迷魂台（俯瞰万峰森林）。台地路面平整，体力消耗低，云雾天气绝美。全程约5km，可悠闲步行。</div><div class="itin-tip">💡 3月底春雾浓厚，云雾在峰林间流动，建议停下来多等等，不要急着赶景点打卡。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">13:00–14:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">山上午餐</div><div class="itin-note">袁家界顶有简餐，价格偏高但味道可以，或带些干粮在观景台野餐更有意境。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">14:30–17:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">下山·黄石寨区域（可乘索道）</div><div class="itin-note">黄石寨是张家界最早开发的核心景区，六奇阁可360°俯瞰峰林全景。可乘坐黄石寨索道上下，轻松游览。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 3</span>
+      <span class="day-title">金鞭溪 · 十里画廊 · 傍晚休闲</span>
+      <span class="day-date">3月31日（周一）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">08:00–12:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">金鞭溪步道（全程约7.5km）</div><div class="itin-note">金鞭溪是张家界最经典的溪谷步道，沿溪而行，峰林林立。3月底溪水清澈，两岸开始泛绿，有时可见猕猴出没。步道基本平坦，适合普通体力，约2–3小时走完。</div><div class="itin-tip">💡 金鞭溪终点是索溪河，可乘景区车返回。全程下坡居多，膝盖不好的注意。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">12:00–14:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">午餐·休息</div><div class="itin-note">武陵源镇午餐，推荐土家腊肉炒笋、血豆腐、苞谷烧酒鸡（不饮酒的话可要无酒版本）。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">14:30–17:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">十里画廊（小火车游览）</div><div class="itin-note">十里画廊景区有小火车代步，沿途欣赏连绵石英岩峰林，不需要步行，适合下午轻松观光。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 4</span>
+      <span class="day-title">天门山 · 玻璃栈道 · 鬼谷栈道</span>
+      <span class="day-date">4月1日（周二）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">08:00–10:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">前往天门山·乘世界最长客运索道</div><div class="itin-note">武陵源→天门山约40分钟车程，天门山索道全长约7.5km，单程约30分钟，是世界最长客运索道，沿途穿越云雾，极为壮观。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">10:00–16:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">天门山顶部游览</div><div class="itin-note">天门洞（世界最高的天然石拱洞，海拔约1300m），鬼谷栈道（绕山腰悬挂峭壁），玻璃栈道（悬空透明，适合挑战胆量）。天门山顶步行量约5–7km，有些坡度，但难度适中。</div><div class="itin-tip">💡 天门山云雾比武陵源更浓，早上到的话体验感更好。怕高的话玻璃栈道可以跳过，主路观景已足够震撼。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">16:30–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">乘盘山公路大巴下山·晚餐</div><div class="itin-note">天门山公路有99道弯，大巴下山约20分钟，本身也是景观体验。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 5</span>
+      <span class="day-title">天子山 · 御笔峰 · 日出</span>
+      <span class="day-date">4月2日（周三）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">06:00–07:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">天子山日出（需极早出发）</div><div class="itin-note">天子山（海拔1250m）看日出是张家界最顶级体验之一，3月底日出约6:20。须提前乘索道上山，夜宿或极早出发。日出时金光打在峰林上色彩惊艳。如不愿起早，可改为日落。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">07:30–12:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">天子山游览·御笔峰·贺龙公园</div><div class="itin-note">御笔峰是天子山标志性石柱，早晨光线下极美。贺龙公园平台可360°俯瞰峰林。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">14:00–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">下山·张家界市区觅食</div><div class="itin-note">张家界市区有更多本地餐馆，傍晚吃一顿正宗湘菜。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 6</span>
+      <span class="day-title">凤凰古城一日游（可选）</span>
+      <span class="day-date">4月3日（周四）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">全天</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">方案A：凤凰古城一日游</div><div class="itin-note">张家界→凤凰古城约2.5小时（大巴/包车），沱江沿岸吊脚楼极美，4月初春水上涨，古城氛围很好。可看虹桥、沈从文故居、江边夜景。当晚返回张家界。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">全天</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">方案B：武陵源补游+休息</div><div class="itin-note">如前几天遇上连续雨天影响观光，可用这天补游未完成的景点，或纯休息购物。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 7</span>
+      <span class="day-title">张家界→深圳返程</span>
+      <span class="day-date">4月4日（周五）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">上午</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">退房·前往张家界西高铁站</div><div class="itin-note">张家界西→深圳北高铁约4–5小时，下午或傍晚抵达深圳。4月4日前后是清明小长假首日，票务可能紧张，建议提前购好返程票。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="ic">🚗</span>交通攻略</div>
+  <div class="info-box">
+    <table class="info-table">
+      <tr><td>深圳→张家界</td><td>深圳北站→张家界西站高铁（G字头/D字头），约4–5小时，票价约150–280元/人，建议提前1–2周购票，清明前后特别紧张。</td></tr>
+      <tr><td>市区→景区</td><td>张家界西站→武陵源景区约50km，可乘大巴（约30元）或网约车（约80元）。景区内有免费摆渡车。</td></tr>
+      <tr><td>景区内代步</td><td>百龙天梯、黄石寨索道、天门山索道、十里画廊小火车均含在大门票内（或单独购票约50–80元），大量减少体力消耗。</td></tr>
+      <tr><td>门票</td><td>武陵源景区大门票约245元/人（含7天内），天门山景区另购约258元/人。提前在景区官方公众号购票，可避免排队。</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title"><span class="ic">💰</span>费用估算（两人）</div>
+  <div class="info-box">
+    <table class="cost-table">
+      <thead><tr><th>项目</th><th>说明</th><th>两人合计</th></tr></thead>
+      <tbody>
+        <tr><td>高铁（往返）</td><td>深圳↔张家界，约150–280元/人次</td><td>600–1120元</td></tr>
+        <tr><td>景区门票</td><td>武陵源+天门山≈500元/人</td><td>1000元</td></tr>
+        <tr><td>住宿（6晚）</td><td>武陵源精品民宿约200–400元/晚</td><td>1200–2400元</td></tr>
+        <tr><td>景区内索道/电梯</td><td>各索道约50–80元/人次，共约400元/人</td><td>800元</td></tr>
+        <tr><td>市内交通</td><td>网约车+大巴</td><td>300–500元</td></tr>
+        <tr><td>餐饮</td><td>6天，约80–120元/人/天</td><td>960–1440元</td></tr>
+        <tr><td>其他</td><td>纪念品/凤凰古城门票等</td><td>300–600元</td></tr>
+        <tr class="cost-total"><td><strong>合计</strong></td><td></td><td><strong>5160–7860元</strong></td></tr>
+        <tr><td>人均</td><td></td><td>2580–3930元</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title"><span class="ic">💪</span>体力适配分析</div>
+  <div class="fitness-block">
+    <div class="fitness-label">综合体力需求</div>
+    <div class="fitness-bar-wrap"><div class="fitness-bar" style="width:38%"></div></div>
+    <div class="fitness-desc">
+      <strong>适合度：非常高（最友好的推荐）</strong><br><br>
+      张家界对普通上班族极度友好。大量基础设施（百龙天梯、多条索道、小火车、景区大巴）覆盖所有主要景点，实际步行量每天约3–6km，且路面平整。最累的一天（金鞭溪7.5km+天子山）也在普通人的轻松范围内。海拔最高约1300m，没有高原反应风险。
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="ic">📝</span>实用贴士</div>
+  <ul class="tips-list">
+    <li><span class="tip-icon">☔</span>3月底雨水多，必备防水外套（冲锋衣）和防滑鞋。雨天的张家界云雾反而更美，不要因为下雨放弃出游。</li>
+    <li><span class="tip-icon">📅</span>4月4日清明节前后是高峰，人流极大，建议景区游览安排在3月30日–4月2日，避开节假日高峰。</li>
+    <li><span class="tip-icon">🎭</span>张家界市内有《天门狐仙·新刘海砍樵》山水实景演出，傍晚场次，视觉效果震撼，可选择一晚观看（约200元/人）。</li>
+    <li><span class="tip-icon">🥢</span>武陵源镇餐馆价格偏游客价，建议让酒店推荐当地人常去的馆子，能便宜30%且更正宗。</li>
+    <li><span class="tip-icon">👟</span>穿舒适的运动鞋即可，不需要专业登山鞋。带手机备用充电宝。</li>
+  </ul>
+
+</div><!-- end sec-1 -->
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 3：林芝
+══════════════════════════════════════════ -->
+<div class="section theme-3" id="sec-2">
+
+  <div class="dest-header">
+    <div class="dest-num">3</div>
+    <div class="dest-info">
+      <h2>西藏·林芝</h2>
+      <div class="loc">西藏自治区林芝市 · 海拔约3000m · 桃花节旺季</div>
+      <div class="dest-tags">
+        <span class="dest-tag">桃花节</span>
+        <span class="dest-tag">南迦巴瓦峰</span>
+        <span class="dest-tag">雅鲁藏布江</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice warning">
+    ⚠️ <strong>重要提示：</strong>①进藏需提前办理<strong>入藏证</strong>（即西藏边境证，需在出发前约15天内在户籍所在地公安局或授权旅行社申请）。②林芝桃花节约在3月26日–4月5日，恰好与你们的时间高度重合，是<strong>最热门旺季</strong>，酒店和观花区域须<strong>提前1–2个月预订</strong>。
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card"><div class="ov-label">行程天数</div><div class="ov-val">8天7夜</div><div class="ov-sub">含往返</div></div>
+    <div class="ov-card"><div class="ov-label">深圳往返交通</div><div class="ov-val">飞机</div><div class="ov-sub">深圳→林芝米林机场</div></div>
+    <div class="ov-card"><div class="ov-label">飞行时间</div><div class="ov-val">约4h</div><div class="ov-sub">或经成都/拉萨中转</div></div>
+    <div class="ov-card"><div class="ov-label">人均预算</div><div class="ov-val">6000–9000元</div><div class="ov-sub">旺季含机票酒店</div></div>
+    <div class="ov-card"><div class="ov-label">体力要求</div><div class="ov-val">低–中</div><div class="ov-sub">海拔3000m 相对温和</div></div>
+    <div class="ov-card"><div class="ov-label">最佳看点</div><div class="ov-val">桃花×雪山</div><div class="ov-sub">南迦巴瓦+雅江大峡谷</div></div>
+  </div>
+
+  <div class="sec-title"><span class="ic">📋</span>完整日程安排</div>
+
+  <div class="day-card">
+    <div class="day-header open" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 1</span>
+      <span class="day-title">深圳出发 → 林芝 · 轻度适应</span>
+      <span class="day-date">3月29日（周六）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body open">
+      <div class="itin-item">
+        <div class="itin-time">07:00–11:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">深圳宝安机场→林芝米林机场</div><div class="itin-note">深圳→林芝通常经成都双流或拉萨中转，约4–5小时（含中转）。米林机场海拔2949m，降落时景色已非常壮观——峡谷+雪山扑面而来。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">11:30–13:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">机场→林芝市区（八一镇，约1小时）</div><div class="itin-note">林芝市区（八一镇）海拔约3000m，是西藏海拔相对较低的城市之一，气候较温和，高反比稻城轻微得多。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">13:00–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">入住·休息·傍晚轻游八一镇</div><div class="itin-note">林芝市区比稻城好适应，当天下午可以缓步逛逛八一镇，感受藏区城市风情，吃一顿藏餐。注意不喝酒，不剧烈运动。</div><div class="itin-tip">💡 林芝四月气温约8–18°C，带一件冲锋衣即可，比高原其他地方暖和。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 2</span>
+      <span class="day-title">桃花节核心：波密桃花沟 · 雪山背景</span>
+      <span class="day-date">3月30日（周日）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">08:00–10:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">林芝→波密（约3小时车程）</div><div class="itin-note">沿318国道驾车前往波密，沿途本身就是极美的风景——雅鲁藏布江峡谷、林海、远处雪山。建议包车司机，单程约200元，可随时停车拍照。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">10:30–16:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">波密桃花沟游览</div><div class="itin-note">波密是林芝桃花最密集的区域，野生桃花树连绵几十公里，花期3月底到4月初恰好最盛。背景是皑皑雪山，倒映在江面，是国内极罕见的"雪山+桃花"组合。步行约3–5km，地形平缓。</div><div class="itin-tip">💡 波密桃花比林芝市区更原生态，人更少，建议以波密为重点。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">16:30–19:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">返回林芝市区·晚餐</div><div class="itin-note">傍晚光线下318国道沿途景色最美，不要急着赶路，让司机在好看的地方停车。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 3</span>
+      <span class="day-title">南迦巴瓦峰观景 · 雅鲁藏布大峡谷</span>
+      <span class="day-date">3月31日（周一）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">06:30–08:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">早起·前往南迦巴瓦峰观景台</div><div class="itin-note">南迦巴瓦（7782m）是世界第15高峰，常年云遮，早晨是云散峰现的最好时机。从林芝出发约2小时到达观景台（在直白村附近）。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">08:00–12:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">守候南迦巴瓦·拍照</div><div class="itin-note">在观景台等候，南迦巴瓦每天云雾消散的窗口只有1–2小时，甚至有时全天不露面。建议带好热茶和零食耐心等待，露出来的瞬间极其震撼。</div><div class="itin-tip">💡 若不幸全天被云遮，在当地藏族村子里找家民宿吃饭，体验更珍贵。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">12:00–17:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">雅鲁藏布大峡谷景区</div><div class="itin-note">世界最深的大峡谷（最深约6009m），徒步入峡谷区域约3–5km，峡谷两壁植被茂密，峡谷底有藏布巴东瀑布群，极为壮观。有景区摆渡车，不需要全程走。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 4</span>
+      <span class="day-title">鲁朗林海 · 石锅鸡 · 扎西岗村</span>
+      <span class="day-date">4月1日（周二）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">09:00–11:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">前往鲁朗（约2小时）</div><div class="itin-note">鲁朗林海是西藏难得的亚热带原始森林，与雪山同框，318国道穿行其中，沿途即是风景。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">11:00–14:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">鲁朗林海漫步+午餐（石锅鸡）</div><div class="itin-note">鲁朗石锅鸡是西藏最著名的美食之一，用天然石锅炖制，汤底极鲜。鲁朗林海步道平坦，适合饭后散步消化，森林空气极好。</div><div class="itin-tip">💡 鲁朗石锅鸡价格约200–300元/锅，两人份量足够，提前预约可能需要。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">14:00–17:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">扎西岗村·藏族村落体验</div><div class="itin-note">鲁朗附近的扎西岗村是保存完好的藏族村落，可以参观藏式民居，与藏族人家互动，非常有生活气息。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 5</span>
+      <span class="day-title">巴松错（错高湖）· 湖中岛寺庙</span>
+      <span class="day-date">4月2日（周三）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">09:00–12:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">林芝→巴松错（约2小时）</div><div class="itin-note">巴松错（错高湖）海拔3480m，是西藏最美高原湖泊之一，湖水呈碧绿色，湖中有一座孤岛寺庙（措宗工巴寺），4月初湖边野桃花盛开，倒影极美。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">12:00–17:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">巴松错景区游览（全天）</div><div class="itin-note">景区步道约5km，围绕湖岸，地形平缓，可乘船到湖中岛参观寺庙。巴松错的颜色随时间和天气变化（墨绿→碧蓝→翠绿），建议停留半天充分欣赏。</div><div class="itin-tip">💡 门票约60元/人，景区内摆渡车可用，不需要全程步行。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 6–7</span>
+      <span class="day-title">返程 + 可选：拉萨半日过境</span>
+      <span class="day-date">4月3–4日</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">Day 6上午</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">林芝市区·最后购物</div><div class="itin-note">购买藏红花、松茸（冻干）、藏香皂等林芝特产，市区超市和集市都有，价格比景区内便宜很多。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">Day 6下午/Day 7</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">方案A：直接飞回深圳</div><div class="itin-note">4月3日从林芝米林机场出发，经成都转机，当天或次日抵达深圳。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">Day 6–7</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">方案B：绕道拉萨半日</div><div class="itin-note">如机票经拉萨中转，可在拉萨留半天，游览布达拉宫外观（广场免费），大昭寺附近八廓街，体验一下拉萨城市氛围，次日再飞深圳。（需额外准备1天，4月5日返深）</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="ic">📋</span>入藏证办理指南</div>
+  <div class="info-box">
+    <table class="info-table">
+      <tr><td>正式名称</td><td>西藏自治区旅游局边境地区通行证（即"入藏证"或"藏区边境证"）</td></tr>
+      <tr><td>办理时间</td><td>建议出发前<strong>15–20天</strong>内办理，有效期通常为出行日期前后10天</td></tr>
+      <tr><td>办理方式</td><td>①在深圳户籍所在地公安局派出所（须持身份证）②授权旅行社代办（需收费约50–100元）③部分平台（携程、飞猪）提供代办服务</td></tr>
+      <tr><td>所需材料</td><td>身份证原件及复印件、行程单（机票/火车票）、近期照片，部分派出所要求填写申请表格</td></tr>
+      <tr><td>注意</td><td>深圳居民可在深圳公安局各派出所办理，具体以最新政策为准，建议提前电话确认。</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title"><span class="ic">💰</span>费用估算（两人）</div>
+  <div class="info-box">
+    <table class="cost-table">
+      <thead><tr><th>项目</th><th>说明</th><th>两人合计</th></tr></thead>
+      <tbody>
+        <tr><td>机票（往返）</td><td>深圳↔林芝，旺季约800–1800元/人次</td><td>3200–7200元</td></tr>
+        <tr><td>景区门票</td><td>雅鲁藏布大峡谷+巴松错等约300元/人</td><td>600元</td></tr>
+        <tr><td>住宿（6晚）</td><td>旺季林芝精品酒店约400–700元/晚</td><td>2400–4200元</td></tr>
+        <tr><td>包车（5天）</td><td>300–500元/天</td><td>1500–2500元</td></tr>
+        <tr><td>餐饮</td><td>6天，含石锅鸡，约150元/人/天</td><td>1800元</td></tr>
+        <tr><td>其他</td><td>入藏证代办+特产购买</td><td>400–800元</td></tr>
+        <tr class="cost-total"><td><strong>合计</strong></td><td></td><td><strong>9900–17100元</strong></td></tr>
+        <tr><td>人均</td><td></td><td>4950–8550元</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title"><span class="ic">💪</span>体力适配分析</div>
+  <div class="fitness-block">
+    <div class="fitness-label">综合体力需求</div>
+    <div class="fitness-bar-wrap"><div class="fitness-bar" style="width:42%"></div></div>
+    <div class="fitness-desc">
+      <strong>适合度：高（林芝是进藏最友好的第一站）</strong><br><br>
+      林芝海拔约3000m，是西藏海拔最低的城市，高原反应对大多数普通人影响轻微（偶有头痛，休息后自行缓解）。景区步行量每天3–5km，路面基本平整，没有需要大强度爬坡的必须路段。整体适合没有特别锻炼习惯的健康成年人。
+    </div>
+  </div>
+
+</div><!-- end sec-2 -->
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 4：祁连山
+══════════════════════════════════════════ -->
+<div class="section theme-4" id="sec-3">
+
+  <div class="dest-header">
+    <div class="dest-num">4</div>
+    <div class="dest-info">
+      <h2>甘肃·祁连山脉</h2>
+      <div class="loc">甘肃省张掖市 · 祁连县 · 海拔约1400–4200m</div>
+      <div class="dest-tags">
+        <span class="dest-tag">七彩丹霞</span>
+        <span class="dest-tag">祁连雪山</span>
+        <span class="dest-tag">西北风光</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice info">
+    ℹ️ <strong>时节提示：</strong>3月底到4月初是祁连山区的淡旺季交接期，人流量比暑假少60%以上，体验感极好。气温白天约8–18°C，早晚约0–5°C，需备好保暖衣物。部分高海拔区域（祁连草原）可能仍有积雪，非常壮观。
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card"><div class="ov-label">行程天数</div><div class="ov-val">8天7夜</div><div class="ov-sub">含往返</div></div>
+    <div class="ov-card"><div class="ov-label">深圳往返交通</div><div class="ov-val">飞机</div><div class="ov-sub">深圳→张掖甘州机场</div></div>
+    <div class="ov-card"><div class="ov-label">飞行时间</div><div class="ov-val">约3.5h</div><div class="ov-sub">或经兰州/西安转</div></div>
+    <div class="ov-card"><div class="ov-label">人均预算</div><div class="ov-val">4000–6000元</div><div class="ov-sub">含交通酒店餐饮</div></div>
+    <div class="ov-card"><div class="ov-label">体力要求</div><div class="ov-val">低</div><div class="ov-sub">以驾车观光为主</div></div>
+    <div class="ov-card"><div class="ov-label">最佳看点</div><div class="ov-val">丹霞×雪山</div><div class="ov-sub">彩色砂岩+祁连草原</div></div>
+  </div>
+
+  <div class="sec-title"><span class="ic">📋</span>完整日程安排</div>
+
+  <div class="day-card">
+    <div class="day-header open" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 1</span>
+      <span class="day-title">深圳→张掖 · 抵达市区</span>
+      <span class="day-date">3月29日（周六）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body open">
+      <div class="itin-item">
+        <div class="itin-time">08:00–12:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">深圳宝安→张掖甘州机场</div><div class="itin-note">可查深圳直飞张掖（约3.5小时），或经兰州/西安中转（约4–5小时）。张掖市区海拔约1474m，完全没有高原反应。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">12:00–15:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">入住张掖市区·午餐</div><div class="itin-note">张掖市区有很多特色美食：羊肉粉、搓鱼面、炒炮仗、西北炖羊肉，物价低，非常实惠。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">15:00–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">张掖大佛寺·古城街道</div><div class="itin-note">张掖大佛寺有亚洲最大的室内卧佛，值得参观（门票约40元/人）。傍晚在张掖古城附近走走，感受西北古丝路城市氛围。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 2</span>
+      <span class="day-title">七彩丹霞全天 · 日出日落</span>
+      <span class="day-date">3月30日（周日）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">06:00–07:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">极早前往丹霞景区（赶日出）</div><div class="itin-note">七彩丹霞地质公园距张掖市区约40km，车程约40分钟。日出是丹霞色彩最绚丽的时刻，金光打在红色砂岩上，色彩层叠极美。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">07:30–17:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">七彩丹霞景区全日游览</div><div class="itin-note">景区内有观光车（含在门票）串联各观景台，无需步行太多（每个观景台步行约100–300m）。七大观景区：临松薤谷、七彩云台、醉云台等，色彩各异，全游需约5–6小时。建议留到傍晚日落再走，夕阳下颜色最浓烈。</div><div class="itin-tip">💡 3月底游客少，可以在观景台长时间停留拍照，不会被人群推着走。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 3</span>
+      <span class="day-title">张掖→祁连县城 · 马蹄寺石窟</span>
+      <span class="day-date">3月31日（周一）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">08:30–10:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">张掖→马蹄寺（约2小时）</div><div class="itin-note">马蹄寺位于祁连山北麓，驱车前往途中越来越壮观，祁连山雪峰近在眼前。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">10:30–14:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">马蹄寺石窟群游览</div><div class="itin-note">马蹄寺是开凿在祁连山红色砂岩峭壁上的佛教石窟群，窟洞层叠，需沿凿壁栈道行走，有些段落需弯腰或手扶。步行量约2–3km，全程约2小时。海拔约2200m，舒适。</div><div class="itin-tip">💡 马蹄寺最著名的是"马蹄印"（相传天马降落留下蹄印），位于主窟内，非常神奇。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">14:30–17:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">继续前往祁连县城（约2小时）</div><div class="itin-note">祁连县城海拔约2787m，是进入祁连山核心区的基地。沿途经过祁连草原边缘地带，山顶仍有积雪，景色壮观。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 4</span>
+      <span class="day-title">祁连大草原 · 卓尔山 · 牛心山雪景</span>
+      <span class="day-date">4月1日（周二）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">08:00–12:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">卓尔山景区（乘索道/步行）</div><div class="itin-note">卓尔山是祁连县城旁边的丹霞小地貌，对面是连绵的祁连大草原，背后是牛心山（海拔4667m雪峰）。3月底牛心山仍是白雪皑皑。可乘索道上山，或选择徒步（约1.5小时）。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">12:00–14:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">午餐·祁连县城特色餐</div><div class="itin-note">祁连的手抓羊肉是一绝，当地羊吃牧草，肉质极鲜，不膻。价格约60–100元/人。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">14:00–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">祁连草原驱车游览</div><div class="itin-note">草原4月初开始泛绿（嫩绿色，比夏天浅），配合远处雪山，清旷辽阔。可在草原边停车散步，不需要刻意徒步。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 5</span>
+      <span class="day-title">扁都口·油菜花（初开）·返张掖</span>
+      <span class="day-date">4月2日（周三）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">09:00–11:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">扁都口生态旅游区</div><div class="itin-note">祁连山与河西走廊的交界峡谷，地形险峻，是古代丝绸之路重要通道。4月初这里的油菜花刚刚开始萌发（盛花期在7月），但初开的零星黄色配合雪山也颇有意境。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">11:30–15:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">返回张掖市区·午餐</div><div class="itin-note">约2.5小时车程，沿途可再看一次河西走廊的广阔地貌。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">15:00–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">山丹军马场（可选绕道）</div><div class="itin-note">山丹军马场是世界最大马场，距张掖约1小时。可骑马（约100元/次），在军马场草场感受西北马术文化。若不去，可在张掖市区下午休息购物。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 6–7</span>
+      <span class="day-title">张掖→嘉峪关（可选）· 返深圳</span>
+      <span class="day-date">4月3–4日</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">Day 6</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">方案A：嘉峪关一日游</div><div class="itin-note">张掖→嘉峪关约1.5小时高铁，嘉峪关关城（长城西端终点）是必打卡地标，悬臂长城沿祁连山而建，极为壮观。傍晚返回张掖或直接在嘉峪关住宿。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">Day 7上午</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">飞回深圳</div><div class="itin-note">从张掖甘州机场或嘉峪关机场出发，经转机返深圳，4月4日抵达。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="ic">💰</span>费用估算（两人）</div>
+  <div class="info-box">
+    <table class="cost-table">
+      <thead><tr><th>项目</th><th>说明</th><th>两人合计</th></tr></thead>
+      <tbody>
+        <tr><td>机票（往返）</td><td>深圳↔张掖，约500–1000元/人次</td><td>2000–4000元</td></tr>
+        <tr><td>景区门票</td><td>丹霞+马蹄寺+卓尔山约400元/人</td><td>800元</td></tr>
+        <tr><td>住宿（6晚）</td><td>张掖+祁连约200–350元/晚</td><td>1200–2100元</td></tr>
+        <tr><td>租车/包车</td><td>建议租车（约250元/天），6天</td><td>1500元</td></tr>
+        <tr><td>餐饮</td><td>6天，约80–100元/人/天</td><td>960–1200元</td></tr>
+        <tr><td>其他</td><td>加油费+景区内索道等</td><td>400–600元</td></tr>
+        <tr class="cost-total"><td><strong>合计</strong></td><td></td><td><strong>6860–10200元</strong></td></tr>
+        <tr><td>人均</td><td></td><td>3430–5100元</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title"><span class="ic">💪</span>体力适配分析</div>
+  <div class="fitness-block">
+    <div class="fitness-label">综合体力需求</div>
+    <div class="fitness-bar-wrap"><div class="fitness-bar" style="width:25%"></div></div>
+    <div class="fitness-desc">
+      <strong>适合度：极高（最轻松的推荐）</strong><br><br>
+      祁连山线路以驾车游览为主，每天步行量不超过3km，且多在平坦观景台或短距离景区步道。张掖市区和丹霞景区海拔1400–1800m，完全无高原反应。祁连县城约2800m，少数人会有轻微头痛，休息即可缓解。整体是这五个目的地中体力要求最低的。
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="ic">📝</span>实用贴士</div>
+  <ul class="tips-list">
+    <li><span class="tip-icon">🚗</span>强烈建议在张掖自驾租车（滴滴/神州/租租车均有），约250元/天，行动最自由；也可找当地司机包车约300–400元/天。</li>
+    <li><span class="tip-icon">☀️</span>西北春季紫外线很强，需备SPF50+防晒；风沙较大，建议备口罩或围巾。</li>
+    <li><span class="tip-icon">🌡️</span>早晚温差约15°C，需带轻薄羽绒服；白天穿衬衫+冲锋衣即可。</li>
+    <li><span class="tip-icon">📷</span>丹霞景区光线变化极快，建议日出前和日落前1小时是最佳拍摄时间；带广角镜头效果最好。</li>
+    <li><span class="tip-icon">🍖</span>张掖美食物价极低，手抓羊肉、炒炮仗、裕固族奶皮子是必吃，一顿正餐约40–80元/人。</li>
+  </ul>
+
+</div><!-- end sec-3 -->
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 5：神农架
+══════════════════════════════════════════ -->
+<div class="section theme-5" id="sec-4">
+
+  <div class="dest-header">
+    <div class="dest-num">5</div>
+    <div class="dest-info">
+      <h2>湖北·神农架</h2>
+      <div class="loc">湖北省神农架林区 · 海拔约500–3105m</div>
+      <div class="dest-tags">
+        <span class="dest-tag">原始森林</span>
+        <span class="dest-tag">高山草甸</span>
+        <span class="dest-tag">冰雪初融</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice info">
+    ℹ️ <strong>时节提示：</strong>3月底到4月初是神农架的"冰雪消融·春意萌动"过渡期。低海拔区域（木鱼镇附近）已满山繁花（映山红开始绽放），高海拔区域（神农顶）可能仍有残雪，层次分明，是两个季节叠加的独特体验。清明节（4月5日）前是游客较少的窗口，推荐尽量3月29日–4月3日游玩。
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card"><div class="ov-label">行程天数</div><div class="ov-val">8天7夜</div><div class="ov-sub">含往返</div></div>
+    <div class="ov-card"><div class="ov-label">深圳往返交通</div><div class="ov-val">飞机</div><div class="ov-sub">深圳→神农架机场</div></div>
+    <div class="ov-card"><div class="ov-label">飞行时间</div><div class="ov-val">约2–2.5h</div><div class="ov-sub">最近的高山原始森林</div></div>
+    <div class="ov-card"><div class="ov-label">人均预算</div><div class="ov-val">3000–4500元</div><div class="ov-sub">五个方案中性价比最高</div></div>
+    <div class="ov-card"><div class="ov-label">体力要求</div><div class="ov-val">低–中</div><div class="ov-sub">多为观光步道</div></div>
+    <div class="ov-card"><div class="ov-label">最佳看点</div><div class="ov-val">原始森林·野花</div><div class="ov-sub">神农顶+官门山</div></div>
+  </div>
+
+  <div class="sec-title"><span class="ic">📋</span>完整日程安排</div>
+
+  <div class="day-card">
+    <div class="day-header open" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 1</span>
+      <span class="day-title">深圳→神农架 · 木鱼镇安顿</span>
+      <span class="day-date">3月29日（周六）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body open">
+      <div class="itin-item">
+        <div class="itin-time">10:00–13:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">深圳→神农架机场（约2小时）</div><div class="itin-note">神农架机场（红坪机场，海拔2580m）是五个目的地中唯一在林区内部的机场，落地即在原始森林中，空气清新，令人一扫疲惫。深圳直飞约2小时。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">13:00–15:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">机场→木鱼镇（约1小时）</div><div class="itin-note">木鱼镇是神农架景区的中心镇，小而精致，有大量特色民宿和农家乐，步行街上有神农架特产（蜂蜜、竹笋、野菌）。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">15:00–18:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">木鱼镇逛街·官门山附近散步</div><div class="itin-note">官门山景区门口附近有免费步道，可以先感受一下神农架森林气息，不需要进景区。傍晚在镇上找农家饭，推荐野菌炒腊肉、神农架蜂蜜烤鸡。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 2</span>
+      <span class="day-title">官门山景区 · 动植物科普 · 金丝猴</span>
+      <span class="day-date">3月30日（周日）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">08:30–16:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">官门山综合景区全天游览</div><div class="itin-note">官门山是神农架最适合轻松游览的景区，集中了：①金丝猴科普基地（可近距离观察国家一级保护动物川金丝猴）②华中药用植物园（神农架是天然药材宝库，植物种类极多，3月底很多植物开始复苏）③地质科普长廊。步道全程约4km，地形平缓，3–4小时走完。</div><div class="itin-tip">💡 金丝猴是神农架最特别的体验，毛色金黄亮丽，温顺可爱，是国内能近距离观察的极少数地点之一。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 3</span>
+      <span class="day-title">神农顶 · 华中第一峰 · 高山草甸</span>
+      <span class="day-date">3月31日（周一）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">07:30–09:30</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">木鱼镇→神农顶景区（约2小时）</div><div class="itin-note">神农顶是华中最高峰区域（海拔3105m），从低海拔驱车上山，一路穿越不同植被带，变化极为明显。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">09:30–16:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">神农顶景区游览</div><div class="itin-note">板壁岩（海拔约2800m）是著名的高山草甸和"野人"目击地，3月底草甸开始泛绿，可能仍有薄雪，奇石林立。神农谷（云雾穿梭的深谷）观景台俯瞰云海壮观。步行约4–5km，起伏不大，海拔略高会感到轻微气短，走慢一点即可。</div><div class="itin-tip">💡 神农顶早晨云雾最密，建议早出发。带好保暖衣物，顶部可能仍在0°C左右。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 4</span>
+      <span class="day-title">天燕景区 · 原始森林 · 天门垭</span>
+      <span class="day-date">4月1日（周二）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">08:30–17:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">天燕景区全天游览</div><div class="itin-note">天燕（天门垭–燕子洞）是神农架原始森林保存最完好的区域，由两部分组成：①天门垭高山草甸（海拔约2400m，开阔壮美）②燕子洞（石灰岩溶洞，有数万只燕子繁殖，蔚为壮观，4月初燕子刚返回）。步道约5km，沿途全是参天古木，空气负氧离子极高，是最有"原始森林感"的一天。</div><div class="itin-tip">💡 天燕景区春天游客最少，是最容易"独享"原始森林的区域，强烈推荐。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 5</span>
+      <span class="day-title">香溪源 · 昭君村（可选）· 徒步溯溪</span>
+      <span class="day-date">4月2日（周三）</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">08:30–13:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">香溪源（王昭君故里传说发源地）</div><div class="itin-note">香溪源是一个清澈的山涧溪谷，传说王昭君出塞时曾在此洗手，溪水终年清澈。4月初溪边野花盛开，溪谷里空气清凉，适合溯溪漫步，约3km步道。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">13:00–17:00</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">昭君村（古镇文化体验）</div><div class="itin-note">昭君村是秭归县的汉代古村落遗址，距木鱼镇约1小时，有汉代民俗建筑，可了解神农架与楚文化的历史渊源。或选择下午在木鱼镇休息购物。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-num-badge">Day 6–7</span>
+      <span class="day-title">神农架→宜昌（可选）· 返深圳</span>
+      <span class="day-date">4月3–4日</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="itin-item">
+        <div class="itin-time">Day 6</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">方案A：绕道宜昌三峡（一日游）</div><div class="itin-note">神农架→宜昌约3小时车程，可顺路游览西陵峡游船（约2小时），感受长江三峡壮阔景色，傍晚在宜昌住宿，次日早班机飞深圳。</div></div>
+      </div>
+      <div class="itin-item">
+        <div class="itin-time">Day 6</div>
+        <div class="itin-dot"><div class="itin-dot-circle"></div><div class="itin-dot-line"></div></div>
+        <div class="itin-content"><div class="itin-what">方案B：神农架机场直飞深圳</div><div class="itin-note">4月3日从神农架红坪机场出发，约2小时飞回深圳，当天傍晚到家，4月4日休息一天再上班，舒适。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="ic">🚗</span>交通攻略</div>
+  <div class="info-box">
+    <table class="info-table">
+      <tr><td>深圳→神农架</td><td>深圳宝安机场→神农架红坪机场，约2小时直飞，票价约400–800元/人次。班次较少，建议提前购票。备选：深圳飞宜昌三峡机场（更多班次），再乘大巴约3小时到木鱼镇。</td></tr>
+      <tr><td>景区内部</td><td>神农架各景区之间相距较远（约30–60km），强烈建议包车或租车。当地包车约300–400元/天，景区内有摆渡车。</td></tr>
+      <tr><td>门票</td><td>神农架大景区联票约200–280元/人（含官门山、神农顶、天燕等主景区），建议在官方公众号购买，部分景区须预约。</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title"><span class="ic">💰</span>费用估算（两人）</div>
+  <div class="info-box">
+    <table class="cost-table">
+      <thead><tr><th>项目</th><th>说明</th><th>两人合计</th></tr></thead>
+      <tbody>
+        <tr><td>机票（往返）</td><td>深圳↔神农架，约400–800元/人次</td><td>1600–3200元</td></tr>
+        <tr><td>景区门票</td><td>联票约250元/人</td><td>500元</td></tr>
+        <tr><td>住宿（6晚）</td><td>木鱼镇精品民宿约200–350元/晚</td><td>1200–2100元</td></tr>
+        <tr><td>包车/交通</td><td>5天包车约300–400元/天</td><td>1500–2000元</td></tr>
+        <tr><td>餐饮</td><td>6天，约80–100元/人/天</td><td>960–1200元</td></tr>
+        <tr><td>其他</td><td>特产蜂蜜/纪念品等</td><td>300–500元</td></tr>
+        <tr class="cost-total"><td><strong>合计</strong></td><td></td><td><strong>6060–9500元</strong></td></tr>
+        <tr><td>人均</td><td></td><td>3030–4750元</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title"><span class="ic">💪</span>体力适配分析</div>
+  <div class="fitness-block">
+    <div class="fitness-label">综合体力需求</div>
+    <div class="fitness-bar-wrap"><div class="fitness-bar" style="width:35%"></div></div>
+    <div class="fitness-desc">
+      <strong>适合度：非常高（性价比最优选）</strong><br><br>
+      神农架对普通上班族非常友好：没有高原反应风险（最高3105m但不是持续高海拔）、景区步道设施完善、每天步行3–5km，全程路面铺设良好。唯一注意是神农顶区域约2800–3000m可能有轻微气短，走慢一点即可解决。整体是五个目的地中综合性价比最高、最适合初次长距离旅行的方案。
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="ic">📝</span>实用贴士</div>
+  <ul class="tips-list">
+    <li><span class="tip-icon">🌸</span>3月底低海拔区域映山红（杜鹃花）开始盛开，4月初达到顶峰，颜色从粉到深紫，配合原始森林，是神农架最美季节之一。</li>
+    <li><span class="tip-icon">🐒</span>官门山金丝猴基地是必去，建议上午去（猴子精力旺盛），比下午更活跃。</li>
+    <li><span class="tip-icon">🛡️</span>神农架是生态保护区，不允许采摘任何植物，不允许喂食野生动物。</li>
+    <li><span class="tip-icon">🌧️</span>4月神农架降雨偏多，必备防水外套；高海拔区域山路弯多，包车司机比自驾更安全。</li>
+    <li><span class="tip-icon">🍯</span>木鱼镇的神农架蜂蜜（蜜源为百花蜜/五倍子蜜）是顶级特产，价格约80–200元/斤，买正宗的认准林区蜂协品牌。</li>
+    <li><span class="tip-icon">📱</span>神农架部分深山区域信号较差，建议提前下载离线地图，告知家人行程。</li>
+  </ul>
+
+</div><!-- end sec-4 -->
+
+<script>
+function switchTab(idx) {
+  document.querySelectorAll('.section').forEach((s, i) => {
+    s.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', i === idx);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleDay(header) {
+  const isOpen = header.classList.contains('open');
+  const body = header.nextElementSibling;
+  if (isOpen) {
+    header.classList.remove('open');
+    body.classList.remove('open');
+  } else {
+    header.classList.add('open');
+    body.classList.add('open');
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="trip-title" content="伊犁河谷·赛里木湖">
+<meta name="trip-emoji" content="🌸">
+<meta name="trip-date" content="3月底-4月">
+<meta name="trip-days" content="9天">
+<meta name="trip-people" content="2人">
+<meta name="trip-desc" content="伊犁河谷·赛里木湖·那拉提草原">
+<title>伊犁河谷 · 赛里木湖 · 九日春游</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0e1117;
+  --bg2:       #151820;
+  --bg3:       #1c2030;
+  --bg4:       #232840;
+  --line:      rgba(255,255,255,0.07);
+  --line2:     rgba(255,255,255,0.13);
+  --text:      #e8e4d8;
+  --text2:     #a09a8c;
+  --text3:     #635e56;
+  --gold:      #c8a55a;
+  --gold2:     #e8c880;
+  --gold3:     #f5e4b8;
+  --ice:       #7ab8d4;
+  --ice2:      #a8d4e8;
+  --ice3:      #d4eef8;
+  --spring:    #8fb870;
+  --spring2:   #b8d898;
+  --rose:      #d47858;
+  --rose2:     #e8a888;
+  --serif-en:  'Playfair Display', serif;
+  --serif-cn:  'Noto Serif SC', serif;
+  --sans:      'Noto Sans SC', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 72px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(122,184,212,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 80% at 0% 100%, rgba(143,184,112,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 100% 60%, rgba(200,165,90,0.08) 0%, transparent 50%),
+    var(--bg);
+}
+
+/* Geometric pattern inspired by Uyghur/Kazakh textiles */
+.hero-pattern {
+  position: absolute; inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(60deg, rgba(200,165,90,1) 0px, rgba(200,165,90,1) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(-60deg, rgba(200,165,90,1) 0px, rgba(200,165,90,1) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(0deg, rgba(200,165,90,1) 0px, rgba(200,165,90,1) 1px, transparent 1px, transparent 40px);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 32px;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.hero-title {
+  font-family: var(--serif-en);
+  font-size: clamp(52px, 9vw, 96px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold2);
+}
+
+.hero-title-cn {
+  font-family: var(--serif-cn);
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 300;
+  color: var(--text2);
+  letter-spacing: 0.15em;
+  margin-bottom: 40px;
+}
+
+.hero-divider {
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin-bottom: 32px;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.meta-item {
+  padding: 10px 24px;
+  border-left: 1px solid var(--line2);
+  first-child { border-left: none; }
+}
+.meta-item:first-child { border-left: none; padding-left: 0; }
+.meta-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text3); margin-bottom: 2px; }
+.meta-value { font-size: 14px; color: var(--text); font-weight: 400; }
+.meta-value strong { color: var(--gold2); font-weight: 500; }
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 32px; right: 40px;
+  font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text3);
+  display: flex; align-items: center; gap: 10px;
+  writing-mode: vertical-lr;
+}
+.scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+/* Big number bg decoration */
+.hero-num {
+  position: absolute;
+  right: -20px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--serif-en);
+  font-size: 320px;
+  font-weight: 700;
+  color: rgba(200,165,90,0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── OVERVIEW STRIP ── */
+.overview-strip {
+  background: var(--bg2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.overview-strip::-webkit-scrollbar { display: none; }
+.strip-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 32px;
+  white-space: nowrap;
+}
+.strip-stop {
+  display: flex; align-items: center; gap: 0;
+}
+.strip-city {
+  font-size: 13px; color: var(--text2);
+  padding: 0 16px;
+  position: relative;
+}
+.strip-city.highlight { color: var(--gold2); font-weight: 500; }
+.strip-arrow {
+  color: var(--text3); font-size: 12px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ── SEASON BANNER ── */
+.season-banner {
+  margin: 64px 0 48px;
+  padding: 32px 36px;
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+  position: relative;
+  overflow: hidden;
+}
+.season-banner::after {
+  content: '春';
+  position: absolute;
+  right: 24px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--serif-cn);
+  font-size: 80px;
+  color: rgba(200,165,90,0.06);
+  font-weight: 600;
+  pointer-events: none;
+}
+.season-banner h2 {
+  font-family: var(--serif-cn);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--gold2);
+  margin-bottom: 12px;
+}
+.season-banner p {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.8;
+  max-width: 640px;
+}
+.season-tags {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: 16px;
+}
+.stag {
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+.stag-gold  { background: rgba(200,165,90,0.15); color: var(--gold2); border: 1px solid rgba(200,165,90,0.25); }
+.stag-ice   { background: rgba(122,184,212,0.12); color: var(--ice2); border: 1px solid rgba(122,184,212,0.2); }
+.stag-green { background: rgba(143,184,112,0.12); color: var(--spring2); border: 1px solid rgba(143,184,112,0.2); }
+
+/* ── ALTITUDE BAR ── */
+.alt-section {
+  margin-bottom: 56px;
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-label::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: var(--line);
+}
+
+.alt-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 24px;
+}
+.alt-track {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+.alt-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.alt-bar {
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+  min-height: 4px;
+}
+.alt-name {
+  font-size: 9px;
+  color: var(--text3);
+  text-align: center;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.alt-m {
+  font-size: 9px;
+  color: var(--text3);
+  text-align: center;
+}
+.alt-legend {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.alt-leg-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--text3);
+}
+.alt-leg-dot {
+  width: 8px; height: 8px; border-radius: 1px;
+}
+
+/* ── CHAPTER HEADER ── */
+.chapter {
+  margin-bottom: 32px;
+  padding-top: 56px;
+  border-top: 1px solid var(--line);
+}
+.ch-num {
+  font-family: var(--serif-en);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 12px;
+}
+.ch-title {
+  font-family: var(--serif-cn);
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.ch-subtitle {
+  font-size: 13px;
+  color: var(--text2);
+  letter-spacing: 0.05em;
+}
+.ch-accent {
+  width: 32px; height: 2px;
+  margin-top: 16px;
+}
+
+/* ── DAY CARDS ── */
+.days { display: flex; flex-direction: column; gap: 2px; }
+
+.day-card {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.day-card:hover { border-color: var(--line2); }
+
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 24px;
+  cursor: pointer;
+  user-select: none;
+}
+.day-num-block {
+  flex-shrink: 0;
+  width: 44px;
+}
+.day-num {
+  font-family: var(--serif-en);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.day-date {
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 1px;
+  white-space: nowrap;
+}
+.day-sep {
+  width: 1px; height: 32px;
+  background: var(--line2);
+  flex-shrink: 0;
+}
+.day-title-wrap { flex: 1; }
+.day-title {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.3;
+}
+.day-tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-top: 5px;
+}
+.dtag {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 1px;
+  letter-spacing: 0.05em;
+}
+.dtag-gold  { background: rgba(200,165,90,0.12); color: var(--gold); }
+.dtag-ice   { background: rgba(122,184,212,0.1); color: var(--ice); }
+.dtag-green { background: rgba(143,184,112,0.1); color: var(--spring); }
+.dtag-rose  { background: rgba(212,120,88,0.1); color: var(--rose2); }
+
+.day-toggle {
+  font-size: 20px;
+  color: var(--text3);
+  transition: transform 0.25s, color 0.2s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.day-card.open .day-toggle { transform: rotate(45deg); color: var(--gold); }
+
+.day-body {
+  display: none;
+  padding: 0 24px 24px;
+  border-top: 1px solid var(--line);
+}
+.day-card.open .day-body { display: block; }
+
+/* ── TIMELINE ── */
+.timeline { padding: 20px 0 0; }
+.tl-row {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 20px;
+  position: relative;
+}
+.tl-row:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 52px; top: 28px;
+  width: 1px; bottom: 0;
+  background: var(--line);
+}
+.tl-time-col {
+  width: 40px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.tl-time {
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+  padding-top: 4px;
+}
+.tl-dot-col {
+  width: 16px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tl-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.tl-content { flex: 1; }
+.tl-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.tl-desc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+.tl-tip {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text3);
+  padding-left: 12px;
+  border-left: 2px solid var(--line2);
+  line-height: 1.6;
+}
+
+.dot-gold   { background: var(--gold); }
+.dot-ice    { background: var(--ice); }
+.dot-green  { background: var(--spring); }
+.dot-rose   { background: var(--rose); }
+.dot-dim    { background: var(--text3); }
+
+/* ── NOTICE BOX ── */
+.notice {
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.notice-gold  { background: rgba(200,165,90,0.08); border: 1px solid rgba(200,165,90,0.2); color: var(--gold3); }
+.notice-ice   { background: rgba(122,184,212,0.07); border: 1px solid rgba(122,184,212,0.18); color: var(--ice3); }
+.notice-green { background: rgba(143,184,112,0.07); border: 1px solid rgba(143,184,112,0.18); color: var(--spring2); }
+.notice strong { font-weight: 500; }
+
+/* ── HIGHLIGHT CARD ── */
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+.hl-card {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 20px 18px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.hl-card:hover {
+  border-color: var(--line2);
+  transform: translateY(-2px);
+}
+.hl-icon { font-size: 22px; margin-bottom: 10px; }
+.hl-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.hl-body {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* ── BUDGET TABLE ── */
+.budget-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.budget-table th {
+  text-align: left;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text3);
+  font-weight: 400;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg3);
+}
+.budget-table td {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text2);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.budget-table tr:last-child td { border-bottom: none; }
+.budget-table .amt { text-align: right; color: var(--gold2); font-weight: 500; white-space: nowrap; }
+.budget-total td { color: var(--text); font-weight: 500; background: var(--bg3); }
+
+/* ── PACKING ── */
+.pack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.pack-group-title {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.pack-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text2);
+  padding: 3px 0;
+  line-height: 1.5;
+}
+.pack-item::before {
+  content: '';
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--text3);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* ── TIPS ── */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.tip-card {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 18px 18px;
+}
+.tip-icon { font-size: 20px; margin-bottom: 10px; }
+.tip-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
+.tip-body { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+/* ── ROUTE OVERVIEW VISUAL ── */
+.route-map {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 28px 28px 24px;
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.route-map::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 80px,
+    rgba(255,255,255,0.01) 80px,
+    rgba(255,255,255,0.01) 81px
+  );
+}
+.route-nodes {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  position: relative;
+}
+.route-nodes::-webkit-scrollbar { display: none; }
+.rn-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+  position: relative;
+}
+.rn-dot-wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.rn-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line2);
+}
+.rn-line-r { flex: 1; }
+.rn-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.rn-label {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 8px;
+  text-align: center;
+  line-height: 1.3;
+}
+.rn-days {
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 2px;
+  text-align: center;
+}
+.rn-item.highlight .rn-label { color: var(--gold2); }
+.rn-item.highlight .rn-dot { box-shadow: 0 0 8px rgba(200,165,90,0.5); }
+
+/* ── FOOTER ── */
+footer {
+  margin-top: 80px;
+  padding: 40px 32px;
+  border-top: 1px solid var(--line);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-left { font-size: 12px; color: var(--text3); letter-spacing: 0.08em; }
+.footer-right {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+/* ── SECTION SPACING ── */
+.section-block { margin-bottom: 56px; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content { animation: fadeUp 0.9s ease both; }
+.season-banner { animation: fadeUp 0.6s ease 0.1s both; }
+.route-map { animation: fadeUp 0.6s ease 0.15s both; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .main { padding: 0 16px; }
+  .hero-content { padding: 0 16px; }
+  .day-header { padding: 14px 16px; gap: 12px; }
+  .day-body { padding: 0 16px 20px; }
+  footer { padding: 32px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-num">9</div>
+  <div class="scroll-line" style="position:absolute;left:40px;bottom:0;"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">2025 · 新疆伊犁 · 春季旅行计划</div>
+    <div class="hero-title">Yili <em>&</em><br>Sayram</div>
+    <div class="hero-title-cn">伊犁河谷 · 赛里木湖</div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="meta-label">出发地</div>
+        <div class="meta-value"><strong>深圳</strong></div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">时间</div>
+        <div class="meta-value"><strong>3月29日</strong> — <strong>4月6日</strong></div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">天数</div>
+        <div class="meta-value"><strong>9</strong> 天 <strong>8</strong> 晚</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">同行</div>
+        <div class="meta-value">两人</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">最高海拔</div>
+        <div class="meta-value"><strong>约 2073m</strong>（赛里木湖）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" style="position:absolute;bottom:40px;right:40px;writing-mode:vertical-lr;font-size:10px;letter-spacing:0.18em;color:var(--text3);display:flex;align-items:center;gap:10px;">
+    <div style="width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite;"></div>
+    Scroll
+  </div>
+</div>
+
+<!-- ══ OVERVIEW STRIP ══ -->
+<div class="overview-strip">
+  <div class="strip-inner">
+    <div class="strip-stop"><span class="strip-city">深圳</span><span class="strip-arrow">→</span></div>
+    <div class="strip-stop"><span class="strip-city highlight">乌鲁木齐</span><span class="strip-arrow">→</span></div>
+    <div class="strip-stop"><span class="strip-city highlight">赛里木湖</span><span class="strip-arrow">→</span></div>
+    <div class="strip-stop"><span class="strip-city highlight">伊宁市</span><span class="strip-arrow">→</span></div>
+    <div class="strip-stop"><span class="strip-city highlight">喀拉峻草原</span><span class="strip-arrow">→</span></div>
+    <div class="strip-stop"><span class="strip-city highlight">那拉提草原</span><span class="strip-arrow">→</span></div>
+    <div class="strip-stop"><span class="strip-city highlight">特克斯八卦城</span><span class="strip-arrow">→</span></div>
+    <div class="strip-stop"><span class="strip-city">深圳</span></div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+
+  <!-- SEASON BANNER -->
+  <div class="season-banner">
+    <h2>为什么选择 3月29日—4月6日？</h2>
+    <p>这是伊犁全年最神秘的一个窗口——野果林（苹果、杏花）刚刚进入盛花期，赛里木湖冰雪尚未完全融化，湖面呈现罕见的半冰半蓝，杏花与雪山同框。伊犁被称为"中亚花园"，而这段时间正是花开未落、雪留未消、人潮未至的三重窗口期。</p>
+    <div class="season-tags">
+      <span class="stag stag-gold">野果林杏花盛开</span>
+      <span class="stag stag-ice">赛里木湖半冰半蓝</span>
+      <span class="stag stag-green">草原春草初萌</span>
+      <span class="stag stag-gold">人少价格友好</span>
+      <span class="stag stag-ice">无高原反应风险</span>
+    </div>
+  </div>
+
+  <!-- ROUTE VISUAL -->
+  <div class="section-block">
+    <div class="section-label">行程路线总览</div>
+    <div class="route-map">
+      <div class="route-nodes">
+        <div class="rn-item">
+          <div class="rn-dot-wrap">
+            <div class="rn-line" style="visibility:hidden"></div>
+            <div class="rn-dot" style="background:var(--text3)"></div>
+            <div class="rn-line" style="background:var(--line2)"></div>
+          </div>
+          <div class="rn-label">深圳</div>
+          <div class="rn-days">D1 出发</div>
+        </div>
+        <div class="rn-item highlight">
+          <div class="rn-dot-wrap">
+            <div class="rn-line"></div>
+            <div class="rn-dot" style="background:var(--gold)"></div>
+            <div class="rn-line"></div>
+          </div>
+          <div class="rn-label">乌鲁木齐</div>
+          <div class="rn-days">D1 中转</div>
+        </div>
+        <div class="rn-item highlight">
+          <div class="rn-dot-wrap">
+            <div class="rn-line"></div>
+            <div class="rn-dot" style="background:var(--ice)"></div>
+            <div class="rn-line"></div>
+          </div>
+          <div class="rn-label">赛里木湖</div>
+          <div class="rn-days">D1–D2</div>
+        </div>
+        <div class="rn-item highlight">
+          <div class="rn-dot-wrap">
+            <div class="rn-line"></div>
+            <div class="rn-dot" style="background:var(--gold)"></div>
+            <div class="rn-line"></div>
+          </div>
+          <div class="rn-label">伊宁市</div>
+          <div class="rn-days">D3–D4</div>
+        </div>
+        <div class="rn-item highlight">
+          <div class="rn-dot-wrap">
+            <div class="rn-line"></div>
+            <div class="rn-dot" style="background:var(--spring)"></div>
+            <div class="rn-line"></div>
+          </div>
+          <div class="rn-label">喀拉峻</div>
+          <div class="rn-days">D5</div>
+        </div>
+        <div class="rn-item highlight">
+          <div class="rn-dot-wrap">
+            <div class="rn-line"></div>
+            <div class="rn-dot" style="background:var(--spring)"></div>
+            <div class="rn-line"></div>
+          </div>
+          <div class="rn-label">那拉提</div>
+          <div class="rn-days">D6–D7</div>
+        </div>
+        <div class="rn-item highlight">
+          <div class="rn-dot-wrap">
+            <div class="rn-line"></div>
+            <div class="rn-dot" style="background:var(--rose)"></div>
+            <div class="rn-line"></div>
+          </div>
+          <div class="rn-label">特克斯</div>
+          <div class="rn-days">D8</div>
+        </div>
+        <div class="rn-item">
+          <div class="rn-dot-wrap">
+            <div class="rn-line"></div>
+            <div class="rn-dot" style="background:var(--text3)"></div>
+            <div class="rn-line" style="visibility:hidden"></div>
+          </div>
+          <div class="rn-label">深圳</div>
+          <div class="rn-days">D9 返程</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALTITUDE -->
+  <div class="section-block">
+    <div class="section-label">全程海拔概览</div>
+    <div class="alt-wrap">
+      <div class="alt-track">
+        <div class="alt-col"><div class="alt-bar" style="height:6px;background:#444"></div><div class="alt-name">深圳</div><div class="alt-m">10m</div></div>
+        <div class="alt-col"><div class="alt-bar" style="height:14px;background:#666"></div><div class="alt-name">乌鲁木齐</div><div class="alt-m">800m</div></div>
+        <div class="alt-col"><div class="alt-bar" style="height:34px;background:var(--ice)"></div><div class="alt-name">赛里木湖</div><div class="alt-m">2073m</div></div>
+        <div class="alt-col"><div class="alt-bar" style="height:16px;background:var(--gold)"></div><div class="alt-name">伊宁市</div><div class="alt-m">662m</div></div>
+        <div class="alt-col"><div class="alt-bar" style="height:28px;background:var(--spring)"></div><div class="alt-name">喀拉峻</div><div class="alt-m">1800m</div></div>
+        <div class="alt-col"><div class="alt-bar" style="height:28px;background:var(--spring)"></div><div class="alt-name">那拉提</div><div class="alt-m">1800m</div></div>
+        <div class="alt-col"><div class="alt-bar" style="height:14px;background:var(--rose)"></div><div class="alt-name">特克斯</div><div class="alt-m">900m</div></div>
+        <div class="alt-col"><div class="alt-bar" style="height:6px;background:#444"></div><div class="alt-name">深圳</div><div class="alt-m">10m</div></div>
+      </div>
+      <div class="alt-legend">
+        <div class="alt-leg-item"><div class="alt-leg-dot" style="background:var(--ice)"></div>赛里木湖 最高点 2073m</div>
+        <div class="alt-leg-item"><div class="alt-leg-dot" style="background:var(--spring)"></div>草原带 约1800m</div>
+        <div class="alt-leg-item"><div class="alt-leg-dot" style="background:#555"></div>全程最高 2073m · <span style="color:var(--spring);margin-left:4px">无高原反应风险</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHAPTER 1: 赛里木湖 ── -->
+  <div class="chapter">
+    <div class="ch-num">Chapter One · Day 1 – Day 2</div>
+    <div class="ch-title">赛里木湖 · 大西洋最后一滴眼泪</div>
+    <div class="ch-subtitle">3月29日（周六）— 3月30日（周日）· 海拔 2073m</div>
+    <div class="ch-accent" style="background:var(--ice)"></div>
+  </div>
+
+  <div class="notice notice-ice">
+    <strong>时机说明：</strong>3月底赛里木湖通常尚未完全解冻，湖面呈现深蓝与灰白冰面交界的奇特景色，远比夏季纯蓝更有层次。气温约-5°C至8°C，穿羽绒服可舒适游览。此时游客极少，完全可以独享湖岸。
+  </div>
+
+  <div class="days">
+    <div class="day-card open">
+      <div class="day-header" onclick="tog(this)">
+        <div class="day-num-block"><div class="day-num" style="color:var(--ice)">Day 1</div><div class="day-date">3月29日</div></div>
+        <div class="day-sep"></div>
+        <div class="day-title-wrap">
+          <div class="day-title">深圳 → 乌鲁木齐 → 赛里木湖</div>
+          <div class="day-tags"><span class="dtag dtag-ice">飞行约5小时</span><span class="dtag dtag-gold">时差2小时</span></div>
+        </div>
+        <div class="day-toggle">+</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">06:30</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-ice"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">深圳宝安机场出发 → 乌鲁木齐地窝堡机场</div>
+              <div class="tl-desc">深圳有多班直飞乌鲁木齐的航班，飞行约4.5–5小时。注意新疆时差比深圳晚2小时（新疆时间，当地人俗称"北京时间"晚2小时起床）。</div>
+              <div class="tl-tip">提前订早班，乌鲁木齐落地后还需约3小时驾车前往赛里木湖。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">13:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">乌鲁木齐取车 / 接机包车出发</div>
+              <div class="tl-desc">建议提前预订乌鲁木齐→赛里木湖包车（约500–700元/车），或租车自驾走G30连霍高速，全程约340公里，3小时左右。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">16:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-ice"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">抵达赛里木湖景区，入住湖边客栈</div>
+              <div class="tl-desc">赛里木湖淡季（3月底）有少数客栈开放，条件简单但能住在湖边是最大福利。北疆时间日落约21:00，傍晚光线极长，直接去湖边看日落。</div>
+              <div class="tl-tip">推荐住在景区南岸或西岸，朝东方向早晨有雪山映湖的画面。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">19:30</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-dim"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">湖边日落 + 夜晚星空</div>
+              <div class="tl-desc">赛里木湖周边无光污染，晴天夜间星空质量极高。3月气温低，多穿，但值得在湖边待一会儿。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card open">
+      <div class="day-header" onclick="tog(this)">
+        <div class="day-num-block"><div class="day-num" style="color:var(--ice)">Day 2</div><div class="day-date">3月30日</div></div>
+        <div class="day-sep"></div>
+        <div class="day-title-wrap">
+          <div class="day-title">赛里木湖全天深度环游</div>
+          <div class="day-tags"><span class="dtag dtag-ice">半冰半蓝奇景</span><span class="dtag dtag-gold">雪山倒影</span></div>
+        </div>
+        <div class="day-toggle">+</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">07:30</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-ice"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">湖东北岸 · 晨雾与冰缘拍摄</div>
+              <div class="tl-desc">清晨赛里木湖面有薄薄晨雾，冰面边缘与开放水域交界处颜色层次丰富——灰白、浅蓝、深蓝三重渐变，是全年最独特的视觉体验。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">10:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-ice"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">湖南岸 · 天山雪山全景观景台</div>
+              <div class="tl-desc">赛里木湖南侧有博罗科努山脉积雪，与湖面倒影构成壮阔画面。天气晴好时雪山轮廓清晰，摄影构图绝佳。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">13:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">景区内游览车 / 徒步环湖一段</div>
+              <div class="tl-desc">全湖周长约90公里不可能徒步完整，建议搭景区观光车至各观景台，重点走湖边步道约3–5公里感受湖岸风貌。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">16:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-ice"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">下午出发前往伊宁市（约2小时）</div>
+              <div class="tl-desc">赛里木湖→伊宁市沿G30约140公里，2小时。途经果子沟大桥（网红景点，全亚洲海拔最高的悬索桥）可停留拍照约30分钟。</div>
+              <div class="tl-tip">果子沟两侧山坡3月底已有绿意萌发，配合雪顶，色彩层次很美。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHAPTER 2: 伊宁 野果林 ── -->
+  <div class="chapter">
+    <div class="ch-num">Chapter Two · Day 3 – Day 4</div>
+    <div class="ch-title">伊宁 · 野果林 · 霍城杏花</div>
+    <div class="ch-subtitle">3月31日（周一）— 4月1日（周二）· 海拔约662m</div>
+    <div class="ch-accent" style="background:var(--gold)"></div>
+  </div>
+
+  <div class="notice notice-gold">
+    <strong>伊犁最值得期待的画面：</strong>霍城县薰衣草田附近的野果林，3月底到4月初正是苹果花、杏花同期盛开的时节。纯白花海配上远处雪山，被誉为"比日本樱花更少人知道的绝景"。伊宁市本身是一座充满苏联遗风和哈萨克文化的边境城市，极具异域感。
+  </div>
+
+  <div class="days">
+    <div class="day-card open">
+      <div class="day-header" onclick="tog(this)">
+        <div class="day-num-block"><div class="day-num" style="color:var(--gold)">Day 3</div><div class="day-date">3月31日</div></div>
+        <div class="day-sep"></div>
+        <div class="day-title-wrap">
+          <div class="day-title">伊宁市区 · 苏联风建筑 · 六星街</div>
+          <div class="day-tags"><span class="dtag dtag-gold">人文探索</span><span class="dtag dtag-rose">异域风情</span></div>
+        </div>
+        <div class="day-toggle">+</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">09:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">六星街 · 民族风情街区</div>
+              <div class="tl-desc">伊宁市最具特色的街区，俯视呈六角星形，街道两侧保留了大量维吾尔族和哈萨克族传统建筑与装饰，色彩浓烈，极适合拍照。街边有手抓饭、烤馕等地道早餐。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">11:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">汉宾路 · 苏联风彩色老建筑</div>
+              <div class="tl-desc">伊宁保留了大量上世纪50–70年代苏联援建风格建筑，粉红、鹅黄、薄荷绿的砖石楼房配上春日嫩芽，形成独特的"中亚春色"。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">14:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-rose"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">伊犁河大桥 · 伊犁河漫步</div>
+              <div class="tl-desc">伊犁河是新疆最大的河流，春季水量增大，河面开阔，两岸柳树开始泛绿。河边有哈萨克族牧民赶着马群，画面极有生命力。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">17:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">巴扎（集市）体验</div>
+              <div class="tl-desc">伊宁市大巴扎傍晚最热闹，无花果干、核桃、杏干、手工地毯、银器饰品——买伴手礼的最佳时机。尝一杯酸奶+馕的组合。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card open">
+      <div class="day-header" onclick="tog(this)">
+        <div class="day-num-block"><div class="day-num" style="color:var(--gold)">Day 4</div><div class="day-date">4月1日</div></div>
+        <div class="day-sep"></div>
+        <div class="day-title-wrap">
+          <div class="day-title">霍城野果林 · 杏花 · 苹果花全天</div>
+          <div class="day-tags"><span class="dtag dtag-gold">花期高峰</span><span class="dtag dtag-ice">雪山背景</span></div>
+        </div>
+        <div class="day-toggle">+</div>
+      </div>
+      <div class="day-body">
+        <div class="notice notice-green">
+          <strong>4月1日是整个行程花期最集中的一天</strong>——霍城野果林的杏花+苹果花盛开期通常在3月25日至4月10日之间，4月1日处于中段高峰，概率最大。
+        </div>
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">08:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">伊宁市出发 → 霍城县（约40分钟）</div>
+              <div class="tl-desc">沿途可看到伊犁河谷平原春色，公路两侧白杨树开始发芽，田野绿意浅浅铺开。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">09:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">野果林核心区徒步（3–4小时）</div>
+              <div class="tl-desc">霍城野果林是世界上少数保存完好的原始苹果林之一，被认为是现代栽培苹果的祖先故乡。4月初苹果花白色五瓣盛开，杏花粉白点缀，树下野草初绿，背景是天山积雪，无论怎么拍都是绝景。</div>
+              <div class="tl-tip">穿轻便徒步鞋即可，林间小路平整，难度低。早上光线最好。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">13:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">薰衣草田打卡（时令偏早，嫩苗）</div>
+              <div class="tl-desc">霍城是中国最大的薰衣草种植基地，4月初薰衣草刚出苗，还未开花，但大片整齐的绿色苗田配合白雪山，依然值得一看，且人极少。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">15:30</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-rose"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">返回伊宁，前往喀拉峻方向（约2小时）</div>
+              <div class="tl-desc">下午出发前往特克斯县方向，途中入住昭苏或特克斯县城，为次日喀拉峻草原做准备。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHAPTER 3: 喀拉峻 ── -->
+  <div class="chapter">
+    <div class="ch-num">Chapter Three · Day 5</div>
+    <div class="ch-title">喀拉峻草原 · 天山脚下的绿色弧线</div>
+    <div class="ch-subtitle">4月2日（周三）· 海拔约1800m</div>
+    <div class="ch-accent" style="background:var(--spring)"></div>
+  </div>
+
+  <div class="notice notice-green">
+    <strong>喀拉峻的魅力：</strong>世界自然遗产，绵延起伏的高山草甸与天山主脊雪峰形成自然弧线，被誉为"最接近天空的草原"。4月初草地刚返青，嫩绿与残雪共存，摄影层次感极强。哈萨克牧民开始转场，偶尔可见马群。
+  </div>
+
+  <div class="days">
+    <div class="day-card open">
+      <div class="day-header" onclick="tog(this)">
+        <div class="day-num-block"><div class="day-num" style="color:var(--spring)">Day 5</div><div class="day-date">4月2日</div></div>
+        <div class="day-sep"></div>
+        <div class="day-title-wrap">
+          <div class="day-title">喀拉峻草原全天游览</div>
+          <div class="day-tags"><span class="dtag dtag-green">世界遗产</span><span class="dtag dtag-ice">雪峰草甸</span></div>
+        </div>
+        <div class="day-toggle">+</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">08:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-green"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">景区入口 → 观景台（骑马或步行）</div>
+              <div class="tl-desc">喀拉峻景区核心观景台海拔约2000–2200m，可骑马上去（约150–200元/人），约1.5小时。也可步行，坡度平缓。晨光下草甸绿色最鲜嫩，远处雪山金色。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">10:30</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-green"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">草甸高处俯瞰 · 雪山全景</div>
+              <div class="tl-desc">从高处往下看，喀拉峻草甸的弧形轮廓在天山背景下极为壮观——这是许多风光摄影师专程来拍的标志性构图。4月初雪草相间，比全绿的夏季更有质感。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">13:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-green"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">哈萨克牧民毡房午餐（可选）</div>
+              <div class="tl-desc">4月已有牧民开始转场至此，部分牧民家提供手抓肉、奶茶、馕的待客套餐，约50–80元/人，是真实体验牧区生活的好机会。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">15:30</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-rose"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">出发前往那拉提（约2小时）</div>
+              <div class="tl-desc">特克斯→新源县那拉提景区约130公里，经过特克斯河谷，沿途视野开阔，落日光线极美。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHAPTER 4: 那拉提 ── -->
+  <div class="chapter">
+    <div class="ch-num">Chapter Four · Day 6 – Day 7</div>
+    <div class="ch-title">那拉提草原 · 空中草原</div>
+    <div class="ch-subtitle">4月3日（周四）— 4月4日（周五）· 海拔约1800m</div>
+    <div class="ch-accent" style="background:var(--spring)"></div>
+  </div>
+
+  <div class="days">
+    <div class="day-card open">
+      <div class="day-header" onclick="tog(this)">
+        <div class="day-num-block"><div class="day-num" style="color:var(--spring)">Day 6</div><div class="day-date">4月3日</div></div>
+        <div class="day-sep"></div>
+        <div class="day-title-wrap">
+          <div class="day-title">那拉提空中草原 · 巩乃斯林区</div>
+          <div class="day-tags"><span class="dtag dtag-green">空中草原</span><span class="dtag dtag-gold">河谷骑行</span></div>
+        </div>
+        <div class="day-toggle">+</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">08:30</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-green"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">那拉提景区空中草原（缆车+步行）</div>
+              <div class="tl-desc">那拉提的特点是"空中"——草原悬在山腰，俯瞰巩乃斯河谷深沟，视觉落差感强烈。4月初草地嫩绿，山顶仍有积雪，搭乘缆车上山后沿木栈道游览约3小时。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">12:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-green"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">巩乃斯河谷骑马（下午）</div>
+              <div class="tl-desc">巩乃斯河谷是新疆最美的河谷之一，春季冰雪融水使河流湍急，两岸白杨、云杉与野花交织。骑马沿河岸走约2小时，是非常惬意的下午方式。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">17:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">那拉提哈萨克风情民宿入住</div>
+              <div class="tl-desc">那拉提有数家设计不错的精品民宿，部分是毡房改造，院内有夜间篝火活动。晚餐推荐大盘鸡+手抓饭。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header" onclick="tog(this)">
+        <div class="day-num-block"><div class="day-num" style="color:var(--spring)">Day 7</div><div class="day-date">4月4日（清明）</div></div>
+        <div class="day-sep"></div>
+        <div class="day-title-wrap">
+          <div class="day-title">那拉提河谷徒步 · 野花草甸深入</div>
+          <div class="day-tags"><span class="dtag dtag-green">野花初开</span><span class="dtag dtag-gold">慢节奏</span></div>
+        </div>
+        <div class="day-toggle">+</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">08:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-green"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">草原深处自由徒步</div>
+              <div class="tl-desc">清明节附近那拉提已有部分野花（伊犁郁金香、野生紫罗兰）开始萌发，在草甸里信步而行，没有固定路线，找到喜欢的角落就停下来。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">11:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">伊犁郁金香（野生）寻访</div>
+              <div class="tl-desc">伊犁是世界上野生郁金香最重要的原产地之一，4月初低海拔草甸的野生郁金香刚开始开花，颜色从黄到红不等，密度不如园艺种植，但在天山脚下野外看到会格外震撼。</div>
+              <div class="tl-tip">建议请当地向导带路，野生郁金香分布不固定，当地人更清楚今年的花情。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">14:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-rose"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">出发前往特克斯县（约1.5小时）</div>
+              <div class="tl-desc">那拉提→特克斯约90公里，沿途穿越昭苏盆地，视野极开阔，可以看到雪山环绕的大草原全景，是新疆天际线最壮阔的一段公路之一。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHAPTER 5: 特克斯 ── -->
+  <div class="chapter">
+    <div class="ch-num">Chapter Five · Day 8</div>
+    <div class="ch-title">特克斯 · 世界唯一没有红绿灯的八卦城</div>
+    <div class="ch-subtitle">4月5日（周六）· 海拔约900m</div>
+    <div class="ch-accent" style="background:var(--rose)"></div>
+  </div>
+
+  <div class="days">
+    <div class="day-card open">
+      <div class="day-header" onclick="tog(this)">
+        <div class="day-num-block"><div class="day-num" style="color:var(--rose2)">Day 8</div><div class="day-date">4月5日</div></div>
+        <div class="day-sep"></div>
+        <div class="day-title-wrap">
+          <div class="day-title">特克斯八卦城 · 昭苏天马 · 返回伊宁</div>
+          <div class="day-tags"><span class="dtag dtag-rose">奇特城市</span><span class="dtag dtag-gold">天马草原</span></div>
+        </div>
+        <div class="day-toggle">+</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">09:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-rose"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">特克斯八卦城观景台俯瞰</div>
+              <div class="tl-desc">特克斯城是按道家八卦图案规划设计的城市，全城无一红绿灯，街道呈放射状，从高处俯瞰极为壮观。城内有周易博物馆，可了解这座城市独特的规划故事。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">11:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">昭苏马场 · 天马奔腾（可选绕路）</div>
+              <div class="tl-desc">昭苏是"中国天马之乡"，4月马场开始繁忙，可看到大群伊犁马（天马）在雪山脚下的草原上奔跑。距特克斯约1小时，是新疆最震撼的草原动物场景之一。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">14:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">返回伊宁市，最后采购</div>
+              <div class="tl-desc">特克斯→伊宁约1.5小时。在伊宁大巴扎做最后一轮伴手礼采购，晚餐去一家正宗维吾尔族餐厅吃馕坑烤肉+抓饭收尾。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">20:00</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-dim"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">伊宁或乌鲁木齐入住，准备返程</div>
+              <div class="tl-desc">根据次日航班时间，选择住伊宁（有直飞深圳航班）或夜间车/飞回乌鲁木齐住一晚。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHAPTER 6: 返程 ── -->
+  <div class="chapter">
+    <div class="ch-num">Chapter Six · Day 9</div>
+    <div class="ch-title">返程 · 伊宁/乌鲁木齐 → 深圳</div>
+    <div class="ch-subtitle">4月6日（周日）</div>
+    <div class="ch-accent" style="background:var(--text3)"></div>
+  </div>
+
+  <div class="days">
+    <div class="day-card">
+      <div class="day-header" onclick="tog(this)">
+        <div class="day-num-block"><div class="day-num" style="color:var(--gold)">Day 9</div><div class="day-date">4月6日</div></div>
+        <div class="day-sep"></div>
+        <div class="day-title-wrap">
+          <div class="day-title">伊宁机场 或 乌鲁木齐机场 → 深圳</div>
+          <div class="day-tags"><span class="dtag dtag-gold">返程</span></div>
+        </div>
+        <div class="day-toggle">+</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">上午</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-gold"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">伊宁直飞深圳（推荐）</div>
+              <div class="tl-desc">伊宁有深圳直飞航班，约4.5小时，是最省力的返程方式。建议订12:00之后的航班，留出早晨购物时间（北京时间）。</div>
+              <div class="tl-tip">或选乌鲁木齐→深圳，班次更多，若前一晚回了乌鲁木齐可选早班。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time-col"><div class="tl-time">傍晚</div></div>
+            <div class="tl-dot-col"><div class="tl-dot dot-dim"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">抵达深圳，旅程结束</div>
+              <div class="tl-desc">注意时差，新疆是北京时间，落地深圳后时差感不大，仅注意昼夜节律调整。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HIGHLIGHTS ── -->
+  <div class="section-block" style="padding-top:56px;border-top:1px solid var(--line);margin-top:56px">
+    <div class="section-label">行程亮点总结</div>
+    <div class="highlight-grid">
+      <div class="hl-card">
+        <div class="hl-icon">🧊</div>
+        <div class="hl-title">赛里木湖半冰景</div>
+        <div class="hl-body">3月底独有的冰蓝交界，全年最稀缺的湖面形态，夏季看不到。</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🌸</div>
+        <div class="hl-title">霍城野果林花海</div>
+        <div class="hl-body">世界上少数原始苹果林之一，花期与行程完美契合，人少景美。</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🏔️</div>
+        <div class="hl-title">天山雪峰全景</div>
+        <div class="hl-body">博罗科努山、汗腾格里峰全年积雪，春季搭配绿草视觉冲击最强。</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🌷</div>
+        <div class="hl-title">野生伊犁郁金香</div>
+        <div class="hl-body">现代园艺郁金香的祖先产地，4月初天山草甸自然野生，珍稀体验。</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🐎</div>
+        <div class="hl-title">昭苏天马马场</div>
+        <div class="hl-body">雪山脚下奔跑的伊犁马群，是中国最接近草原骑马文化的视觉体验。</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🏙️</div>
+        <div class="hl-title">伊宁苏联风街区</div>
+        <div class="hl-body">中国最具中亚异域风情的城市，苏联建筑+维吾尔色彩，独一无二。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BUDGET ── -->
+  <div class="section-block">
+    <div class="section-label">费用参考</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:12px">以下为两人合计估算，中等偏上消费水平。</p>
+    <div class="budget-wrap">
+      <table class="budget-table">
+        <thead>
+          <tr><th>项目</th><th>说明</th><th class="amt">两人合计（元）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>✈️ 机票</td><td>深圳→乌鲁木齐（D1）+ 伊宁→深圳（D9），提前购</td><td class="amt">2,400 – 4,000</td></tr>
+          <tr><td>🏨 住宿（8晚）</td><td>赛里木湖2晚+伊宁2晚+喀拉峻/那拉提3晚+特克斯1晚，约200–350元/晚</td><td class="amt">1,600 – 2,800</td></tr>
+          <tr><td>🚗 地面交通</td><td>乌鲁木齐包车/租车全程（约8天），或分段包车</td><td class="amt">2,000 – 3,500</td></tr>
+          <tr><td>🎫 景区门票</td><td>赛里木湖110元/人 + 喀拉峻135元/人 + 那拉提120元/人 等</td><td class="amt">800 – 1,200</td></tr>
+          <tr><td>🐎 骑马</td><td>喀拉峻+那拉提各一次，约150–200元/人次</td><td class="amt">600 – 800</td></tr>
+          <tr><td>🍜 餐饮（9天）</td><td>新疆物价偏低，大盘鸡/抓饭/烤肉性价比极高</td><td class="amt">1,200 – 2,000</td></tr>
+          <tr><td>🛍️ 伴手礼</td><td>干果、薰衣草制品、手工地毯小件、银饰</td><td class="amt">500 – 2,000</td></tr>
+          <tr class="budget-total"><td colspan="2"><strong>总计估算</strong></td><td class="amt"><strong>9,100 – 16,300</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notice notice-gold" style="margin-top:12px">
+      💡 与川藏线方案相比，本方案<strong>完全无高原反应风险</strong>（最高海拔2073m赛里木湖，属低风险范围），且新疆餐饮物价低，整体费用可控。
+    </div>
+  </div>
+
+  <!-- ── PACKING ── -->
+  <div class="section-block">
+    <div class="section-label">行李清单</div>
+    <div class="pack-grid">
+      <div class="pack-group">
+        <div class="pack-group-title">防寒保暖</div>
+        <div class="pack-item">羽绒服（赛里木湖必需）</div>
+        <div class="pack-item">抓绒中间层</div>
+        <div class="pack-item">防风冲锋衣</div>
+        <div class="pack-item">保暖帽+手套</div>
+        <div class="pack-item">厚袜子×3双</div>
+        <div class="pack-item">围巾（风大）</div>
+      </div>
+      <div class="pack-group">
+        <div class="pack-group-title">户外装备</div>
+        <div class="pack-item">轻量登山/徒步鞋</div>
+        <div class="pack-item">防晒霜 SPF50+（高原紫外线强）</div>
+        <div class="pack-item">太阳镜（雪地反光）</div>
+        <div class="pack-item">帽子（遮阳）</div>
+        <div class="pack-item">小日包</div>
+        <div class="pack-item">折叠雨伞或轻量雨衣</div>
+      </div>
+      <div class="pack-group">
+        <div class="pack-group-title">摄影</div>
+        <div class="pack-item">相机+备用电池（寒冷耗电快）</div>
+        <div class="pack-item">充电宝×2</div>
+        <div class="pack-item">存储卡×2</div>
+        <div class="pack-item">三脚架（草原延时）</div>
+        <div class="pack-item">手机防水袋</div>
+      </div>
+      <div class="pack-group">
+        <div class="pack-group-title">证件&amp;日常</div>
+        <div class="pack-item">身份证×2人（新疆安检频繁）</div>
+        <div class="pack-item">身份证复印件</div>
+        <div class="pack-item">现金约1500元</div>
+        <div class="pack-item">保温杯（高原风大易脱水）</div>
+        <div class="pack-item">润唇膏+护手霜（干燥）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TIPS ── -->
+  <div class="section-block">
+    <div class="section-label">出行注意事项</div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">⏰</div>
+        <div class="tip-title">新疆时差</div>
+        <div class="tip-body">新疆普遍使用"新疆时间"（即北京时间-2小时）。当地日出约10:00北京时间，日落约22:00北京时间，节奏完全不同，需提前适应。</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📱</div>
+        <div class="tip-title">手机与导航</div>
+        <div class="tip-body">高德/百度地图新疆区域基本可用，但部分草原区域信号弱，建议提前下载离线地图。景区间距离远，不要靠估计开车。</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🛂</div>
+        <div class="tip-title">安检与证件</div>
+        <div class="tip-body">新疆各景区、酒店、加油站均有安检，始终随身携带身份证原件，不要托运。拍照注意尊重当地民俗。</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🌡️</div>
+        <div class="tip-title">气温变化</div>
+        <div class="tip-body">3月底赛里木湖夜间约-5°C，伊宁市区约5–15°C，草原午间约10°C，昼夜温差15°C以上。洋葱穿法必须。</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🚗</div>
+        <div class="tip-title">交通建议</div>
+        <div class="tip-body">伊犁各景点距离远且公共交通少，强烈建议乌鲁木齐租车或伊宁包车。全程约1600–2000公里，路况好，G30高速贯通。</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🍖</div>
+        <div class="tip-title">饮食文化</div>
+        <div class="tip-body">新疆以清真饮食为主，猪肉制品极少，不熟悉的食材直接问清楚。大盘鸡、手抓饭、馕、烤羊肉串是绝对必吃。</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<footer>
+  <div class="footer-left">伊犁河谷 · 赛里木湖 · 春游计划 · 深圳出发 · 3月29日—4月6日</div>
+  <div class="footer-right">Where spring meets the edge of Central Asia</div>
+</footer>
+
+<script>
+function tog(header) {
+  header.parentElement.classList.toggle('open');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="trip-title" content="西域南疆·丝路春行">
+<meta name="trip-emoji" content="🏜️">
+<meta name="trip-date" content="3月底-4月">
+<meta name="trip-days" content="9天">
+<meta name="trip-people" content="2人">
+<meta name="trip-desc" content="喀什古城·塔克拉玛干·帕米尔高原">
+<title>西域南疆 · 丝路春行 · 九日计划</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dust:    #f2e8d8;
+  --dust-2:  #e8dac4;
+  --dust-3:  #d8c8a8;
+  --dust-4:  #b8a888;
+  --ink:     #1c1408;
+  --ink-2:   #3a2c18;
+  --ink-3:   #6e5c3c;
+  --ink-4:   #9e8c6c;
+  --lapis:   #1e4878;
+  --lapis-2: #2e6898;
+  --lapis-3: #7aaac8;
+  --lapis-l: #d8eaf4;
+  --ochre:   #b86420;
+  --ochre-2: #d88040;
+  --ochre-3: #f0a860;
+  --ochre-l: #faecd8;
+  --jade:    #2a6848;
+  --jade-2:  #3e8860;
+  --jade-3:  #80b898;
+  --jade-l:  #d8eee4;
+  --sand:    #c89048;
+  --sand-2:  #e8b060;
+  --sand-l:  #fdf4e0;
+  --crimson: #882830;
+  --crimson-l: #f4dada;
+  --serif-en: 'IM Fell English', serif;
+  --serif-cn: 'Noto Serif SC', serif;
+  --sans:     'Noto Sans SC', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background: var(--dust);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  background: var(--ink);
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 64px;
+  overflow: hidden;
+}
+/* geometric silk road ornament bg */
+.hero-geo{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(184,100,32,0.28) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 60% at 10% 20%,  rgba(30,72,120,0.22) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 50% at 90% 10%,  rgba(42,104,72,0.18) 0%, transparent 50%),
+    linear-gradient(170deg, #0e0a04 0%, #1c1408 50%, #140e06 100%);
+}
+/* SVG stars / sand dunes */
+.hero-art{
+  position:absolute;inset:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+.hero-art svg{width:100%;height:100%;}
+
+.hero-inner{
+  position:relative;z-index:10;
+  max-width:820px;margin:0 auto;
+  padding:0 36px;width:100%;
+}
+.hero-kicker{
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--serif-en);
+  font-size:12px;letter-spacing:.28em;
+  color:var(--ochre-3);margin-bottom:28px;
+  font-style:italic;
+}
+.hero-kicker::before,.hero-kicker::after{
+  content:'';flex:1;height:0.5px;
+  background:linear-gradient(to right,transparent,rgba(240,168,96,0.4),transparent);
+}
+.hero-cn{
+  font-family:var(--serif-cn);
+  font-size:clamp(13px,2vw,17px);
+  font-weight:300;letter-spacing:.35em;
+  color:rgba(242,232,216,0.45);
+  margin-bottom:12px;display:block;
+}
+.hero-title{
+  font-family:var(--serif-en);
+  font-size:clamp(44px,8vw,100px);
+  font-weight:400;line-height:.92;
+  color:#fff;letter-spacing:-.01em;
+  margin-bottom:4px;
+}
+.hero-title em{font-style:italic;color:var(--ochre-3);}
+.hero-title-2{
+  font-family:var(--serif-en);
+  font-size:clamp(20px,4vw,44px);
+  font-weight:400;font-style:italic;
+  color:var(--lapis-3);
+  margin-bottom:36px;display:block;
+}
+.hero-tagline{
+  font-size:13px;color:rgba(242,232,216,0.45);
+  max-width:500px;line-height:2;margin-bottom:52px;
+  letter-spacing:.04em;
+}
+.hero-stats{
+  display:inline-flex;flex-wrap:wrap;gap:0;
+  border:0.5px solid rgba(242,232,216,0.12);
+}
+.hstat{
+  padding:14px 24px;
+  border-right:0.5px solid rgba(242,232,216,0.12);
+}
+.hstat:last-child{border-right:none;}
+.hstat-v{font-family:var(--serif-en);font-size:20px;font-weight:400;color:var(--ochre-2);line-height:1;}
+.hstat-k{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,232,216,0.35);margin-top:4px;}
+
+/* ── ANALYSIS BAND ── */
+.analysis-band{
+  background: var(--ink-2);
+  padding: 28px 32px;
+  border-bottom: 1px solid rgba(184,100,32,0.2);
+}
+.ab-inner{max-width:820px;margin:0 auto;}
+.ab-title{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:18px;color:var(--ochre-2);
+  margin-bottom:18px;letter-spacing:.03em;
+}
+.ab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;}
+.ab-cell{
+  background:rgba(255,255,255,0.04);
+  border:0.5px solid rgba(255,255,255,0.08);
+  border-radius:8px;padding:14px 16px;
+}
+.ab-icon{font-size:18px;margin-bottom:6px;}
+.ab-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ochre-3);font-weight:400;margin-bottom:3px;}
+.ab-text{font-size:12px;color:rgba(242,232,216,0.6);line-height:1.6;}
+.ab-text strong{color:var(--ochre-2);font-weight:500;}
+.ab-note{
+  margin-top:16px;padding:12px 16px;
+  background:rgba(184,100,32,0.1);
+  border-left:2px solid var(--ochre-2);
+  border-radius:0 6px 6px 0;
+  font-size:13px;color:rgba(242,232,216,0.65);line-height:1.7;
+}
+.ab-note strong{color:var(--ochre-2);font-weight:500;}
+
+/* ── NAV ── */
+.snav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(242,232,216,0.97);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--dust-3);
+  display:flex;align-items:stretch;
+  overflow-x:auto;scrollbar-width:none;
+}
+.snav::-webkit-scrollbar{display:none;}
+.snav-logo{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:14px;color:var(--ochre);
+  padding:0 22px;border-right:0.5px solid var(--dust-3);
+  display:flex;align-items:center;white-space:nowrap;flex-shrink:0;
+  letter-spacing:.04em;
+}
+.snav-tabs{display:flex;}
+.stab{
+  padding:0 20px;height:52px;
+  font-size:12px;letter-spacing:.06em;
+  color:var(--ink-3);background:none;border:none;
+  border-bottom:2px solid transparent;
+  cursor:pointer;font-family:var(--sans);
+  white-space:nowrap;transition:color .2s,border-color .2s;
+}
+.stab:hover{color:var(--ink);}
+.stab.active{color:var(--ochre);border-bottom-color:var(--ochre);font-weight:500;}
+.daydots{
+  display:none;align-items:center;gap:0;
+  border-left:0.5px solid var(--dust-3);
+  overflow-x:auto;scrollbar-width:none;padding:0 10px;
+  flex-shrink:0;
+}
+.daydots::-webkit-scrollbar{display:none;}
+.ddot{
+  width:30px;height:30px;border-radius:50%;
+  font-size:11px;font-weight:500;
+  background:none;border:0.5px solid var(--dust-3);
+  cursor:pointer;font-family:var(--sans);
+  color:var(--ink-3);margin:0 2px;
+  transition:all .15s;flex-shrink:0;
+}
+.ddot:hover,.ddot.on{background:var(--ochre);color:#fff;border-color:var(--ochre);}
+
+/* ── PANELS ── */
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* ── PAGE ── */
+.page{max-width:820px;margin:0 auto;padding:52px 28px;}
+
+/* ── SECTION LABEL ── */
+.sl{
+  display:flex;align-items:center;gap:14px;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ink-4);margin-bottom:26px;
+}
+.sl::after{content:'';flex:1;height:0.5px;background:var(--dust-3);}
+
+/* ── OVERVIEW GRID ── */
+.ov{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--dust-3);
+  border:0.5px solid var(--dust-3);border-radius:12px;
+  overflow:hidden;margin-bottom:36px;
+}
+.oc{background:#fff;padding:18px 20px;}
+.oc.s2{grid-column:span 2;}
+.oc.s3{grid-column:span 3;}
+.ok{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4);margin-bottom:5px;}
+.ov-v{font-size:13px;color:var(--ink-2);line-height:1.6;}
+.ov-v strong{color:var(--ochre);font-weight:500;}
+
+/* ── ROUTE RIBBON ── */
+.rrib{
+  display:flex;align-items:center;flex-wrap:nowrap;
+  overflow-x:auto;scrollbar-width:none;
+  padding:4px 0 8px;margin-bottom:36px;
+}
+.rrib::-webkit-scrollbar{display:none;}
+.rn{text-align:center;flex-shrink:0;padding:0 2px;}
+.rn-dot{width:10px;height:10px;border-radius:50%;margin:0 auto 5px;}
+.rn-name{font-size:10px;color:var(--ink-3);white-space:nowrap;}
+.rn-day{font-size:9px;color:var(--ink-4);}
+.rl{flex-shrink:0;width:24px;height:0.5px;background:var(--dust-3);margin-bottom:14px;}
+
+/* ── ALT CHART ── */
+.alt-box{
+  background:#fff;border:0.5px solid var(--dust-3);
+  border-radius:12px;padding:20px 22px;margin-bottom:36px;
+}
+.alt-tl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-4);margin-bottom:16px;}
+.alt-tr{display:flex;align-items:flex-end;gap:3px;height:80px;}
+.ac{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;}
+.ab{width:100%;border-radius:3px 3px 0 0;min-height:3px;}
+.an{font-size:8px;color:var(--ink-4);text-align:center;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.am{font-size:8px;color:var(--dust-4);}
+.alt-lg{display:flex;gap:18px;margin-top:12px;flex-wrap:wrap;}
+.ali{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--ink-3);}
+.ali-d{width:8px;height:8px;border-radius:2px;}
+
+/* ── CHAPTER ── */
+.chap{
+  display:flex;align-items:flex-start;gap:20px;
+  padding-bottom:22px;border-bottom:0.5px solid var(--dust-3);
+  margin-bottom:20px;
+}
+.cn{
+  font-family:var(--serif-en);
+  font-size:52px;font-weight:400;font-style:italic;
+  line-height:1;color:var(--dust-3);
+  flex-shrink:0;width:54px;text-align:right;margin-top:-6px;
+}
+.ct{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre);margin-bottom:4px;}
+.ch{font-family:var(--serif-cn);font-size:clamp(18px,3vw,24px);font-weight:400;color:var(--ink);line-height:1.3;margin-bottom:3px;}
+.cd{font-size:12px;color:var(--ink-3);}
+
+/* ── LOC BADGE ── */
+.lb{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--dust-2);border-radius:20px;
+  padding:4px 13px 4px 9px;
+  font-size:11px;color:var(--ink-3);margin-bottom:14px;
+}
+.ld{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+
+/* ── CALLOUT ── */
+.co{border-radius:8px;padding:12px 15px;font-size:13px;line-height:1.7;margin:10px 0;}
+.co-o{background:var(--ochre-l);border-left:2.5px solid var(--ochre-2);}
+.co-l{background:var(--lapis-l);border-left:2.5px solid var(--lapis-2);}
+.co-j{background:var(--jade-l); border-left:2.5px solid var(--jade-2);}
+.co-s{background:var(--sand-l); border-left:2.5px solid var(--sand);}
+.co-r{background:var(--crimson-l);border-left:2.5px solid var(--crimson);}
+.co strong{font-weight:500;}
+.co-o strong{color:var(--ochre);}
+.co-l strong{color:var(--lapis);}
+.co-j strong{color:var(--jade);}
+.co-s strong{color:var(--sand);}
+.co-r strong{color:var(--crimson);}
+
+/* ── DAY CARDS ── */
+.days{display:flex;flex-direction:column;gap:7px;margin-top:14px;}
+.dc{
+  background:#fff;border:0.5px solid var(--dust-3);
+  border-radius:10px;overflow:hidden;
+  transition:box-shadow .18s;
+}
+.dc:hover{box-shadow:0 3px 18px rgba(28,20,8,0.07);}
+.dh{
+  display:flex;align-items:center;gap:13px;
+  padding:13px 18px;cursor:pointer;user-select:none;
+}
+.dl{flex-shrink:0;min-width:54px;}
+.dn2{font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:500;}
+.dd{font-size:10px;color:var(--ink-4);margin-top:1px;}
+.dsep{width:0.5px;height:26px;background:var(--dust-3);flex-shrink:0;}
+.dtitle{flex:1;font-size:14px;color:var(--ink);line-height:1.4;}
+.dbadge{
+  font-size:10px;padding:2px 8px;border-radius:4px;
+  letter-spacing:.05em;font-weight:500;white-space:nowrap;flex-shrink:0;
+}
+.badge-warn{background:var(--crimson-l);color:var(--crimson);}
+.badge-tip{background:var(--ochre-l);color:var(--ochre);}
+.badge-alt{background:var(--jade-l);color:var(--jade);}
+.dtog{font-size:20px;color:var(--ink-4);transition:transform .25s;flex-shrink:0;}
+.dc.open .dtog{transform:rotate(45deg);}
+.db{display:none;padding:0 18px 16px;border-top:0.5px solid var(--dust-2);}
+.dc.open .db{display:block;}
+
+/* ── TIMELINE ── */
+.tl{padding:16px 0 0;}
+.tli{display:flex;gap:12px;padding-bottom:16px;position:relative;}
+.tli:not(:last-child)::before{
+  content:'';position:absolute;
+  left:17px;top:24px;width:0.5px;bottom:0;
+  background:var(--dust-3);
+}
+.tdot{width:8px;height:8px;border-radius:50%;margin-top:6px;margin-left:14px;flex-shrink:0;position:relative;z-index:1;}
+.ttime{font-size:11px;color:var(--ink-4);width:46px;flex-shrink:0;padding-top:2px;white-space:nowrap;}
+.tc{flex:1;}
+.tt{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:2px;}
+.td{font-size:13px;color:var(--ink-3);line-height:1.65;}
+.tag-inline{
+  display:inline-block;font-size:10px;
+  padding:1px 6px;border-radius:3px;
+  margin-left:5px;vertical-align:middle;font-weight:500;letter-spacing:.04em;
+}
+.tag-star{background:var(--ochre-l);color:var(--ochre);}
+.tag-alt{background:var(--jade-l);color:var(--jade);}
+.tag-warn{background:var(--crimson-l);color:var(--crimson);}
+
+/* dot colours */
+.do{background:var(--ochre-2);}
+.dl2{background:var(--lapis-2);}
+.dj{background:var(--jade-2);}
+.ds2{background:var(--sand);}
+.dr{background:var(--crimson);}
+.dw{background:var(--ink-4);}
+
+/* ── HIGHLIGHT SPOTS ── */
+.spots{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:7px;margin-top:10px;}
+.spot{
+  background:var(--dust);border:0.5px solid var(--dust-3);
+  border-radius:9px;padding:13px 15px;
+}
+.spot-icon{font-size:18px;margin-bottom:7px;}
+.spot-name{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px;}
+.spot-desc{font-size:12px;color:var(--ink-3);line-height:1.6;}
+
+/* ── BUDGET ── */
+.bwrap{background:#fff;border:0.5px solid var(--dust-3);border-radius:12px;overflow:hidden;margin-top:10px;}
+.btbl{width:100%;border-collapse:collapse;font-size:13px;}
+.btbl th{text-align:left;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);font-weight:400;padding:11px 18px;border-bottom:0.5px solid var(--dust-3);}
+.btbl th:last-child{text-align:right;}
+.btbl td{padding:10px 18px;border-bottom:0.5px solid var(--dust-2);color:var(--ink-2);vertical-align:top;}
+.btbl tr:last-child td{border-bottom:none;}
+.amt{text-align:right;font-family:var(--serif-en);font-weight:400;font-size:14px;color:var(--ochre);}
+.tot td{font-weight:500;color:var(--ink);border-top:0.5px solid var(--dust-3);}
+
+/* ── PACK ── */
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;margin-top:10px;}
+.pgt{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ochre);font-weight:400;margin-bottom:9px;}
+.pi{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-2);padding:3px 0;}
+.pi::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--dust-3);flex-shrink:0;}
+
+/* ── TIPS ── */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:7px;margin-top:10px;}
+.tip{background:var(--dust);border:0.5px solid var(--dust-3);border-radius:9px;padding:13px 15px;}
+.tip-i{font-size:18px;margin-bottom:7px;}
+.tip-t{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px;}
+.tip-b{font-size:12px;color:var(--ink-3);line-height:1.6;}
+
+/* ── DIVIDER ── */
+.sdiv{height:0.5px;background:var(--dust-3);margin:42px 0;}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:44px 24px;
+  border-top:0.5px solid var(--dust-3);
+  font-size:12px;color:var(--ink-4);letter-spacing:.1em;
+}
+footer .en{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:15px;color:var(--ochre-2);
+  display:block;margin-top:6px;
+}
+
+/* ── ANIM ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.panel.active .page{animation:fadeUp .38s ease both;}
+
+@media(max-width:600px){
+  .ov{grid-template-columns:1fr 1fr;}
+  .oc.s3{grid-column:span 2;}
+  .page{padding:36px 18px;}
+  .hero{padding:0 0 52px;}
+  .hero-inner{padding:0 22px;}
+  .ab-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+<div class="hero-geo"></div>
+<div class="hero-art">
+<svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+  <!-- dune silhouettes -->
+  <path d="M0 800 Q200 720 400 760 Q600 800 800 730 Q1000 660 1200 710 Q1350 750 1440 720 L1440 900 L0 900Z" fill="#140e06" opacity=".9"/>
+  <path d="M0 860 Q150 830 350 845 Q550 860 750 835 Q950 810 1150 840 Q1300 860 1440 850 L1440 900 L0 900Z" fill="#0e0a04"/>
+  <!-- stars -->
+  <circle cx="100" cy="80"  r="1.2" fill="rgba(240,168,96,.6)"/>
+  <circle cx="250" cy="40"  r=".8"  fill="rgba(255,255,255,.35)"/>
+  <circle cx="420" cy="100" r="1"   fill="rgba(255,255,255,.3)"/>
+  <circle cx="600" cy="30"  r=".9"  fill="rgba(122,170,200,.5)"/>
+  <circle cx="750" cy="70"  r="1.3" fill="rgba(240,168,96,.45)"/>
+  <circle cx="900" cy="20"  r=".7"  fill="rgba(255,255,255,.3)"/>
+  <circle cx="1050" cy="90" r="1"   fill="rgba(255,255,255,.35)"/>
+  <circle cx="1200" cy="50" r=".8"  fill="rgba(122,170,200,.4)"/>
+  <circle cx="1380" cy="75" r="1.1" fill="rgba(240,168,96,.5)"/>
+  <circle cx="180" cy="160" r=".6"  fill="rgba(255,255,255,.2)"/>
+  <circle cx="550" cy="130" r=".7"  fill="rgba(255,255,255,.25)"/>
+  <circle cx="850" cy="150" r=".6"  fill="rgba(255,255,255,.2)"/>
+  <circle cx="1100" cy="180"r=".8"  fill="rgba(240,168,96,.3)"/>
+  <!-- crescent moon -->
+  <circle cx="1320" cy="100" r="22" fill="none" stroke="rgba(240,168,96,0.2)" stroke-width="1"/>
+  <circle cx="1330" cy="96"  r="18" fill="#140e06" opacity=".95"/>
+</svg>
+</div>
+
+<div class="hero-inner">
+  <div class="hero-kicker">Silk Road · South Xinjiang · Spring 2025</div>
+  <span class="hero-cn">西域南疆 · 丝路春行</span>
+  <h1 class="hero-title">The <em>Ancient</em></h1>
+  <span class="hero-title-2">Road of Silk</span>
+  <p class="hero-tagline">
+    库尔勒 · 库车龟兹 · 克孜尔千佛洞 · 喀什噶尔<br>
+    帕米尔高原 · 慕士塔格峰 · 塔吉克杏花村<br>
+    一条沿古丝绸之路深入南疆的完整旅程
+  </p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-v">9</div><div class="hstat-k">天数</div></div>
+    <div class="hstat"><div class="hstat-v">Mar 29</div><div class="hstat-k">出发</div></div>
+    <div class="hstat"><div class="hstat-v">2</div><div class="hstat-k">人</div></div>
+    <div class="hstat"><div class="hstat-v">≤3600m</div><div class="hstat-k">最高海拔</div></div>
+    <div class="hstat"><div class="hstat-v">✓</div><div class="hstat-k">低高反风险</div></div>
+  </div>
+</div>
+</header>
+
+<!-- ═══ ANALYSIS BAND ═══ -->
+<div class="analysis-band">
+<div class="ab-inner">
+  <div class="ab-title">针对你们情况的路线分析</div>
+  <div class="ab-grid">
+    <div class="ab-cell">
+      <div class="ab-icon">🏔️</div>
+      <div class="ab-label">高反风险</div>
+      <div class="ab-text"><strong>低</strong>——全程最高约3600m（盘龙古道），但不下车；实际活动最高为塔县3000m，适应充分，无需服药预防</div>
+    </div>
+    <div class="ab-cell">
+      <div class="ab-icon">🌸</div>
+      <div class="ab-label">花期匹配</div>
+      <div class="ab-text"><strong>极高</strong>——塔吉克族杏花村(Day6)在海拔2200m的河谷，3月底到4月初正好是盛花期，白雪雪山+杏花是全国唯一场景</div>
+    </div>
+    <div class="ab-cell">
+      <div class="ab-icon">🎨</div>
+      <div class="ab-label">景色差异性</div>
+      <div class="ab-text"><strong>极强</strong>——雅丹地貌、千佛洞、帕米尔高原、冰川湖、昆仑雪山，每天完全不同，与其他所有备选方案风格迥异</div>
+    </div>
+    <div class="ab-cell">
+      <div class="ab-icon">🏛️</div>
+      <div class="ab-label">人文厚度</div>
+      <div class="ab-text"><strong>最高</strong>——龟兹、楼兰、丝绸之路、维吾尔族、塔吉克族，历史与民族文化密度在所有备选中无出其右</div>
+    </div>
+    <div class="ab-cell">
+      <div class="ab-icon">💪</div>
+      <div class="ab-label">体力要求</div>
+      <div class="ab-text"><strong>中等偏低</strong>——以车行观景为主，峡谷和古道均为轻度步行，无高强度爬升，适合两人悠闲节奏</div>
+    </div>
+    <div class="ab-cell">
+      <div class="ab-icon">⚠️</div>
+      <div class="ab-label">主要挑战</div>
+      <div class="ab-text"><strong>每日车程长</strong>——Day2约420km、Day4约460km，需适应长途车坐行；沿途景色弥补疲惫感</div>
+    </div>
+  </div>
+  <div class="ab-note">
+    <strong>关于原团队行程的调整：</strong>原路线为8天团队游，包含集合日（Day1）和解散日（Day8），你们自由行9天时间更充裕。本计划将 <strong>Day1增加库尔勒深度游</strong>、<strong>Day8在喀什增加一天自由探索</strong>，不赶时间，质量更高。原路线中每日车程紧凑，自由行可灵活停留，不必死板跟车。
+  </div>
+</div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav class="snav">
+  <div class="snav-logo">南疆丝路 · 9 Days</div>
+  <div class="snav-tabs">
+    <button class="stab active" onclick="sw('ov')">概览</button>
+    <button class="stab" onclick="sw('it')">逐日行程</button>
+    <button class="stab" onclick="sw('pr')">实用信息</button>
+  </div>
+  <div class="daydots" id="daydots"></div>
+</nav>
+
+<!-- ═══ PANEL: 概览 ═══ -->
+<div id="p-ov" class="panel active">
+<div class="page">
+
+  <div class="sl">行程总览</div>
+  <div class="ov">
+    <div class="oc">
+      <div class="ok">出发 / 返程</div>
+      <div class="ov-v"><strong>深圳</strong>→乌鲁木齐→库尔勒<br>返程：喀什→深圳</div>
+    </div>
+    <div class="oc">
+      <div class="ok">日期</div>
+      <div class="ov-v"><strong>3月29日</strong>（周六）<br>— <strong>4月6日</strong>（周日）</div>
+    </div>
+    <div class="oc">
+      <div class="ok">最高海拔</div>
+      <div class="ov-v">塔县 <strong>3000m</strong><br>（车过盘龙古道约3600m，不下车）</div>
+    </div>
+    <div class="oc s2">
+      <div class="ok">核心景点</div>
+      <div class="ov-v">库车天山大峡谷 · 克孜尔千佛洞 · 天山红石林 · 喀什噶尔老城 · 白沙湖 · 喀拉库勒湖 · 慕士塔格峰 · 班迪尔蓝湖 · <strong>塔吉克族杏花村</strong> · 盘龙古道</div>
+    </div>
+    <div class="oc">
+      <div class="ok">交通方式</div>
+      <div class="ov-v">去程飞库尔勒<br>返程从喀什飞<br>全程自驾或包车</div>
+    </div>
+    <div class="oc s3">
+      <div class="ok">路线逻辑</div>
+      <div class="ov-v">深圳→库尔勒（集合适应）→ 库车峡谷/古寺 → 天山红石林/千佛洞/阿克苏 → 喀什（半天自由）→ 帕米尔白沙湖/喀拉库勒湖/塔县 → <strong>塔莎古道/班迪尔蓝湖/杏花村</strong> → 盘龙古道/塔合曼湿地→喀什 → 喀什深度游 → 返程深圳</div>
+    </div>
+  </div>
+
+  <!-- route ribbon -->
+  <div class="sl">路线节点</div>
+  <div class="rrib">
+    <div class="rn"><div class="rn-dot" style="background:var(--ink-4)"></div><div class="rn-name">深圳</div><div class="rn-day">出发</div></div>
+    <div class="rl"></div>
+    <div class="rn"><div class="rn-dot" style="background:var(--ink-4)"></div><div class="rn-name">库尔勒</div><div class="rn-day">D1</div></div>
+    <div class="rl"></div>
+    <div class="rn"><div class="rn-dot" style="background:var(--ochre-2)"></div><div class="rn-name">库车</div><div class="rn-day">D2</div></div>
+    <div class="rl"></div>
+    <div class="rn"><div class="rn-dot" style="background:var(--ochre-2)"></div><div class="rn-name">天山红石林</div><div class="rn-day">D3</div></div>
+    <div class="rl"></div>
+    <div class="rn"><div class="rn-dot" style="background:var(--lapis-2)"></div><div class="rn-name">喀什</div><div class="rn-day">D4</div></div>
+    <div class="rl"></div>
+    <div class="rn"><div class="rn-dot" style="background:var(--jade-2)"></div><div class="rn-name">帕米尔/塔县</div><div class="rn-day">D5</div></div>
+    <div class="rl"></div>
+    <div class="rn"><div class="rn-dot" style="background:var(--jade-2)"></div><div class="rn-name">杏花村</div><div class="rn-day">D6</div></div>
+    <div class="rl"></div>
+    <div class="rn"><div class="rn-dot" style="background:var(--jade-2)"></div><div class="rn-name">盘龙古道</div><div class="rn-day">D7</div></div>
+    <div class="rl"></div>
+    <div class="rn"><div class="rn-dot" style="background:var(--lapis-2)"></div><div class="rn-name">喀什深游</div><div class="rn-day">D8</div></div>
+    <div class="rl"></div>
+    <div class="rn"><div class="rn-dot" style="background:var(--ink-4)"></div><div class="rn-name">深圳</div><div class="rn-day">D9</div></div>
+  </div>
+
+  <!-- 海拔图 -->
+  <div class="alt-box">
+    <div class="alt-tl">全程海拔示意（最高活动点：塔县3000m，无高反风险）</div>
+    <div class="alt-tr">
+      <div class="ac"><div class="ab" style="height:3px;background:#b8a888"></div><div class="an">深圳</div><div class="am">10m</div></div>
+      <div class="ac"><div class="ab" style="height:5px;background:#b8a888"></div><div class="an">乌鲁木齐</div><div class="am">800m</div></div>
+      <div class="ac"><div class="ab" style="height:5px;background:var(--ochre-2)"></div><div class="an">库尔勒</div><div class="am">920m</div></div>
+      <div class="ac"><div class="ab" style="height:7px;background:var(--ochre-2)"></div><div class="an">库车峡谷</div><div class="am">1200m</div></div>
+      <div class="ac"><div class="ab" style="height:6px;background:var(--ochre-2)"></div><div class="an">阿克苏</div><div class="am">1100m</div></div>
+      <div class="ac"><div class="ab" style="height:5px;background:var(--lapis-2)"></div><div class="an">喀什</div><div class="am">1300m</div></div>
+      <div class="ac"><div class="ab" style="height:12px;background:var(--jade-2)"></div><div class="an">白沙湖</div><div class="am">2400m</div></div>
+      <div class="ac"><div class="ab" style="height:14px;background:var(--jade-2)"></div><div class="an">喀拉库勒湖</div><div class="am">3600m</div></div>
+      <div class="ac"><div class="ab" style="height:15px;background:var(--jade-2)"></div><div class="an">塔县</div><div class="am">3000m</div></div>
+      <div class="ac"><div class="ab" style="height:10px;background:var(--jade-2)"></div><div class="an">杏花村</div><div class="am">2200m</div></div>
+      <div class="ac"><div class="ab" style="height:18px;background:var(--sand)"></div><div class="an">盘龙古道</div><div class="am">3600m↑</div></div>
+      <div class="ac"><div class="ab" style="height:8px;background:var(--jade-2)"></div><div class="an">塔合曼湿地</div><div class="am">2900m</div></div>
+      <div class="ac"><div class="ab" style="height:5px;background:var(--lapis-2)"></div><div class="an">喀什</div><div class="am">1300m</div></div>
+    </div>
+    <div class="alt-lg">
+      <div class="ali"><div class="ali-d" style="background:#b8a888"></div>过境（&lt;1000m）</div>
+      <div class="ali"><div class="ali-d" style="background:var(--ochre-2)"></div>河谷低地（1000–1500m）</div>
+      <div class="ali"><div class="ali-d" style="background:var(--jade-2)"></div>帕米尔高原（2000–3600m，车行为主）</div>
+      <div class="ali"><div class="ali-d" style="background:var(--sand)"></div>盘龙古道顶（3600m+，不下车）</div>
+    </div>
+  </div>
+
+  <!-- 时机 -->
+  <div class="sl">时机说明</div>
+  <div class="co co-o">
+    <strong>3月29日–4月6日的南疆，为什么刚好：</strong><br>
+    塔吉克族杏花村（Day6，海拔2200m）的盛花期正是3月下旬至4月上旬，昆仑山背景+帕米尔高原河谷+塔吉克族村落+大片杏花，这个组合在全国独一无二，完全无法在其他地方复制。库车天山大峡谷和天山红石林在4月光线最佳，游人尚少。喀什老城3–4月气候宜人（20°C左右），不寒不热，是最舒适的旅行季节。
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ PANEL: 逐日行程 ═══ -->
+<div id="p-it" class="panel">
+<div class="page">
+
+  <!-- D1 -->
+  <div id="a1"></div>
+  <div class="chap">
+    <div class="cn">01</div>
+    <div>
+      <div class="ct">Day 1 · 3月29日 周六</div>
+      <div class="ch">库尔勒 · 南疆门户，梨城初印象</div>
+      <div class="cd">巴音郭楞蒙古自治州库尔勒市 · 海拔920m · 全天集合适应日</div>
+    </div>
+  </div>
+  <div class="lb"><div class="ld" style="background:var(--ochre-2)"></div>库尔勒市 · 孔雀河畔 · 海拔920m</div>
+  <div class="co co-o"><strong>交通建议：</strong>深圳→乌鲁木齐直飞约4.5小时，转飞库尔勒约1小时；或乌鲁木齐高铁→库尔勒约3.5小时（风景好，推荐体验一段）。库尔勒机场/火车站打车约30–45元到市区。</div>
+  <div class="days">
+    <div class="dc open">
+      <div class="dh" onclick="tog(this)">
+        <div class="dl"><div class="dn2" style="color:var(--ochre)">Day 1</div><div class="dd">3月29日</div></div>
+        <div class="dsep"></div>
+        <div class="dtitle">深圳出发 → 库尔勒 · 安顿探城</div>
+        <div class="dtog">+</div>
+      </div>
+      <div class="db"><div class="tl">
+        <div class="tli"><div class="tdot do"></div><div class="ttime">早班</div><div class="tc"><div class="tt">深圳→乌鲁木齐→库尔勒</div><div class="td">建议早班飞，北京时间约15:00前落地库尔勒。取车（提前在途虎/一嗨预订SUV，库尔勒取还）或打车去酒店入住。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">16:00</div><div class="tc"><div class="tt">巴州博物馆 <span class="tag-inline tag-star">精华</span></div><div class="td">国家一级博物馆，收藏罗布泊楼兰出土的"楼兰美女"（距今约3800年，保存完好），丝绸之路沿线出土文物极丰富，约2小时。门票免费，需提前预约。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">18:30</div><div class="tc"><div class="tt">孔雀河湿地公园散步</div><div class="td">孔雀河是南疆最美的城市河道，3月底迁徙季可见野生天鹅。傍晚光线下水面波光粼粼，是适应时差和节奏的好方式。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">20:00</div><div class="tc"><div class="tt">晚餐：库尔勒特色美食</div><div class="td">红柳烤肉（用红柳枝串烤，香气独特）、博斯腾湖淡水鱼（清蒸或红烧）、库尔勒香梨（若有存货）。明天约420km车程，早睡。</div></div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <!-- D2 -->
+  <div id="a2"></div>
+  <div class="chap">
+    <div class="cn">02</div>
+    <div>
+      <div class="ct">Day 2 · 3月30日 周日</div>
+      <div class="ch">库车龟兹 · 天山大峡谷 · 古寺老街</div>
+      <div class="cd">阿克苏地区库车市 · 古称龟兹 · 车程约420km</div>
+    </div>
+  </div>
+  <div class="lb"><div class="ld" style="background:var(--ochre-2)"></div>库车市 · 海拔约1100m · 古丝绸之路要道</div>
+  <div class="co co-l"><strong>龟兹说明：</strong>库车古称龟兹，是西汉时西域三十六国之一，丝绸之路中道最重要的节点。这里曾是佛教东传入中原的中转站，玄奘西行曾在此停留逾月，鸠摩罗什在此出生。今天的库车仍保留着浓郁的维吾尔族风情。</div>
+  <div class="days">
+    <div class="dc open">
+      <div class="dh" onclick="tog(this)">
+        <div class="dl"><div class="dn2" style="color:var(--ochre)">Day 2</div><div class="dd">3月30日</div></div>
+        <div class="dsep"></div>
+        <div class="dtitle">库尔勒 → 库车天山大峡谷 → 库车大寺 → 老街</div>
+        <div class="dtog">+</div>
+      </div>
+      <div class="db"><div class="tl">
+        <div class="tli"><div class="tdot do"></div><div class="ttime">08:00</div><div class="tc"><div class="tt">库尔勒出发，G3012高速向库车（约3.5小时）</div><div class="td">沿途穿越南疆大地，两侧戈壁与远处天山雪峰形成反差。约11:30抵达库车天山大峡谷入口。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">11:30</div><div class="tc"><div class="tt">库车天山大峡谷 <span class="tag-inline tag-star">精华</span></div><div class="td">红褐色砂岩峡谷，被称为"新疆羚羊谷"。峡谷最窄处仅容一人通过，光从顶端透射形成丁达尔效应，光影变化令人着迷。徒步约2–3小时，全程约5公里，不费体力。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">14:30</div><div class="tc"><div class="tt">库车大寺（苏公塔清真寺）</div><div class="td">新疆第二大清真寺，历史可追溯至1561年。黄色砖塔与蓝色穹顶的视觉冲击，建筑风格融合了中亚和中原元素。非礼拜时间可入内参观，着装得体，女性戴头巾。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">16:00</div><div class="tc"><div class="tt">热斯坦老街 CityWalk</div><div class="td">库车最热闹的传统市集街道，维语意为"商场集市"。密集的传统商铺、五彩斑斓的雕花木门、手工艺品摊位。买几个车轮大小的库车大馕带走。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">19:00</div><div class="tc"><div class="tt">晚餐：馕坑肉 + 丸子汤 + 大盘鸡</div><div class="td">库车馕坑肉是将羊肉块贴在馕坑壁烤制，外焦里嫩；丸子汤是当地特色面食；大盘鸡配皮带面。今晚住库车。</div></div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <!-- D3 -->
+  <div id="a3"></div>
+  <div class="chap">
+    <div class="cn">03</div>
+    <div>
+      <div class="ct">Day 3 · 3月31日 周一</div>
+      <div class="ch">天山红石林 · 克孜尔千佛洞 · 阿克苏</div>
+      <div class="cd">库车→阿克苏 · 车程约280km · 雅丹地貌+石窟艺术</div>
+    </div>
+  </div>
+  <div class="lb"><div class="ld" style="background:var(--ochre-2)"></div>库车→拜城→阿克苏 · 海拔约1100m</div>
+  <div class="co co-o"><strong>克孜尔千佛洞：</strong>建于公元3世纪，比敦煌莫高窟早约一个世纪，是中国最早的大型石窟，现存洞窟236个。佛教就是从这里沿丝绸之路向东传入中原。大量精美壁画虽被19世纪西方探险家掠走，现存部分仍震撼人心。</div>
+  <div class="days">
+    <div class="dc open">
+      <div class="dh" onclick="tog(this)">
+        <div class="dl"><div class="dn2" style="color:var(--ochre)">Day 3</div><div class="dd">3月31日</div></div>
+        <div class="dsep"></div>
+        <div class="dtitle">库车 → 天山红石林 → 克孜尔千佛洞 → 阿克苏</div>
+        <div class="dtog">+</div>
+      </div>
+      <div class="db"><div class="tl">
+        <div class="tli"><div class="tdot do"></div><div class="ttime">08:30</div><div class="tc"><div class="tt">天山红石林 <span class="tag-inline tag-star">小众秘境</span></div><div class="td">由红褐色雅丹风蚀地貌组成，岩层颜色丰富——褐红、黄绿、灰绿交叠，形态如荒废古城。游客极少，是游侠客挖掘的新景点，约2小时。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">11:00</div><div class="tc"><div class="tt">克孜尔千佛洞 <span class="tag-inline tag-star">精华</span></div><div class="td">世界文化遗产，丝绸之路遗产点之一。建议购买含导览的门票（导游讲解极大提升观感），重点参观壁画保存最好的洞窟。洞外雀离大寺遗址，僧侣曾多达万人。约2.5小时。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">14:00</div><div class="tc"><div class="tt">沿途补给 + 前往阿克苏</div><div class="td">拜城→阿克苏约140公里，途经苹果之乡拜城，4月初苹果树刚开始萌芽。约16:00抵达阿克苏，入住休整。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">16:30</div><div class="tc"><div class="tt">阿克苏市区自由活动</div><div class="td">阿克苏是南疆重要城市，有较完善的购物和餐饮。补充帕米尔段所需物资（零食、保温杯、防晒）。晚餐推荐阿克苏核桃仁炒菜和羊肉抓饭。</div></div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <!-- D4 -->
+  <div id="a4"></div>
+  <div class="chap">
+    <div class="cn">04</div>
+    <div>
+      <div class="ct">Day 4 · 4月1日 周二（清明前夕）</div>
+      <div class="ch">喀什噶尔 · 西域最后的古城</div>
+      <div class="cd">喀什市 · 海拔约1300m · 车程约460km · 自由活动下午</div>
+    </div>
+  </div>
+  <div class="lb"><div class="ld" style="background:var(--lapis-2)"></div>喀什噶尔 · 海拔1289m · 中国最西端的古城</div>
+  <div class="co co-l"><strong>边防证：</strong>前往帕米尔高原（塔县方向）需要办理边防证，在喀什公安局出入境管理处办理，携带身份证原件，当天或次日可取，免费。建议Day4下午抵喀什后立即去办理，避免耽误Day5行程。</div>
+  <div class="days">
+    <div class="dc open">
+      <div class="dh" onclick="tog(this)">
+        <div class="dl"><div class="dn2" style="color:var(--lapis)">Day 4</div><div class="dd">4月1日</div></div>
+        <div class="dsep"></div>
+        <div class="dtitle">阿克苏 → 喀什 · 老城初探 · 办理边防证</div>
+        <div class="dbadge badge-warn">办边防证</div>
+        <div class="dtog">+</div>
+      </div>
+      <div class="db"><div class="tl">
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">08:00</div><div class="tc"><div class="tt">阿克苏出发，G3012高速向喀什（约4.5小时）</div><div class="td">全程460公里高速，沿途视野开阔。约13:00抵达喀什，先入住酒店。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">13:30</div><div class="tc"><div class="tt">立即前往办理边防证 <span class="tag-inline tag-warn">必须今天办</span></div><div class="td">喀什市公安局出入境管理处（市区内），携带身份证原件，两人各自办理，当场或次日取证，免费。不办则无法进入塔县（帕米尔高原区域）。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">15:00</div><div class="tc"><div class="tt">喀什噶尔老城漫步 <span class="tag-inline tag-star">精华</span></div><div class="td">喀什老城是中国保存最完整的伊斯兰风格古城，所有道路通往艾提尕尔清真寺。高低错落的土木建筑，迷宫般的街巷，百年老茶馆（《追风筝的人》取景地）。不需要地图，随意走进巷子就有惊喜。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">17:30</div><div class="tc"><div class="tt">艾提尕尔清真寺（外观+广场）</div><div class="td">新疆最大清真寺，黄色外墙标志性极强。傍晚广场上有当地居民聚集，人文氛围浓郁。可入内参观（收费约30元），注意着装。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">19:30</div><div class="tc"><div class="tt">汗巴扎夜市觅食</div><div class="td">清真寺对面，喀什最热闹的夜市。烤全羊（提前预订）、烤羊排、抓饭、切糕（认准有正规标价的摊位）、石榴汁。今晚早睡，明天进帕米尔。</div></div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <!-- D5 -->
+  <div id="a5"></div>
+  <div class="chap">
+    <div class="cn">05</div>
+    <div>
+      <div class="ct">Day 5 · 4月2日 周三</div>
+      <div class="ch">帕米尔高原 · 慕士塔格峰 · 塔县</div>
+      <div class="cd">喀什→白沙湖→喀拉库勒湖→塔县 · 车程约290km · 世界屋脊</div>
+    </div>
+  </div>
+  <div class="lb"><div class="ld" style="background:var(--jade-2)"></div>帕米尔高原 · 白沙湖2400m · 喀拉库勒湖3600m · 塔县3000m</div>
+  <div class="co co-j"><strong>高原适应：</strong>今天是全程海拔变化最大的一天，从喀什1300m升至喀拉库勒湖3600m，但上升是渐进的（沿喀喇昆仑公路缓慢爬升），且全程以乘车为主，下车步行不剧烈，大多数人不会出现高反。塔县住宿3000m，夜间可能轻微头疼，提前备好布洛芬和葡萄糖液。</div>
+  <div class="days">
+    <div class="dc open">
+      <div class="dh" onclick="tog(this)">
+        <div class="dl"><div class="dn2" style="color:var(--jade)">Day 5</div><div class="dd">4月2日</div></div>
+        <div class="dsep"></div>
+        <div class="dtitle">喀什 → 白沙湖 → 喀拉库勒湖 → 塔县</div>
+        <div class="dbadge badge-tip">边防证带好</div>
+        <div class="dtog">+</div>
+      </div>
+      <div class="db"><div class="tl">
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">07:30</div><div class="tc"><div class="tt">喀什出发，沿喀喇昆仑公路南行</div><div class="td">喀喇昆仑公路（中巴友谊公路，G314），是中巴两国合作修建的高原公路，全程沿山谷缓慢爬升，风景壮阔。检查站记得出示边防证。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">10:00</div><div class="tc"><div class="tt">白沙湖 <span class="tag-inline tag-star">精华</span></div><div class="td">海拔约2400m，白色沙山与高原蓝湖并存，地貌极为罕见——沙漠与高原湖泊在同一画面。可沙山上俯瞰，也可湖边漫步。约1.5小时。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">12:30</div><div class="tc"><div class="tt">喀拉库勒湖 · 仰望昆仑三雄 <span class="tag-inline tag-star">精华</span></div><div class="td">海拔3600m，翠蓝的高原冰川湖，湖面倒映"冰山之父"慕士塔格峰（7546m）。天气晴好时三座超7000m雪峰同时入画，是帕米尔最震撼的景观。约2小时。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">15:30</div><div class="tc"><div class="tt">前往塔县（约1小时）</div><div class="td">塔什库尔干县，西北边境高原小城，海拔3000m，主要居民为塔吉克族——中国唯一的原生白种人，蓝眼睛高鼻梁，传统上路不拾遗，夜不闭户。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">17:00</div><div class="tc"><div class="tt">塔县石头城遗址（可选）</div><div class="td">千年古城遗址，汉代曾在此驻兵，视野极开阔，可远眺帕米尔群山。夕阳将雪山染成金红，约1小时游览。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">19:00</div><div class="tc"><div class="tt">塔县晚餐：牦牛肉火锅</div><div class="td">塔县最著名的美食，牦牛肉细腻鲜嫩，高原涮锅暖身极好。几家本地餐馆需提前预订。今晚住塔县（2晚连住）。</div></div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <!-- D6 -->
+  <div id="a6"></div>
+  <div class="chap">
+    <div class="cn">06</div>
+    <div>
+      <div class="ct">Day 6 · 4月3日 周四</div>
+      <div class="ch">塔莎古道 · 班迪尔蓝湖 · 塔吉克族杏花村</div>
+      <div class="cd">塔县周边 · 塔莎古道 · 杏花村海拔2200m · 全天精华日</div>
+    </div>
+  </div>
+  <div class="lb"><div class="ld" style="background:var(--jade-2)"></div>塔什库尔干县周边 · 杏花村海拔2200m</div>
+  <div class="co co-j"><strong>今天是整个行程最值得期待的一天：</strong>塔吉克族杏花村4月初盛花期，昆仑山+帕米尔河谷+白色杏花+塔吉克族土房+雪山倒影，这个场景在全国任何其他地方都无法复制。建议全天放慢节奏，不赶时间，在村子里多待。</div>
+  <div class="days">
+    <div class="dc open">
+      <div class="dh" onclick="tog(this)">
+        <div class="dl"><div class="dn2" style="color:var(--jade)">Day 6</div><div class="dd">4月3日</div></div>
+        <div class="dsep"></div>
+        <div class="dtitle">塔莎古道 → 班迪尔蓝湖 → 塔吉克族杏花村 → 返塔县</div>
+        <div class="dtog">+</div>
+      </div>
+      <div class="db"><div class="tl">
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">08:30</div><div class="tc"><div class="tt">换乘小车（7座商务），沿塔莎古道出发</div><div class="td">塔莎古道是玄奘取经西行时走过的古道，沿塔什库尔干河蜿蜒深入昆仑山腹地。路窄，须换乘小型车辆（可在塔县租约，约400–600元/天含司机）。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">09:30</div><div class="tc"><div class="tt">班迪尔蓝湖 <span class="tag-inline tag-star">精华</span></div><div class="td">翡翠绿的高原冰川融水湖，湖色介于翠绿与宝蓝之间，与两侧雪山倒影相映。湖边野花（若天气好）和积雪，极度治愈，约1.5小时。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">11:30</div><div class="tc"><div class="tt">塔吉克族杏花村 <span class="tag-inline tag-star">全程最佳</span></div><div class="td">塔什库尔干河谷沿岸的古朴村落，4月初杏花盛开，花期通常10–14天。村内石砌土房，炊烟袅袅，蓝眼睛的塔吉克族孩童，杏花与昆仑雪山同框——这是帕米尔最难忘的画面，没有之一。多走几个村子，不要只待入口。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">14:00</div><div class="tc"><div class="tt">村内午餐（塔吉克族家庭）</div><div class="td">可以拜访愿意接待的塔吉克族家庭，主人通常会端出奶茶、馕和酸奶。塔吉克族有亲吻礼的传统（贴面颊），接受即接受，不接受礼貌点头也可。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">16:00</div><div class="tc"><div class="tt">返回塔县，傍晚自由活动</div><div class="td">在塔县街头随意溜达，买一些塔吉克族手工银饰（工艺精湛，价格合理）。明天盘龙古道需要早出发。</div></div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <!-- D7 -->
+  <div id="a7"></div>
+  <div class="chap">
+    <div class="cn">07</div>
+    <div>
+      <div class="ct">Day 7 · 4月4日 周五（清明节）</div>
+      <div class="ch">盘龙古道 · 塔合曼湿地 · 返喀什</div>
+      <div class="cd">塔县→盘龙古道→塔合曼湿地→喀什 · 车程约400km</div>
+    </div>
+  </div>
+  <div class="lb"><div class="ld" style="background:var(--jade-2)"></div>塔县→喀什 · 盘龙古道顶约3600m（车行不下车）</div>
+  <div class="co co-o"><strong>盘龙古道注意：</strong>盘龙古道是喀喇昆仑公路的网红路段，连续360度发卡弯从谷底盘旋至山顶，俯瞰时视觉极震撼。但海拔较高（顶部约3600m）且弯道极多，若遇降雪封路，备选游玩慕士塔格冰川公园。清明节当天道路可能有车辆增多，早出发避堵。</div>
+  <div class="days">
+    <div class="dc open">
+      <div class="dh" onclick="tog(this)">
+        <div class="dl"><div class="dn2" style="color:var(--jade)">Day 7</div><div class="dd">4月4日 清明</div></div>
+        <div class="dsep"></div>
+        <div class="dtitle">塔县 → 盘龙古道 → 塔合曼湿地 → 树洞公路 → 喀什</div>
+        <div class="dbadge badge-alt">封路备选：冰川公园</div>
+        <div class="dtog">+</div>
+      </div>
+      <div class="db"><div class="tl">
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">08:00</div><div class="tc"><div class="tt">塔县出发，穿越盘龙古道 <span class="tag-inline tag-star">网红路段</span></div><div class="td">从山谷驶入盘山公路，连续发卡弯直通山顶。宣传语"走过人生所有的弯路，从此尽是坦途"。在山顶观景台停留拍照（勿长时间停留，海拔高），约1小时。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">10:00</div><div class="tc"><div class="tt">塔合曼湿地</div><div class="td">慕士塔格峰冰川融水孕育的高原湿地草原，牦牛在草地上漫步，背后是7546m的慕士塔格峰。4月初草场开始返绿，早春色调清淡而辽阔。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">11:30</div><div class="tc"><div class="tt">树洞公路</div><div class="td">延绵数公里的公路两侧，高原特有景观树顶端枝条交织连接，形成自然"树洞隧道"。缓速穿越，从车窗感受绿色光影变化。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">13:00</div><div class="tc"><div class="tt">向喀什方向返行</div><div class="td">喀喇昆仑公路沿线限速多，下山段约4小时。沿途检查站出示边防证。约17:30前后抵达喀什，入住，在老城附近吃晚饭。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">19:00</div><div class="tc"><div class="tt">喀什老城夜晚</div><div class="td">夜晚的喀什老城灯光昏黄，街道比白天更安静，偶有老人坐在门口喝茶，氛围极好。找一家屋顶露台餐厅，边看老城夜景边吃饭。</div></div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <!-- D8 -->
+  <div id="a8"></div>
+  <div class="chap">
+    <div class="cn">08</div>
+    <div>
+      <div class="ct">Day 8 · 4月5日 周六</div>
+      <div class="ch">喀什深度游 · 自由探索日</div>
+      <div class="cd">喀什市区 · 海拔1300m · 自由安排（原路线未含）</div>
+    </div>
+  </div>
+  <div class="lb"><div class="ld" style="background:var(--lapis-2)"></div>喀什噶尔 · 新增深度游日</div>
+  <div class="co co-l"><strong>为什么要加这一天：</strong>原团队行程Day4只给了喀什半天，严重不够。喀什是中国最西端的古城，2000年丝绸之路历史积淀，高台民居、老城街巷、香妃墓、国际大巴扎，每处都值得深度游览。自由行多出这一整天，是对喀什最大的尊重。</div>
+  <div class="days">
+    <div class="dc open">
+      <div class="dh" onclick="tog(this)">
+        <div class="dl"><div class="dn2" style="color:var(--lapis)">Day 8</div><div class="dd">4月5日</div></div>
+        <div class="dsep"></div>
+        <div class="dtitle">喀什深度游 · 高台民居 · 香妃墓 · 国际大巴扎</div>
+        <div class="dtog">+</div>
+      </div>
+      <div class="db"><div class="tl">
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">08:30</div><div class="tc"><div class="tt">高台民居（吐曼河高崖）</div><div class="td">悬崖上的千年维吾尔族聚居地，土坯民居层叠而上，是喀什最具原始感的街区。居民世代在此生活，可进入庭院参观（礼貌询问），陶艺、铜器制作工坊散布其中。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">10:30</div><div class="tc"><div class="tt">香妃墓（阿帕克霍加麻扎）</div><div class="td">伊斯兰风格的皇家陵墓，埋葬了五代72口人，外墙绿色琉璃砖闪耀，穹顶优雅精美。香妃传说（乾隆妃子）使其更具传奇色彩，是喀什标志性建筑之一。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">13:00</div><div class="tc"><div class="tt">午餐：老城深处寻找本地馆子</div><div class="td">避开景区餐厅，随意走进老城小巷，找人多的本地小馆。烤包子（烤炉现烤，外酥里嫩）、拉条子（维吾尔族炒面）、甜瓜（反季节新疆甜瓜极甜）。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">14:30</div><div class="tc"><div class="tt">东湖公园 + 喀什国际大巴扎</div><div class="td">大巴扎是中亚最大的商品交易集市，每逢周日规模最大（明天是周日！早上可再来）。手工地毯、铜器、乐器（都塔尔）、香料、帽子应有尽有。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">17:00</div><div class="tc"><div class="tt">老城夕阳 + 百年老茶馆</div><div class="td">艾提尕尔清真寺旁的百年老茶馆，维吾尔族老人在此下棋、喝茶、聊天，场景如油画。点一壶砖茶，静静坐着观察，这是喀什最真实的日常。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">20:00</div><div class="tc"><div class="tt">告别晚餐 · 烤全羊</div><div class="td">提前一天预订的烤全羊，是南疆之行最完美的句号。约300–500元/只，两人吃一只足够，可请酒店代订。</div></div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <!-- D9 -->
+  <div id="a9"></div>
+  <div class="chap">
+    <div class="cn">09</div>
+    <div>
+      <div class="ct">Day 9 · 4月6日 周日</div>
+      <div class="ch">喀什 · 返程深圳</div>
+      <div class="cd">喀什机场 · 直飞或转飞深圳</div>
+    </div>
+  </div>
+  <div class="days">
+    <div class="dc open">
+      <div class="dh" onclick="tog(this)">
+        <div class="dl"><div class="dn2" style="color:var(--ochre)">Day 9</div><div class="dd">4月6日</div></div>
+        <div class="dsep"></div>
+        <div class="dtitle">喀什大巴扎早市 → 机场 → 深圳</div>
+        <div class="dtog">+</div>
+      </div>
+      <div class="db"><div class="tl">
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">08:00</div><div class="tc"><div class="tt">喀什国际大巴扎周日大集（可选）</div><div class="td">周日是大巴扎规模最大的一天，全疆各地商贩聚集，8:00–10:00最热闹。可最后淘一批南疆特产：和田玉小件、英吉沙小刀（托运）、昆仑山雪菊、葡萄干、杏干。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">中午</div><div class="tc"><div class="tt">喀什机场飞深圳</div><div class="td">喀什→深圳目前多为经乌鲁木齐/广州中转，全程约6–7小时。机场距市区约10公里，出租车约30–40元，30分钟。提前到达，安检时间预留充裕。</div></div></div>
+      </div></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ PANEL: 实用信息 ═══ -->
+<div id="p-pr" class="panel">
+<div class="page">
+
+  <div class="sl">费用估算（两人合计）</div>
+  <div class="bwrap">
+    <table class="btbl">
+      <thead><tr><th>项目</th><th>说明</th><th>两人合计（元）</th></tr></thead>
+      <tbody>
+        <tr><td>✈️ 机票</td><td>深圳→乌鲁木齐→库尔勒（去程）+ 喀什→深圳（返程经中转）；提前1月以上购</td><td class="amt">3,000–5,500</td></tr>
+        <tr><td>🚗 租车/包车</td><td>库尔勒取SUV，库车/阿克苏段自驾；帕米尔段（D5–D7）须换小型商务车（当地租含司机约500元/天×3天）；喀什段可打车</td><td class="amt">2,500–4,200</td></tr>
+        <tr><td>🏨 住宿（8晚）</td><td>库尔勒/库车/阿克苏/喀什4钻酒店约250–400元/晚；塔县3钻约200–280元/晚×2；共8晚</td><td class="amt">2,000–3,400</td></tr>
+        <tr><td>🎫 景区门票</td><td>天山大峡谷约85/人；克孜尔千佛洞约80/人（含讲解）；白沙湖约35/人；喀拉库勒湖约50/人；香妃墓约30/人；高台民居约30/人；其他</td><td class="amt">700–1,100</td></tr>
+        <tr><td>🍖 餐饮（9天）</td><td>南疆物价较低，人均40–80元/正餐；烤全羊约400元/只；牦牛肉火锅约150元/人</td><td class="amt">1,400–2,500</td></tr>
+        <tr><td>⛽ 油费</td><td>全程自驾约1400公里，SUV百公里约10L，南疆92号汽油约7.5元/L</td><td class="amt">1,050–1,200</td></tr>
+        <tr><td>🛍️ 购物</td><td>塔吉克族银饰、和田玉小件、英吉沙小刀、昆仑雪菊、干果</td><td class="amt">500–3,000</td></tr>
+        <tr class="tot"><td colspan="2"><strong>总计估算</strong></td><td class="amt"><strong>11,150–20,900</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <div class="sl">行李清单</div>
+  <div class="pg">
+    <div>
+      <div class="pgt">保暖（帕米尔段）</div>
+      <div class="pi">羽绒服（塔县夜间必须）</div>
+      <div class="pi">防风冲锋衣</div>
+      <div class="pi">抓绒中层</div>
+      <div class="pi">保暖手套</div>
+      <div class="pi">厚袜×3双</div>
+      <div class="pi">帽子（帕米尔风大）</div>
+    </div>
+    <div>
+      <div class="pgt">高原应对</div>
+      <div class="pi">葡萄糖液×10支</div>
+      <div class="pi">布洛芬（头痛备用）</div>
+      <div class="pi">红景天（提前1周服）</div>
+      <div class="pi">保温杯2L</div>
+      <div class="pi">唇膏（极干燥）</div>
+      <div class="pi">润肤霜</div>
+    </div>
+    <div>
+      <div class="pgt">证件与证件</div>
+      <div class="pi">身份证（多安检）</div>
+      <div class="pi">身份证复印件×2</div>
+      <div class="pi">边防证（喀什办）</div>
+      <div class="pi">现金约3000元</div>
+      <div class="pi">银行卡×2</div>
+    </div>
+    <div>
+      <div class="pgt">摄影</div>
+      <div class="pi">相机+备用电池×2</div>
+      <div class="pi">充电宝×2</div>
+      <div class="pi">广角镜头（峡谷/湖泊）</div>
+      <div class="pi">防尘袋（风沙大）</div>
+      <div class="pi">存储卡×2</div>
+    </div>
+    <div>
+      <div class="pgt">峡谷/古道装备</div>
+      <div class="pi">运动鞋（防滑底）</div>
+      <div class="pi">手电/头灯</div>
+      <div class="pi">防晒霜 SPF50+</div>
+      <div class="pi">墨镜（高原反光强）</div>
+      <div class="pi">小背包（日间）</div>
+    </div>
+    <div>
+      <div class="pgt">其他</div>
+      <div class="pi">折叠雨伞</div>
+      <div class="pi">感冒药/肠胃药</div>
+      <div class="pi">湿纸巾（沙漠段）</div>
+      <div class="pi">离线地图（奥维）</div>
+      <div class="pi">塔县干粮备用</div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <div class="sl">注意事项</div>
+  <div class="tgrid">
+    <div class="tip"><div class="tip-i">📋</div><div class="tip-t">边防证必须提前办</div><div class="tip-b">Day4抵喀什后立即去办，不办则无法进入塔县（帕米尔区域）。两人各自办，带身份证原件，当场取或次日取，免费。</div></div>
+    <div class="tip"><div class="tip-i">🪪</div><div class="tip-t">新疆安检频繁</div><div class="tip-b">机场、景区、酒店、超市均有安检，全程带好身份证，耐心配合，时间预留充足。</div></div>
+    <div class="tip"><div class="tip-i">⏰</div><div class="tip-t">新疆时间+2小时</div><div class="tip-b">全程北京时间，当地实际天黑约21:30。每天游览时间比内地多约2小时，不用慌。</div></div>
+    <div class="tip"><div class="tip-i">🚗</div><div class="tip-t">帕米尔段换小车</div><div class="tip-b">D5–D7塔莎古道/盘龙古道路窄弯急，SUV不适合，须在塔县当地租含司机的7座商务车（约500元/天），更安全。</div></div>
+    <div class="tip"><div class="tip-i">🌬️</div><div class="tip-t">盘龙古道封路风险</div><div class="tip-b">4月可能遇降雪封路，备选方案是慕士塔格冰川公园（同等精彩），不必强行等待开路。</div></div>
+    <div class="tip"><div class="tip-i">📵</div><div class="tip-t">信号盲区</div><div class="tip-b">塔莎古道、盘龙古道深处无信号，提前下载奥维离线地图。塔县有信号，班迪尔湖沿线较弱。</div></div>
+    <div class="tip"><div class="tip-i">🏔️</div><div class="tip-t">高原适应</div><div class="tip-b">塔县3000m是实际住宿最高点，提前1周服红景天，备好葡萄糖液和布洛芬。帕米尔段以乘车为主，不要下车剧烈跑跳。</div></div>
+    <div class="tip"><div class="tip-i">🕌</div><div class="tip-t">文化尊重</div><div class="tip-b">喀什及南疆以穆斯林为主，进清真寺着装得体（女性戴头巾），拍摄当地人先征得同意，不在当地公开饮酒。</div></div>
+    <div class="tip"><div class="tip-i">🌸</div><div class="tip-t">杏花村花期查询</div><div class="tip-b">出发前关注"塔什库尔干旅游"或"帕米尔旅游"公众号，查实时花情，可微调Day6出发时间。</div></div>
+    <div class="tip"><div class="tip-i">🚌</div><div class="tip-t">D2/D4长途车程</div><div class="tip-b">Day2约420km、Day4约460km，准备车内娱乐（下载好播客/有声书/电影），沿途停车休息，不要一口气开完。</div></div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <div class="sl">与其他备选路线对比</div>
+  <div class="ov">
+    <div class="oc"><div class="ok">高反风险</div><div class="ov-v">⭕ <strong>低</strong><br>最高活动3000m（塔县），以车代步，无强制高原徒步</div></div>
+    <div class="oc"><div class="ok">花期匹配</div><div class="ov-v">⭕ <strong>极高</strong><br>塔吉克族杏花村4月初盛花期，全程独一无二</div></div>
+    <div class="oc"><div class="ok">景色独特性</div><div class="ov-v">⭕ <strong>最强</strong><br>帕米尔高原+慕士塔格峰，任何其他备选均无法复制</div></div>
+    <div class="oc"><div class="ok">人文厚度</div><div class="ov-v">⭕ <strong>最高</strong><br>龟兹、楼兰、丝路、塔吉克族，历史密度全程最高</div></div>
+    <div class="oc"><div class="ok">体力要求</div><div class="ov-v">✅ <strong>低</strong><br>以车行观景为主，步行均为轻度，适合两人悠闲节奏</div></div>
+    <div class="oc"><div class="ok">主要挑战</div><div class="ov-v">⚠️ <strong>车程长</strong><br>D2/D4各约460km，需心理准备，景色弥补</div></div>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  西域南疆 · 丝路春行 · 深圳出发 · 3月29日—4月6日
+  <span class="en">The Ancient Road of Silk · South Xinjiang · Spring 2025</span>
+</footer>
+
+<script>
+function sw(id) {
+  ['ov','it','pr'].forEach(k => {
+    document.getElementById('p-'+k).classList.toggle('active', k===id);
+  });
+  document.querySelectorAll('.stab').forEach((b,i) => {
+    b.classList.toggle('active', ['ov','it','pr'][i]===id);
+  });
+  document.getElementById('daydots').style.display = id==='it' ? 'flex' : 'none';
+  window.scrollTo({top: document.querySelector('.snav').offsetTop - 1, behavior:'smooth'});
+}
+function tog(h) { h.parentElement.classList.toggle('open'); }
+
+// build day dots
+(function(){
+  const dd = document.getElementById('daydots');
+  for(let i=1;i<=9;i++){
+    const b=document.createElement('button');
+    b.className='ddot'; b.textContent=i;
+    b.onclick=()=>{
+      sw('it');
+      const el=document.getElementById('a'+i);
+      if(el) setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),80);
+      document.querySelectorAll('.ddot').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+    };
+    dd.appendChild(b);
+  }
+  dd.style.display='none';
+})();
+
+// highlight dot on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const m=e.target.id.match(/a(\d)/);
+      if(m) document.querySelectorAll('.ddot').forEach((b,i)=>b.classList.toggle('on',i+1===+m[1]));
+    }
+  });
+},{threshold:0.6});
+for(let i=1;i<=9;i++){const el=document.getElementById('a'+i);if(el)obs.observe(el);}
+</script>
+</body>
+</html>
