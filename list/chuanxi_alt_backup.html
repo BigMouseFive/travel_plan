@@ -3,12 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="trip-title" content="西域南疆·丝路春行">
-<meta name="trip-emoji" content="🏜️">
-<meta name="trip-date" content="3月底-4月">
-<meta name="trip-days" content="9天">
-<meta name="trip-people" content="2人">
-<meta name="trip-desc" content="喀什古城·塔克拉玛干·帕米尔高原">
 <title>西域南疆 · 丝路春行 · 九日计划</title>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -64,7 +58,6 @@ body{
   padding: 0 0 64px;
   overflow: hidden;
 }
-/* geometric silk road ornament bg */
 .hero-geo{
   position:absolute;inset:0;
   background:
@@ -73,14 +66,12 @@ body{
     radial-gradient(ellipse 40% 50% at 90% 10%,  rgba(42,104,72,0.18) 0%, transparent 50%),
     linear-gradient(170deg, #0e0a04 0%, #1c1408 50%, #140e06 100%);
 }
-/* SVG stars / sand dunes */
 .hero-art{
   position:absolute;inset:0;
   overflow:hidden;
   pointer-events:none;
 }
 .hero-art svg{width:100%;height:100%;}
-
 .hero-inner{
   position:relative;z-index:10;
   max-width:820px;margin:0 auto;
@@ -275,7 +266,7 @@ body{
   padding-bottom:22px;border-bottom:0.5px solid var(--dust-3);
   margin-bottom:20px;
 }
-.cn{
+.cn-num{
   font-family:var(--serif-en);
   font-size:52px;font-weight:400;font-style:italic;
   line-height:1;color:var(--dust-3);
@@ -359,23 +350,12 @@ body{
 .tag-alt{background:var(--jade-l);color:var(--jade);}
 .tag-warn{background:var(--crimson-l);color:var(--crimson);}
 
-/* dot colours */
 .do{background:var(--ochre-2);}
 .dl2{background:var(--lapis-2);}
 .dj{background:var(--jade-2);}
 .ds2{background:var(--sand);}
 .dr{background:var(--crimson);}
 .dw{background:var(--ink-4);}
-
-/* ── HIGHLIGHT SPOTS ── */
-.spots{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:7px;margin-top:10px;}
-.spot{
-  background:var(--dust);border:0.5px solid var(--dust-3);
-  border-radius:9px;padding:13px 15px;
-}
-.spot-icon{font-size:18px;margin-bottom:7px;}
-.spot-name{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px;}
-.spot-desc{font-size:12px;color:var(--ink-3);line-height:1.6;}
 
 /* ── BUDGET ── */
 .bwrap{background:#fff;border:0.5px solid var(--dust-3);border-radius:12px;overflow:hidden;margin-top:10px;}
@@ -415,14 +395,76 @@ footer .en{
   display:block;margin-top:6px;
 }
 
+/* ── MAP PANEL ── */
+.map-wrap{
+  max-width:900px;margin:0 auto;padding:40px 28px;
+}
+.map-container{
+  background:#fff;
+  border:0.5px solid var(--dust-3);
+  border-radius:14px;
+  overflow:hidden;
+  position:relative;
+}
+.map-svg-wrap{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+}
+.map-legend{
+  padding:18px 22px;
+  border-top:0.5px solid var(--dust-3);
+  display:flex;flex-wrap:wrap;gap:16px;align-items:center;
+}
+.ml-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3);}
+.ml-dot{width:9px;height:9px;border-radius:50%;}
+
+/* tooltip */
+.map-tooltip{
+  position:absolute;
+  background:var(--ink);
+  color:var(--dust);
+  padding:8px 12px;
+  border-radius:7px;
+  font-size:12px;
+  line-height:1.5;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .15s;
+  max-width:180px;
+  z-index:10;
+}
+.map-tooltip.show{opacity:1;}
+.map-tooltip strong{color:var(--ochre-3);font-size:13px;}
+
+/* day progress */
+.day-track{
+  display:flex;gap:5px;padding:16px 22px 0;
+  flex-wrap:wrap;
+}
+.dtrack-btn{
+  padding:5px 13px;border-radius:20px;
+  font-size:11px;font-weight:500;
+  border:0.5px solid var(--dust-3);
+  background:none;cursor:pointer;
+  font-family:var(--sans);color:var(--ink-3);
+  transition:all .15s;
+}
+.dtrack-btn:hover{border-color:var(--ochre);color:var(--ochre);}
+.dtrack-btn.on{background:var(--ochre);color:#fff;border-color:var(--ochre);}
+
 /* ── ANIM ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.panel.active .page{animation:fadeUp .38s ease both;}
+.panel.active .page,.panel.active .map-wrap{animation:fadeUp .38s ease both;}
+
+/* pulse for map dots */
+@keyframes pulse{0%,100%{r:7}50%{r:9}}
 
 @media(max-width:600px){
   .ov{grid-template-columns:1fr 1fr;}
   .oc.s3{grid-column:span 2;}
   .page{padding:36px 18px;}
+  .map-wrap{padding:24px 14px;}
   .hero{padding:0 0 52px;}
   .hero-inner{padding:0 22px;}
   .ab-grid{grid-template-columns:1fr 1fr;}
@@ -436,10 +478,8 @@ footer .en{
 <div class="hero-geo"></div>
 <div class="hero-art">
 <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-  <!-- dune silhouettes -->
   <path d="M0 800 Q200 720 400 760 Q600 800 800 730 Q1000 660 1200 710 Q1350 750 1440 720 L1440 900 L0 900Z" fill="#140e06" opacity=".9"/>
   <path d="M0 860 Q150 830 350 845 Q550 860 750 835 Q950 810 1150 840 Q1300 860 1440 850 L1440 900 L0 900Z" fill="#0e0a04"/>
-  <!-- stars -->
   <circle cx="100" cy="80"  r="1.2" fill="rgba(240,168,96,.6)"/>
   <circle cx="250" cy="40"  r=".8"  fill="rgba(255,255,255,.35)"/>
   <circle cx="420" cy="100" r="1"   fill="rgba(255,255,255,.3)"/>
@@ -453,15 +493,13 @@ footer .en{
   <circle cx="550" cy="130" r=".7"  fill="rgba(255,255,255,.25)"/>
   <circle cx="850" cy="150" r=".6"  fill="rgba(255,255,255,.2)"/>
   <circle cx="1100" cy="180"r=".8"  fill="rgba(240,168,96,.3)"/>
-  <!-- crescent moon -->
   <circle cx="1320" cy="100" r="22" fill="none" stroke="rgba(240,168,96,0.2)" stroke-width="1"/>
   <circle cx="1330" cy="96"  r="18" fill="#140e06" opacity=".95"/>
 </svg>
 </div>
-
 <div class="hero-inner">
   <div class="hero-kicker">Silk Road · South Xinjiang · Spring 2025</div>
-  <span class="hero-cn">西域南疆 · 丝路春行</span>
+  <span class="hero-cn">西域南疆 · 丝路春行（优化版）</span>
   <h1 class="hero-title">The <em>Ancient</em></h1>
   <span class="hero-title-2">Road of Silk</span>
   <p class="hero-tagline">
@@ -473,8 +511,8 @@ footer .en{
     <div class="hstat"><div class="hstat-v">9</div><div class="hstat-k">天数</div></div>
     <div class="hstat"><div class="hstat-v">Mar 29</div><div class="hstat-k">出发</div></div>
     <div class="hstat"><div class="hstat-v">2</div><div class="hstat-k">人</div></div>
-    <div class="hstat"><div class="hstat-v">≤3600m</div><div class="hstat-k">最高海拔</div></div>
-    <div class="hstat"><div class="hstat-v">✓</div><div class="hstat-k">低高反风险</div></div>
+    <div class="hstat"><div class="hstat-v">4200m</div><div class="hstat-k">最高海拔</div></div>
+    <div class="hstat"><div class="hstat-v">⚠</div><div class="hstat-k">高反需防范</div></div>
   </div>
 </div>
 </header>
@@ -482,22 +520,22 @@ footer .en{
 <!-- ═══ ANALYSIS BAND ═══ -->
 <div class="analysis-band">
 <div class="ab-inner">
-  <div class="ab-title">针对你们情况的路线分析</div>
+  <div class="ab-title">路线评估（已结合真实游客反馈修订）</div>
   <div class="ab-grid">
     <div class="ab-cell">
       <div class="ab-icon">🏔️</div>
       <div class="ab-label">高反风险</div>
-      <div class="ab-text"><strong>低</strong>——全程最高约3600m（盘龙古道），但不下车；实际活动最高为塔县3000m，适应充分，无需服药预防</div>
+      <div class="ab-text"><strong>中等</strong>——盘龙古道实际顶部海拔<strong>4200m</strong>，非原以为的3600m；2024年在此被救助高反游客逾2000人次，需认真对待</div>
     </div>
     <div class="ab-cell">
       <div class="ab-icon">🌸</div>
       <div class="ab-label">花期匹配</div>
-      <div class="ab-text"><strong>极高</strong>——塔吉克族杏花村(Day6)在海拔2200m的河谷，3月底到4月初正好是盛花期，白雪雪山+杏花是全国唯一场景</div>
+      <div class="ab-text"><strong>有窗口风险</strong>——塔吉克族杏花村盛花期约10–14天，Day6（4月3日）处于盛花期末尾，建议出发前实时查询花情，保留灵活度</div>
     </div>
     <div class="ab-cell">
       <div class="ab-icon">🎨</div>
       <div class="ab-label">景色差异性</div>
-      <div class="ab-text"><strong>极强</strong>——雅丹地貌、千佛洞、帕米尔高原、冰川湖、昆仑雪山，每天完全不同，与其他所有备选方案风格迥异</div>
+      <div class="ab-text"><strong>极强</strong>——雅丹地貌、千佛洞、帕米尔高原、冰川湖、昆仑雪山，每天完全不同，与任何其他备选方案风格迥异</div>
     </div>
     <div class="ab-cell">
       <div class="ab-icon">🏛️</div>
@@ -507,16 +545,16 @@ footer .en{
     <div class="ab-cell">
       <div class="ab-icon">💪</div>
       <div class="ab-label">体力要求</div>
-      <div class="ab-text"><strong>中等偏低</strong>——以车行观景为主，峡谷和古道均为轻度步行，无高强度爬升，适合两人悠闲节奏</div>
+      <div class="ab-text"><strong>中等偏低</strong>——以车行观景为主，峡谷和古道均为轻度步行，无高强度爬升；杏花村越野路况较颠簸</div>
     </div>
     <div class="ab-cell">
       <div class="ab-icon">⚠️</div>
       <div class="ab-label">主要挑战</div>
-      <div class="ab-text"><strong>每日车程长</strong>——Day2约420km、Day4约460km，需适应长途车坐行；沿途景色弥补疲惫感</div>
+      <div class="ab-text"><strong>车程长+时差</strong>——Day2约420km、Day4约460km；新疆实际时差约+2–3小时，所有时间安排已按新疆节奏调整</div>
     </div>
   </div>
   <div class="ab-note">
-    <strong>关于原团队行程的调整：</strong>原路线为8天团队游，包含集合日（Day1）和解散日（Day8），你们自由行9天时间更充裕。本计划将 <strong>Day1增加库尔勒深度游</strong>、<strong>Day8在喀什增加一天自由探索</strong>，不赶时间，质量更高。原路线中每日车程紧凑，自由行可灵活停留，不必死板跟车。
+    <strong>本版本已修订的关键问题：</strong>① 盘龙古道真实海拔修正为4200m，高反风险重新标注；② 香妃园门票更新为198元/人（原计划严重低估）；③ Day7出发时间调整适配盘龙古道10:00开放限制；④ 石头城从行程中移除；⑤ Day9新增牛羊大巴扎推荐；⑥ 全程时间节点按新疆时差（+2–3小时）重新核算；⑦ 每日新增安检候车缓冲30分钟。
   </div>
 </div>
 </div>
@@ -527,6 +565,7 @@ footer .en{
   <div class="snav-tabs">
     <button class="stab active" onclick="sw('ov')">概览</button>
     <button class="stab" onclick="sw('it')">逐日行程</button>
+    <button class="stab" onclick="sw('map')">路线地图</button>
     <button class="stab" onclick="sw('pr')">实用信息</button>
   </div>
   <div class="daydots" id="daydots"></div>
@@ -548,11 +587,11 @@ footer .en{
     </div>
     <div class="oc">
       <div class="ok">最高海拔</div>
-      <div class="ov-v">塔县 <strong>3000m</strong><br>（车过盘龙古道约3600m，不下车）</div>
+      <div class="ov-v">盘龙古道 <strong>4200m</strong><br>（车行，但需防高反）</div>
     </div>
     <div class="oc s2">
       <div class="ok">核心景点</div>
-      <div class="ov-v">库车天山大峡谷 · 克孜尔千佛洞 · 天山红石林 · 喀什噶尔老城 · 白沙湖 · 喀拉库勒湖 · 慕士塔格峰 · 班迪尔蓝湖 · <strong>塔吉克族杏花村</strong> · 盘龙古道</div>
+      <div class="ov-v">库车天山大峡谷 · 克孜尔千佛洞 · 天山红石林 · 喀什噶尔老城 · 白沙湖 · 喀拉库勒湖 · 慕士塔格峰 · 班迪尔蓝湖 · <strong>塔吉克族杏花村</strong> · 盘龙古道 · 牛羊大巴扎</div>
     </div>
     <div class="oc">
       <div class="ok">交通方式</div>
@@ -560,11 +599,10 @@ footer .en{
     </div>
     <div class="oc s3">
       <div class="ok">路线逻辑</div>
-      <div class="ov-v">深圳→库尔勒（集合适应）→ 库车峡谷/古寺 → 天山红石林/千佛洞/阿克苏 → 喀什（半天自由）→ 帕米尔白沙湖/喀拉库勒湖/塔县 → <strong>塔莎古道/班迪尔蓝湖/杏花村</strong> → 盘龙古道/塔合曼湿地→喀什 → 喀什深度游 → 返程深圳</div>
+      <div class="ov-v">深圳→库尔勒（适应日）→ 库车峡谷/古寺 → 天山红石林/千佛洞/阿克苏 → 喀什（办边防证+老城）→ 帕米尔白沙湖/喀拉库勒湖/塔县 → <strong>塔莎古道/班迪尔蓝湖/杏花村</strong> → 盘龙古道/塔合曼湿地→喀什 → 喀什深度游+牛羊大巴扎 → 返程深圳</div>
     </div>
   </div>
 
-  <!-- route ribbon -->
   <div class="sl">路线节点</div>
   <div class="rrib">
     <div class="rn"><div class="rn-dot" style="background:var(--ink-4)"></div><div class="rn-name">深圳</div><div class="rn-day">出发</div></div>
@@ -581,44 +619,43 @@ footer .en{
     <div class="rl"></div>
     <div class="rn"><div class="rn-dot" style="background:var(--jade-2)"></div><div class="rn-name">杏花村</div><div class="rn-day">D6</div></div>
     <div class="rl"></div>
-    <div class="rn"><div class="rn-dot" style="background:var(--jade-2)"></div><div class="rn-name">盘龙古道</div><div class="rn-day">D7</div></div>
+    <div class="rn"><div class="rn-dot" style="background:var(--sand)"></div><div class="rn-name">盘龙古道</div><div class="rn-day">D7</div></div>
     <div class="rl"></div>
     <div class="rn"><div class="rn-dot" style="background:var(--lapis-2)"></div><div class="rn-name">喀什深游</div><div class="rn-day">D8</div></div>
     <div class="rl"></div>
     <div class="rn"><div class="rn-dot" style="background:var(--ink-4)"></div><div class="rn-name">深圳</div><div class="rn-day">D9</div></div>
   </div>
 
-  <!-- 海拔图 -->
+  <!-- 海拔图（已修正盘龙古道高度） -->
   <div class="alt-box">
-    <div class="alt-tl">全程海拔示意（最高活动点：塔县3000m，无高反风险）</div>
+    <div class="alt-tl">全程海拔示意（修正版：盘龙古道实际顶部4200m，⚠️ 非车行不下车即安全）</div>
     <div class="alt-tr">
-      <div class="ac"><div class="ab" style="height:3px;background:#b8a888"></div><div class="an">深圳</div><div class="am">10m</div></div>
-      <div class="ac"><div class="ab" style="height:5px;background:#b8a888"></div><div class="an">乌鲁木齐</div><div class="am">800m</div></div>
+      <div class="ac"><div class="ab" style="height:2px;background:#b8a888"></div><div class="an">深圳</div><div class="am">10m</div></div>
+      <div class="ac"><div class="ab" style="height:4px;background:#b8a888"></div><div class="an">乌鲁木齐</div><div class="am">800m</div></div>
       <div class="ac"><div class="ab" style="height:5px;background:var(--ochre-2)"></div><div class="an">库尔勒</div><div class="am">920m</div></div>
       <div class="ac"><div class="ab" style="height:7px;background:var(--ochre-2)"></div><div class="an">库车峡谷</div><div class="am">1200m</div></div>
       <div class="ac"><div class="ab" style="height:6px;background:var(--ochre-2)"></div><div class="an">阿克苏</div><div class="am">1100m</div></div>
-      <div class="ac"><div class="ab" style="height:5px;background:var(--lapis-2)"></div><div class="an">喀什</div><div class="am">1300m</div></div>
-      <div class="ac"><div class="ab" style="height:12px;background:var(--jade-2)"></div><div class="an">白沙湖</div><div class="am">2400m</div></div>
-      <div class="ac"><div class="ab" style="height:14px;background:var(--jade-2)"></div><div class="an">喀拉库勒湖</div><div class="am">3600m</div></div>
-      <div class="ac"><div class="ab" style="height:15px;background:var(--jade-2)"></div><div class="an">塔县</div><div class="am">3000m</div></div>
-      <div class="ac"><div class="ab" style="height:10px;background:var(--jade-2)"></div><div class="an">杏花村</div><div class="am">2200m</div></div>
-      <div class="ac"><div class="ab" style="height:18px;background:var(--sand)"></div><div class="an">盘龙古道</div><div class="am">3600m↑</div></div>
-      <div class="ac"><div class="ab" style="height:8px;background:var(--jade-2)"></div><div class="an">塔合曼湿地</div><div class="am">2900m</div></div>
-      <div class="ac"><div class="ab" style="height:5px;background:var(--lapis-2)"></div><div class="an">喀什</div><div class="am">1300m</div></div>
+      <div class="ac"><div class="ab" style="height:6px;background:var(--lapis-2)"></div><div class="an">喀什</div><div class="am">1300m</div></div>
+      <div class="ac"><div class="ab" style="height:14px;background:var(--jade-2)"></div><div class="an">白沙湖</div><div class="am">2400m</div></div>
+      <div class="ac"><div class="ab" style="height:22px;background:var(--jade-2)"></div><div class="an">喀拉库勒湖</div><div class="am">3600m</div></div>
+      <div class="ac"><div class="ab" style="height:18px;background:var(--jade-2)"></div><div class="an">塔县</div><div class="am">3000m</div></div>
+      <div class="ac"><div class="ab" style="height:12px;background:var(--jade-2)"></div><div class="an">杏花村</div><div class="am">2200m</div></div>
+      <div class="ac"><div class="ab" style="height:26px;background:var(--sand)"></div><div class="an">盘龙古道</div><div class="am" style="color:var(--crimson);font-weight:500">4200m⚠</div></div>
+      <div class="ac"><div class="ab" style="height:17px;background:var(--jade-2)"></div><div class="an">塔合曼湿地</div><div class="am">2900m</div></div>
+      <div class="ac"><div class="ab" style="height:6px;background:var(--lapis-2)"></div><div class="an">喀什</div><div class="am">1300m</div></div>
     </div>
     <div class="alt-lg">
       <div class="ali"><div class="ali-d" style="background:#b8a888"></div>过境（&lt;1000m）</div>
       <div class="ali"><div class="ali-d" style="background:var(--ochre-2)"></div>河谷低地（1000–1500m）</div>
-      <div class="ali"><div class="ali-d" style="background:var(--jade-2)"></div>帕米尔高原（2000–3600m，车行为主）</div>
-      <div class="ali"><div class="ali-d" style="background:var(--sand)"></div>盘龙古道顶（3600m+，不下车）</div>
+      <div class="ali"><div class="ali-d" style="background:var(--jade-2)"></div>帕米尔高原（2000–3600m）</div>
+      <div class="ali"><div class="ali-d" style="background:var(--sand)"></div>盘龙古道（4200m，⚠️ 需防高反）</div>
     </div>
   </div>
 
-  <!-- 时机 -->
   <div class="sl">时机说明</div>
   <div class="co co-o">
-    <strong>3月29日–4月6日的南疆，为什么刚好：</strong><br>
-    塔吉克族杏花村（Day6，海拔2200m）的盛花期正是3月下旬至4月上旬，昆仑山背景+帕米尔高原河谷+塔吉克族村落+大片杏花，这个组合在全国独一无二，完全无法在其他地方复制。库车天山大峡谷和天山红石林在4月光线最佳，游人尚少。喀什老城3–4月气候宜人（20°C左右），不寒不热，是最舒适的旅行季节。
+    <strong>3月29日–4月6日的南疆，整体节奏：</strong><br>
+    塔吉克族杏花村（Day6，海拔2200m）盛花期通常10–14天，2024年约在3月28日开始，4月3日处于末尾。建议出发前一周关注"魅力帕米尔"抖音号确认实时花情，若发现花期提前，可考虑将 Day6 提前至 Day5 下午进村。库车天山大峡谷和天山红石林在4月光线最佳，游人尚少。喀什老城3–4月气候宜人（20°C左右），是一年中最舒适的旅行季节。
   </div>
 
 </div>
@@ -631,15 +668,15 @@ footer .en{
   <!-- D1 -->
   <div id="a1"></div>
   <div class="chap">
-    <div class="cn">01</div>
+    <div class="cn-num">01</div>
     <div>
       <div class="ct">Day 1 · 3月29日 周六</div>
       <div class="ch">库尔勒 · 南疆门户，梨城初印象</div>
-      <div class="cd">巴音郭楞蒙古自治州库尔勒市 · 海拔920m · 全天集合适应日</div>
+      <div class="cd">巴音郭楞蒙古自治州库尔勒市 · 海拔920m · 适应日</div>
     </div>
   </div>
   <div class="lb"><div class="ld" style="background:var(--ochre-2)"></div>库尔勒市 · 孔雀河畔 · 海拔920m</div>
-  <div class="co co-o"><strong>交通建议：</strong>深圳→乌鲁木齐直飞约4.5小时，转飞库尔勒约1小时；或乌鲁木齐高铁→库尔勒约3.5小时（风景好，推荐体验一段）。库尔勒机场/火车站打车约30–45元到市区。</div>
+  <div class="co co-o"><strong>交通建议：</strong>深圳→乌鲁木齐直飞约4.5小时，转飞库尔勒约1小时；或乌鲁木齐高铁→库尔勒约3.5小时（风景好，推荐体验）。注意新疆实际时差约+2–3小时，北京时间15:00落地，当地感觉才下午，不必着急。库尔勒机场/火车站打车约30–45元到市区。</div>
   <div class="days">
     <div class="dc open">
       <div class="dh" onclick="tog(this)">
@@ -649,10 +686,10 @@ footer .en{
         <div class="dtog">+</div>
       </div>
       <div class="db"><div class="tl">
-        <div class="tli"><div class="tdot do"></div><div class="ttime">早班</div><div class="tc"><div class="tt">深圳→乌鲁木齐→库尔勒</div><div class="td">建议早班飞，北京时间约15:00前落地库尔勒。取车（提前在途虎/一嗨预订SUV，库尔勒取还）或打车去酒店入住。</div></div></div>
-        <div class="tli"><div class="tdot do"></div><div class="ttime">16:00</div><div class="tc"><div class="tt">巴州博物馆 <span class="tag-inline tag-star">精华</span></div><div class="td">国家一级博物馆，收藏罗布泊楼兰出土的"楼兰美女"（距今约3800年，保存完好），丝绸之路沿线出土文物极丰富，约2小时。门票免费，需提前预约。</div></div></div>
-        <div class="tli"><div class="tdot do"></div><div class="ttime">18:30</div><div class="tc"><div class="tt">孔雀河湿地公园散步</div><div class="td">孔雀河是南疆最美的城市河道，3月底迁徙季可见野生天鹅。傍晚光线下水面波光粼粼，是适应时差和节奏的好方式。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">20:00</div><div class="tc"><div class="tt">晚餐：库尔勒特色美食</div><div class="td">红柳烤肉（用红柳枝串烤，香气独特）、博斯腾湖淡水鱼（清蒸或红烧）、库尔勒香梨（若有存货）。明天约420km车程，早睡。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">早班</div><div class="tc"><div class="tt">深圳→乌鲁木齐→库尔勒</div><div class="td">建议早班飞，北京时间约15:00前落地库尔勒。取车（提前在途虎/一嗨预订SUV，库尔勒取还）或打车去酒店入住。每到一个新城市先预留安检时间，新疆机场、酒店均需刷身份证，耐心配合。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">17:00</div><div class="tc"><div class="tt">巴州博物馆 <span class="tag-inline tag-star">精华</span></div><div class="td">国家一级博物馆，收藏罗布泊楼兰出土的"楼兰美女"（距今约3800年），丝绸之路沿线出土文物极丰富，约2小时，<strong>门票免费，需提前预约</strong>。按新疆时差，此时当地相当于下午三点，光线和精神状态正好。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">19:30</div><div class="tc"><div class="tt">孔雀河湿地公园散步</div><div class="td">孔雀河是南疆最美的城市河道，3月底迁徙季可见野生天鹅。傍晚（北京时间）天依然很亮，是适应时差节奏的好方式。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">21:00</div><div class="tc"><div class="tt">晚餐：库尔勒特色美食</div><div class="td">红柳烤肉（用红柳枝串烤，香气独特）、博斯腾湖淡水鱼、库尔勒香梨。新疆人吃饭时间整体偏晚，晚上21:00才是当地的饭点高峰。明天约420km车程，尽量早睡。</div></div></div>
       </div></div>
     </div>
   </div>
@@ -662,15 +699,16 @@ footer .en{
   <!-- D2 -->
   <div id="a2"></div>
   <div class="chap">
-    <div class="cn">02</div>
+    <div class="cn-num">02</div>
     <div>
       <div class="ct">Day 2 · 3月30日 周日</div>
       <div class="ch">库车龟兹 · 天山大峡谷 · 古寺老街</div>
-      <div class="cd">阿克苏地区库车市 · 古称龟兹 · 车程约420km</div>
+      <div class="cd">阿克苏地区库车市 · 古称龟兹 · 车程约420km（约5小时，含安检和休息）</div>
     </div>
   </div>
   <div class="lb"><div class="ld" style="background:var(--ochre-2)"></div>库车市 · 海拔约1100m · 古丝绸之路要道</div>
   <div class="co co-l"><strong>龟兹说明：</strong>库车古称龟兹，是西汉时西域三十六国之一，丝绸之路中道最重要的节点。这里曾是佛教东传入中原的中转站，玄奘西行曾在此停留逾月，鸠摩罗什在此出生。今天的库车仍保留着浓郁的维吾尔族风情。</div>
+  <div class="co co-r"><strong>⚠ 车程时间提醒：</strong>库尔勒→库车约420km，南疆高速限速多（不少路段限速80km/h），加上途中安检站停车（每次5–15分钟），<strong>实际驾车时间约5–5.5小时</strong>，建议08:30出发，预计14:00前后抵达峡谷。比原计划晚1–1.5小时，但不赶、质量高。</div>
   <div class="days">
     <div class="dc open">
       <div class="dh" onclick="tog(this)">
@@ -680,11 +718,11 @@ footer .en{
         <div class="dtog">+</div>
       </div>
       <div class="db"><div class="tl">
-        <div class="tli"><div class="tdot do"></div><div class="ttime">08:00</div><div class="tc"><div class="tt">库尔勒出发，G3012高速向库车（约3.5小时）</div><div class="td">沿途穿越南疆大地，两侧戈壁与远处天山雪峰形成反差。约11:30抵达库车天山大峡谷入口。</div></div></div>
-        <div class="tli"><div class="tdot do"></div><div class="ttime">11:30</div><div class="tc"><div class="tt">库车天山大峡谷 <span class="tag-inline tag-star">精华</span></div><div class="td">红褐色砂岩峡谷，被称为"新疆羚羊谷"。峡谷最窄处仅容一人通过，光从顶端透射形成丁达尔效应，光影变化令人着迷。徒步约2–3小时，全程约5公里，不费体力。</div></div></div>
-        <div class="tli"><div class="tdot do"></div><div class="ttime">14:30</div><div class="tc"><div class="tt">库车大寺（苏公塔清真寺）</div><div class="td">新疆第二大清真寺，历史可追溯至1561年。黄色砖塔与蓝色穹顶的视觉冲击，建筑风格融合了中亚和中原元素。非礼拜时间可入内参观，着装得体，女性戴头巾。</div></div></div>
-        <div class="tli"><div class="tdot do"></div><div class="ttime">16:00</div><div class="tc"><div class="tt">热斯坦老街 CityWalk</div><div class="td">库车最热闹的传统市集街道，维语意为"商场集市"。密集的传统商铺、五彩斑斓的雕花木门、手工艺品摊位。买几个车轮大小的库车大馕带走。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">19:00</div><div class="tc"><div class="tt">晚餐：馕坑肉 + 丸子汤 + 大盘鸡</div><div class="td">库车馕坑肉是将羊肉块贴在馕坑壁烤制，外焦里嫩；丸子汤是当地特色面食；大盘鸡配皮带面。今晚住库车。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">08:30</div><div class="tc"><div class="tt">库尔勒出发，G3012高速向库车</div><div class="td">沿途穿越南疆大地，两侧戈壁与远处天山雪峰形成反差。沿途检查站配合安检，摇下车窗、出示身份证，勿着急。预计13:30–14:00抵达库车天山大峡谷入口。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">14:00</div><div class="tc"><div class="tt">库车天山大峡谷 <span class="tag-inline tag-star">精华</span></div><div class="td">红褐色砂岩峡谷，被称为"新疆羚羊谷"。峡谷最窄处仅容一人通过，光从顶端透射形成丁达尔效应。徒步约2–3小时，全程约5公里，不费体力。门票约85元/人。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">17:00</div><div class="tc"><div class="tt">库车大寺（苏公塔清真寺）</div><div class="td">新疆第二大清真寺，历史追溯至1561年。黄色砖塔与蓝色穹顶视觉冲击强烈，建筑风格融合中亚和中原元素。非礼拜时间可入内参观，着装得体，女性戴头巾。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">18:30</div><div class="tc"><div class="tt">热斯坦老街 CityWalk</div><div class="td">库车最热闹的传统市集街道，密集的传统商铺、五彩斑斓的雕花木门。按新疆时间，18:30相当于下午4:30，街头活动还很热闹。买几个车轮大小的库车大馕带走。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">21:00</div><div class="tc"><div class="tt">晚餐：馕坑肉 + 丸子汤 + 大盘鸡</div><div class="td">库车馕坑肉外焦里嫩；大盘鸡配皮带面是南疆经典。今晚住库车，早睡。</div></div></div>
       </div></div>
     </div>
   </div>
@@ -694,15 +732,15 @@ footer .en{
   <!-- D3 -->
   <div id="a3"></div>
   <div class="chap">
-    <div class="cn">03</div>
+    <div class="cn-num">03</div>
     <div>
       <div class="ct">Day 3 · 3月31日 周一</div>
       <div class="ch">天山红石林 · 克孜尔千佛洞 · 阿克苏</div>
-      <div class="cd">库车→阿克苏 · 车程约280km · 雅丹地貌+石窟艺术</div>
+      <div class="cd">库车→拜城→阿克苏 · 车程约280km · 雅丹地貌+石窟艺术</div>
     </div>
   </div>
   <div class="lb"><div class="ld" style="background:var(--ochre-2)"></div>库车→拜城→阿克苏 · 海拔约1100m</div>
-  <div class="co co-o"><strong>克孜尔千佛洞：</strong>建于公元3世纪，比敦煌莫高窟早约一个世纪，是中国最早的大型石窟，现存洞窟236个。佛教就是从这里沿丝绸之路向东传入中原。大量精美壁画虽被19世纪西方探险家掠走，现存部分仍震撼人心。</div>
+  <div class="co co-o"><strong>克孜尔千佛洞：</strong>建于公元3世纪，比敦煌莫高窟早约一个世纪，是中国最早的大型石窟，现存洞窟236个，为世界文化遗产（丝绸之路遗产点之一）。建议购买含导览门票（约80元/人），导游讲解极大提升观感。</div>
   <div class="days">
     <div class="dc open">
       <div class="dh" onclick="tog(this)">
@@ -712,10 +750,11 @@ footer .en{
         <div class="dtog">+</div>
       </div>
       <div class="db"><div class="tl">
-        <div class="tli"><div class="tdot do"></div><div class="ttime">08:30</div><div class="tc"><div class="tt">天山红石林 <span class="tag-inline tag-star">小众秘境</span></div><div class="td">由红褐色雅丹风蚀地貌组成，岩层颜色丰富——褐红、黄绿、灰绿交叠，形态如荒废古城。游客极少，是游侠客挖掘的新景点，约2小时。</div></div></div>
-        <div class="tli"><div class="tdot do"></div><div class="ttime">11:00</div><div class="tc"><div class="tt">克孜尔千佛洞 <span class="tag-inline tag-star">精华</span></div><div class="td">世界文化遗产，丝绸之路遗产点之一。建议购买含导览的门票（导游讲解极大提升观感），重点参观壁画保存最好的洞窟。洞外雀离大寺遗址，僧侣曾多达万人。约2.5小时。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">14:00</div><div class="tc"><div class="tt">沿途补给 + 前往阿克苏</div><div class="td">拜城→阿克苏约140公里，途经苹果之乡拜城，4月初苹果树刚开始萌芽。约16:00抵达阿克苏，入住休整。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">16:30</div><div class="tc"><div class="tt">阿克苏市区自由活动</div><div class="td">阿克苏是南疆重要城市，有较完善的购物和餐饮。补充帕米尔段所需物资（零食、保温杯、防晒）。晚餐推荐阿克苏核桃仁炒菜和羊肉抓饭。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">09:00</div><div class="tc"><div class="tt">天山红石林 <span class="tag-inline tag-star">小众秘境</span></div><div class="td">由红褐色雅丹风蚀地貌组成，岩层颜色丰富——褐红、黄绿、灰绿交叠，形态如荒废古城。游客极少，约2小时。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">11:30</div><div class="tc"><div class="tt">路途 + 简单午餐</div><div class="td">红石林→克孜尔千佛洞约40公里，途中随意找一家维吾尔族小馆解决午餐，拉条子或抓饭都不会踩雷。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">13:00</div><div class="tc"><div class="tt">克孜尔千佛洞 <span class="tag-inline tag-star">精华</span></div><div class="td">世界文化遗产。购含导览门票，重点参观壁画保存最好的洞窟。洞外雀离大寺遗址，僧侣曾多达万人。约2.5小时。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">16:00</div><div class="tc"><div class="tt">前往阿克苏（约140公里，约1.5小时）</div><div class="td">拜城→阿克苏，途经苹果之乡拜城。约17:30–18:00抵达阿克苏，入住休整，补充帕米尔段物资（零食、保温杯、防晒、现金）。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">20:30</div><div class="tc"><div class="tt">阿克苏晚餐</div><div class="td">推荐阿克苏核桃仁炒菜和羊肉抓饭。今晚早睡，明天460km长途。</div></div></div>
       </div></div>
     </div>
   </div>
@@ -725,30 +764,31 @@ footer .en{
   <!-- D4 -->
   <div id="a4"></div>
   <div class="chap">
-    <div class="cn">04</div>
+    <div class="cn-num">04</div>
     <div>
-      <div class="ct">Day 4 · 4月1日 周二（清明前夕）</div>
+      <div class="ct">Day 4 · 4月1日 周二</div>
       <div class="ch">喀什噶尔 · 西域最后的古城</div>
-      <div class="cd">喀什市 · 海拔约1300m · 车程约460km · 自由活动下午</div>
+      <div class="cd">喀什市 · 海拔约1300m · 车程约460km（实际约5.5小时）</div>
     </div>
   </div>
   <div class="lb"><div class="ld" style="background:var(--lapis-2)"></div>喀什噶尔 · 海拔1289m · 中国最西端的古城</div>
-  <div class="co co-l"><strong>边防证：</strong>前往帕米尔高原（塔县方向）需要办理边防证，在喀什公安局出入境管理处办理，携带身份证原件，当天或次日可取，免费。建议Day4下午抵喀什后立即去办理，避免耽误Day5行程。</div>
+  <div class="co co-r"><strong>⚠ 边防证：今天必须办</strong>，前往帕米尔高原（塔县方向）需要边防证，在喀什公安局出入境管理处办理，携带身份证原件，当天或次日可取，<strong>免费</strong>。抵达喀什后第一件事就去办，不办则无法进入塔县。</div>
+  <div class="co co-r"><strong>⚠ 车程时间修正：</strong>阿克苏→喀什约460km，南疆限速严格，加安检站候车，<strong>实际约5.5–6小时</strong>。建议08:00出发，约14:00–14:30抵达喀什。</div>
   <div class="days">
     <div class="dc open">
       <div class="dh" onclick="tog(this)">
         <div class="dl"><div class="dn2" style="color:var(--lapis)">Day 4</div><div class="dd">4月1日</div></div>
         <div class="dsep"></div>
         <div class="dtitle">阿克苏 → 喀什 · 老城初探 · 办理边防证</div>
-        <div class="dbadge badge-warn">办边防证</div>
+        <div class="dbadge badge-warn">⚠ 今日办边防证</div>
         <div class="dtog">+</div>
       </div>
       <div class="db"><div class="tl">
-        <div class="tli"><div class="tdot dl2"></div><div class="ttime">08:00</div><div class="tc"><div class="tt">阿克苏出发，G3012高速向喀什（约4.5小时）</div><div class="td">全程460公里高速，沿途视野开阔。约13:00抵达喀什，先入住酒店。</div></div></div>
-        <div class="tli"><div class="tdot dl2"></div><div class="ttime">13:30</div><div class="tc"><div class="tt">立即前往办理边防证 <span class="tag-inline tag-warn">必须今天办</span></div><div class="td">喀什市公安局出入境管理处（市区内），携带身份证原件，两人各自办理，当场或次日取证，免费。不办则无法进入塔县（帕米尔高原区域）。</div></div></div>
-        <div class="tli"><div class="tdot dl2"></div><div class="ttime">15:00</div><div class="tc"><div class="tt">喀什噶尔老城漫步 <span class="tag-inline tag-star">精华</span></div><div class="td">喀什老城是中国保存最完整的伊斯兰风格古城，所有道路通往艾提尕尔清真寺。高低错落的土木建筑，迷宫般的街巷，百年老茶馆（《追风筝的人》取景地）。不需要地图，随意走进巷子就有惊喜。</div></div></div>
-        <div class="tli"><div class="tdot dl2"></div><div class="ttime">17:30</div><div class="tc"><div class="tt">艾提尕尔清真寺（外观+广场）</div><div class="td">新疆最大清真寺，黄色外墙标志性极强。傍晚广场上有当地居民聚集，人文氛围浓郁。可入内参观（收费约30元），注意着装。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">19:30</div><div class="tc"><div class="tt">汗巴扎夜市觅食</div><div class="td">清真寺对面，喀什最热闹的夜市。烤全羊（提前预订）、烤羊排、抓饭、切糕（认准有正规标价的摊位）、石榴汁。今晚早睡，明天进帕米尔。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">08:00</div><div class="tc"><div class="tt">阿克苏出发，G3012高速向喀什</div><div class="td">全程460公里高速，沿途视野开阔。沿途安检站耐心配合。预计14:00–14:30抵达喀什。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">14:30</div><div class="tc"><div class="tt">立即前往办理边防证 <span class="tag-inline tag-warn">必须今天办</span></div><div class="td">喀什市公安局出入境管理处（市区内），携带身份证原件，两人各自办理，当场或次日取证，免费。不办则无法进入塔县（帕米尔高原区域）。办完顺便把后天出发需要的物资在喀什超市补齐。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">16:00</div><div class="tc"><div class="tt">喀什噶尔老城漫步 <span class="tag-inline tag-star">精华</span></div><div class="td">喀什老城是中国保存最完整的伊斯兰风格古城，高低错落的土木建筑，迷宫般的街巷，百年老茶馆。不需要地图，随意走进巷子就有惊喜。按新疆时间此时相当于下午两点，正是老城最有活力的时段。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">18:30</div><div class="tc"><div class="tt">艾提尕尔清真寺（外观+广场）</div><div class="td">新疆最大清真寺，黄色外墙标志性极强。傍晚广场上当地居民聚集，人文氛围浓郁。可入内参观（约30元），注意着装。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">21:00</div><div class="tc"><div class="tt">汗巴扎夜市觅食</div><div class="td">清真寺对面，烤全羊（提前预订）、烤羊排、抓饭、石榴汁。今晚早睡，明天进帕米尔。</div></div></div>
       </div></div>
     </div>
   </div>
@@ -758,15 +798,15 @@ footer .en{
   <!-- D5 -->
   <div id="a5"></div>
   <div class="chap">
-    <div class="cn">05</div>
+    <div class="cn-num">05</div>
     <div>
       <div class="ct">Day 5 · 4月2日 周三</div>
       <div class="ch">帕米尔高原 · 慕士塔格峰 · 塔县</div>
-      <div class="cd">喀什→白沙湖→喀拉库勒湖→塔县 · 车程约290km · 世界屋脊</div>
+      <div class="cd">喀什→白沙湖→喀拉库勒湖→塔县 · 车程约290km · 海拔逐步攀升</div>
     </div>
   </div>
   <div class="lb"><div class="ld" style="background:var(--jade-2)"></div>帕米尔高原 · 白沙湖2400m · 喀拉库勒湖3600m · 塔县3000m</div>
-  <div class="co co-j"><strong>高原适应：</strong>今天是全程海拔变化最大的一天，从喀什1300m升至喀拉库勒湖3600m，但上升是渐进的（沿喀喇昆仑公路缓慢爬升），且全程以乘车为主，下车步行不剧烈，大多数人不会出现高反。塔县住宿3000m，夜间可能轻微头疼，提前备好布洛芬和葡萄糖液。</div>
+  <div class="co co-j"><strong>高原适应节奏：</strong>今天从喀什1300m缓慢攀升至喀拉库勒湖3600m（全程车行，渐进爬升），当晚住塔县3000m。大多数人不会严重高反，但夜间可能出现轻微头疼、睡眠浅。提前备好布洛芬和葡萄糖液，到塔县后<strong>不要剧烈运动，多喝水，早睡</strong>，为 Day6 全天最重要的行程蓄力。</div>
   <div class="days">
     <div class="dc open">
       <div class="dh" onclick="tog(this)">
@@ -777,12 +817,12 @@ footer .en{
         <div class="dtog">+</div>
       </div>
       <div class="db"><div class="tl">
-        <div class="tli"><div class="tdot dj"></div><div class="ttime">07:30</div><div class="tc"><div class="tt">喀什出发，沿喀喇昆仑公路南行</div><div class="td">喀喇昆仑公路（中巴友谊公路，G314），是中巴两国合作修建的高原公路，全程沿山谷缓慢爬升，风景壮阔。检查站记得出示边防证。</div></div></div>
-        <div class="tli"><div class="tdot dj"></div><div class="ttime">10:00</div><div class="tc"><div class="tt">白沙湖 <span class="tag-inline tag-star">精华</span></div><div class="td">海拔约2400m，白色沙山与高原蓝湖并存，地貌极为罕见——沙漠与高原湖泊在同一画面。可沙山上俯瞰，也可湖边漫步。约1.5小时。</div></div></div>
-        <div class="tli"><div class="tdot dj"></div><div class="ttime">12:30</div><div class="tc"><div class="tt">喀拉库勒湖 · 仰望昆仑三雄 <span class="tag-inline tag-star">精华</span></div><div class="td">海拔3600m，翠蓝的高原冰川湖，湖面倒映"冰山之父"慕士塔格峰（7546m）。天气晴好时三座超7000m雪峰同时入画，是帕米尔最震撼的景观。约2小时。</div></div></div>
-        <div class="tli"><div class="tdot dj"></div><div class="ttime">15:30</div><div class="tc"><div class="tt">前往塔县（约1小时）</div><div class="td">塔什库尔干县，西北边境高原小城，海拔3000m，主要居民为塔吉克族——中国唯一的原生白种人，蓝眼睛高鼻梁，传统上路不拾遗，夜不闭户。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">17:00</div><div class="tc"><div class="tt">塔县石头城遗址（可选）</div><div class="td">千年古城遗址，汉代曾在此驻兵，视野极开阔，可远眺帕米尔群山。夕阳将雪山染成金红，约1小时游览。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">19:00</div><div class="tc"><div class="tt">塔县晚餐：牦牛肉火锅</div><div class="td">塔县最著名的美食，牦牛肉细腻鲜嫩，高原涮锅暖身极好。几家本地餐馆需提前预订。今晚住塔县（2晚连住）。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">08:00</div><div class="tc"><div class="tt">喀什出发，沿喀喇昆仑公路（G314）南行</div><div class="td">检查站出示边防证（第一次使用）。公路沿山谷缓慢爬升，风景壮阔，不赶时间。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">10:30</div><div class="tc"><div class="tt">白沙湖 <span class="tag-inline tag-star">精华</span></div><div class="td">海拔约2400m，白色沙山与高原蓝湖并存，地貌极为罕见。可沙山上俯瞰，也可湖边漫步。约1.5小时，门票约35元/人。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">13:00</div><div class="tc"><div class="tt">喀拉库勒湖 · 仰望昆仑三雄 <span class="tag-inline tag-star">精华</span></div><div class="td">海拔3600m，翠蓝冰川湖倒映"冰山之父"慕士塔格峰（7546m）。天气晴好时三座超7000m雪峰同时入画，是帕米尔最震撼的景观。<strong>此处3600m，在湖边活动要放慢步速</strong>，约1.5小时，门票约50元/人。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">15:30</div><div class="tc"><div class="tt">前往塔县（约1小时）</div><div class="td">塔什库尔干县，西北边境高原小城，海拔3000m，主要居民为塔吉克族——蓝眼睛高鼻梁，传统上路不拾遗。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">17:00</div><div class="tc"><div class="tt">抵达塔县入住，休整</div><div class="td"><strong>不去石头城（性价比低，游客评价差）</strong>，直接入住休息。高原上第一个夜晚最重要的是好好休息，为明天全程精华日蓄力。可在酒店附近短暂散步适应。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">19:30</div><div class="tc"><div class="tt">塔县晚餐：牦牛肉火锅（提前预订）</div><div class="td">塔县最著名的美食，牦牛肉细腻鲜嫩，高原涮锅暖身极好。<strong>晚餐后立即回房休息，切勿熬夜</strong>，明天是全程最值得期待的一天。</div></div></div>
       </div></div>
     </div>
   </div>
@@ -792,15 +832,37 @@ footer .en{
   <!-- D6 -->
   <div id="a6"></div>
   <div class="chap">
-    <div class="cn">06</div>
+    <div class="cn-num">06</div>
     <div>
-      <div class="ct">Day 6 · 4月3日 周四</div>
+      <div class="ct">Day 6 · 4月3日 周四 ⭐ 全程最佳日</div>
       <div class="ch">塔莎古道 · 班迪尔蓝湖 · 塔吉克族杏花村</div>
-      <div class="cd">塔县周边 · 塔莎古道 · 杏花村海拔2200m · 全天精华日</div>
+      <div class="cd">塔县周边 · 杏花村海拔2200m · 全天精华，不赶时间</div>
     </div>
   </div>
-  <div class="lb"><div class="ld" style="background:var(--jade-2)"></div>塔什库尔干县周边 · 杏花村海拔2200m</div>
-  <div class="co co-j"><strong>今天是整个行程最值得期待的一天：</strong>塔吉克族杏花村4月初盛花期，昆仑山+帕米尔河谷+白色杏花+塔吉克族土房+雪山倒影，这个场景在全国任何其他地方都无法复制。建议全天放慢节奏，不赶时间，在村子里多待。</div>
+  <div class="lb"><div class="ld" style="background:var(--jade-2)"></div>塔什库尔干县 · 大同乡杏花村 · 海拔2200m</div>
+  <div class="co co-j"><strong>今天是整个行程最值得期待的一天：</strong>塔吉克族杏花村4月初盛花期，昆仑山+帕米尔河谷+白色杏花+塔吉克族土房+雪山倒影，这个场景在全国任何其他地方都无法复制。放慢节奏，不赶时间。</div>
+  <div class="co co-r"><strong>⚠ 花期提示：</strong>4月3日处于盛花期末尾，出发前务必查询"魅力帕米尔"抖音号确认实时花情。若花期提前，可在 Day5 下午先进村看一眼，Day6 再深度游览。</div>
+
+  <!-- 方案A/B 说明 -->
+  <div style="background:#fff;border:0.5px solid var(--dust-3);border-radius:10px;overflow:hidden;margin:10px 0 14px;">
+    <div style="padding:13px 18px 10px;border-bottom:0.5px solid var(--dust-2);">
+      <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--jade);font-weight:500;margin-bottom:8px;">🚗 进村交通：两套方案</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div style="background:var(--jade-l);border-radius:8px;padding:12px 14px;border-left:3px solid var(--jade-2);">
+          <div style="font-size:12px;font-weight:500;color:var(--jade);margin-bottom:6px;">✅ 方案 A（优先）：自驾 SUV 直接开进</div>
+          <div style="font-size:12px;color:var(--ink-3);line-height:1.7;">G314国道、盘龙古道、塔莎古道主路<strong>全程无需换车</strong>，均已铺装。仅大同乡腹地土路段路况差（坑洼碎石），高底盘SUV（哈弗/RAV4/汉兰达等，离地间隙≥180mm）完全可以应对。<br><br><strong>判断时机：</strong>进土路后行驶约15分钟，感觉刮底盘风险可控就继续；觉得超出预期立刻停车原路退出，转方案B完全来得及。<br><br><strong>注意：</strong>路窄，会车礼让，不要赶时间。</div>
+        </div>
+        <div style="background:var(--ochre-l);border-radius:8px;padding:12px 14px;border-left:3px solid var(--ochre-2);">
+          <div style="font-size:12px;font-weight:500;color:var(--ochre);margin-bottom:6px;">🅱 方案 B（现场备用）：塔县当地司机</div>
+          <div style="font-size:12px;color:var(--ink-3);line-height:1.7;">自驾途中觉得路况超出预期，立刻停车退回塔县，<strong>无需提前预订</strong>，当天早晨现找即可。<br><br><strong>找法：</strong>向酒店前台说"要去大同乡杏花村"，或在县城主街找停着等客的越野车直接搭话，说"大同乡杏花村往返多少钱"，花期旺季司机充足。<br><br><strong>参考费用：</strong>往返约400–600元（短途半天，现场议价），确认好返回时间再出发。</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:10px 18px;background:var(--crimson-l);">
+      <div style="font-size:12px;color:var(--crimson);line-height:1.6;"><strong>⚠ 两套方案共同注意：</strong>①进大同乡检查站会<strong>暂扣边防证</strong>，出村时记得去取回，两人证件都要带；②出发前在塔县<strong>加满油</strong>，沿途便民油站可能不开门或没油。</div>
+    </div>
+  </div>
+
   <div class="days">
     <div class="dc open">
       <div class="dh" onclick="tog(this)">
@@ -810,11 +872,13 @@ footer .en{
         <div class="dtog">+</div>
       </div>
       <div class="db"><div class="tl">
-        <div class="tli"><div class="tdot dj"></div><div class="ttime">08:30</div><div class="tc"><div class="tt">换乘小车（7座商务），沿塔莎古道出发</div><div class="td">塔莎古道是玄奘取经西行时走过的古道，沿塔什库尔干河蜿蜒深入昆仑山腹地。路窄，须换乘小型车辆（可在塔县租约，约400–600元/天含司机）。</div></div></div>
-        <div class="tli"><div class="tdot dj"></div><div class="ttime">09:30</div><div class="tc"><div class="tt">班迪尔蓝湖 <span class="tag-inline tag-star">精华</span></div><div class="td">翡翠绿的高原冰川融水湖，湖色介于翠绿与宝蓝之间，与两侧雪山倒影相映。湖边野花（若天气好）和积雪，极度治愈，约1.5小时。</div></div></div>
-        <div class="tli"><div class="tdot dj"></div><div class="ttime">11:30</div><div class="tc"><div class="tt">塔吉克族杏花村 <span class="tag-inline tag-star">全程最佳</span></div><div class="td">塔什库尔干河谷沿岸的古朴村落，4月初杏花盛开，花期通常10–14天。村内石砌土房，炊烟袅袅，蓝眼睛的塔吉克族孩童，杏花与昆仑雪山同框——这是帕米尔最难忘的画面，没有之一。多走几个村子，不要只待入口。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">14:00</div><div class="tc"><div class="tt">村内午餐（塔吉克族家庭）</div><div class="td">可以拜访愿意接待的塔吉克族家庭，主人通常会端出奶茶、馕和酸奶。塔吉克族有亲吻礼的传统（贴面颊），接受即接受，不接受礼貌点头也可。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">16:00</div><div class="tc"><div class="tt">返回塔县，傍晚自由活动</div><div class="td">在塔县街头随意溜达，买一些塔吉克族手工银饰（工艺精湛，价格合理）。明天盘龙古道需要早出发。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">07:30</div><div class="tc"><div class="tt">出发前：塔县加满油</div><div class="td">沿途只有一个"库科西鲁克"便民油站，且经常不开门，务必提前在塔县加满。检查SUV底盘和胎压。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">08:30</div><div class="tc"><div class="tt">自驾沿塔莎古道出发（方案A）</div><div class="td">塔莎古道是玄奘取经走过的古道，沿塔什库尔干河深入昆仑山腹地。进大同乡检查站配合登记，<strong>边防证会被暂扣，出村记得取回</strong>。开上土路约15分钟后评估路况，不行就退出转方案B。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">09:30</div><div class="tc"><div class="tt">班迪尔蓝湖 <span class="tag-inline tag-star">精华</span></div><div class="td">翡翠绿的高原冰川融水湖，湖色介于翠绿与宝蓝之间，两侧雪山倒影。湖边信号极弱，提前下载好离线地图。约1.5小时。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">11:30</div><div class="tc"><div class="tt">塔吉克族杏花村 <span class="tag-inline tag-star">全程最佳</span></div><div class="td">4月初杏花盛开，石砌土房、炊烟袅袅、蓝眼睛的塔吉克族孩童，杏花与昆仑雪山同框。<strong>多走几个村子</strong>，不要只待入口的打卡点，深入村子才是最真实的画面。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">14:00</div><div class="tc"><div class="tt">村内午餐（塔吉克族家庭）</div><div class="td">可拜访愿意接待的塔吉克族家庭，主人通常端出奶茶、馕和酸奶。放慢节奏，多停留，这才是帕米尔旅行的精髓。</div></div></div>
+        <div class="tli"><div class="tdot dr"></div><div class="ttime">16:00</div><div class="tc"><div class="tt">⚠ 出村：检查站取回边防证</div><div class="td">出村时务必停在检查站取回两人边防证，别空手出来。后续盘龙古道和返喀什途中还要用到。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">16:30</div><div class="tc"><div class="tt">返回塔县，傍晚休整</div><div class="td">在塔县街头随意逛逛，买塔吉克族手工银饰（工艺精湛，价格合理）。明天盘龙古道10:00才开放，可以睡个好觉，不用特别早起。</div></div></div>
       </div></div>
     </div>
   </div>
@@ -824,30 +888,31 @@ footer .en{
   <!-- D7 -->
   <div id="a7"></div>
   <div class="chap">
-    <div class="cn">07</div>
+    <div class="cn-num">07</div>
     <div>
       <div class="ct">Day 7 · 4月4日 周五（清明节）</div>
       <div class="ch">盘龙古道 · 塔合曼湿地 · 返喀什</div>
-      <div class="cd">塔县→盘龙古道→塔合曼湿地→喀什 · 车程约400km</div>
+      <div class="cd">塔县→盘龙古道→塔合曼湿地→喀什 · 车程约400km · 注意：盘龙古道海拔4200m</div>
     </div>
   </div>
-  <div class="lb"><div class="ld" style="background:var(--jade-2)"></div>塔县→喀什 · 盘龙古道顶约3600m（车行不下车）</div>
-  <div class="co co-o"><strong>盘龙古道注意：</strong>盘龙古道是喀喇昆仑公路的网红路段，连续360度发卡弯从谷底盘旋至山顶，俯瞰时视觉极震撼。但海拔较高（顶部约3600m）且弯道极多，若遇降雪封路，备选游玩慕士塔格冰川公园。清明节当天道路可能有车辆增多，早出发避堵。</div>
+  <div class="lb"><div class="ld" style="background:var(--sand)"></div>盘龙古道顶部海拔4200m · 塔合曼湿地2900m · 喀什1300m</div>
+  <div class="co co-r"><strong>⚠ 盘龙古道两个关键信息：</strong>①<strong>每日10:00开放，19:00关闭</strong>，早于10:00出发只会在山脚白等；②<strong>顶部真实海拔4200m</strong>（非原计划所写3600m），2024年在此被救助高反游客超过2000人次——即便留在车内，4200m空气含氧量依然低，有高反经历或昨晚睡眠极差者请慎重评估。封路备选：慕士塔格冰川公园同等精彩。</div>
   <div class="days">
     <div class="dc open">
       <div class="dh" onclick="tog(this)">
         <div class="dl"><div class="dn2" style="color:var(--jade)">Day 7</div><div class="dd">4月4日 清明</div></div>
         <div class="dsep"></div>
-        <div class="dtitle">塔县 → 盘龙古道 → 塔合曼湿地 → 树洞公路 → 喀什</div>
+        <div class="dtitle">塔县 → 盘龙古道（10:00开放）→ 塔合曼湿地 → 树洞公路 → 喀什</div>
         <div class="dbadge badge-alt">封路备选：冰川公园</div>
         <div class="dtog">+</div>
       </div>
       <div class="db"><div class="tl">
-        <div class="tli"><div class="tdot dj"></div><div class="ttime">08:00</div><div class="tc"><div class="tt">塔县出发，穿越盘龙古道 <span class="tag-inline tag-star">网红路段</span></div><div class="td">从山谷驶入盘山公路，连续发卡弯直通山顶。宣传语"走过人生所有的弯路，从此尽是坦途"。在山顶观景台停留拍照（勿长时间停留，海拔高），约1小时。</div></div></div>
-        <div class="tli"><div class="tdot dj"></div><div class="ttime">10:00</div><div class="tc"><div class="tt">塔合曼湿地</div><div class="td">慕士塔格峰冰川融水孕育的高原湿地草原，牦牛在草地上漫步，背后是7546m的慕士塔格峰。4月初草场开始返绿，早春色调清淡而辽阔。</div></div></div>
-        <div class="tli"><div class="tdot dj"></div><div class="ttime">11:30</div><div class="tc"><div class="tt">树洞公路</div><div class="td">延绵数公里的公路两侧，高原特有景观树顶端枝条交织连接，形成自然"树洞隧道"。缓速穿越，从车窗感受绿色光影变化。</div></div></div>
-        <div class="tli"><div class="tdot dl2"></div><div class="ttime">13:00</div><div class="tc"><div class="tt">向喀什方向返行</div><div class="td">喀喇昆仑公路沿线限速多，下山段约4小时。沿途检查站出示边防证。约17:30前后抵达喀什，入住，在老城附近吃晚饭。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">19:00</div><div class="tc"><div class="tt">喀什老城夜晚</div><div class="td">夜晚的喀什老城灯光昏黄，街道比白天更安静，偶有老人坐在门口喝茶，氛围极好。找一家屋顶露台餐厅，边看老城夜景边吃饭。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">08:30</div><div class="tc"><div class="tt">塔县出发，向盘龙古道方向行驶</div><div class="td">从塔县至盘龙古道入口约30分钟车程，约09:00抵达山脚，等候10:00准时开放。利用等候时间在山脚看雪山、喝热茶、拍照，不浪费。</div></div></div>
+        <div class="tli"><div class="tdot ds2"></div><div class="ttime">10:00</div><div class="tc"><div class="tt">穿越盘龙古道 <span class="tag-inline tag-star">网红路段</span></div><div class="td">连续360°发卡弯从谷底盘旋至山顶（4200m），俯瞰时视觉极震撼。<strong>山顶观景台停留不超过15分钟</strong>（4200m高原，长时间停留易头晕）；身体有任何不适立即返程，不要硬撑。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">11:30</div><div class="tc"><div class="tt">塔合曼湿地</div><div class="td">慕士塔格峰冰川融水孕育的高原草原，牦牛漫步，背后是7546m雪峰。4月初草场开始返绿，早春色调清淡辽阔，约45分钟。</div></div></div>
+        <div class="tli"><div class="tdot dj"></div><div class="ttime">12:30</div><div class="tc"><div class="tt">树洞公路</div><div class="td">高原特有景观树顶端枝条交织成自然"树洞隧道"，缓速穿越，从车窗感受绿色光影。约20分钟。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">13:00</div><div class="tc"><div class="tt">向喀什返行（约4–4.5小时）</div><div class="td">喀喇昆仑公路限速，沿途检查站出示边防证。预计17:30–18:00抵达喀什。清明节节假日注意道路车流略多，耐心驾驶。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">20:00</div><div class="tc"><div class="tt">喀什老城夜晚</div><div class="td">夜晚的喀什老城灯光昏黄，找一家屋顶露台餐厅，边看老城夜景边吃饭，犒劳帕米尔段的体力消耗。</div></div></div>
       </div></div>
     </div>
   </div>
@@ -857,15 +922,15 @@ footer .en{
   <!-- D8 -->
   <div id="a8"></div>
   <div class="chap">
-    <div class="cn">08</div>
+    <div class="cn-num">08</div>
     <div>
       <div class="ct">Day 8 · 4月5日 周六</div>
       <div class="ch">喀什深度游 · 自由探索日</div>
-      <div class="cd">喀什市区 · 海拔1300m · 自由安排（原路线未含）</div>
+      <div class="cd">喀什市区 · 海拔1300m · 原路线未含，新增整天</div>
     </div>
   </div>
   <div class="lb"><div class="ld" style="background:var(--lapis-2)"></div>喀什噶尔 · 新增深度游日</div>
-  <div class="co co-l"><strong>为什么要加这一天：</strong>原团队行程Day4只给了喀什半天，严重不够。喀什是中国最西端的古城，2000年丝绸之路历史积淀，高台民居、老城街巷、香妃墓、国际大巴扎，每处都值得深度游览。自由行多出这一整天，是对喀什最大的尊重。</div>
+  <div class="co co-l"><strong>为什么要加这一天：</strong>原团队行程只给了喀什半天，严重不够。2000年丝绸之路历史积淀，高台民居、老城街巷、香妃墓、国际大巴扎，每处都值得深度游览。另外明天周日的牛羊大巴扎也需要今天提前了解位置。</div>
   <div class="days">
     <div class="dc open">
       <div class="dh" onclick="tog(this)">
@@ -875,12 +940,12 @@ footer .en{
         <div class="dtog">+</div>
       </div>
       <div class="db"><div class="tl">
-        <div class="tli"><div class="tdot dl2"></div><div class="ttime">08:30</div><div class="tc"><div class="tt">高台民居（吐曼河高崖）</div><div class="td">悬崖上的千年维吾尔族聚居地，土坯民居层叠而上，是喀什最具原始感的街区。居民世代在此生活，可进入庭院参观（礼貌询问），陶艺、铜器制作工坊散布其中。</div></div></div>
-        <div class="tli"><div class="tdot dl2"></div><div class="ttime">10:30</div><div class="tc"><div class="tt">香妃墓（阿帕克霍加麻扎）</div><div class="td">伊斯兰风格的皇家陵墓，埋葬了五代72口人，外墙绿色琉璃砖闪耀，穹顶优雅精美。香妃传说（乾隆妃子）使其更具传奇色彩，是喀什标志性建筑之一。</div></div></div>
-        <div class="tli"><div class="tdot dl2"></div><div class="ttime">13:00</div><div class="tc"><div class="tt">午餐：老城深处寻找本地馆子</div><div class="td">避开景区餐厅，随意走进老城小巷，找人多的本地小馆。烤包子（烤炉现烤，外酥里嫩）、拉条子（维吾尔族炒面）、甜瓜（反季节新疆甜瓜极甜）。</div></div></div>
-        <div class="tli"><div class="tdot dl2"></div><div class="ttime">14:30</div><div class="tc"><div class="tt">东湖公园 + 喀什国际大巴扎</div><div class="td">大巴扎是中亚最大的商品交易集市，每逢周日规模最大（明天是周日！早上可再来）。手工地毯、铜器、乐器（都塔尔）、香料、帽子应有尽有。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">17:00</div><div class="tc"><div class="tt">老城夕阳 + 百年老茶馆</div><div class="td">艾提尕尔清真寺旁的百年老茶馆，维吾尔族老人在此下棋、喝茶、聊天，场景如油画。点一壶砖茶，静静坐着观察，这是喀什最真实的日常。</div></div></div>
-        <div class="tli"><div class="tdot dw"></div><div class="ttime">20:00</div><div class="tc"><div class="tt">告别晚餐 · 烤全羊</div><div class="td">提前一天预订的烤全羊，是南疆之行最完美的句号。约300–500元/只，两人吃一只足够，可请酒店代订。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">09:30</div><div class="tc"><div class="tt">高台民居（吐曼河高崖）</div><div class="td">悬崖上的千年维吾尔族聚居地，土坯民居层叠而上，是喀什最具原始感的街区。陶艺、铜器制作工坊散布其中，礼貌进入庭院参观。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">11:30</div><div class="tc"><div class="tt">香妃墓（阿帕克霍加麻扎）</div><div class="td">伊斯兰风格皇家陵墓，绿色琉璃砖外墙，穹顶优雅精美。<strong>注意：门票已涨至198元/人</strong>（原计划30元严重低估），两人约400元，根据兴趣决定是否进入。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">13:30</div><div class="tc"><div class="tt">午餐：老城深处本地馆子</div><div class="td">避开景区餐厅，随意走进老城小巷找人多的本地小馆。烤包子（烤炉现烤，外酥里嫩）、拉条子、甜瓜。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">15:00</div><div class="tc"><div class="tt">喀什国际大巴扎</div><div class="td">中亚最大商品交易集市，手工地毯、铜器、乐器（都塔尔）、香料、帽子应有尽有。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">18:00</div><div class="tc"><div class="tt">老城夕阳 + 百年老茶馆</div><div class="td">艾提尕尔清真寺旁的百年老茶馆，维吾尔族老人在此下棋喝茶，场景如油画。点一壶砖茶静静坐着，是喀什最真实的日常。</div></div></div>
+        <div class="tli"><div class="tdot dw"></div><div class="ttime">21:00</div><div class="tc"><div class="tt">告别晚餐 · 烤全羊</div><div class="td">提前一天预订的烤全羊，约300–500元/只，两人一只足够。这是南疆之行最完美的句号。</div></div></div>
       </div></div>
     </div>
   </div>
@@ -890,7 +955,7 @@ footer .en{
   <!-- D9 -->
   <div id="a9"></div>
   <div class="chap">
-    <div class="cn">09</div>
+    <div class="cn-num">09</div>
     <div>
       <div class="ct">Day 9 · 4月6日 周日</div>
       <div class="ch">喀什 · 返程深圳</div>
@@ -902,12 +967,13 @@ footer .en{
       <div class="dh" onclick="tog(this)">
         <div class="dl"><div class="dn2" style="color:var(--ochre)">Day 9</div><div class="dd">4月6日</div></div>
         <div class="dsep"></div>
-        <div class="dtitle">喀什大巴扎早市 → 机场 → 深圳</div>
+        <div class="dtitle">牛羊大巴扎早市 → 机场 → 深圳</div>
         <div class="dtog">+</div>
       </div>
       <div class="db"><div class="tl">
-        <div class="tli"><div class="tdot dl2"></div><div class="ttime">08:00</div><div class="tc"><div class="tt">喀什国际大巴扎周日大集（可选）</div><div class="td">周日是大巴扎规模最大的一天，全疆各地商贩聚集，8:00–10:00最热闹。可最后淘一批南疆特产：和田玉小件、英吉沙小刀（托运）、昆仑山雪菊、葡萄干、杏干。</div></div></div>
-        <div class="tli"><div class="tdot do"></div><div class="ttime">中午</div><div class="tc"><div class="tt">喀什机场飞深圳</div><div class="td">喀什→深圳目前多为经乌鲁木齐/广州中转，全程约6–7小时。机场距市区约10公里，出租车约30–40元，30分钟。提前到达，安检时间预留充裕。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">09:00</div><div class="tc"><div class="tt">喀什牛羊大巴扎 <span class="tag-inline tag-star">强烈推荐</span></div><div class="td"><strong>周日才有</strong>，与国际大巴扎完全不同——全疆各地牧民赶着牛羊来这里交易，基本没有内地游客，没有商业化，完全真实原始的南疆市集。从市区打车约30元，8:00–10:00最热闹。这是喀什最能感受到真实人文的地方。</div></div></div>
+        <div class="tli"><div class="tdot dl2"></div><div class="ttime">10:30</div><div class="tc"><div class="tt">最后淘特产</div><div class="td">英吉沙小刀（需托运）、昆仑山雪菊、葡萄干、杏干。喀什机场距市区约10公里，打车约30元，30分钟。</div></div></div>
+        <div class="tli"><div class="tdot do"></div><div class="ttime">中午</div><div class="tc"><div class="tt">喀什机场飞深圳</div><div class="td">喀什→深圳多为经乌鲁木齐/广州中转，全程约6–7小时，傍晚可到家。机场安检时间预留充裕（至少提前2.5小时到达）。</div></div></div>
       </div></div>
     </div>
   </div>
@@ -915,23 +981,209 @@ footer .en{
 </div>
 </div>
 
+<!-- ═══ PANEL: 路线地图 ═══ -->
+<div id="p-map" class="panel">
+<div class="map-wrap">
+  <div class="sl">路线地图</div>
+  <p style="font-size:13px;color:var(--ink-3);margin-bottom:18px;line-height:1.7;">点击地图上的站点查看详情，或使用下方按钮按天高亮路线。路线按实际地理位置绘制（新疆南部区域）。</p>
+
+  <div class="map-container">
+    <div class="day-track" id="daytrack"></div>
+
+    <div class="map-svg-wrap" style="padding:10px 0 0;">
+      <svg id="routemap" viewBox="0 0 760 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <!-- terrain fill -->
+          <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f5f0e8"/>
+            <stop offset="100%" stop-color="#ece4d4"/>
+          </linearGradient>
+          <!-- mountain hatch -->
+          <pattern id="mtn" width="8" height="8" patternUnits="userSpaceOnUse">
+            <path d="M0 8 L4 0 L8 8" fill="none" stroke="#d8c8a8" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+
+        <!-- ── Background ── -->
+        <rect width="760" height="520" fill="url(#bgGrad)"/>
+
+        <!-- Taklamakan desert region -->
+        <ellipse cx="300" cy="130" rx="220" ry="95" fill="#ede0c4" opacity="0.6"/>
+        <text x="300" y="135" text-anchor="middle" font-size="10" fill="#b8a888" font-family="serif" font-style="italic">塔克拉玛干沙漠</text>
+
+        <!-- Pamir plateau -->
+        <ellipse cx="160" cy="370" rx="130" ry="90" fill="#d4e8e0" opacity="0.5"/>
+        <text x="148" y="420" text-anchor="middle" font-size="10" fill="#3e8860" font-family="serif" font-style="italic">帕米尔高原</text>
+
+        <!-- Kunlun range -->
+        <path d="M50 440 Q120 400 200 420 Q260 435 310 450 Q370 465 420 455" fill="none" stroke="#b8a888" stroke-width="1" opacity="0.5"/>
+        <text x="230" y="468" text-anchor="middle" font-size="9" fill="#9e8c6c" font-style="italic">昆仑山脉</text>
+
+        <!-- Tianshan hint -->
+        <path d="M300 50 Q420 30 560 55 Q640 65 720 45" fill="none" stroke="#b8a888" stroke-width="1" opacity="0.4"/>
+        <text x="510" y="38" text-anchor="middle" font-size="9" fill="#9e8c6c" font-style="italic">天山</text>
+
+        <!-- ── Route paths (drawn in segments, color-coded by zone) ── -->
+        <!-- 深圳→乌鲁木齐 (flight, dashed) -->
+        <line x1="620" y1="460" x2="560" y2="80" stroke="#b8a888" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+
+        <!-- 乌鲁木齐→库尔勒 -->
+        <path d="M560 80 Q530 130 490 160" fill="none" stroke="#b8a888" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+
+        <!-- D1→D2: 库尔勒→库车 (ochre road) -->
+        <path id="seg-d1d2" d="M490 160 Q460 175 430 185 Q400 195 375 200" fill="none" stroke="#d88040" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- D2→D3: 库车→红石林→阿克苏 -->
+        <path id="seg-d2d3" d="M375 200 Q355 215 330 222 Q300 228 270 230" fill="none" stroke="#d88040" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- D3→D4: 阿克苏→喀什 -->
+        <path id="seg-d3d4" d="M270 230 Q245 255 225 285 Q210 305 200 325" fill="none" stroke="#2e6898" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- D4→D5: 喀什→白沙湖→喀拉库勒湖→塔县 (KKH highway) -->
+        <path id="seg-d4d5" d="M200 325 Q188 345 178 362 Q168 378 160 395 Q152 410 148 428" fill="none" stroke="#3e8860" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- D5→D6: 塔县→杏花村 -->
+        <path id="seg-d5d6" d="M148 428 Q138 415 130 405 Q122 395 118 382" fill="none" stroke="#3e8860" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- D6→D7: 杏花村→盘龙古道→塔合曼→喀什 -->
+        <path id="seg-d6d7" d="M118 382 Q125 368 140 358 Q152 350 156 338 Q160 325 170 316 Q182 308 195 316 Q205 320 200 325" fill="none" stroke="#c89048" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- D7→D8: 已在喀什 -->
+        <!-- D8→D9: 喀什→深圳 flight -->
+        <path d="M200 325 Q350 310 490 350 Q560 380 620 460" fill="none" stroke="#b8a888" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.4"/>
+
+        <!-- ── Place labels (small, subtle) ── -->
+        <text x="340" y="218" font-size="8.5" fill="#9e8c6c" font-family="sans-serif">天山红石林/</text>
+        <text x="340" y="228" font-size="8.5" fill="#9e8c6c" font-family="sans-serif">克孜尔千佛洞</text>
+
+        <text x="167" y="348" font-size="8" fill="#3e8860" font-family="sans-serif">白沙湖</text>
+        <text x="155" y="372" font-size="8" fill="#3e8860" font-family="sans-serif">喀拉库勒湖</text>
+
+        <!-- River hint -->
+        <path d="M160 395 Q175 390 190 392 Q210 395 220 388" fill="none" stroke="#7aaac8" stroke-width="1" opacity="0.5"/>
+
+        <!-- ── Nodes ── -->
+        <!-- 深圳 -->
+        <g class="map-node" data-id="shenzhen">
+          <circle cx="620" cy="460" r="6" fill="#9e8c6c" stroke="#fff" stroke-width="1.5"/>
+          <text x="634" y="455" font-size="11" fill="#6e5c3c" font-family="sans-serif" font-weight="500">深圳</text>
+          <text x="634" y="466" font-size="9" fill="#9e8c6c" font-family="sans-serif">出发/返程</text>
+        </g>
+
+        <!-- 乌鲁木齐 -->
+        <g class="map-node" data-id="urumqi">
+          <circle cx="560" cy="80" r="5" fill="#9e8c6c" stroke="#fff" stroke-width="1.5"/>
+          <text x="572" y="76" font-size="10" fill="#6e5c3c" font-family="sans-serif">乌鲁木齐</text>
+          <text x="572" y="87" font-size="9" fill="#9e8c6c" font-family="sans-serif">中转</text>
+        </g>
+
+        <!-- D1: 库尔勒 -->
+        <g class="map-node" data-id="korla" data-day="1">
+          <circle cx="490" cy="160" r="8" fill="#d88040" stroke="#fff" stroke-width="2"/>
+          <text x="502" y="156" font-size="11" fill="#3a2c18" font-family="sans-serif" font-weight="500">库尔勒</text>
+          <text x="502" y="167" font-size="9" fill="#9e8c6c">D1</text>
+        </g>
+
+        <!-- D2: 库车 -->
+        <g class="map-node" data-id="kuqa" data-day="2">
+          <circle cx="375" cy="200" r="8" fill="#d88040" stroke="#fff" stroke-width="2"/>
+          <text x="387" y="196" font-size="11" fill="#3a2c18" font-family="sans-serif" font-weight="500">库车</text>
+          <text x="387" y="207" font-size="9" fill="#9e8c6c">D2</text>
+        </g>
+
+        <!-- D3: 阿克苏 -->
+        <g class="map-node" data-id="aksu" data-day="3">
+          <circle cx="270" cy="230" r="8" fill="#d88040" stroke="#fff" stroke-width="2"/>
+          <text x="282" y="226" font-size="11" fill="#3a2c18" font-family="sans-serif" font-weight="500">阿克苏</text>
+          <text x="282" y="237" font-size="9" fill="#9e8c6c">D3</text>
+        </g>
+
+        <!-- D4/D8: 喀什 -->
+        <g class="map-node" data-id="kashgar" data-day="4">
+          <circle cx="200" cy="325" r="10" fill="#2e6898" stroke="#fff" stroke-width="2.5"/>
+          <text x="215" y="320" font-size="12" fill="#1e4878" font-family="sans-serif" font-weight="600">喀什</text>
+          <text x="215" y="333" font-size="9" fill="#9e8c6c">D4 / D7–D9</text>
+        </g>
+
+        <!-- D5: 塔县 -->
+        <g class="map-node" data-id="tashkurgan" data-day="5">
+          <circle cx="148" cy="428" r="8" fill="#3e8860" stroke="#fff" stroke-width="2"/>
+          <text x="98" y="424" font-size="11" fill="#2a6848" font-family="sans-serif" font-weight="500">塔县</text>
+          <text x="98" y="435" font-size="9" fill="#9e8c6c">D5–D6</text>
+        </g>
+
+        <!-- D6: 杏花村 -->
+        <g class="map-node" data-id="apricot" data-day="6">
+          <circle cx="118" cy="382" r="8" fill="#3e8860" stroke="#fff" stroke-width="2"/>
+          <text x="55" y="378" font-size="11" fill="#2a6848" font-family="sans-serif" font-weight="500">杏花村</text>
+          <text x="55" y="389" font-size="9" fill="#9e8c6c">D6 ⭐</text>
+        </g>
+
+        <!-- D7: 盘龙古道 -->
+        <g class="map-node" data-id="panlong" data-day="7">
+          <circle cx="156" cy="338" r="8" fill="#c89048" stroke="#fff" stroke-width="2"/>
+          <text x="165" y="333" font-size="11" fill="#6e3010" font-family="sans-serif" font-weight="500">盘龙古道</text>
+          <text x="165" y="344" font-size="9" fill="#9e8c6c">D7 · 4200m⚠</text>
+        </g>
+
+        <!-- altitude labels for pamirs -->
+        <text x="175" y="362" font-size="8" fill="#7aaac8" font-family="sans-serif">3600m</text>
+        <text x="142" y="442" font-size="8" fill="#3e8860" font-family="sans-serif">3000m</text>
+
+        <!-- compass -->
+        <g transform="translate(710,60)">
+          <circle r="18" fill="rgba(242,232,216,0.8)" stroke="#d8c8a8" stroke-width="0.5"/>
+          <text y="-6" text-anchor="middle" font-size="9" fill="#6e5c3c" font-weight="500">N</text>
+          <line y1="0" y2="-12" stroke="#b86420" stroke-width="1.5"/>
+          <line y1="0" y2="12" stroke="#b8a888" stroke-width="1"/>
+          <circle r="2" fill="#b86420"/>
+        </g>
+
+        <!-- scale bar -->
+        <g transform="translate(590,490)">
+          <line x1="0" y1="0" x2="100" y2="0" stroke="#b8a888" stroke-width="1"/>
+          <line x1="0" y1="-3" x2="0" y2="3" stroke="#b8a888" stroke-width="1"/>
+          <line x1="100" y1="-3" x2="100" y2="3" stroke="#b8a888" stroke-width="1"/>
+          <text x="50" y="-6" text-anchor="middle" font-size="8" fill="#9e8c6c">约500km</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- tooltip -->
+    <div class="map-tooltip" id="mtt"></div>
+
+    <div class="map-legend">
+      <div class="ml-item"><div class="ml-dot" style="background:var(--ochre-2)"></div>河谷低地（D1–D3）</div>
+      <div class="ml-item"><div class="ml-dot" style="background:var(--lapis-2)"></div>喀什（D4/D7–D9）</div>
+      <div class="ml-item"><div class="ml-dot" style="background:var(--jade-2)"></div>帕米尔高原（D5–D6）</div>
+      <div class="ml-item"><div class="ml-dot" style="background:var(--sand)"></div>盘龙古道 4200m（D7）</div>
+      <div class="ml-item"><svg width="24" height="8"><line x1="0" y1="4" x2="24" y2="4" stroke="#b8a888" stroke-width="1.5" stroke-dasharray="5,3"/></svg>飞行段</div>
+    </div>
+  </div>
+</div>
+</div>
+
 <!-- ═══ PANEL: 实用信息 ═══ -->
 <div id="p-pr" class="panel">
 <div class="page">
 
-  <div class="sl">费用估算（两人合计）</div>
+  <div class="sl">费用估算（两人合计，已修正）</div>
   <div class="bwrap">
     <table class="btbl">
       <thead><tr><th>项目</th><th>说明</th><th>两人合计（元）</th></tr></thead>
       <tbody>
         <tr><td>✈️ 机票</td><td>深圳→乌鲁木齐→库尔勒（去程）+ 喀什→深圳（返程经中转）；提前1月以上购</td><td class="amt">3,000–5,500</td></tr>
-        <tr><td>🚗 租车/包车</td><td>库尔勒取SUV，库车/阿克苏段自驾；帕米尔段（D5–D7）须换小型商务车（当地租含司机约500元/天×3天）；喀什段可打车</td><td class="amt">2,500–4,200</td></tr>
-        <tr><td>🏨 住宿（8晚）</td><td>库尔勒/库车/阿克苏/喀什4钻酒店约250–400元/晚；塔县3钻约200–280元/晚×2；共8晚</td><td class="amt">2,000–3,400</td></tr>
-        <tr><td>🎫 景区门票</td><td>天山大峡谷约85/人；克孜尔千佛洞约80/人（含讲解）；白沙湖约35/人；喀拉库勒湖约50/人；香妃墓约30/人；高台民居约30/人；其他</td><td class="amt">700–1,100</td></tr>
+        <tr><td>🚗 租车/包车</td><td>库尔勒取SUV自驾至喀什；帕米尔段（D5–D7）须换小型商务车（当地租含司机约500元/天×3天）；喀什段打车</td><td class="amt">2,500–4,200</td></tr>
+        <tr><td>🏨 住宿（8晚）</td><td>库尔勒/库车/阿克苏/喀什4钻酒店约250–400元/晚；塔县3钻约200–280元/晚×2</td><td class="amt">2,000–3,400</td></tr>
+        <tr><td>🎫 景区门票</td><td>天山大峡谷85/人；克孜尔千佛洞80/人（含讲解）；白沙湖35/人；喀拉库勒湖50/人；<strong>香妃墓198/人（已修正，原30元已过期）</strong>；高台民居30/人等</td><td class="amt">1,050–1,400</td></tr>
         <tr><td>🍖 餐饮（9天）</td><td>南疆物价较低，人均40–80元/正餐；烤全羊约400元/只；牦牛肉火锅约150元/人</td><td class="amt">1,400–2,500</td></tr>
         <tr><td>⛽ 油费</td><td>全程自驾约1400公里，SUV百公里约10L，南疆92号汽油约7.5元/L</td><td class="amt">1,050–1,200</td></tr>
-        <tr><td>🛍️ 购物</td><td>塔吉克族银饰、和田玉小件、英吉沙小刀、昆仑雪菊、干果</td><td class="amt">500–3,000</td></tr>
-        <tr class="tot"><td colspan="2"><strong>总计估算</strong></td><td class="amt"><strong>11,150–20,900</strong></td></tr>
+        <tr><td>🛍️ 购物</td><td>塔吉克族银饰、和田玉小件、英吉沙小刀（托运）、昆仑雪菊、干果</td><td class="amt">500–3,000</td></tr>
+        <tr class="tot"><td colspan="2"><strong>总计估算（门票已更正）</strong></td><td class="amt"><strong>11,500–21,200</strong></td></tr>
       </tbody>
     </table>
   </div>
@@ -945,24 +1197,22 @@ footer .en{
       <div class="pi">羽绒服（塔县夜间必须）</div>
       <div class="pi">防风冲锋衣</div>
       <div class="pi">抓绒中层</div>
-      <div class="pi">保暖手套</div>
+      <div class="pi">保暖手套+帽子</div>
       <div class="pi">厚袜×3双</div>
-      <div class="pi">帽子（帕米尔风大）</div>
     </div>
     <div>
       <div class="pgt">高原应对</div>
       <div class="pi">葡萄糖液×10支</div>
       <div class="pi">布洛芬（头痛备用）</div>
       <div class="pi">红景天（提前1周服）</div>
-      <div class="pi">保温杯2L</div>
-      <div class="pi">唇膏（极干燥）</div>
-      <div class="pi">润肤霜</div>
+      <div class="pi">保温杯2L（多喝水）</div>
+      <div class="pi">唇膏+润肤霜（极干燥）</div>
     </div>
     <div>
-      <div class="pgt">证件与证件</div>
+      <div class="pgt">证件</div>
       <div class="pi">身份证（多安检）</div>
       <div class="pi">身份证复印件×2</div>
-      <div class="pi">边防证（喀什办）</div>
+      <div class="pi">边防证（喀什D4办）</div>
       <div class="pi">现金约3000元</div>
       <div class="pi">银行卡×2</div>
     </div>
@@ -975,7 +1225,7 @@ footer .en{
       <div class="pi">存储卡×2</div>
     </div>
     <div>
-      <div class="pgt">峡谷/古道装备</div>
+      <div class="pgt">峡谷/古道</div>
       <div class="pi">运动鞋（防滑底）</div>
       <div class="pi">手电/头灯</div>
       <div class="pi">防晒霜 SPF50+</div>
@@ -987,61 +1237,53 @@ footer .en{
       <div class="pi">折叠雨伞</div>
       <div class="pi">感冒药/肠胃药</div>
       <div class="pi">湿纸巾（沙漠段）</div>
-      <div class="pi">离线地图（奥维）</div>
+      <div class="pi">奥维Maps离线地图</div>
       <div class="pi">塔县干粮备用</div>
     </div>
   </div>
 
   <div class="sdiv"></div>
 
-  <div class="sl">注意事项</div>
+  <div class="sl">注意事项（已更新）</div>
   <div class="tgrid">
-    <div class="tip"><div class="tip-i">📋</div><div class="tip-t">边防证必须提前办</div><div class="tip-b">Day4抵喀什后立即去办，不办则无法进入塔县（帕米尔区域）。两人各自办，带身份证原件，当场取或次日取，免费。</div></div>
-    <div class="tip"><div class="tip-i">🪪</div><div class="tip-t">新疆安检频繁</div><div class="tip-b">机场、景区、酒店、超市均有安检，全程带好身份证，耐心配合，时间预留充足。</div></div>
-    <div class="tip"><div class="tip-i">⏰</div><div class="tip-t">新疆时间+2小时</div><div class="tip-b">全程北京时间，当地实际天黑约21:30。每天游览时间比内地多约2小时，不用慌。</div></div>
-    <div class="tip"><div class="tip-i">🚗</div><div class="tip-t">帕米尔段换小车</div><div class="tip-b">D5–D7塔莎古道/盘龙古道路窄弯急，SUV不适合，须在塔县当地租含司机的7座商务车（约500元/天），更安全。</div></div>
-    <div class="tip"><div class="tip-i">🌬️</div><div class="tip-t">盘龙古道封路风险</div><div class="tip-b">4月可能遇降雪封路，备选方案是慕士塔格冰川公园（同等精彩），不必强行等待开路。</div></div>
-    <div class="tip"><div class="tip-i">📵</div><div class="tip-t">信号盲区</div><div class="tip-b">塔莎古道、盘龙古道深处无信号，提前下载奥维离线地图。塔县有信号，班迪尔湖沿线较弱。</div></div>
-    <div class="tip"><div class="tip-i">🏔️</div><div class="tip-t">高原适应</div><div class="tip-b">塔县3000m是实际住宿最高点，提前1周服红景天，备好葡萄糖液和布洛芬。帕米尔段以乘车为主，不要下车剧烈跑跳。</div></div>
-    <div class="tip"><div class="tip-i">🕌</div><div class="tip-t">文化尊重</div><div class="tip-b">喀什及南疆以穆斯林为主，进清真寺着装得体（女性戴头巾），拍摄当地人先征得同意，不在当地公开饮酒。</div></div>
-    <div class="tip"><div class="tip-i">🌸</div><div class="tip-t">杏花村花期查询</div><div class="tip-b">出发前关注"塔什库尔干旅游"或"帕米尔旅游"公众号，查实时花情，可微调Day6出发时间。</div></div>
-    <div class="tip"><div class="tip-i">🚌</div><div class="tip-t">D2/D4长途车程</div><div class="tip-b">Day2约420km、Day4约460km，准备车内娱乐（下载好播客/有声书/电影），沿途停车休息，不要一口气开完。</div></div>
-  </div>
-
-  <div class="sdiv"></div>
-
-  <div class="sl">与其他备选路线对比</div>
-  <div class="ov">
-    <div class="oc"><div class="ok">高反风险</div><div class="ov-v">⭕ <strong>低</strong><br>最高活动3000m（塔县），以车代步，无强制高原徒步</div></div>
-    <div class="oc"><div class="ok">花期匹配</div><div class="ov-v">⭕ <strong>极高</strong><br>塔吉克族杏花村4月初盛花期，全程独一无二</div></div>
-    <div class="oc"><div class="ok">景色独特性</div><div class="ov-v">⭕ <strong>最强</strong><br>帕米尔高原+慕士塔格峰，任何其他备选均无法复制</div></div>
-    <div class="oc"><div class="ok">人文厚度</div><div class="ov-v">⭕ <strong>最高</strong><br>龟兹、楼兰、丝路、塔吉克族，历史密度全程最高</div></div>
-    <div class="oc"><div class="ok">体力要求</div><div class="ov-v">✅ <strong>低</strong><br>以车行观景为主，步行均为轻度，适合两人悠闲节奏</div></div>
-    <div class="oc"><div class="ok">主要挑战</div><div class="ov-v">⚠️ <strong>车程长</strong><br>D2/D4各约460km，需心理准备，景色弥补</div></div>
+    <div class="tip"><div class="tip-i">🏔️</div><div class="tip-t">盘龙古道真实海拔4200m</div><div class="tip-b">非原计划的3600m。2024年在此救助高反游客逾2000人次。车内也需注意：高反与是否下车无关。顶部停留不超过15分钟，身体有异立即下撤。</div></div>
+    <div class="tip"><div class="tip-i">🕙</div><div class="tip-t">盘龙古道10:00才开放</div><div class="tip-b">每日10:00–19:00开放，早于10:00只会在山脚等候。Day7安排已按此调整，无需太早出发。</div></div>
+    <div class="tip"><div class="tip-i">🌸</div><div class="tip-t">杏花村花期需实时确认</div><div class="tip-b">盛花期约10–14天，4月3日（Day6）处于末尾，出发前关注"魅力帕米尔"抖音号查实时花情，花期提前则可D5下午先进村。</div></div>
+    <div class="tip"><div class="tip-i">🎫</div><div class="tip-t">香妃墓门票已涨至198元/人</div><div class="tip-b">原计划30元已严重过时，实际198元/人，两人约400元。根据兴趣自行决定是否进入，建议提前做好预算。</div></div>
+    <div class="tip"><div class="tip-i">📋</div><div class="tip-t">边防证必须D4当天办</div><div class="tip-b">抵喀什后第一件事，带身份证原件，两人各自办，当场或次日取，免费。不办则全程无法进入帕米尔高原区域。</div></div>
+    <div class="tip"><div class="tip-i">⏰</div><div class="tip-t">新疆时差实际约+2–3小时</div><div class="tip-b">当地天黑约21:30，早上09:00才天亮。所有时间节点已按此重新调整，不要按内地习惯早起赶时间。</div></div>
+    <div class="tip"><div class="tip-i">🚗</div><div class="tip-t">车程时间比地图显示长</div><div class="tip-b">南疆高速限速多（大量80km/h路段）+安检站停车。Day2约5.5小时，Day4约5.5–6小时，已在行程中重新计算。</div></div>
+    <div class="tip"><div class="tip-i">🪪</div><div class="tip-t">新疆安检频繁</div><div class="tip-b">机场、景区、酒店、超市均有安检，全程带好身份证，每处预留15–30分钟额外时间，不要焦虑。</div></div>
+    <div class="tip"><div class="tip-i">🚗</div><div class="tip-t">帕米尔段换车：只有杏花村腹地需考虑</div><div class="tip-b">G314国道、盘龙古道、塔莎古道主路均已铺装，SUV全程无压力。仅Day6大同乡土路段路况差，优先自驾SUV开进去（15分钟评估路况），觉得不行再回塔县现找当地司机（400–600元/趟往返，无需提前预订）。</div></div>
+    <div class="tip"><div class="tip-i">⛽</div><div class="tip-t">Day6 出发前塔县加满油</div><div class="tip-b">大同乡沿途只有一个"库科西鲁克"便民油站，且经常不开门，Day6 早上出发前务必在塔县加满，不能依赖沿途补充。</div></div>
+    <div class="tip"><div class="tip-i">📋</div><div class="tip-t">进大同乡边防证会被暂扣</div><div class="tip-b">进检查站时会暂扣两人边防证，出村时去检查站取回——这一步很容易忘，出村前检查一遍，别空手离开。后续盘龙古道和返喀什途中还需要用到。</div></div>
+    <div class="tip"><div class="tip-i">🕌</div><div class="tip-t">文化尊重</div><div class="tip-b">喀什以穆斯林为主，进清真寺着装得体（女性戴头巾），拍摄当地人先征得同意，不在当地公开饮酒。</div></div>
   </div>
 
 </div>
 </div>
 
 <footer>
-  西域南疆 · 丝路春行 · 深圳出发 · 3月29日—4月6日
+  西域南疆 · 丝路春行 · 深圳出发 · 3月29日—4月6日（优化修订版）
   <span class="en">The Ancient Road of Silk · South Xinjiang · Spring 2025</span>
 </footer>
 
 <script>
+// ── Nav switching ──
 function sw(id) {
-  ['ov','it','pr'].forEach(k => {
+  ['ov','it','map','pr'].forEach(k => {
     document.getElementById('p-'+k).classList.toggle('active', k===id);
   });
   document.querySelectorAll('.stab').forEach((b,i) => {
-    b.classList.toggle('active', ['ov','it','pr'][i]===id);
+    b.classList.toggle('active', ['ov','it','map','pr'][i]===id);
   });
   document.getElementById('daydots').style.display = id==='it' ? 'flex' : 'none';
   window.scrollTo({top: document.querySelector('.snav').offsetTop - 1, behavior:'smooth'});
 }
+
 function tog(h) { h.parentElement.classList.toggle('open'); }
 
-// build day dots
+// ── Day dots ──
 (function(){
   const dd = document.getElementById('daydots');
   for(let i=1;i<=9;i++){
@@ -1059,7 +1301,7 @@ function tog(h) { h.parentElement.classList.toggle('open'); }
   dd.style.display='none';
 })();
 
-// highlight dot on scroll
+// ── Scroll highlight ──
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -1069,6 +1311,94 @@ const obs=new IntersectionObserver(entries=>{
   });
 },{threshold:0.6});
 for(let i=1;i<=9;i++){const el=document.getElementById('a'+i);if(el)obs.observe(el);}
+
+// ── Map interactions ──
+const nodeData = {
+  shenzhen:    { name:'深圳', day:'出发/返程', alt:'10m', info:'起点与终点。深圳→乌鲁木齐→库尔勒（去程飞行），喀什→深圳（返程）。' },
+  urumqi:      { name:'乌鲁木齐', day:'中转', alt:'800m', info:'深圳去库尔勒的中转城市，可选高铁→库尔勒（约3.5h，推荐体验）。' },
+  korla:       { name:'库尔勒', day:'Day 1', alt:'920m', info:'南疆门户，孔雀河畔。巴州博物馆（楼兰美女），孔雀河湿地公园。适应时差节奏日。' },
+  kuqa:        { name:'库车 龟兹', day:'Day 2', alt:'1100m', info:'古丝路重要节点。天山大峡谷（红褐砂岩/丁达尔光效），库车大寺，热斯坦老街。约420km车程，实际5–5.5h。' },
+  aksu:        { name:'阿克苏', day:'Day 3', alt:'1100m', info:'途经天山红石林（小众雅丹地貌）、克孜尔千佛洞（世界文化遗产，比敦煌早一世纪）。' },
+  kashgar:     { name:'喀什 噶尔', day:'Day 4 / D7–D9', alt:'1289m', info:'2000年丝路古城。艾提尕尔清真寺，老城街巷，汗巴扎。⚠ Day4抵达后立即办边防证！' },
+  tashkurgan:  { name:'塔什库尔干（塔县）', day:'Day 5–6', alt:'3000m', info:'塔吉克族聚居地，帕米尔高原边境小城。白沙湖、喀拉库勒湖（3600m）途经。高反：夜间轻微头疼正常，多喝水早睡。' },
+  apricot:     { name:'塔吉克族杏花村', day:'Day 6 ⭐', alt:'2200m', info:'全程最佳！4月初杏花盛开，昆仑雪山+帕米尔河谷+塔吉克族土房，全国唯一场景。路况极差，必须换当地越野车。' },
+  panlong:     { name:'盘龙古道', day:'Day 7', alt:'4200m ⚠', info:'网红发卡弯公路，视觉震撼。⚠ 真实顶部海拔4200m（非3600m），10:00–19:00开放。2024年救助高反2000+人次，山顶停留不超15分钟。' },
+};
+
+const tooltip = document.getElementById('mtt');
+const svg = document.getElementById('routemap');
+
+document.querySelectorAll('.map-node').forEach(node => {
+  const id = node.dataset.id;
+  const d = nodeData[id];
+  if(!d) return;
+
+  node.style.cursor = 'pointer';
+
+  node.addEventListener('mouseenter', function(e) {
+    const rect = svg.getBoundingClientRect();
+    const nx = parseFloat(node.querySelector('circle').getAttribute('cx'));
+    const ny = parseFloat(node.querySelector('circle').getAttribute('cy'));
+    const vbW = 760, vbH = 520;
+    const scaleX = rect.width / vbW;
+    const scaleY = rect.height / vbH;
+    let tx = rect.left + nx * scaleX + 14;
+    let ty = rect.top + ny * scaleY - 10 + window.scrollY;
+    if(tx + 190 > window.innerWidth) tx = rect.left + nx * scaleX - 204;
+
+    tooltip.innerHTML = `<strong>${d.name}</strong><br>${d.day} · ${d.alt}<br><span style="opacity:.7;font-size:11px">${d.info}</span>`;
+    tooltip.style.left = tx + 'px';
+    tooltip.style.top  = ty + 'px';
+    tooltip.classList.add('show');
+
+    // highlight circle
+    const c = node.querySelector('circle');
+    c._origR = c.getAttribute('r');
+    c.setAttribute('r', parseFloat(c._origR)+3);
+  });
+
+  node.addEventListener('mouseleave', function() {
+    tooltip.classList.remove('show');
+    const c = node.querySelector('circle');
+    if(c._origR) c.setAttribute('r', c._origR);
+  });
+});
+
+// ── Day track buttons ──
+const daySegs = {
+  1: ['seg-d1d2'],
+  2: ['seg-d1d2','seg-d2d3'],
+  3: ['seg-d2d3'],
+  4: ['seg-d3d4'],
+  5: ['seg-d4d5'],
+  6: ['seg-d5d6'],
+  7: ['seg-d6d7'],
+  8: [],
+  9: []
+};
+const dayLabels = ['D1库尔勒','D2库车','D3阿克苏','D4喀什','D5塔县','D6杏花村','D7盘龙','D8喀什深游','D9返程'];
+
+const dt = document.getElementById('daytrack');
+dayLabels.forEach((lbl,i)=>{
+  const b = document.createElement('button');
+  b.className='dtrack-btn';
+  b.textContent=lbl;
+  b.onclick=()=>{
+    document.querySelectorAll('.dtrack-btn').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    // reset all paths
+    document.querySelectorAll('[id^="seg-"]').forEach(p=>{
+      p.style.opacity='0.25';
+      p.style.strokeWidth='2';
+    });
+    // highlight relevant
+    (daySegs[i+1]||[]).forEach(sid=>{
+      const el=document.getElementById(sid);
+      if(el){el.style.opacity='1';el.style.strokeWidth='4';}
+    });
+  };
+  dt.appendChild(b);
+});
 </script>
 </body>
 </html>
