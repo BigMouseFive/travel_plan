@@ -31,9 +31,15 @@
       --text:        #eae8e0;
       --muted:       #6e6c62;
       --muted2:      #3e3d38;
-      --font-display:'Noto Serif SC', serif;
-      --font-mono:   'DM Mono', monospace;
+      --font-display: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      --font-mono:   'DM Mono', 'SF Mono', 'Menlo', monospace;
       --card-radius: 0px;
+    }
+
+    /* 确保字体加载时文字先显示 */
+    @font-face {
+      font-family: 'Noto Serif SC';
+      font-display: swap;
     }
 
     body {
@@ -345,7 +351,7 @@ const THEMES = [
       "--accent3":      "#60d4b8",
       "--text":         "#eae8e0",
       "--muted":        "#6a6860",
-      "--font-display": "'Noto Serif SC', serif",
+      "--font-display": "'Noto Serif SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', serif",
       "--card-radius":  "0px",
     },
   },
@@ -361,7 +367,7 @@ const THEMES = [
       "--accent3":      "#a0c880",
       "--text":         "#f0e8d8",
       "--muted":        "#7a6a50",
-      "--font-display": "'Playfair Display', 'Noto Serif SC', serif",
+      "--font-display": "'Playfair Display', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', serif",
       "--card-radius":  "4px",
     },
   },
@@ -377,7 +383,7 @@ const THEMES = [
       "--accent3":      "#60c8d0",
       "--text":         "#dceee4",
       "--muted":        "#587868",
-      "--font-display": "'Space Grotesk', 'Noto Serif SC', sans-serif",
+      "--font-display": "'Space Grotesk', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif",
       "--card-radius":  "6px",
     },
   },
@@ -393,7 +399,7 @@ const THEMES = [
       "--accent3":      "#60e8c8",
       "--text":         "#d8e8f8",
       "--muted":        "#5878a0",
-      "--font-display": "'Space Grotesk', 'Noto Serif SC', sans-serif",
+      "--font-display": "'Space Grotesk', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif",
       "--card-radius":  "8px",
     },
   },
