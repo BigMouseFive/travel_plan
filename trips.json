@@ -1,0 +1,60 @@
+{
+  "trips": [
+    {
+      "file": "list/southern_xinjiang.html",
+      "title": "川藏三境春游",
+      "emoji": "🏔️",
+      "date": "3月29日-4月6日",
+      "days": "9天8晚",
+      "people": "2人",
+      "desc": "九寨沟·金川梨花谷·雨崩村"
+    },
+    {
+      "file": "list/chuanxi_main.html",
+      "title": "川藏春游·高反应急预案",
+      "emoji": "🏔️",
+      "date": "3月29日-4月6日",
+      "days": "9天",
+      "people": "2人",
+      "desc": "高反备用方案"
+    },
+    {
+      "file": "list/chuanxi_alt_backup.html",
+      "title": "西域南疆·丝路春行",
+      "emoji": "🏜️",
+      "date": "",
+      "days": "",
+      "people": "",
+      "desc": "西域南疆 · 丝路春行 · 九日计划"
+    },
+    {
+      "file": "list/ili_sayram.html",
+      "title": "伊犁河谷·赛里木湖",
+      "emoji": "🌸",
+      "date": "3月底-4月",
+      "days": "9天",
+      "people": "2人",
+      "desc": "伊犁河谷·赛里木湖·那拉提草原"
+    },
+    {
+      "file": "list/travel_guide_full.html",
+      "title": "春季旅行完整攻略",
+      "emoji": "📖",
+      "date": "3月底-4月",
+      "days": "",
+      "people": "2人",
+      "desc": "深圳出发春季旅行攻略"
+    }
+  ],
+  "recommendations": [
+    {
+      "file": "list/spring_recommendations.html",
+      "title": "春季旅行推荐",
+      "emoji": "🌱",
+      "date": "3月底-4月初",
+      "days": "",
+      "people": "2人",
+      "desc": "5个春季目的地推荐"
+    }
+  ]
+}

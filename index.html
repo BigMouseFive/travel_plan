@@ -7,35 +7,13 @@
 
   <!--
   ╔════════════════════════════════════════════════════════════════╗
-  ║  配置说明（只需修改下方 TRIP_GROUPS 和 RECOMMENDATIONS）        ║
-  ║                                                                ║
-  ║  旅行计划（主要展示区域）：                                      ║
-  ║  单方案：                                                      ║
-  ║  { title:"行程名", emoji:"🏔️", file:"list/xxx.html" }         ║
-  ║                                                                ║
-  ║  多方案旅行（主方案 + 备选）：                                   ║
-  ║  {                                                             ║
-  ║    title: "川西旅游",                                           ║
-  ║    emoji: "🏔️",                                               ║
-  ║    plans: [                                                    ║
-  ║      { label:"主线方案", tag:"主线", file:"list/川西主线.html" },║
-  ║      { label:"高反备选", tag:"备选", file:"list/川西备选.html" },║
-  ║    ]                                                           ║
-  ║  }                                                             ║
-  ║                                                                ║
-  ║  旅行推荐（底部展示区域）：                                      ║
-  ║  { title:"推荐名", emoji:"🌱", file:"list/xxx.html" }          ║
-  ║                                                                ║
-  ║  每个 HTML 文件 <head> 里需要有：                               ║
-  ║  <meta name="trip-title"  content="行程名称">                  ║
-  ║  <meta name="trip-emoji"  content="🏔️">                       ║
-  ║  <meta name="trip-date"   content="日期范围">                  ║
-  ║  <meta name="trip-days"   content="天数">                      ║
-  ║  <meta name="trip-people" content="人数">                      ║
-  ║  <meta name="trip-desc"   content="一句话描述">                 ║
+  ║  配置说明：编辑 trips.json 来添加/修改旅行计划                  ║
   ╚════════════════════════════════════════════════════════════════╝
   -->
 
+  <!-- 预加载关键字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet" />
 
   <style>
@@ -341,65 +319,13 @@
 
 <script>
 // ════════════════════════════════════════════════════════
-//  ★ 在这里配置你的旅行 ★
-//
-//  单方案：
-//  { title:"行程名", emoji:"🏜️", file:"list/xxx.html" }
-//
-//  多方案（主线 + 备选）：
-//  {
-//    title: "川西高原",
-//    emoji: "🏔️",
-//    plans: [
-//      { label:"主线方案", tag:"主线", file:"list/川西主线.html" },
-//      { label:"高反备选方案", tag:"备选", file:"list/川西备选.html" },
-//    ]
-//  }
+//  ★ 配置已移至 trips.json ★
+//  编辑 trips.json 来添加/修改旅行计划
 // ════════════════════════════════════════════════════════
-const TRIP_GROUPS = [
-  {
-    title: "川西高原",
-    emoji: "🏔️",
-    plans: [
-      { label: "主线方案",     tag: "主线", file: "list/southern_xinjiang.html" },
-      { label: "高反备选方案", tag: "备选", file: "list/chuanxi_main.html" },
-    ],
-  },
-  {
-    title: "西域南疆 · 丝路春行",
-    emoji: "🏜️",
-    file:  "list/chuanxi_alt_backup.html",
-  },
-  {
-    title: "伊犁河谷 · 赛里木湖",
-    emoji: "🌸",
-    file:  "list/ili_sayram.html",
-  },
-  {
-    title: "春季旅行完整攻略",
-    emoji: "📖",
-    file:  "list/travel_guide_full.html",
-  },
-  // ── 继续在下面添加 ──
-  // { title: "西藏环线", emoji: "🕌", file: "list/西藏.html" },
-  // {
-  //   title: "云南大理",
-  //   emoji: "🌸",
-  //   plans: [
-  //     { label: "古城深度游",   tag: "主线", file: "list/大理主线.html" },
-  //     { label: "雨季替代方案", tag: "备选", file: "list/大理备选.html" },
-  //   ],
-  // },
-];
 
-// 旅行推荐（展示在底部）
-const RECOMMENDATIONS = [
-  {
-    title: "春季旅行推荐",
-    emoji: "🌱",
-    file:  "list/spring_recommendations.html",
-  },
-];
+let TRIP_GROUPS = [];
+let RECOMMENDATIONS = [];
+let metaMap = {}; // file -> meta from JSON
 // ════════════════════════════════════════════════════════
 
 
@@ -592,19 +518,53 @@ async function loadTrips() {
   const grid      = document.getElementById('grid');
   const counterEl = document.getElementById('counterNum');
 
-  // Collect all unique files to fetch
-  const allFiles = [...new Set(
-    TRIP_GROUPS.flatMap(g => g.file ? [g.file] : (g.plans||[]).map(p => p.file))
-  )];
+  // Load trips from JSON
+  try {
+    const resp = await fetch('trips.json');
+    if (!resp.ok) throw new Error('Failed to load trips.json');
+    const data = await resp.json();
 
-  // Fetch all in parallel
-  const htmlMap = {};
-  await Promise.all(allFiles.map(async f => {
-    try {
-      const r = await fetch(f);
-      htmlMap[f] = r.ok ? await r.text() : null;
-    } catch { htmlMap[f] = null; }
-  }));
+    // Build meta map for quick lookup
+    metaMap = {};
+    (data.trips || []).forEach(t => { metaMap[t.file] = t; });
+    (data.recommendations || []).forEach(r => { metaMap[r.file] = r; });
+
+    // Build TRIP_GROUPS from JSON trips
+    // Multi-plan: southern_xinjiang + chuanxi_main
+    TRIP_GROUPS = [
+      {
+        title: "川西高原",
+        emoji: "🏔️",
+        plans: [
+          { label: "主线方案",     tag: "主线", file: "list/southern_xinjiang.html" },
+          { label: "高反备选方案", tag: "备选", file: "list/chuanxi_main.html" },
+        ],
+      },
+    ];
+
+    // Add single trips (excluding the ones in multi-plan)
+    const multiFiles = new Set(['list/southern_xinjiang.html', 'list/chuanxi_main.html']);
+    (data.trips || []).forEach(t => {
+      if (!multiFiles.has(t.file)) {
+        TRIP_GROUPS.push({
+          title: t.title,
+          emoji: t.emoji,
+          file: t.file,
+        });
+      }
+    });
+
+    RECOMMENDATIONS = (data.recommendations || []).map(r => ({
+      title: r.title,
+      emoji: r.emoji,
+      file: r.file,
+    }));
+
+  } catch (e) {
+    console.error('Failed to load trips.json:', e);
+    statusEl.innerHTML = '<span>加载配置失败，请检查 trips.json 是否存在。</span>';
+    return;
+  }
 
   statusEl.style.display = 'none';
   let count = 0;
@@ -612,17 +572,16 @@ async function loadTrips() {
   TRIP_GROUPS.forEach((group, idx) => {
     if (group.file) {
       // ── Single plan ──
-      const html = htmlMap[group.file];
-      if (!html) return;
-      const meta = parseMeta(html, group.title || group.file);
+      const meta = metaMap[group.file];
+      if (!meta) return;
       grid.insertAdjacentHTML('beforeend', buildSingleCard(group.file, group.emoji, meta, idx));
       count++;
 
     } else if (group.plans) {
       // ── Multi plan ──
       const plansData = group.plans
-        .filter(p => htmlMap[p.file])
-        .map(p => ({ plan: p, meta: parseMeta(htmlMap[p.file], p.label) }));
+        .filter(p => metaMap[p.file])
+        .map(p => ({ plan: p, meta: metaMap[p.file] }));
 
       if (!plansData.length) return;
 
@@ -653,20 +612,10 @@ async function loadRecommendations() {
   const recGrid = document.getElementById('recGrid');
   if (!RECOMMENDATIONS.length) return;
 
-  const allFiles = RECOMMENDATIONS.map(r => r.file);
-  const htmlMap = {};
-  await Promise.all(allFiles.map(async f => {
-    try {
-      const r = await fetch(f);
-      htmlMap[f] = r.ok ? await r.text() : null;
-    } catch { htmlMap[f] = null; }
-  }));
-
   let recCount = 0;
   RECOMMENDATIONS.forEach((rec, idx) => {
-    const html = htmlMap[rec.file];
-    if (!html) return;
-    const meta = parseMeta(html, rec.title);
+    const meta = metaMap[rec.file];
+    if (!meta) return;
     const delay = (idx * 0.07).toFixed(2);
     recGrid.insertAdjacentHTML('beforeend', buildSingleCard(rec.file, rec.emoji, meta, idx));
     recCount++;
