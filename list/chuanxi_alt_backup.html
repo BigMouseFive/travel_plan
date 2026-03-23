@@ -32,9 +32,9 @@
   --sand-l:  #fdf4e0;
   --crimson: #882830;
   --crimson-l: #f4dada;
-  --serif-en: 'IM Fell English', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', serif;
-  --serif-cn: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', serif;
-  --sans:     'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --serif-en: 'IM Fell English', serif;
+  --serif-cn: 'Noto Serif SC', serif;
+  --sans:     'Noto Sans SC', sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -458,6 +458,183 @@ footer .en{
 .panel.active .page,.panel.active .map-wrap,.panel.active .gl-wrap{animation:fadeUp .38s ease both;}
 
 /* ══════════════════════════════════
+   丝路书单 READING LIST
+══════════════════════════════════ */
+.rd-wrap{max-width:860px;margin:0 auto;padding:40px 28px 60px;}
+
+/* 时间线引导语 */
+.rd-timeline{
+  display:flex;align-items:stretch;gap:0;
+  margin-bottom:36px;
+  background:#fff;border:0.5px solid var(--dust-3);
+  border-radius:12px;overflow:hidden;
+}
+.rd-tl-item{
+  flex:1;padding:16px 18px;
+  border-right:0.5px solid var(--dust-3);
+  position:relative;
+}
+.rd-tl-item:last-child{border-right:none;}
+.rd-tl-num{
+  font-family:var(--serif-en);font-size:28px;font-weight:400;
+  color:var(--dust-3);line-height:1;margin-bottom:6px;
+}
+.rd-tl-when{
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ochre);font-weight:500;margin-bottom:4px;
+}
+.rd-tl-what{font-size:12px;color:var(--ink-2);line-height:1.6;}
+.rd-tl-arrow{
+  position:absolute;right:-10px;top:50%;transform:translateY(-50%);
+  width:20px;height:20px;background:var(--dust);border:0.5px solid var(--dust-3);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--ink-4);z-index:1;
+}
+
+/* 分类标题 */
+.rd-cat{
+  display:flex;align-items:center;gap:14px;
+  margin:36px 0 16px;
+}
+.rd-cat-icon{font-size:20px;}
+.rd-cat-title{
+  font-family:var(--serif-cn);font-size:18px;font-weight:400;color:var(--ink);
+}
+.rd-cat-sub{font-size:12px;color:var(--ink-3);margin-left:4px;}
+.rd-cat::after{content:'';flex:1;height:0.5px;background:var(--dust-3);}
+
+/* 内容卡片网格 */
+.rd-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:12px;
+}
+
+/* 单张卡片 */
+.rd-card{
+  background:#fff;border:0.5px solid var(--dust-3);
+  border-radius:12px;overflow:hidden;
+  transition:box-shadow .18s, transform .18s;
+  display:flex;flex-direction:column;
+}
+.rd-card:hover{
+  box-shadow:0 6px 24px rgba(28,20,8,0.1);
+  transform:translateY(-2px);
+}
+
+/* 卡片顶部色带（按类型区分） */
+.rd-card-bar{height:3px;}
+.rdbar-doc{background:linear-gradient(90deg,var(--lapis-2),var(--lapis-3));}
+.rdbar-book{background:linear-gradient(90deg,var(--ochre),var(--ochre-3));}
+.rdbar-blog{background:linear-gradient(90deg,var(--jade-2),var(--jade-3));}
+
+.rd-card-inner{padding:16px 18px;flex:1;display:flex;flex-direction:column;gap:10px;}
+
+/* 徽章行 */
+.rd-badges{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.rd-badge{
+  font-size:9px;padding:2px 7px;border-radius:4px;
+  font-weight:500;letter-spacing:.05em;
+}
+.badge-priority{background:#fde8d8;color:#b8441c;}  /* 优先看 */
+.badge-cn{background:var(--lapis-l);color:var(--lapis);}
+.badge-en{background:var(--jade-l);color:var(--jade);}
+.badge-free{background:var(--dust-2);color:var(--ink-3);}
+.badge-paid{background:var(--sand-l);color:var(--sand);}
+.badge-platform{background:var(--dust-2);color:var(--ink-3);}
+
+/* 主内容 */
+.rd-title{
+  font-family:var(--serif-cn);font-size:15px;font-weight:400;
+  color:var(--ink);line-height:1.4;
+}
+.rd-title em{font-style:normal;color:var(--ochre);font-size:12px;font-family:var(--sans);}
+.rd-meta{font-size:11px;color:var(--ink-4);line-height:1.5;}
+.rd-desc{font-size:12px;color:var(--ink-3);line-height:1.75;flex:1;}
+
+/* 与行程关联 */
+.rd-link-days{
+  display:flex;flex-wrap:wrap;gap:5px;margin-top:2px;
+}
+.rd-day-tag{
+  font-size:10px;padding:2px 8px;border-radius:10px;
+  background:var(--ochre-l);color:var(--ochre);font-weight:500;
+}
+
+/* 行动按钮 */
+.rd-actions{
+  display:flex;gap:6px;padding:0 18px 14px;flex-wrap:wrap;
+}
+.rd-btn{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:11px;padding:5px 12px;border-radius:6px;
+  font-family:var(--sans);font-weight:500;
+  text-decoration:none;border:0.5px solid var(--dust-3);
+  color:var(--ink-3);background:var(--dust);
+  transition:all .15s;cursor:pointer;
+}
+.rd-btn:hover{border-color:var(--ochre);color:var(--ochre);background:var(--ochre-l);}
+.rd-btn.primary{
+  background:var(--ochre);color:#fff;border-color:var(--ochre);
+}
+.rd-btn.primary:hover{background:var(--ochre-2);border-color:var(--ochre-2);}
+
+/* 展开/收起详情 */
+.rd-expand-btn{
+  font-size:11px;color:var(--ink-4);background:none;border:none;
+  cursor:pointer;font-family:var(--sans);
+  padding:0;display:flex;align-items:center;gap:4px;
+  transition:color .15s;
+}
+.rd-expand-btn:hover{color:var(--ochre);}
+.rd-expand-btn .arr{display:inline-block;transition:transform .2s;font-size:9px;}
+.rd-expand-btn.open .arr{transform:rotate(90deg);}
+.rd-extra{display:none;margin-top:8px;}
+.rd-extra.open{display:block;}
+.rd-extra-body{
+  font-size:12px;color:var(--ink-3);line-height:1.75;
+  padding:10px 12px;background:var(--dust);border-radius:6px;
+}
+.rd-extra-body strong{color:var(--ink-2);font-weight:500;}
+
+/* 进度追踪（已看/未看） */
+.rd-check{
+  width:20px;height:20px;border-radius:50%;
+  border:1.5px solid var(--dust-3);background:none;
+  cursor:pointer;flex-shrink:0;display:flex;
+  align-items:center;justify-content:center;
+  font-size:10px;color:transparent;
+  transition:all .15s;margin-left:auto;
+}
+.rd-check:hover{border-color:var(--jade-2);}
+.rd-card.watched .rd-check{
+  background:var(--jade-2);border-color:var(--jade-2);color:#fff;
+}
+.rd-card.watched{opacity:.65;}
+.rd-card.watched .rd-title{text-decoration:line-through;text-decoration-color:var(--dust-3);}
+
+/* 整体进度 */
+.rd-progress{
+  display:flex;align-items:center;gap:12px;
+  background:#fff;border:0.5px solid var(--dust-3);
+  border-radius:10px;padding:12px 18px;margin-bottom:24px;
+}
+.rd-prog-label{font-size:12px;color:var(--ink-3);white-space:nowrap;}
+.rd-prog-label strong{color:var(--jade);}
+.rd-prog-wrap{flex:1;height:4px;background:var(--dust-3);border-radius:2px;}
+.rd-prog-fill{height:4px;background:var(--jade-2);border-radius:2px;transition:width .3s;width:0%;}
+.rd-prog-reset{font-size:11px;color:var(--ink-4);background:none;border:none;cursor:pointer;font-family:var(--sans);}
+
+@media(max-width:600px){
+  .rd-timeline{flex-direction:column;}
+  .rd-tl-item{border-right:none;border-bottom:0.5px solid var(--dust-3);}
+  .rd-tl-item:last-child{border-bottom:none;}
+  .rd-tl-arrow{display:none;}
+  .rd-grid{grid-template-columns:1fr;}
+  .rd-wrap{padding:28px 16px 48px;}
+}
+
+/* ══════════════════════════════════
    目标库 GOAL LIBRARY
 ══════════════════════════════════ */
 .gl-wrap{max-width:900px;margin:0 auto;padding:40px 28px 60px;}
@@ -820,6 +997,7 @@ footer .en{
     <button class="stab" onclick="sw('it')">逐日行程</button>
     <button class="stab" onclick="sw('map')">路线地图</button>
     <button class="stab" onclick="sw('gl')">目标库</button>
+    <button class="stab" onclick="sw('rd')">丝路书单</button>
     <button class="stab" onclick="sw('pr')">实用信息</button>
   </div>
   <div class="daydots" id="daydots"></div>
@@ -1517,6 +1695,403 @@ footer .en{
 </div>
 </div>
 
+<!-- ═══ PANEL: 丝路书单 ═══ -->
+<div id="p-rd" class="panel">
+<div class="rd-wrap">
+
+  <div class="sl">丝路书单 · 出行前的知识储备</div>
+  <p style="font-size:13px;color:var(--ink-3);line-height:1.8;margin-bottom:22px;">提前了解历史与故事，会让旅行体验倍增。<strong>建议出发前3–4周开始</strong>按下面的顺序刷，先建立整体感知，再深入细节，最后用 vlog 校准真实状态。</p>
+
+  <!-- 推荐观看顺序 -->
+  <div class="rd-timeline">
+    <div class="rd-tl-item">
+      <div class="rd-tl-num">01</div>
+      <div class="rd-tl-when">出发前 3–4 周</div>
+      <div class="rd-tl-what">先看《玄奘之路》建立整体感知，走过的每一段路都能对上号</div>
+      <div class="rd-tl-arrow">→</div>
+    </div>
+    <div class="rd-tl-item">
+      <div class="rd-tl-num">02</div>
+      <div class="rd-tl-when">出发前 2 周</div>
+      <div class="rd-tl-what">看《新丝绸之路》对应集 + BBC版，从多角度立体理解丝路文明</div>
+      <div class="rd-tl-arrow">→</div>
+    </div>
+    <div class="rd-tl-item">
+      <div class="rd-tl-num">03</div>
+      <div class="rd-tl-when">出发前 1 周</div>
+      <div class="rd-tl-what">翻几章《失落的卫星》，刷几个最新 vlog 确认实时路况与花情</div>
+      <div class="rd-tl-arrow">→</div>
+    </div>
+    <div class="rd-tl-item">
+      <div class="rd-tl-num">04</div>
+      <div class="rd-tl-when">旅途中</div>
+      <div class="rd-tl-what">在塔县翻开《大唐西域记》龟兹章节，站在原地读古人写下的文字</div>
+    </div>
+  </div>
+
+  <!-- 进度追踪 -->
+  <div class="rd-progress">
+    <div class="rd-prog-label">已看完 <strong id="rd-done-count">0</strong> / <span id="rd-total-count">0</span> 项</div>
+    <div class="rd-prog-wrap"><div class="rd-prog-fill" id="rd-prog-fill"></div></div>
+    <button class="rd-prog-reset" onclick="rdReset()">重置</button>
+  </div>
+
+  <!-- ── 纪录片 ── -->
+  <div class="rd-cat">
+    <div class="rd-cat-icon">🎬</div>
+    <div class="rd-cat-title">纪录片</div>
+    <div class="rd-cat-sub">最直观，先看这个建立感知</div>
+  </div>
+  <div class="rd-grid">
+
+    <!-- 玄奘之路 -->
+    <div class="rd-card" data-rdid="rd1">
+      <div class="rd-card-bar rdbar-doc"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-priority">⭐ 最优先</span>
+          <span class="rd-badge badge-cn">中文</span>
+          <span class="rd-badge badge-free">B站免费</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">玄奘之路<em>（央视 / 2011 / 12集 / 豆瓣 9.5）</em></div>
+        <div class="rd-meta">央视出品 · 每集约30分钟 · 全程跟拍玄奘取经路线</div>
+        <div class="rd-desc">和此行关系最直接的纪录片。玄奘不顾朝廷禁令偷渡玉门关，穿越雪山荒漠，历经十九年足迹遍布110个国家。你们 Day2 的库车（龟兹）、Day3 的克孜尔千佛洞、Day6 的塔莎古道，玄奘全部走过。看完这部片，走在每一段路上感受完全不同。长途车程里当播客听也很合适。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">Day2 库车龟兹</span>
+          <span class="rd-day-tag">Day3 克孜尔千佛洞</span>
+          <span class="rd-day-tag">Day6 塔莎古道</span>
+        </div>
+        <button class="rd-expand-btn" onclick="rdExpand(this)"><span class="arr">▶</span> 重点看哪几集</button>
+        <div class="rd-extra">
+          <div class="rd-extra-body">
+            <strong>第3集「龟兹」：</strong>玄奘在库车停留一个多月，目睹龟兹宗教狂欢和乐舞，这正是你们 Day2 要去的地方。<br>
+            <strong>第4集「帕米尔」：</strong>玄奘翻越葱岭（帕米尔）的艰难历程，和你们 Day6 走的塔莎古道重合度极高。<br>
+            <strong>第2集「疏勒」：</strong>疏勒即今天的喀什，玄奘描述了当时的城市风貌，对照今天的老城非常有意思。
+          </div>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://www.bilibili.com/video/BV1cV411M7rR" target="_blank">▶ B站观看</a>
+        <a class="rd-btn" href="https://movie.douban.com/subject/6952630/" target="_blank">豆瓣页面</a>
+      </div>
+    </div>
+
+    <!-- 新丝绸之路 -->
+    <div class="rd-card" data-rdid="rd2">
+      <div class="rd-card-bar rdbar-doc"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-priority">⭐ 必看</span>
+          <span class="rd-badge badge-cn">中文</span>
+          <span class="rd-badge badge-free">B站免费</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">新丝绸之路<em>（NHK+央视 / 2005 / 10集）</em></div>
+        <div class="rd-meta">NHK版时长更完整 · CCTV版侧重考古新发现 · 建议NHK版优先</div>
+        <div class="rd-desc">有两个版本，NHK版内容更完整。第一集《楼兰四千年的睡梦》直接对应 Day1 你们要去的巴州博物馆；第五集《天山南路·青金石的光辉》覆盖库车到喀什；第九集《喀什·千年的小巷流淌着诗歌》是喀什专集，配合 Day4 和 Day8 看体验最佳。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">Day1 楼兰美女</span>
+          <span class="rd-day-tag">Day2–3 库车段</span>
+          <span class="rd-day-tag">Day4/8 喀什</span>
+        </div>
+        <button class="rd-expand-btn" onclick="rdExpand(this)"><span class="arr">▶</span> 重点看哪几集</button>
+        <div class="rd-extra">
+          <div class="rd-extra-body">
+            <strong>第1集「楼兰」：</strong>楼兰古国消失之谜，配合巴州博物馆参观效果翻倍。<br>
+            <strong>第5集「天山南路」：</strong>从库尔勒到喀什沿线的历史，就是你们整个 D1–D4 的路线。<br>
+            <strong>第9集「喀什」：</strong>老城的千年历史，艾提尕尔清真寺，维吾尔族手工艺，出发前最后一集看这个。
+          </div>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://www.bilibili.com/video/BV1my4y1C7pS" target="_blank">▶ B站·NHK版</a>
+        <a class="rd-btn" href="https://www.bilibili.com/video/BV1Wv4y1g7uW" target="_blank">B站·CCTV版</a>
+      </div>
+    </div>
+
+    <!-- BBC 丝绸之路 -->
+    <div class="rd-card" data-rdid="rd3">
+      <div class="rd-card-bar rdbar-doc"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-en">英文</span>
+          <span class="rd-badge badge-cn">有中字</span>
+          <span class="rd-badge badge-platform">YouTube</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">The Silk Road<em>（BBC / 2016 / 3集 / Dr. Sam Willis主持）</em></div>
+        <div class="rd-meta">全程跨越5000英里 · 途经13个国家 · 西方史学家视角</div>
+        <div class="rd-desc">西方视角看丝路，和国内纪录片互补。从中国皇帝急需战马以丝绸交换讲起，揭示丝路如何催生数学、天文学革命，最终触发欧洲文艺复兴。看完后你会对"为什么这条路会改变世界"有更全面的理解，而不只是中国视角。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">全程历史背景</span>
+        </div>
+        <button class="rd-expand-btn" onclick="rdExpand(this)"><span class="arr">▶</span> 在哪里看</button>
+        <div class="rd-extra">
+          <div class="rd-extra-body">
+            YouTube 搜索 <strong>「BBC The Silk Road 2016 Sam Willis」</strong>可找到完整版，也有 Up 主搬运了中文字幕版到 B站，搜索「BBC 丝绸之路 2016 Sam Willis」。需要梯子访问 YouTube。
+          </div>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://www.bilibili.com/bangumi/play/ss26035" target="_blank">B站中字版</a>
+      </div>
+    </div>
+
+    <!-- 河西走廊 -->
+    <div class="rd-card" data-rdid="rd4">
+      <div class="rd-card-bar rdbar-doc"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-cn">中文</span>
+          <span class="rd-badge badge-free">B站免费</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">河西走廊<em>（央视 / 2015 / 10集 / 豆瓣 9.1）</em></div>
+        <div class="rd-meta">央视出品 · 情景再现 + 纪录片结合 · 顶级制作水准</div>
+        <div class="rd-desc">严格说河西走廊在甘肃，不是新疆，但它是进入西域的必经之路，是丝绸之路的第一段。理解了河西走廊的历史（张骞出使、汉武帝经营西域），才能真正理解龟兹、疏勒、楼兰这些名字为什么重要。此行前半程历史感的精神底色。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">全程历史背景</span>
+          <span class="rd-day-tag">Day1 楼兰</span>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://www.bilibili.com/bangumi/play/ss20790" target="_blank">▶ B站观看</a>
+        <a class="rd-btn" href="https://movie.douban.com/subject/24736278/" target="_blank">豆瓣页面</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── 书籍 ── -->
+  <div class="rd-cat">
+    <div class="rd-cat-icon">📚</div>
+    <div class="rd-cat-title">书籍</div>
+    <div class="rd-cat-sub">路上的行进伴侣</div>
+  </div>
+  <div class="rd-grid">
+
+    <!-- 失落的卫星 -->
+    <div class="rd-card" data-rdid="rd5">
+      <div class="rd-card-bar rdbar-book"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-priority">⭐ 强推</span>
+          <span class="rd-badge badge-cn">中文</span>
+          <span class="rd-badge badge-platform">微信读书</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">失落的卫星<em>（刘子超 / 2020 / 理想国出品）</em></div>
+        <div class="rd-meta">作者驾车穿越中亚五国 · 深度旅行文学 · 豆瓣 8.6</div>
+        <div class="rd-desc">严格说写的是中亚五国（塔吉克斯坦、吉尔吉斯斯坦等），但帕米尔高原两侧的塔吉克斯坦人和你们 Day5–Day6 要见的塔什库尔干塔吉克族，是同一个民族的两支，文化、长相、习俗几乎相同。读完这本书，见到蓝眼睛的塔吉克族孩童时会有全然不同的理解。路途中读最合适，微信读书有电子版。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">Day5 塔县</span>
+          <span class="rd-day-tag">Day6 塔吉克族杏花村</span>
+        </div>
+        <button class="rd-expand-btn" onclick="rdExpand(this)"><span class="arr">▶</span> 重点看哪几章</button>
+        <div class="rd-extra">
+          <div class="rd-extra-body">
+            出发前重点读 <strong>「塔吉克斯坦」</strong>章节，了解帕米尔高原的塔吉克族历史与生活状态。<strong>「费尔干纳」</strong>章节里对丝路集市的描写，配合你们在喀什大巴扎的体验读很有共鸣。
+          </div>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://weread.qq.com/web/search/books?keyword=失落的卫星" target="_blank">微信读书</a>
+        <a class="rd-btn" href="https://book.douban.com/subject/35025453/" target="_blank">豆瓣页面</a>
+      </div>
+    </div>
+
+    <!-- 大唐西域记 -->
+    <div class="rd-card" data-rdid="rd6">
+      <div class="rd-card-bar rdbar-book"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-cn">中文</span>
+          <span class="rd-badge badge-free">网络免费</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">大唐西域记<em>（玄奘口述 / 弟子辩机笔录 / 公元646年）</em></div>
+        <div class="rd-meta">人类历史上第一份关于西域的系统性旅行记录 · 不需通读</div>
+        <div class="rd-desc">不用通读——只看与行程直接相关的章节即可：龟兹国（库车）、疏勒国（喀什）、帕米尔段（葱岭）。这是人类历史上第一份关于这片土地的"旅行笔记"，而且作者走的就是你们要走的路。建议在塔县或杏花村有信号时翻出来对照着读，站在原地读古人写下的文字，体验会乘以十倍。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">Day2 库车（龟兹国）</span>
+          <span class="rd-day-tag">Day4/8 喀什（疏勒国）</span>
+          <span class="rd-day-tag">Day6 塔莎古道（葱岭）</span>
+        </div>
+        <button class="rd-expand-btn" onclick="rdExpand(this)"><span class="arr">▶</span> 重点章节摘要</button>
+        <div class="rd-extra">
+          <div class="rd-extra-body">
+            <strong>龟兹国条：</strong>玄奘描述龟兹城"周可六十余里"，城中梵宇百余所，僧尼五千余人——而今天 Day3 你们要去的克孜尔千佛洞，正是这些僧侣修行的地方。<br><br>
+            <strong>葱岭条：</strong>玄奘描述帕米尔"山谷积雪，春夏合冻"，寒风凛冽、无人居住——对比你们在 Day6 看到的杏花盛开、塔吉克族村落，一千四百年的时光变迁会在一瞬间涌上来。
+          </div>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://weread.qq.com/web/search/books?keyword=大唐西域记" target="_blank">微信读书</a>
+        <a class="rd-btn" href="https://book.douban.com/subject/10488583/" target="_blank">豆瓣页面</a>
+      </div>
+    </div>
+
+    <!-- 丝绸之路 彼得·弗兰科潘 -->
+    <div class="rd-card" data-rdid="rd7">
+      <div class="rd-card-bar rdbar-book"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-en">英文原版</span>
+          <span class="rd-badge badge-cn">中译版</span>
+          <span class="rd-badge badge-platform">微信读书</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">丝绸之路：一部全新的世界史<em>（彼得·弗兰科潘 / 2015）</em></div>
+        <div class="rd-meta">牛津大学历史学家 · 全球史视角 · 豆瓣 8.5</div>
+        <div class="rd-desc">用"丝绸之路"这条轴线重新梳理整个世界史，打破以欧洲为中心的历史叙事。读完后会理解：为什么喀什是"世界的十字路口"，为什么克孜尔千佛洞的壁画被19世纪的欧洲探险家掠走，以及为什么这片土地曾经比任何地方都更富有。适合在长途车程中听有声书版本。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">全程历史背景</span>
+          <span class="rd-day-tag">Day3 克孜尔千佛洞</span>
+          <span class="rd-day-tag">Day4/8 喀什</span>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://weread.qq.com/web/search/books?keyword=丝绸之路+弗兰科潘" target="_blank">微信读书</a>
+        <a class="rd-btn" href="https://book.douban.com/subject/26853835/" target="_blank">豆瓣页面</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── 博客 / Vlog ── -->
+  <div class="rd-cat">
+    <div class="rd-cat-icon">📱</div>
+    <div class="rd-cat-title">Vlog / 博客</div>
+    <div class="rd-cat-sub">出发前一周刷，校准真实状态</div>
+  </div>
+  <div class="rd-grid">
+
+    <!-- 小红书关键词 -->
+    <div class="rd-card" data-rdid="rd8">
+      <div class="rd-card-bar rdbar-blog"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-priority">⭐ 出发前必刷</span>
+          <span class="rd-badge badge-cn">中文</span>
+          <span class="rd-badge badge-platform">小红书</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">小红书 · 南疆帕米尔实况</div>
+        <div class="rd-meta">出发前1–2周 · 筛选最新发布 · 重点看花情和路况</div>
+        <div class="rd-desc">小红书是获取最新花情和路况的最快渠道。出发前一周搜索下面的关键词，筛选「最新」排序，看看当年花期进展、盘龙古道是否开放、杏花村实际状态。比任何攻略都真实，因为是用户当天或当周发的。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">Day6 花期确认</span>
+          <span class="rd-day-tag">Day7 盘龙古道路况</span>
+        </div>
+        <button class="rd-expand-btn" onclick="rdExpand(this)"><span class="arr">▶</span> 推荐搜索关键词</button>
+        <div class="rd-extra">
+          <div class="rd-extra-body">
+            <strong>花情实况：</strong>「大同乡杏花 2025」「帕米尔杏花 4月」「塔县杏花 开了吗」<br>
+            <strong>帕米尔路况：</strong>「盘龙古道 2025 开放」「塔莎古道 自驾 路况」<br>
+            <strong>喀什老城：</strong>「喀什 4月 打卡 2025」「喀什牛羊大巴扎 周日」<br>
+            <strong>整体参考：</strong>「南疆自驾 2025 3月 4月」，筛选最近30天的笔记
+          </div>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://www.xiaohongshu.com/search_result?keyword=大同乡杏花+2025" target="_blank">搜「大同乡杏花」</a>
+        <a class="rd-btn" href="https://www.xiaohongshu.com/search_result?keyword=盘龙古道+2025" target="_blank">搜「盘龙古道」</a>
+      </div>
+    </div>
+
+    <!-- B站 vlog -->
+    <div class="rd-card" data-rdid="rd9">
+      <div class="rd-card-bar rdbar-blog"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-cn">中文</span>
+          <span class="rd-badge badge-free">免费</span>
+          <span class="rd-badge badge-platform">B站</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">B站 · 南疆自驾 Vlog</div>
+        <div class="rd-meta">出发前1周 · 选2023–2024年发布 · 帕米尔段重点看</div>
+        <div class="rd-desc">B站上有大量南疆自驾 vlog，重点搜索帕米尔段（白沙湖、喀拉库勒湖、盘龙古道）和杏花村。看别人实际开车走这段路的视频，能对路况、进村流程、检查站体验有直观认知，远比文字攻略有用。选2023年或2024年同期（3月底4月）发布的视频，时效性最好。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">Day5–7 帕米尔段全程</span>
+        </div>
+        <button class="rd-expand-btn" onclick="rdExpand(this)"><span class="arr">▶</span> 推荐搜索词</button>
+        <div class="rd-extra">
+          <div class="rd-extra-body">
+            <strong>「南疆自驾 帕米尔 2024」</strong>——选播放量较高的，内容通常更完整<br>
+            <strong>「盘龙古道 自驾 视频」</strong>——看发卡弯实际开车体验<br>
+            <strong>「塔吉克族杏花村 大同乡」</strong>——了解进村流程和路面状态<br>
+            <strong>「喀什牛羊大巴扎 vlog」</strong>——Day9 的预习，看看周日市集规模
+          </div>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://search.bilibili.com/all?keyword=南疆自驾+帕米尔+2024" target="_blank">▶ B站搜索</a>
+        <a class="rd-btn" href="https://search.bilibili.com/all?keyword=盘龙古道+自驾" target="_blank">搜「盘龙古道」</a>
+      </div>
+    </div>
+
+    <!-- YouTube 外国视角 -->
+    <div class="rd-card" data-rdid="rd10">
+      <div class="rd-card-bar rdbar-blog"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-en">英文</span>
+          <span class="rd-badge badge-platform">YouTube</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">YouTube · 外国旅行者视角</div>
+        <div class="rd-meta">需要梯子 · 看外国人眼中的老城和塔吉克族 · 视角完全不同</div>
+        <div class="rd-desc">YouTube上有大量外国旅行者拍摄的喀什老城、帕米尔、塔吉克族村落视频。他们的视角和国内博主完全不同——喀什老城对中国人是"丝路古城"，对外国人是"感觉穿越到了中世纪伊斯兰世界"。这种文化碰撞感正是你们旅行中会亲身经历的，提前看看能预热那种感受。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">Day4/8 喀什老城</span>
+          <span class="rd-day-tag">Day5–6 帕米尔</span>
+        </div>
+        <button class="rd-expand-btn" onclick="rdExpand(this)"><span class="arr">▶</span> 推荐搜索词</button>
+        <div class="rd-extra">
+          <div class="rd-extra-body">
+            <strong>「Kashgar old city travel vlog」</strong>——外国人逛喀什老城，视角新鲜<br>
+            <strong>「Pamir Highway China」</strong>——帕米尔公路旅行记录，含喀拉库勒湖<br>
+            <strong>「Tajik people Xinjiang」</strong>——塔吉克族人文纪录，了解 Day6 的主角<br>
+            <strong>「Karakoram Highway Pakistan China」</strong>——喀喇昆仑公路（G314）全貌，就是你们 Day5 要走的路
+          </div>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://www.youtube.com/results?search_query=Kashgar+old+city+travel+vlog" target="_blank">▶ YouTube 搜索</a>
+        <a class="rd-btn" href="https://www.youtube.com/results?search_query=Pamir+Highway+China" target="_blank">搜「Pamir Highway」</a>
+      </div>
+    </div>
+
+    <!-- 魅力帕米尔公众号 -->
+    <div class="rd-card" data-rdid="rd11">
+      <div class="rd-card-bar rdbar-blog"></div>
+      <div class="rd-card-inner">
+        <div class="rd-badges">
+          <span class="rd-badge badge-priority">⭐ 出发前必关注</span>
+          <span class="rd-badge badge-cn">中文</span>
+          <span class="rd-badge badge-platform">抖音 / 微信</span>
+          <button class="rd-check" onclick="rdCheck(this)" title="标记已看">✓</button>
+        </div>
+        <div class="rd-title">魅力帕米尔 · 官方花情通报</div>
+        <div class="rd-meta">塔什库尔干县文旅局官方账号 · 每年花期实时更新</div>
+        <div class="rd-desc">这不是普通博主，是塔什库尔干县文旅局官方账号，每年杏花季都会实时发布花情通报，告诉你今天开了几成、哪个村子开得最好。这是确认 Day6 花期的最权威信息源。出发前一周每天查一次，根据花情决定是否要调整 Day5 下午进村的时机。</div>
+        <div class="rd-link-days">
+          <span class="rd-day-tag">Day6 花期决策依据</span>
+        </div>
+      </div>
+      <div class="rd-actions">
+        <a class="rd-btn primary" href="https://www.douyin.com/search/魅力帕米尔" target="_blank">抖音关注</a>
+        <a class="rd-btn" href="https://weixin.sogou.com/weixin?type=1&query=魅力帕米尔" target="_blank">微信公众号</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
 <!-- ═══ PANEL: 目标库 ═══ -->
 <div id="p-gl" class="panel">
 <div class="gl-wrap">
@@ -2160,7 +2735,7 @@ footer .en{
 
 <script>
 // ── Nav switching ──
-const ALL_PANELS = ['ov','it','map','gl','pr'];
+const ALL_PANELS = ['ov','it','map','gl','rd','pr'];
 function sw(id) {
   ALL_PANELS.forEach(k => {
     document.getElementById('p-'+k).classList.toggle('active', k===id);
@@ -2463,6 +3038,37 @@ function injectCardImages() {
 }
 
 injectCardImages();
+
+// ══════════════════════════════════
+// 丝路书单交互逻辑
+// ══════════════════════════════════
+function rdExpand(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+function rdCheck(btn) {
+  const card = btn.closest('.rd-card');
+  card.classList.toggle('watched');
+  rdUpdateProgress();
+}
+
+function rdUpdateProgress() {
+  const total = document.querySelectorAll('.rd-card[data-rdid]').length;
+  const done  = document.querySelectorAll('.rd-card[data-rdid].watched').length;
+  document.getElementById('rd-done-count').textContent  = done;
+  document.getElementById('rd-total-count').textContent = total;
+  const pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById('rd-prog-fill').style.width   = pct + '%';
+}
+
+function rdReset() {
+  document.querySelectorAll('.rd-card[data-rdid]').forEach(c => c.classList.remove('watched'));
+  rdUpdateProgress();
+}
+
+// 初始化总数
+rdUpdateProgress();
 </script>
 </body>
 </html>
