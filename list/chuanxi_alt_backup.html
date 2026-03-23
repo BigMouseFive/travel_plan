@@ -645,6 +645,50 @@ footer .en{
   display:flex;align-items:center;gap:4px;
 }
 
+/* 目标卡图片预览 */
+.gl-img-toggle{
+  display:flex;align-items:center;gap:5px;
+  font-size:11px;color:var(--ink-4);
+  background:none;border:none;cursor:pointer;
+  font-family:var(--sans);padding:6px 0 2px;
+  transition:color .15s;
+}
+.gl-img-toggle:hover{color:var(--ochre);}
+.gl-img-toggle .arr{
+  display:inline-block;transition:transform .2s;font-size:9px;
+}
+.gl-img-toggle.open .arr{transform:rotate(90deg);}
+.gl-imgs{
+  display:none;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;margin-top:6px;
+}
+.gl-imgs.open{display:grid;}
+.gl-img-item{
+  border-radius:5px;overflow:hidden;
+  aspect-ratio:4/3;cursor:pointer;
+  position:relative;
+}
+.gl-img-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .2s;display:block;
+}
+.gl-img-item:hover img{transform:scale(1.05);}
+
+/* 图片灯箱 */
+.gl-lightbox{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(28,20,8,0.92);
+  display:none;align-items:center;justify-content:center;
+  cursor:zoom-out;
+}
+.gl-lightbox.open{display:flex;}
+.gl-lightbox img{
+  max-width:90vw;max-height:88vh;
+  border-radius:6px;object-fit:contain;
+  box-shadow:0 8px 48px rgba(0,0,0,0.6);
+}
+
 /* 套餐说明 */
 .gl-preset-desc{
   background:#fff;border:0.5px solid var(--dust-3);border-radius:10px;
@@ -2104,6 +2148,11 @@ footer .en{
 </div>
 </div>
 
+<!-- 图片灯箱 -->
+<div class="gl-lightbox" id="gl-lightbox" onclick="this.classList.remove('open')">
+  <img id="gl-lightbox-img" src="" alt="">
+</div>
+
 <footer>
   西域南疆 · 丝路春行 · 深圳出发 · 3月29日—4月6日（优化修订版）
   <span class="en">The Ancient Road of Silk · South Xinjiang · Spring 2025</span>
@@ -2320,6 +2369,100 @@ function applyPreset(type) {
 
 // 初始化计数
 glUpdateCount();
+
+// ══════════════════════════════════
+// 目标卡参考图片（本地文件夹读取）
+// 使用说明：在 HTML 同目录下建立 imgs/ 文件夹
+// 按 gc{N}_{1,2,3}.jpg 命名放入即可自动显示
+// 支持 jpg / jpeg / png / webp 格式
+// ══════════════════════════════════
+
+// 每个目标卡对应的图片数量
+const cardImgCount = {
+  gc1: 2, gc2: 2, gc3: 3, gc4: 2, gc5: 2, gc6: 3,
+  gc7: 2, gc8: 2, gc9: 2, gc11: 2, gc12: 3,
+  gc13: 3, gc14: 3, gc15: 2, gc16: 3, gc17: 3,
+  gc18: 2, gc19: 2, gc20: 2, gc21: 3
+};
+
+const IMG_EXTS = ['jpg', 'jpeg', 'png', 'webp'];
+
+// 尝试加载图片，找到第一个存在的格式
+function tryLoadImg(basePath, exts, img) {
+  let i = 0;
+  function next() {
+    if (i >= exts.length) {
+      img.parentElement.style.display = 'none'; // 所有格式都不存在则隐藏
+      return;
+    }
+    img.src = basePath + '.' + exts[i];
+    i++;
+  }
+  img.onerror = next;
+  next();
+}
+
+function injectCardImages() {
+  Object.entries(cardImgCount).forEach(([id, count]) => {
+    const card = document.querySelector(`[data-id="${id}"]`);
+    if (!card) return;
+    const body = card.querySelector('.gl-card-body');
+    if (!body) return;
+
+    // 检测是否有任何图片存在（通过尝试加载第一张）
+    const testImg = new Image();
+    const basePath0 = `imgs/${id}_1`;
+    let hasAny = false;
+
+    // 先创建结构（隐藏状态），尝试加载后再决定是否显示 toggle 按钮
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'gl-img-toggle';
+    toggleBtn.style.display = 'none'; // 默认隐藏，有图片才显示
+    toggleBtn.innerHTML = '<span class="arr">▶</span> 参考图片';
+    toggleBtn.onclick = function () {
+      this.classList.toggle('open');
+      this.nextElementSibling.classList.toggle('open');
+    };
+
+    const imgGrid = document.createElement('div');
+    imgGrid.className = 'gl-imgs';
+
+    // 创建图片项
+    for (let n = 1; n <= count; n++) {
+      const item = document.createElement('div');
+      item.className = 'gl-img-item';
+      const img = document.createElement('img');
+      img.alt = '';
+      img.loading = 'lazy';
+      img.onclick = function (e) {
+        e.stopPropagation();
+        const lb = document.getElementById('gl-lightbox');
+        document.getElementById('gl-lightbox-img').src = this.src;
+        lb.classList.add('open');
+      };
+      tryLoadImg(`imgs/${id}_${n}`, IMG_EXTS, img);
+      item.appendChild(img);
+      imgGrid.appendChild(item);
+    }
+
+    body.appendChild(toggleBtn);
+    body.appendChild(imgGrid);
+
+    // 尝试加载第一张，成功则显示 toggle 按钮
+    const probe = new Image();
+    let pi = 0;
+    function probeNext() {
+      if (pi >= IMG_EXTS.length) return; // 没有图片，toggle 保持隐藏
+      probe.src = `imgs/${id}_1.${IMG_EXTS[pi]}`;
+      pi++;
+    }
+    probe.onload = () => { toggleBtn.style.display = 'flex'; };
+    probe.onerror = probeNext;
+    probeNext();
+  });
+}
+
+injectCardImages();
 </script>
 </body>
 </html>
