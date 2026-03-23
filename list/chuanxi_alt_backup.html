@@ -455,7 +455,216 @@ footer .en{
 
 /* ── ANIM ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.panel.active .page,.panel.active .map-wrap{animation:fadeUp .38s ease both;}
+.panel.active .page,.panel.active .map-wrap,.panel.active .gl-wrap{animation:fadeUp .38s ease both;}
+
+/* ══════════════════════════════════
+   目标库 GOAL LIBRARY
+══════════════════════════════════ */
+.gl-wrap{max-width:900px;margin:0 auto;padding:40px 28px 60px;}
+
+/* ── 顶部控制栏 ── */
+.gl-controls{
+  display:flex;align-items:center;gap:10px;
+  flex-wrap:wrap;margin-bottom:28px;
+}
+.gl-filter-group{display:flex;gap:6px;flex-wrap:wrap;flex:1;}
+.gl-filter{
+  padding:5px 13px;border-radius:20px;font-size:11px;font-weight:500;
+  border:0.5px solid var(--dust-3);background:none;cursor:pointer;
+  font-family:var(--sans);color:var(--ink-3);transition:all .15s;
+  white-space:nowrap;
+}
+.gl-filter:hover{border-color:var(--ochre);color:var(--ochre);}
+.gl-filter.on{color:#fff;border-color:transparent;}
+.gl-filter[data-f="all"].on{background:var(--ink-2);}
+.gl-filter[data-f="S"].on{background:#b8441c;}
+.gl-filter[data-f="A"].on{background:var(--ochre-2);}
+.gl-filter[data-f="B"].on{background:var(--jade-2);}
+.gl-filter[data-f="hard"].on{background:var(--crimson);}
+.gl-filter[data-f="done"].on{background:var(--lapis-2);}
+
+.gl-count{
+  font-size:11px;color:var(--ink-4);white-space:nowrap;
+  padding:5px 12px;background:var(--dust-2);border-radius:20px;
+}
+
+/* 套餐选择 */
+.gl-presets{
+  display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;
+}
+.gl-preset-btn{
+  padding:7px 18px;border-radius:8px;
+  font-size:12px;font-weight:500;
+  border:0.5px solid var(--dust-3);background:#fff;
+  cursor:pointer;font-family:var(--sans);color:var(--ink-3);
+  transition:all .18s;
+}
+.gl-preset-btn:hover{border-color:var(--ochre);color:var(--ink);}
+.gl-preset-btn.full{border-color:#b8441c;color:#b8441c;}
+.gl-preset-btn.slim{border-color:var(--ochre-2);color:var(--ochre);}
+.gl-preset-btn.easy{border-color:var(--jade-2);color:var(--jade);}
+.gl-preset-label{
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-4);align-self:center;margin-right:4px;
+}
+
+/* ── 硬性节点区 ── */
+.gl-hard-section{
+  background:var(--crimson-l);
+  border:0.5px solid rgba(136,40,48,0.2);
+  border-radius:12px;padding:16px 20px;margin-bottom:28px;
+}
+.gl-hard-title{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--crimson);font-weight:500;margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.gl-hard-title::after{content:'';flex:1;height:0.5px;background:rgba(136,40,48,0.2);}
+.gl-hard-nodes{display:flex;flex-direction:column;gap:8px;}
+.gl-hard-node{
+  display:flex;align-items:flex-start;gap:12px;
+  background:#fff;border-radius:8px;padding:10px 14px;
+  border-left:3px solid var(--crimson);
+}
+.gl-hard-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.gl-hard-body{}
+.gl-hard-name{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;}
+.gl-hard-meta{font-size:11px;color:var(--ink-3);line-height:1.6;}
+.gl-hard-deadline{
+  display:inline-block;font-size:10px;padding:1px 7px;
+  border-radius:4px;background:var(--crimson-l);color:var(--crimson);
+  font-weight:500;margin-left:6px;vertical-align:middle;
+}
+
+/* ── 目标卡 ── */
+.gl-section-label{
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-4);margin-bottom:16px;margin-top:32px;
+  display:flex;align-items:center;gap:12px;
+}
+.gl-section-label::after{content:'';flex:1;height:0.5px;background:var(--dust-3);}
+
+.gl-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:12px;
+}
+.gl-card{
+  background:#fff;border:0.5px solid var(--dust-3);
+  border-radius:12px;overflow:hidden;
+  transition:box-shadow .18s,opacity .2s;
+  position:relative;
+}
+.gl-card:hover{box-shadow:0 4px 20px rgba(28,20,8,0.09);}
+.gl-card.hidden{display:none;}
+.gl-card.checked{opacity:.5;}
+.gl-card.checked .gl-card-body{text-decoration:none;}
+
+/* 顶部色条 */
+.gl-card-bar{height:3px;width:100%;}
+.bar-S{background:linear-gradient(90deg,#b8441c,#d88040);}
+.bar-A{background:var(--ochre-2);}
+.bar-B{background:var(--jade-2);}
+.bar-C{background:var(--dust-4);}
+
+.gl-card-head{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:14px 16px 10px;
+}
+.gl-star-badge{
+  display:flex;flex-direction:column;align-items:center;
+  flex-shrink:0;
+}
+.gl-star-letter{
+  font-family:var(--serif-en);font-size:22px;font-weight:400;
+  line-height:1;
+}
+.star-S .gl-star-letter{color:#b8441c;}
+.star-A .gl-star-letter{color:var(--ochre-2);}
+.star-B .gl-star-letter{color:var(--jade-2);}
+.star-C .gl-star-letter{color:var(--dust-4);}
+.gl-star-label{font-size:8px;color:var(--ink-4);letter-spacing:.08em;margin-top:1px;}
+
+.gl-card-title-wrap{flex:1;}
+.gl-card-name{
+  font-size:14px;font-weight:500;color:var(--ink);
+  line-height:1.3;margin-bottom:5px;
+}
+.gl-tags{display:flex;flex-wrap:wrap;gap:4px;}
+.gl-tag{
+  font-size:9px;padding:1px 6px;border-radius:3px;
+  font-weight:500;letter-spacing:.04em;
+}
+.tag-unique{background:#fde8d8;color:#b8441c;}
+.tag-culture{background:var(--lapis-l);color:var(--lapis);}
+.tag-nature{background:var(--jade-l);color:var(--jade);}
+.tag-food{background:var(--sand-l);color:var(--sand);}
+.tag-city{background:var(--dust-2);color:var(--ink-3);}
+.tag-warn{background:var(--crimson-l);color:var(--crimson);}
+.tag-challenge{background:#f0e8f8;color:#6a3a8a;}
+.gl-check{
+  width:22px;height:22px;border-radius:50%;
+  border:1.5px solid var(--dust-3);background:none;
+  cursor:pointer;flex-shrink:0;display:flex;
+  align-items:center;justify-content:center;
+  font-size:12px;transition:all .15s;margin-top:1px;
+}
+.gl-check:hover{border-color:var(--jade-2);color:var(--jade-2);}
+.gl-card.checked .gl-check{
+  background:var(--jade-2);border-color:var(--jade-2);color:#fff;
+}
+
+.gl-card-body{padding:0 16px 14px;}
+.gl-desc{font-size:12px;color:var(--ink-3);line-height:1.7;margin-bottom:10px;}
+
+/* 元信息行 */
+.gl-meta{display:flex;flex-wrap:wrap;gap:6px;}
+.gl-meta-item{
+  display:flex;align-items:center;gap:4px;
+  font-size:11px;color:var(--ink-3);
+  background:var(--dust);border-radius:4px;
+  padding:3px 7px;
+}
+.gl-meta-item span{color:var(--ink-4);font-size:10px;}
+
+/* 决策线 */
+.gl-decision{
+  margin:8px 0 0;padding:8px 10px;
+  background:var(--ochre-l);border-radius:6px;
+  font-size:11px;color:var(--ink-2);line-height:1.6;
+  border-left:2px solid var(--ochre-2);
+}
+.gl-decision strong{color:var(--ochre);font-size:10px;letter-spacing:.06em;text-transform:uppercase;}
+
+.gl-decision.warn{background:var(--crimson-l);border-left-color:var(--crimson);}
+.gl-decision.warn strong{color:var(--crimson);}
+
+/* 依赖标注 */
+.gl-dep{
+  margin:6px 0 0;font-size:11px;color:var(--crimson);
+  display:flex;align-items:center;gap:4px;
+}
+
+/* 套餐说明 */
+.gl-preset-desc{
+  background:#fff;border:0.5px solid var(--dust-3);border-radius:10px;
+  padding:14px 18px;margin-bottom:20px;font-size:13px;color:var(--ink-2);line-height:1.7;
+  display:none;
+}
+.gl-preset-desc.show{display:block;}
+.gl-preset-desc strong{color:var(--ochre);}
+
+/* 进度统计 */
+.gl-progress{
+  position:sticky;bottom:0;background:rgba(242,232,216,0.97);
+  backdrop-filter:blur(8px);border-top:0.5px solid var(--dust-3);
+  padding:12px 28px;display:flex;align-items:center;gap:16px;
+  flex-wrap:wrap;
+}
+.gl-prog-bar-wrap{flex:1;min-width:120px;height:4px;background:var(--dust-3);border-radius:2px;}
+.gl-prog-bar{height:4px;background:var(--jade-2);border-radius:2px;transition:width .3s;}
+.gl-prog-text{font-size:12px;color:var(--ink-3);}
+.gl-prog-text strong{color:var(--jade);}
 
 /* pulse for map dots */
 @keyframes pulse{0%,100%{r:7}50%{r:9}}
@@ -566,6 +775,7 @@ footer .en{
     <button class="stab active" onclick="sw('ov')">概览</button>
     <button class="stab" onclick="sw('it')">逐日行程</button>
     <button class="stab" onclick="sw('map')">路线地图</button>
+    <button class="stab" onclick="sw('gl')">目标库</button>
     <button class="stab" onclick="sw('pr')">实用信息</button>
   </div>
   <div class="daydots" id="daydots"></div>
@@ -1263,6 +1473,637 @@ footer .en{
 </div>
 </div>
 
+<!-- ═══ PANEL: 目标库 ═══ -->
+<div id="p-gl" class="panel">
+<div class="gl-wrap">
+
+  <div class="sl">动态目标库</div>
+  <p style="font-size:13px;color:var(--ink-3);line-height:1.8;margin-bottom:20px;">行程可能因天气、体力、堵车等变化。用下方目标卡动态决策：<strong>S级必去，A级尽量去，B级时间够再去</strong>。勾选已完成目标，底部进度条实时更新。套餐预设帮你快速切换全量/精简/极简方案。</p>
+
+  <!-- 套餐预设 -->
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+    <span class="gl-preset-label">快速套餐</span>
+    <button class="gl-preset-btn full" onclick="applyPreset('full')">🗺 全量版（正常推进）</button>
+    <button class="gl-preset-btn slim" onclick="applyPreset('slim')">✂️ 精简版（每天少一项）</button>
+    <button class="gl-preset-btn easy" onclick="applyPreset('easy')">🌿 极简版（只保留S级）</button>
+  </div>
+  <div id="preset-desc" class="gl-preset-desc"></div>
+
+  <!-- 筛选栏 -->
+  <div class="gl-controls">
+    <div class="gl-filter-group">
+      <button class="gl-filter on" data-f="all" onclick="glFilter('all')">全部</button>
+      <button class="gl-filter" data-f="S" onclick="glFilter('S')">⭐ S级必去</button>
+      <button class="gl-filter" data-f="A" onclick="glFilter('A')">🔶 A级推荐</button>
+      <button class="gl-filter" data-f="B" onclick="glFilter('B')">🔷 B级加分</button>
+      <button class="gl-filter" data-f="done" onclick="glFilter('done')">✅ 已完成</button>
+    </div>
+    <div class="gl-count" id="gl-count">共 0 个目标</div>
+  </div>
+
+  <!-- 硬性节点 -->
+  <div class="gl-hard-section">
+    <div class="gl-hard-title">⚠ 硬性节点（非景点，必须完成，跳过则连锁失效）</div>
+    <div class="gl-hard-nodes">
+      <div class="gl-hard-node">
+        <div class="gl-hard-icon">📋</div>
+        <div class="gl-hard-body">
+          <div class="gl-hard-name">办理边防证 <span class="gl-hard-deadline">Day4抵喀什后第一件事</span></div>
+          <div class="gl-hard-meta">喀什市公安局出入境管理处 · 带身份证原件 · 两人各办 · 当场取 · 免费<br>⚡ 跳过后果：Day5–Day7 帕米尔全段目标全部作废（无法进入塔县）</div>
+        </div>
+      </div>
+      <div class="gl-hard-node">
+        <div class="gl-hard-icon">⛽</div>
+        <div class="gl-hard-body">
+          <div class="gl-hard-name">Day6出发前塔县加满油 <span class="gl-hard-deadline">08:00前完成</span></div>
+          <div class="gl-hard-meta">沿途"库科西鲁克"便民油站经常不开门 · 塔县加满是唯一保险做法<br>⚡ 跳过后果：进大同乡途中可能抛锚，且无法预期何时有救援</div>
+        </div>
+      </div>
+      <div class="gl-hard-node">
+        <div class="gl-hard-icon">🪪</div>
+        <div class="gl-hard-body">
+          <div class="gl-hard-name">大同乡出村取回边防证 <span class="gl-hard-deadline">离开杏花村前</span></div>
+          <div class="gl-hard-meta">进检查站时边防证被暂扣 · 出村时去检查站取回两人证件<br>⚡ 跳过后果：盘龙古道和返喀什途中无法过检查站</div>
+        </div>
+      </div>
+      <div class="gl-hard-node">
+        <div class="gl-hard-icon">🏨</div>
+        <div class="gl-hard-body">
+          <div class="gl-hard-name">牦牛肉火锅提前预订 <span class="gl-hard-deadline">Day5出发前一天</span></div>
+          <div class="gl-hard-meta">塔县本地餐馆座位有限 · 旺季需提前一天微信/电话预订 · 约150元/人<br>⚡ 跳过后果：当晚可能只能吃方便食品</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 目标卡区域：D1–D2 -->
+  <div class="gl-section-label" id="gls-d1">Day 1–2 · 库尔勒 · 库车龟兹</div>
+  <div class="gl-grid" id="glg-d1">
+
+    <div class="gl-card" data-rank="A" data-day="1" data-id="gc1">
+      <div class="gl-card-bar bar-A"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-A"><div class="gl-star-letter">A</div><div class="gl-star-label">推荐</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">巴州博物馆（楼兰美女）</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-culture">人文历史</span>
+            <span class="gl-tag tag-unique">南疆唯一</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">国家一级博物馆，收藏"楼兰美女"（3800年前干尸，保存完好），丝路出土文物极丰富。是了解南疆历史的最佳入口。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>库尔勒市区</div>
+          <div class="gl-meta-item"><span>⏱</span>约2小时</div>
+          <div class="gl-meta-item"><span>💰</span>免费（需预约）</div>
+          <div class="gl-meta-item"><span>🗓</span>Day1 17:00</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> 航班延误导致抵达已过闭馆时间（通常18:00闭馆）</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="B" data-day="1" data-id="gc2">
+      <div class="gl-card-bar bar-B"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-B"><div class="gl-star-letter">B</div><div class="gl-star-label">加分</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">孔雀河湿地公园散步</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-nature">自然风光</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">南疆最美城市河道，3月底迁徙季可见野生天鹅。主要目的是适应时差、放松心情，不是必打卡景点。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>库尔勒市区</div>
+          <div class="gl-meta-item"><span>⏱</span>约1小时</div>
+          <div class="gl-meta-item"><span>💰</span>免费</div>
+          <div class="gl-meta-item"><span>🗓</span>Day1 19:30</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> 疲劳或时间紧，直接回酒店休息更值得</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="S" data-day="2" data-id="gc3">
+      <div class="gl-card-bar bar-S"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-S"><div class="gl-star-letter">S</div><div class="gl-star-label">必去</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">库车天山大峡谷</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-nature">自然奇观</span>
+            <span class="gl-tag tag-unique">新疆标志</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">红褐砂岩峡谷，光从顶端透射形成丁达尔效应，光影震撼。被称为"新疆羚羊谷"，视觉冲击力极强，是整个龟兹段的核心目标。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>库车市北</div>
+          <div class="gl-meta-item"><span>⏱</span>2–3小时徒步</div>
+          <div class="gl-meta-item"><span>💰</span>85元/人</div>
+          <div class="gl-meta-item"><span>🗓</span>Day2 14:00</div>
+        </div>
+        <div class="gl-decision warn"><strong>最晚决策</strong> 出发前——若抵达库车已超过16:30，景区可能临近关闭，需评估是否次日补游（但行程无余量）</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="A" data-day="2" data-id="gc4">
+      <div class="gl-card-bar bar-A"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-A"><div class="gl-star-letter">A</div><div class="gl-star-label">推荐</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">库车大寺 + 热斯坦老街</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-culture">伊斯兰建筑</span>
+            <span class="gl-tag tag-city">市集</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">新疆第二大清真寺（1561年建）+ 库车最热闹传统市集街道。两者相邻，合并游览。若峡谷耗时过长可只逛老街（更灵活）。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>库车市区</div>
+          <div class="gl-meta-item"><span>⏱</span>1.5–2小时</div>
+          <div class="gl-meta-item"><span>💰</span>大寺约30元</div>
+          <div class="gl-meta-item"><span>🗓</span>Day2 17:00</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> 峡谷游览时间超出预期，体力不足；老街单独保留也值得</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- D3 -->
+  <div class="gl-section-label" id="gls-d3">Day 3 · 天山红石林 · 克孜尔千佛洞</div>
+  <div class="gl-grid" id="glg-d3">
+
+    <div class="gl-card" data-rank="B" data-day="3" data-id="gc5">
+      <div class="gl-card-bar bar-B"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-B"><div class="gl-star-letter">B</div><div class="gl-star-label">加分</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">天山红石林</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-nature">雅丹地貌</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">红褐色雅丹风蚀地貌，岩层颜色丰富，形态如荒废古城，游客极少。好看但替代性较高（同类风景不唯一），时间紧时优先保克孜尔。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>库车→拜城途中</div>
+          <div class="gl-meta-item"><span>⏱</span>约2小时</div>
+          <div class="gl-meta-item"><span>💰</span>约60元/人</div>
+          <div class="gl-meta-item"><span>🗓</span>Day3 09:00</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> 时间紧张或前一天峡谷体力消耗过大；跳过节省约2.5小时，克孜尔可以从容参观</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="S" data-day="3" data-id="gc6">
+      <div class="gl-card-bar bar-S"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-S"><div class="gl-star-letter">S</div><div class="gl-star-label">必去</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">克孜尔千佛洞</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-unique">世界文化遗产</span>
+            <span class="gl-tag tag-culture">比敦煌早一世纪</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">建于公元3世纪，中国最早大型石窟，佛教东传入中原的起点，现存洞窟236个。不可替代性极高——这是整个丝路段最重要的人文目标，绝不能跳。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>拜城县</div>
+          <div class="gl-meta-item"><span>⏱</span>约2.5小时</div>
+          <div class="gl-meta-item"><span>💰</span>80元/人（含导览）</div>
+          <div class="gl-meta-item"><span>🗓</span>Day3 13:00</div>
+        </div>
+        <div class="gl-decision warn"><strong>最晚决策</strong> Day3 09:00——若因红石林延误导致预计到达时间晚于14:30，需立即跳过红石林直奔千佛洞</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- D4 -->
+  <div class="gl-section-label" id="gls-d4">Day 4 · 喀什噶尔</div>
+  <div class="gl-grid" id="glg-d4">
+
+    <div class="gl-card" data-rank="S" data-day="4" data-id="gc7">
+      <div class="gl-card-bar bar-S"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-S"><div class="gl-star-letter">S</div><div class="gl-star-label">必去</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">喀什噶尔老城漫步</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-unique">2000年古城</span>
+            <span class="gl-tag tag-culture">伊斯兰风情</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">中国保存最完整的伊斯兰风格古城，迷宫般街巷，百年老茶馆。Day4下午+Day8整天，共有大量时间，不用着急，随意走。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>喀什老城</div>
+          <div class="gl-meta-item"><span>⏱</span>2–4小时（可多次）</div>
+          <div class="gl-meta-item"><span>💰</span>免费</div>
+          <div class="gl-meta-item"><span>🗓</span>Day4 16:00 / Day8全天</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> Day4因车程延误可缩短，Day8作为完整备补，两天合计时间充裕</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="A" data-day="4" data-id="gc8">
+      <div class="gl-card-bar bar-A"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-A"><div class="gl-star-letter">A</div><div class="gl-star-label">推荐</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">艾提尕尔清真寺</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-culture">新疆最大清真寺</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">新疆最大清真寺，黄色外墙极具标志性，傍晚广场上当地居民聚集，人文氛围浓郁。外观免费，入内约30元。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>老城中心</div>
+          <div class="gl-meta-item"><span>⏱</span>约45分钟</div>
+          <div class="gl-meta-item"><span>💰</span>外观免费/入内30元</div>
+          <div class="gl-meta-item"><span>🗓</span>Day4 18:30</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> 老城漫步已满足，时间紧时只拍外观即可，5分钟搞定</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="A" data-day="8" data-id="gc9">
+      <div class="gl-card-bar bar-A"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-A"><div class="gl-star-letter">A</div><div class="gl-star-label">推荐</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">高台民居</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-culture">千年聚居地</span>
+            <span class="gl-tag tag-unique">原始感最强</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">悬崖上的千年维吾尔族聚居地，土坯民居层叠而上，陶艺铜器工坊散布其中。比老城更原始，更少商业化。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>吐曼河高崖</div>
+          <div class="gl-meta-item"><span>⏱</span>约1.5小时</div>
+          <div class="gl-meta-item"><span>💰</span>约30元/人</div>
+          <div class="gl-meta-item"><span>🗓</span>Day8 09:30</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> 已在老城深度游览，可跳过；但两者风格不同，体力允许建议都去</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="B" data-day="8" data-id="gc10">
+      <div class="gl-card-bar bar-B"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-B"><div class="gl-star-letter">B</div><div class="gl-star-label">加分</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">香妃墓（阿帕克霍加麻扎）</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-culture">皇家陵墓</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">绿色琉璃砖皇家陵墓，建筑精美。⚠ 门票已涨至198元/人，性价比存疑，游客评价两极。对伊斯兰建筑有兴趣则去，否则可跳。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>喀什市区北</div>
+          <div class="gl-meta-item"><span>⏱</span>约1小时</div>
+          <div class="gl-meta-item"><span>💰</span>198元/人 ⚠</div>
+          <div class="gl-meta-item"><span>🗓</span>Day8 11:30</div>
+        </div>
+        <div class="gl-decision warn"><strong>门票提醒</strong> 两人约400元，若对伊斯兰建筑兴趣一般，这400元用来升级一顿烤全羊更值得</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="A" data-day="8" data-id="gc11">
+      <div class="gl-card-bar bar-A"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-A"><div class="gl-star-letter">A</div><div class="gl-star-label">推荐</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">国际大巴扎</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-city">中亚最大市集</span>
+            <span class="gl-tag tag-food">特产购物</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">中亚最大商品交易集市，手工地毯、铜器、乐器、香料、帽子。注意与周日牛羊大巴扎区分，两者风格完全不同，都值得去。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>喀什市区</div>
+          <div class="gl-meta-item"><span>⏱</span>1–2小时</div>
+          <div class="gl-meta-item"><span>💰</span>免费入场</div>
+          <div class="gl-meta-item"><span>🗓</span>Day8 15:00</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> 若周日牛羊大巴扎已去且购物欲望满足，可缩短或跳过</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="S" data-day="9" data-id="gc12">
+      <div class="gl-card-bar bar-S"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-S"><div class="gl-star-letter">S</div><div class="gl-star-label">必去</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">牛羊大巴扎（周日专属）</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-unique">最真实南疆</span>
+            <span class="gl-tag tag-culture">零商业化</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">每周日全疆牧民赶牛羊来此交易，基本没有内地游客，零商业化，完全真实原始。是喀什最能感受真实人文的地方，强烈推荐，不可替代。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>喀什市郊，打车30元</div>
+          <div class="gl-meta-item"><span>⏱</span>1–2小时</div>
+          <div class="gl-meta-item"><span>💰</span>免费</div>
+          <div class="gl-meta-item"><span>🗓</span>Day9 09:00（仅周日）</div>
+        </div>
+        <div class="gl-decision warn"><strong>时间窗口唯一</strong> 仅周日8:00–11:00最热闹，Day9 正好是周日，错过这次旅程内无法补救</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- D5 帕米尔 -->
+  <div class="gl-section-label" id="gls-d5">Day 5 · 帕米尔高原</div>
+  <div class="gl-grid" id="glg-d5">
+
+    <div class="gl-card" data-rank="A" data-day="5" data-id="gc13">
+      <div class="gl-card-bar bar-A"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-A"><div class="gl-star-letter">A</div><div class="gl-star-label">推荐</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">白沙湖</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-nature">沙漠+高原湖</span>
+            <span class="gl-tag tag-unique">地貌极罕见</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">海拔2400m，白色沙山与高原蓝湖并存，地貌组合全球罕见。在G314国道途中，不走回头路，顺路必停。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>G314途中</div>
+          <div class="gl-meta-item"><span>⏱</span>约1.5小时</div>
+          <div class="gl-meta-item"><span>💰</span>35元/人</div>
+          <div class="gl-meta-item"><span>🗓</span>Day5 10:30</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> 几乎无理由跳过——顺路、耗时短、景色独特；仅当车程严重超时才考虑</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="S" data-day="5" data-id="gc14">
+      <div class="gl-card-bar bar-S"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-S"><div class="gl-star-letter">S</div><div class="gl-star-label">必去</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">喀拉库勒湖 · 慕士塔格峰</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-unique">世界屋脊级景观</span>
+            <span class="gl-tag tag-nature">7546m雪峰倒影</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">海拔3600m冰川湖，倒映"冰山之父"慕士塔格峰（7546m）。天晴时三座7000m以上雪峰同时入画，是帕米尔最震撼的视觉体验。⚠ 此处3600m，步行放慢节奏。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>G314沿线</div>
+          <div class="gl-meta-item"><span>⏱</span>约1.5小时</div>
+          <div class="gl-meta-item"><span>💰</span>50元/人</div>
+          <div class="gl-meta-item"><span>🗓</span>Day5 13:00</div>
+        </div>
+        <div class="gl-decision warn"><strong>不可跳过</strong> 这是帕米尔最核心的景观目标，无替代。唯一例外是天气极差（大雪/大雾看不见雪山），此时快速通过即可</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="A" data-day="5" data-id="gc19">
+      <div class="gl-card-bar bar-A"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-A"><div class="gl-star-letter">A</div><div class="gl-star-label">推荐</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">旱地拔葱 📸</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-challenge">个人挑战</span>
+            <span class="gl-tag tag-nature">白沙湖沙山</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">白沙湖的白色细沙坡是全程最佳拍摄场地——沙质够松、坡度自然、背景是高原蓝湖+雪山+湛蓝天空，海拔2400m空气透明度极高，出片效果绝佳。在沙山斜坡上完成，视觉冲击力是全程所有场景里最强的。次选备用：Day6杏花村树下（背景更柔和浪漫，但起跳高度受树枝限制）。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>白沙湖沙山</div>
+          <div class="gl-meta-item"><span>⏱</span>15–20分钟（含多次尝试）</div>
+          <div class="gl-meta-item"><span>💰</span>含在白沙湖门票内</div>
+          <div class="gl-meta-item"><span>🗓</span>Day5 10:30–11:00</div>
+        </div>
+        <div class="gl-decision"><strong>执行要点</strong> 手机/相机提前调好连拍模式；沙坡起跳后陷脚较深，建议穿不介意进沙的运动鞋；两人轮流跳、互相拍。备选时机：Day6杏花村，以白色杏花为前景</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="A" data-day="5" data-id="gc20">
+      <div class="gl-card-bar bar-A"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-A"><div class="gl-star-letter">A</div><div class="gl-star-label">推荐</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">与雪山合影 📸</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-challenge">个人挑战</span>
+            <span class="gl-tag tag-nature">7546m雪峰</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">喀拉库勒湖边是全程最佳合影点——慕士塔格峰（7546m）正面直视，湖面倒影让雪山视觉体量翻倍，站在湖边任意角度拍都有雪山做背景，几乎不需要刻意构图。天气晴好时雪峰轮廓清晰锐利，光线在10:00–14:00之间最佳，正好与游览时间重合。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>喀拉库勒湖边</div>
+          <div class="gl-meta-item"><span>⏱</span>10–15分钟专门拍摄</div>
+          <div class="gl-meta-item"><span>💰</span>含在景区门票内</div>
+          <div class="gl-meta-item"><span>🗓</span>Day5 13:00–14:30</div>
+        </div>
+        <div class="gl-decision warn"><strong>天气依赖</strong> 多云或起雾时雪山可能被遮住，此时可快速记录环境后继续行程；备选是Day7盘龙古道山顶，但停留时间极短（≤15分钟），拍摄窗口紧张</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- D6 杏花村 -->
+  <div class="gl-section-label" id="gls-d6">Day 6 · 塔吉克族杏花村（全程最佳日）</div>
+  <div class="gl-grid" id="glg-d6">
+
+    <div class="gl-card" data-rank="A" data-day="6" data-id="gc15">
+      <div class="gl-card-bar bar-A"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-A"><div class="gl-star-letter">A</div><div class="gl-star-label">推荐</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">班迪尔蓝湖</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-nature">冰川融水湖</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">翡翠绿高原冰川融水湖，湖色介于翠绿与宝蓝之间，两侧雪山倒影极治愈。位于塔莎古道途中，去杏花村顺路经过。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>塔莎古道途中</div>
+          <div class="gl-meta-item"><span>⏱</span>约1.5小时</div>
+          <div class="gl-meta-item"><span>💰</span>免费</div>
+          <div class="gl-meta-item"><span>🗓</span>Day6 09:30</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> 若花期确认末尾或已谢，应压缩班迪尔时间（改为30分钟快看），把时间留给杏花村</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="S" data-day="6" data-id="gc16">
+      <div class="gl-card-bar bar-S"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-S"><div class="gl-star-letter">S</div><div class="gl-star-label">必去</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">塔吉克族杏花村（大同乡）</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-unique">全国唯一场景</span>
+            <span class="gl-tag tag-culture">塔吉克族人文</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">昆仑山+帕米尔河谷+白色杏花+塔吉克族土房，这个组合在全国任何其他地方无法复制。⚠ 花期提示：4月3日处于末尾，出发前查"魅力帕米尔"抖音号确认花情。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>大同乡，离地间隙≥180mm</div>
+          <div class="gl-meta-item"><span>⏱</span>3–4小时（含进村路程）</div>
+          <div class="gl-meta-item"><span>💰</span>免费（检查站登记）</div>
+          <div class="gl-meta-item"><span>🗓</span>Day6 11:30</div>
+        </div>
+        <div class="gl-decision warn"><strong>花期末尾风险</strong> 若出发前确认花已基本落尽，可调整为快速游览大同乡村落（人文依然值得），不必放弃整个目标</div>
+        <div class="gl-dep">⚠ 依赖：边防证（Day4办）· 出村记得取回证件</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="A" data-day="6" data-id="gc21">
+      <div class="gl-card-bar bar-A"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-A"><div class="gl-star-letter">A</div><div class="gl-star-label">推荐</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">星空延时摄影 📸</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-challenge">个人挑战</span>
+            <span class="gl-tag tag-unique">帕米尔星空</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">塔县3000m，周边无城镇光污染，帕米尔高原夜空是公认的星空圣地，银河肉眼可见。Day6晚是全程最佳时机：已适应高原两晚、当天活动结束早、以塔县土坯房或远处雪山剪影为前景，构图极佳。银河拱桥约凌晨1–3点升至最高点，3月底4月初正处银河季开始边缘。Day5晚（高原第一晚）不建议熬夜，留给身体适应。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>塔县客栈外空地</div>
+          <div class="gl-meta-item"><span>⏱</span>拍摄约2–3小时（23:00开始）</div>
+          <div class="gl-meta-item"><span>💰</span>免费</div>
+          <div class="gl-meta-item"><span>🗓</span>Day6 深夜 23:00–01:30</div>
+        </div>
+        <div class="gl-decision warn"><strong>装备清单</strong> 三脚架（必须）· 快门线或手机遥控 · 相机手动模式（ISO 1600–3200 / f2.8 / 20–25s）· 备用电池×2保温（高原夜间可到-10°C，电池放胸口口袋保温）· 厚羽绒服+手套全副武装 · 提前查询月相（月圆前后3天拍摄效果差）</div>
+        <div class="gl-decision" style="margin-top:6px"><strong>跳过条件</strong> 当晚有云、Day6体力消耗过大、或月光过强（满月前后）；不可强撑熬夜影响Day7盘龙古道安全驾驶状态</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- D7 盘龙古道 -->
+  <div class="gl-section-label" id="gls-d7">Day 7 · 盘龙古道（清明节）</div>
+  <div class="gl-grid" id="glg-d7">
+
+    <div class="gl-card" data-rank="S" data-day="7" data-id="gc17">
+      <div class="gl-card-bar bar-S"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-S"><div class="gl-star-letter">S</div><div class="gl-star-label">必去</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">盘龙古道</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-nature">360°发卡弯</span>
+            <span class="gl-tag tag-warn">4200m ⚠高反</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">连续360°发卡弯从谷底盘旋至山顶（4200m），俯瞰时视觉极震撼。⚠ 顶部4200m，2024年救助高反游客2000+人次，山顶停留≤15分钟。10:00开放，提前到山脚等候。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>塔县→喀什途中</div>
+          <div class="gl-meta-item"><span>⏱</span>约1–1.5小时</div>
+          <div class="gl-meta-item"><span>💰</span>免费</div>
+          <div class="gl-meta-item"><span>🗓</span>Day7 10:00（开放时间）</div>
+        </div>
+        <div class="gl-decision warn"><strong>备选方案</strong> 若降雪封路，改去慕士塔格冰川公园（同等精彩）。若昨晚高反严重、状态极差，直接跳过走G314返喀什</div>
+        <div class="gl-dep">⚠ 依赖：边防证（从大同乡取回）</div>
+      </div>
+    </div>
+
+    <div class="gl-card" data-rank="B" data-day="7" data-id="gc18">
+      <div class="gl-card-bar bar-B"></div>
+      <div class="gl-card-head">
+        <div class="gl-star-badge star-B"><div class="gl-star-letter">B</div><div class="gl-star-label">加分</div></div>
+        <div class="gl-card-title-wrap">
+          <div class="gl-card-name">塔合曼湿地 + 树洞公路</div>
+          <div class="gl-tags">
+            <span class="gl-tag tag-nature">高原草原</span>
+          </div>
+        </div>
+        <button class="gl-check" onclick="glCheck(this)">✓</button>
+      </div>
+      <div class="gl-card-body">
+        <div class="gl-desc">牦牛漫步、背后7546m雪峰的高原草原，加上高原树顶枝条交织成自然隧道的公路段。盘龙古道后顺路，合计约1小时，不绕路。</div>
+        <div class="gl-meta">
+          <div class="gl-meta-item"><span>📍</span>盘龙古道→喀什途中</div>
+          <div class="gl-meta-item"><span>⏱</span>约1小时</div>
+          <div class="gl-meta-item"><span>💰</span>免费</div>
+          <div class="gl-meta-item"><span>🗓</span>Day7 11:30</div>
+        </div>
+        <div class="gl-decision"><strong>跳过条件</strong> 盘龙古道耗时超预期，或高反后急需下撤到低海拔休息，直接开车返喀什</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- 底部进度条 -->
+<div class="gl-progress" id="gl-progress" style="display:none;">
+  <div class="gl-prog-text" id="gl-prog-text">已完成 <strong>0</strong> / 18 个目标</div>
+  <div class="gl-prog-bar-wrap"><div class="gl-prog-bar" id="gl-prog-bar" style="width:0%"></div></div>
+  <button onclick="glReset()" style="font-size:11px;color:var(--ink-4);background:none;border:none;cursor:pointer;font-family:var(--sans);">重置</button>
+</div>
+</div>
+
 <footer>
   西域南疆 · 丝路春行 · 深圳出发 · 3月29日—4月6日（优化修订版）
   <span class="en">The Ancient Road of Silk · South Xinjiang · Spring 2025</span>
@@ -1270,14 +2111,16 @@ footer .en{
 
 <script>
 // ── Nav switching ──
+const ALL_PANELS = ['ov','it','map','gl','pr'];
 function sw(id) {
-  ['ov','it','map','pr'].forEach(k => {
+  ALL_PANELS.forEach(k => {
     document.getElementById('p-'+k).classList.toggle('active', k===id);
   });
   document.querySelectorAll('.stab').forEach((b,i) => {
-    b.classList.toggle('active', ['ov','it','map','pr'][i]===id);
+    b.classList.toggle('active', ALL_PANELS[i]===id);
   });
   document.getElementById('daydots').style.display = id==='it' ? 'flex' : 'none';
+  document.getElementById('gl-progress').style.display = id==='gl' ? 'flex' : 'none';
   window.scrollTo({top: document.querySelector('.snav').offsetTop - 1, behavior:'smooth'});
 }
 
@@ -1332,9 +2175,7 @@ document.querySelectorAll('.map-node').forEach(node => {
   const id = node.dataset.id;
   const d = nodeData[id];
   if(!d) return;
-
   node.style.cursor = 'pointer';
-
   node.addEventListener('mouseenter', function(e) {
     const rect = svg.getBoundingClientRect();
     const nx = parseFloat(node.querySelector('circle').getAttribute('cx'));
@@ -1345,18 +2186,14 @@ document.querySelectorAll('.map-node').forEach(node => {
     let tx = rect.left + nx * scaleX + 14;
     let ty = rect.top + ny * scaleY - 10 + window.scrollY;
     if(tx + 190 > window.innerWidth) tx = rect.left + nx * scaleX - 204;
-
     tooltip.innerHTML = `<strong>${d.name}</strong><br>${d.day} · ${d.alt}<br><span style="opacity:.7;font-size:11px">${d.info}</span>`;
     tooltip.style.left = tx + 'px';
     tooltip.style.top  = ty + 'px';
     tooltip.classList.add('show');
-
-    // highlight circle
     const c = node.querySelector('circle');
     c._origR = c.getAttribute('r');
     c.setAttribute('r', parseFloat(c._origR)+3);
   });
-
   node.addEventListener('mouseleave', function() {
     tooltip.classList.remove('show');
     const c = node.querySelector('circle');
@@ -1386,12 +2223,10 @@ dayLabels.forEach((lbl,i)=>{
   b.onclick=()=>{
     document.querySelectorAll('.dtrack-btn').forEach(x=>x.classList.remove('on'));
     b.classList.add('on');
-    // reset all paths
     document.querySelectorAll('[id^="seg-"]').forEach(p=>{
       p.style.opacity='0.25';
       p.style.strokeWidth='2';
     });
-    // highlight relevant
     (daySegs[i+1]||[]).forEach(sid=>{
       const el=document.getElementById(sid);
       if(el){el.style.opacity='1';el.style.strokeWidth='4';}
@@ -1399,6 +2234,92 @@ dayLabels.forEach((lbl,i)=>{
   };
   dt.appendChild(b);
 });
+
+// ══════════════════════════════════
+// 目标库交互逻辑
+// ══════════════════════════════════
+
+let glCurrentFilter = 'all';
+const totalCards = document.querySelectorAll('.gl-card').length;
+
+function glUpdateCount() {
+  const visible = document.querySelectorAll('.gl-card:not(.hidden)').length;
+  const checked = document.querySelectorAll('.gl-card.checked').length;
+  document.getElementById('gl-count').textContent = `共 ${visible} 个目标`;
+  // 进度条
+  const pct = totalCards === 0 ? 0 : Math.round(checked / totalCards * 100);
+  document.getElementById('gl-prog-bar').style.width = pct + '%';
+  document.getElementById('gl-prog-text').innerHTML = `已完成 <strong>${checked}</strong> / ${totalCards} 个目标`;
+}
+
+function glFilter(f) {
+  glCurrentFilter = f;
+  document.querySelectorAll('.gl-filter').forEach(b => {
+    b.classList.toggle('on', b.dataset.f === f);
+  });
+  document.querySelectorAll('.gl-card').forEach(card => {
+    const rank = card.dataset.rank;
+    const done = card.classList.contains('checked');
+    let show = false;
+    if(f === 'all') show = true;
+    else if(f === 'done') show = done;
+    else show = rank === f;
+    card.classList.toggle('hidden', !show);
+  });
+  glUpdateCount();
+}
+
+function glCheck(btn) {
+  const card = btn.closest('.gl-card');
+  card.classList.toggle('checked');
+  btn.textContent = card.classList.contains('checked') ? '✓' : '✓';
+  glUpdateCount();
+  // re-apply filter
+  glFilter(glCurrentFilter);
+}
+
+function glReset() {
+  document.querySelectorAll('.gl-card').forEach(c => c.classList.remove('checked','hidden'));
+  glFilter('all');
+}
+
+// 套餐预设
+const presetDesc = {
+  full: '<strong>全量版（正常推进）：</strong>按行程计划推进，S+A+B 全部目标都争取完成。适用于车程顺利、体力正常的情况。每天预计余量约30–60分钟。',
+  slim: '<strong>精简版（每天少一项）：</strong>每天跳过1个B级目标，为应对车程延误和安检等候预留缓冲。保留所有S级和大部分A级。适用于当天已有1–2小时延误时。',
+  easy: '<strong>极简版（只保留S级）：</strong>仅保留6个S级必去目标（天山大峡谷、克孜尔千佛洞、老城、喀拉库勒湖、杏花村、盘龙古道）+ 4个硬性节点。适用于遇到重大变化（高反、封路、极端天气）时的兜底方案。'
+};
+
+const skipSets = {
+  slim: ['gc2','gc5','gc10','gc18'],   // B级中跳过的
+  easy: ['gc1','gc2','gc4','gc5','gc8','gc9','gc10','gc11','gc13','gc15','gc18','gc19','gc20','gc21'] // 非S级全跳
+};
+
+function applyPreset(type) {
+  const desc = document.getElementById('preset-desc');
+  desc.innerHTML = presetDesc[type];
+  desc.classList.add('show');
+
+  // 重置所有隐藏
+  document.querySelectorAll('.gl-card').forEach(c => {
+    c.classList.remove('hidden');
+    c.style.outline = 'none';
+  });
+
+  if(type === 'slim' || type === 'easy') {
+    const skip = skipSets[type];
+    skip.forEach(id => {
+      const el = document.querySelector(`[data-id="${id}"]`);
+      if(el) el.style.outline = '2px dashed #d8c8a8';
+    });
+  }
+
+  // 切回全部显示
+  glFilter('all');
+}
+
+// 初始化计数
+glUpdateCount();
 </script>
 </body>
 </html>
