@@ -32,9 +32,9 @@
   --sand-l:  #fdf4e0;
   --crimson: #882830;
   --crimson-l: #f4dada;
-  --serif-en: 'IM Fell English', serif;
-  --serif-cn: 'Noto Serif SC', serif;
-  --sans:     'Noto Sans SC', sans-serif;
+  --serif-en: 'IM Fell English', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', serif;
+  --serif-cn: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', serif;
+  --sans:     'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -456,6 +456,284 @@ footer .en{
 /* ── ANIM ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .panel.active .page,.panel.active .map-wrap,.panel.active .gl-wrap{animation:fadeUp .38s ease both;}
+
+/* ══════════════════════════════════
+   美食指南 FOOD GUIDE
+══════════════════════════════════ */
+.fd-wrap{max-width:860px;margin:0 auto;padding:40px 28px 60px;}
+
+/* 全程必吃横幅 */
+.fd-must-bar{
+  background:var(--ink-2);
+  border-radius:12px;padding:18px 22px;
+  margin-bottom:28px;
+}
+.fd-must-title{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:15px;color:var(--ochre-3);margin-bottom:14px;
+}
+.fd-must-grid{
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.fd-must-item{
+  background:rgba(255,255,255,0.06);
+  border:0.5px solid rgba(255,255,255,0.1);
+  border-radius:6px;padding:6px 12px;
+  font-size:12px;color:rgba(242,232,216,0.75);
+  display:flex;align-items:center;gap:6px;
+}
+.fd-must-item .dish{color:var(--ochre-3);font-weight:500;}
+.fd-must-item .city{font-size:10px;color:rgba(242,232,216,0.4);}
+
+/* 城市区块 */
+.fd-city-block{margin-bottom:36px;}
+.fd-city-header{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:14px;
+}
+.fd-city-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.fd-city-name{
+  font-family:var(--serif-cn);font-size:18px;font-weight:400;color:var(--ink);
+}
+.fd-city-days{font-size:12px;color:var(--ink-4);}
+.fd-city-header::after{content:'';flex:1;height:0.5px;background:var(--dust-3);}
+
+/* 三餐卡片 */
+.fd-meals{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.fd-meal{
+  background:#fff;border:0.5px solid var(--dust-3);
+  border-radius:10px;overflow:hidden;
+}
+.fd-meal-head{
+  padding:10px 14px 8px;
+  border-bottom:0.5px solid var(--dust-2);
+  display:flex;align-items:center;gap:8px;
+}
+.fd-meal-icon{font-size:16px;}
+.fd-meal-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;}
+.fd-meal-body{padding:10px 14px 12px;}
+.fd-dish{
+  margin-bottom:8px;
+}
+.fd-dish-name{
+  font-size:13px;font-weight:500;color:var(--ink);
+  margin-bottom:2px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+}
+.fd-dish-desc{font-size:12px;color:var(--ink-3);line-height:1.65;}
+.fd-dish + .fd-dish{padding-top:8px;border-top:0.5px solid var(--dust-2);}
+
+/* 推荐餐厅 */
+.fd-resto{
+  margin-top:6px;
+  background:var(--dust);border-radius:6px;
+  padding:8px 10px;font-size:11px;color:var(--ink-3);line-height:1.6;
+}
+.fd-resto strong{color:var(--ochre);font-weight:500;}
+.fd-resto a{color:var(--lapis-2);text-decoration:none;}
+.fd-resto a:hover{text-decoration:underline;}
+
+/* 标签 */
+.fd-tag{
+  font-size:9px;padding:1px 6px;border-radius:3px;
+  font-weight:500;letter-spacing:.04em;
+}
+.fd-tag-must{background:#fde8d8;color:#b8441c;}
+.fd-tag-local{background:var(--jade-l);color:var(--jade);}
+.fd-tag-book{background:var(--crimson-l);color:var(--crimson);}
+.fd-tag-tip{background:var(--sand-l);color:var(--sand);}
+
+/* 特殊场景卡 */
+.fd-special{
+  background:#fff;border:0.5px solid var(--dust-3);border-radius:10px;
+  padding:14px 18px;margin-bottom:10px;
+}
+.fd-special-title{
+  font-size:12px;font-weight:500;color:var(--ink);
+  margin-bottom:8px;display:flex;align-items:center;gap:8px;
+}
+.fd-special-body{font-size:12px;color:var(--ink-3);line-height:1.75;}
+.fd-special-body strong{color:var(--ink-2);font-weight:500;}
+
+/* 高原饮食警示 */
+.fd-altitude-warn{
+  background:var(--jade-l);border-left:3px solid var(--jade-2);
+  border-radius:0 8px 8px 0;padding:12px 16px;
+  margin-bottom:14px;font-size:13px;color:var(--ink-2);line-height:1.7;
+}
+.fd-altitude-warn strong{color:var(--jade);}
+
+/* 长途行车提示 */
+.fd-drive-tip{
+  background:var(--ochre-l);border-left:3px solid var(--ochre-2);
+  border-radius:0 8px 8px 0;padding:12px 16px;
+  margin-bottom:14px;font-size:13px;color:var(--ink-2);line-height:1.7;
+}
+.fd-drive-tip strong{color:var(--ochre);}
+
+@media(max-width:600px){
+  .fd-meals{grid-template-columns:1fr;}
+  .fd-must-grid{gap:6px;}
+  .fd-wrap{padding:28px 16px 48px;}
+}
+
+/* ══════════════════════════════════
+   住宿计划 HOTEL PLAN
+══════════════════════════════════ */
+.ht-wrap{max-width:860px;margin:0 auto;padding:40px 28px 60px;}
+
+/* 8夜总览条 */
+.ht-overview{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--dust-3);
+  border:0.5px solid var(--dust-3);border-radius:12px;
+  overflow:hidden;margin-bottom:28px;
+}
+.ht-ov-cell{background:#fff;padding:16px 18px;}
+.ht-ov-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-4);margin-bottom:5px;}
+.ht-ov-val{font-size:13px;color:var(--ink-2);line-height:1.6;}
+.ht-ov-val strong{color:var(--ochre);font-weight:500;}
+
+/* 预订进度条 */
+.ht-booking-progress{
+  display:flex;align-items:center;gap:12px;
+  background:#fff;border:0.5px solid var(--dust-3);
+  border-radius:10px;padding:12px 18px;margin-bottom:24px;
+}
+.ht-bp-label{font-size:12px;color:var(--ink-3);white-space:nowrap;}
+.ht-bp-label strong{color:var(--jade);}
+.ht-bp-wrap{flex:1;height:4px;background:var(--dust-3);border-radius:2px;}
+.ht-bp-fill{height:4px;background:var(--jade-2);border-radius:2px;transition:width .3s;width:0%;}
+.ht-bp-reset{font-size:11px;color:var(--ink-4);background:none;border:none;cursor:pointer;font-family:var(--sans);}
+
+/* 紧迫度提示 */
+.ht-urgent-band{
+  background:var(--crimson-l);border:0.5px solid rgba(136,40,48,.2);
+  border-radius:10px;padding:13px 18px;margin-bottom:24px;
+  font-size:12px;color:var(--crimson);line-height:1.7;
+}
+.ht-urgent-band strong{font-weight:500;}
+
+/* 城市区块 */
+.ht-city-block{margin-bottom:32px;}
+.ht-city-header{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:14px;
+}
+.ht-city-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.ht-city-name{
+  font-family:var(--serif-cn);font-size:17px;font-weight:400;color:var(--ink);
+}
+.ht-city-nights{
+  font-size:11px;color:var(--ink-4);
+  background:var(--dust-2);border-radius:10px;
+  padding:2px 9px;font-weight:400;
+}
+.ht-city-header::after{content:'';flex:1;height:0.5px;background:var(--dust-3);}
+
+/* 夜次卡片 */
+.ht-night-cards{display:flex;flex-direction:column;gap:10px;}
+.ht-night{
+  background:#fff;border:0.5px solid var(--dust-3);
+  border-radius:12px;overflow:hidden;
+}
+.ht-night-head{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;border-bottom:0.5px solid var(--dust-2);
+}
+.ht-night-label{
+  flex-shrink:0;
+}
+.ht-nl-night{
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  font-weight:500;
+}
+.ht-nl-date{font-size:10px;color:var(--ink-4);margin-top:1px;}
+.ht-night-summary{flex:1;}
+.ht-ns-why{font-size:12px;color:var(--ink-3);line-height:1.5;}
+/* 预订状态勾选 */
+.ht-booked-btn{
+  width:24px;height:24px;border-radius:50%;flex-shrink:0;
+  border:1.5px solid var(--dust-3);background:none;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:transparent;transition:all .15s;
+}
+.ht-booked-btn:hover{border-color:var(--jade-2);}
+.ht-night.booked .ht-booked-btn{background:var(--jade-2);border-color:var(--jade-2);color:#fff;}
+.ht-night.booked{opacity:.75;}
+
+.ht-night-body{padding:14px 18px;}
+
+/* 酒店选项 */
+.ht-options{display:flex;flex-direction:column;gap:8px;}
+.ht-option{
+  border:0.5px solid var(--dust-3);border-radius:9px;
+  padding:12px 14px;position:relative;
+}
+.ht-option.recommended{
+  border-color:var(--ochre-2);
+  background:var(--ochre-l);
+}
+.ht-option.alt{background:var(--dust);}
+
+.ht-opt-badge{
+  position:absolute;top:-1px;right:10px;
+  font-size:9px;padding:1px 7px;border-radius:0 0 5px 5px;
+  font-weight:500;letter-spacing:.06em;
+}
+.badge-rec{background:var(--ochre-2);color:#fff;}
+.badge-alt2{background:var(--dust-3);color:var(--ink-3);}
+.badge-warn2{background:var(--crimson);color:#fff;}
+
+.ht-opt-name{
+  font-size:13px;font-weight:500;color:var(--ink);
+  margin-bottom:4px;padding-right:60px;
+}
+.ht-opt-meta{
+  display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px;
+}
+.ht-opt-tag{
+  font-size:10px;padding:2px 7px;border-radius:4px;
+  background:var(--dust-2);color:var(--ink-3);
+}
+.ht-opt-tag.green{background:var(--jade-l);color:var(--jade);}
+.ht-opt-tag.blue{background:var(--lapis-l);color:var(--lapis);}
+.ht-opt-tag.warn{background:var(--crimson-l);color:var(--crimson);}
+.ht-opt-tag.gold{background:var(--ochre-l);color:var(--ochre);}
+
+.ht-opt-desc{font-size:12px;color:var(--ink-3);line-height:1.7;margin-bottom:8px;}
+.ht-opt-actions{display:flex;gap:6px;flex-wrap:wrap;}
+.ht-btn{
+  font-size:11px;padding:4px 11px;border-radius:6px;
+  font-family:var(--sans);font-weight:500;
+  text-decoration:none;border:0.5px solid var(--dust-3);
+  color:var(--ink-3);background:var(--dust);
+  transition:all .15s;
+}
+.ht-btn:hover{border-color:var(--ochre);color:var(--ochre);}
+.ht-btn.primary{background:var(--ochre);color:#fff;border-color:var(--ochre);}
+.ht-btn.primary:hover{background:var(--ochre-2);}
+
+/* 选址逻辑提示 */
+.ht-location-note{
+  margin-top:12px;padding:10px 12px;
+  border-radius:7px;font-size:12px;line-height:1.7;
+  background:var(--dust);border-left:2.5px solid var(--dust-3);
+  color:var(--ink-3);
+}
+.ht-location-note.important{
+  background:var(--lapis-l);border-left-color:var(--lapis-2);
+  color:var(--ink-2);
+}
+.ht-location-note strong{color:var(--lapis);font-weight:500;}
+.ht-location-note.tip{
+  background:var(--jade-l);border-left-color:var(--jade-2);
+}
+.ht-location-note.tip strong{color:var(--jade);}
+
+@media(max-width:600px){
+  .ht-overview{grid-template-columns:1fr 1fr;}
+  .ht-wrap{padding:28px 16px 48px;}
+}
 
 /* ══════════════════════════════════
    丝路书单 READING LIST
@@ -998,6 +1276,8 @@ footer .en{
     <button class="stab" onclick="sw('map')">路线地图</button>
     <button class="stab" onclick="sw('gl')">目标库</button>
     <button class="stab" onclick="sw('rd')">丝路书单</button>
+    <button class="stab" onclick="sw('ht')">住宿计划</button>
+    <button class="stab" onclick="sw('fd')">美食指南</button>
     <button class="stab" onclick="sw('pr')">实用信息</button>
   </div>
   <div class="daydots" id="daydots"></div>
@@ -1690,6 +1970,822 @@ footer .en{
     <div class="tip"><div class="tip-i">⛽</div><div class="tip-t">Day6 出发前塔县加满油</div><div class="tip-b">大同乡沿途只有一个"库科西鲁克"便民油站，且经常不开门，Day6 早上出发前务必在塔县加满，不能依赖沿途补充。</div></div>
     <div class="tip"><div class="tip-i">📋</div><div class="tip-t">进大同乡边防证会被暂扣</div><div class="tip-b">进检查站时会暂扣两人边防证，出村时去检查站取回——这一步很容易忘，出村前检查一遍，别空手离开。后续盘龙古道和返喀什途中还需要用到。</div></div>
     <div class="tip"><div class="tip-i">🕌</div><div class="tip-t">文化尊重</div><div class="tip-b">喀什以穆斯林为主，进清真寺着装得体（女性戴头巾），拍摄当地人先征得同意，不在当地公开饮酒。</div></div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ PANEL: 住宿计划 ═══ -->
+<div id="p-ht" class="panel">
+<div class="ht-wrap">
+
+  <div class="sl">住宿计划 · 8夜逐晚安排</div>
+  <p style="font-size:13px;color:var(--ink-3);line-height:1.8;margin-bottom:20px;">全程8晚，住宿城市跨度大，每个城市的选址逻辑不同。<strong>塔县（Night 5–6）和喀什（Night 4/7/8）是最需要提前预订的，建议出发前至少2–3周锁定。</strong>勾选下方已预订的夜次，追踪进度。</p>
+
+  <!-- 总览 -->
+  <div class="ht-overview">
+    <div class="ht-ov-cell">
+      <div class="ht-ov-label">总夜数</div>
+      <div class="ht-ov-val"><strong>8</strong> 晚</div>
+    </div>
+    <div class="ht-ov-cell">
+      <div class="ht-ov-label">涉及城市</div>
+      <div class="ht-ov-val">库尔勒 · 库车 · 阿克苏 · <strong>喀什（3晚）</strong> · <strong>塔县（2晚）</strong></div>
+    </div>
+    <div class="ht-ov-cell">
+      <div class="ht-ov-label">最高海拔住宿</div>
+      <div class="ht-ov-val">塔县 <strong>3000m</strong><br>选有制氧机的酒店</div>
+    </div>
+    <div class="ht-ov-cell">
+      <div class="ht-ov-label">预计总住宿费</div>
+      <div class="ht-ov-val"><strong>2,000–3,400</strong> 元<br>（两人，中档偏上）</div>
+    </div>
+  </div>
+
+  <!-- 预订进度 -->
+  <div class="ht-booking-progress">
+    <div class="ht-bp-label">已预订 <strong id="ht-done">0</strong> / 8 晚</div>
+    <div class="ht-bp-wrap"><div class="ht-bp-fill" id="ht-fill"></div></div>
+    <button class="ht-bp-reset" onclick="htReset()">重置</button>
+  </div>
+
+  <!-- 紧迫度提示 -->
+  <div class="ht-urgent-band">
+    ⚠ <strong>预订紧迫度提示：</strong>4月清明小长假前后是帕米尔旅游旺季，<strong>塔县酒店总量少（全县不足30家）</strong>，两晚（Night 5–6）务必提前3–4周预订；喀什古城内民宿热门房型同样容易售罄，建议同步提前。库尔勒、库车、阿克苏三城酒店量充足，提前1周订即可。
+  </div>
+
+  <!-- ── Night 1: 库尔勒 ── -->
+  <div class="ht-city-block">
+    <div class="ht-city-header">
+      <div class="ht-city-dot" style="background:var(--ochre-2)"></div>
+      <div class="ht-city-name">库尔勒</div>
+      <div class="ht-city-nights">Night 1 · 3月29日</div>
+    </div>
+    <div class="ht-night-cards">
+      <div class="ht-night" data-htid="ht1">
+        <div class="ht-night-head">
+          <div class="ht-night-label">
+            <div class="ht-nl-night" style="color:var(--ochre)">第1晚</div>
+            <div class="ht-nl-date">3月29日 周六</div>
+          </div>
+          <div class="ht-night-summary">
+            <div class="ht-ns-why">适应时差，明天08:30出发·住市区即可，无特殊区位要求</div>
+          </div>
+          <button class="ht-booked-btn" onclick="htBook(this)" title="标记已预订">✓</button>
+        </div>
+        <div class="ht-night-body">
+          <div class="ht-options">
+            <div class="ht-option recommended">
+              <div class="ht-opt-badge badge-rec">首选</div>
+              <div class="ht-opt-name">万达锦华酒店（库尔勒）</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag gold">万达品牌·4星</span>
+                <span class="ht-opt-tag green">免费停车</span>
+                <span class="ht-opt-tag">市区中心</span>
+                <span class="ht-opt-tag">约280–380元/晚</span>
+              </div>
+              <div class="ht-opt-desc">库尔勒体量最大的品牌酒店之一，位于市区核心地带，出行方便。停车场大（自驾接车当晚可直接停），早餐选择多，设施稳定。距博物馆约15分钟车程，距孔雀河湿地公园约5分钟。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn primary" href="https://www.ctrip.com/hotels/list?city=1148&countryId=1&checkin=2025-03-29&checkout=2025-03-30&keyword=万达锦华+库尔勒" target="_blank">携程查价</a>
+                <a class="ht-btn" href="https://www.meituan.com/s/%E5%BA%93%E5%B0%94%E5%8B%92%E4%B8%87%E8%BE%BE%E9%94%A6%E5%8D%8E/" target="_blank">美团查价</a>
+              </div>
+            </div>
+            <div class="ht-option alt">
+              <div class="ht-opt-badge badge-alt2">备选</div>
+              <div class="ht-opt-name">万豪旗下 Renaissance Hotel Korla（库尔勒文华酒店）</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag blue">万豪旗下·5星</span>
+                <span class="ht-opt-tag">约400–550元/晚</span>
+                <span class="ht-opt-tag green">含早餐</span>
+              </div>
+              <div class="ht-opt-desc">库尔勒档次最高的酒店，适合要给自己一个好开始的心情。Marriott Bonvoy会员可积分/兑换。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn primary" href="https://www.marriott.com/en-us/hotels/krlbr-renaissance-hotel-korla/overview/" target="_blank">万豪官网</a>
+              </div>
+            </div>
+          </div>
+          <div class="ht-location-note">
+            <strong>选址逻辑：</strong>库尔勒只住1晚，是适应时差和节奏的过渡日，无需纠结位置。选市区品牌酒店，停车方便、设施稳定即可。明天08:30出发，需要好睡眠。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Night 2: 库车 ── -->
+  <div class="ht-city-block">
+    <div class="ht-city-header">
+      <div class="ht-city-dot" style="background:var(--ochre-2)"></div>
+      <div class="ht-city-name">库车（龟兹）</div>
+      <div class="ht-city-nights">Night 2 · 3月30日</div>
+    </div>
+    <div class="ht-night-cards">
+      <div class="ht-night" data-htid="ht2">
+        <div class="ht-night-head">
+          <div class="ht-night-label">
+            <div class="ht-nl-night" style="color:var(--ochre)">第2晚</div>
+            <div class="ht-nl-date">3月30日 周日</div>
+          </div>
+          <div class="ht-night-summary">
+            <div class="ht-ns-why">晚间逛完老街后步行返回·选靠近市中心/步行街的酒店</div>
+          </div>
+          <button class="ht-booked-btn" onclick="htBook(this)" title="标记已预订">✓</button>
+        </div>
+        <div class="ht-night-body">
+          <div class="ht-options">
+            <div class="ht-option recommended">
+              <div class="ht-opt-badge badge-rec">首选</div>
+              <div class="ht-opt-name">库车华悦国际酒店</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag gold">2023年新开·设施新</span>
+                <span class="ht-opt-tag green">免费停车</span>
+                <span class="ht-opt-tag">健康南路·靠近南湖夜市</span>
+                <span class="ht-opt-tag">约220–320元/晚</span>
+              </div>
+              <div class="ht-opt-desc">2023年新开，全屋智能客控，步行可到库车南湖夜市和步行街。评论提到能从窗户看到南湖，环境舒适，停车位充足。距热斯坦老街约10分钟车程，不算很近但有停车优势。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn primary" href="https://hotels.ctrip.com/hotels/113040535.html" target="_blank">携程预订</a>
+              </div>
+            </div>
+            <div class="ht-option alt">
+              <div class="ht-opt-badge badge-alt2">备选</div>
+              <div class="ht-opt-name">朝昱万华国际酒店</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag gold">2023年新开</span>
+                <span class="ht-opt-tag">健康北路·市区中心</span>
+                <span class="ht-opt-tag">约200–280元/晚</span>
+              </div>
+              <div class="ht-opt-desc">游客反馈"在库车算是很高的酒店了，停车位充足，离步行街很近"。综合性价比高，设施较新，选址偏市区中心。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn primary" href="https://hotels.ctrip.com/hotels/107805532.html" target="_blank">携程预订</a>
+              </div>
+            </div>
+          </div>
+          <div class="ht-location-note">
+            <strong>选址逻辑：</strong>库车只住1晚，晚上游览完大寺+老街约21:00回酒店。选靠近步行街/市区中心的酒店，步行距离方便；停车位是关键（自驾必须考虑）。次日09:00出发去红石林，距出城方向无特殊要求。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Night 3: 阿克苏 ── -->
+  <div class="ht-city-block">
+    <div class="ht-city-header">
+      <div class="ht-city-dot" style="background:var(--ochre-2)"></div>
+      <div class="ht-city-name">阿克苏</div>
+      <div class="ht-city-nights">Night 3 · 3月31日</div>
+    </div>
+    <div class="ht-night-cards">
+      <div class="ht-night" data-htid="ht3">
+        <div class="ht-night-head">
+          <div class="ht-night-label">
+            <div class="ht-nl-night" style="color:var(--ochre)">第3晚</div>
+            <div class="ht-nl-date">3月31日 周一</div>
+          </div>
+          <div class="ht-night-summary">
+            <div class="ht-ns-why">纯过渡夜·08:00出发喀什·选靠近G3012高速出口方向的酒店</div>
+          </div>
+          <button class="ht-booked-btn" onclick="htBook(this)" title="标记已预订">✓</button>
+        </div>
+        <div class="ht-night-body">
+          <div class="ht-options">
+            <div class="ht-option recommended">
+              <div class="ht-opt-badge badge-rec">首选策略</div>
+              <div class="ht-opt-name">阿克苏市区连锁酒店（如家·汉庭·速8等）</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag">连锁标准化·不踩坑</span>
+                <span class="ht-opt-tag green">免费停车</span>
+                <span class="ht-opt-tag">约150–220元/晚</span>
+              </div>
+              <div class="ht-opt-desc">阿克苏是纯粹的过渡城市，到达时已约17:30，早上08:00出发，实际在酒店只有约14小时。不需要好景观，不需要特色体验，只需要：停车方便、洗漱舒适、早上能迅速出发。选携程4分以上的连锁品牌即可，重点筛选"免费停车场"标签。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn primary" href="https://hotels.ctrip.com/hotel/aksu327/?checkin=2025-03-31&checkout=2025-04-01" target="_blank">携程搜索·阿克苏</a>
+              </div>
+            </div>
+          </div>
+          <div class="ht-location-note important">
+            <strong>选址关键点：</strong>阿克苏市区距G3012高速入口（向喀什方向）约10–15分钟。建议选在城区西南侧，靠近幸福路/解放路一带，次日早出发不绕路。不要订城区东北侧（距克孜尔方向），明天是反方向。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Night 4/7/8: 喀什 ── -->
+  <div class="ht-city-block">
+    <div class="ht-city-header">
+      <div class="ht-city-dot" style="background:var(--lapis-2)"></div>
+      <div class="ht-city-name">喀什</div>
+      <div class="ht-city-nights">Night 4 · 7 · 8（共3晚，分两段入住）</div>
+    </div>
+
+    <div class="ht-location-note important" style="margin-bottom:12px">
+      <strong>喀什住宿核心策略：</strong>3晚分两段入住——<strong>第1段 Night 4（1晚，4月1日）</strong>，次日早上出发去塔县；<strong>第2段 Night 7–8（2晚，4月4–5日）</strong>，从盘龙古道返回后再次入住。<strong>强烈建议两段订同一家酒店</strong>，可以请酒店在4月2日退房时帮你们寄存大行李（帕米尔段带轻装），4月4日返回直接取回，省去大量麻烦。选址有两个流派——<strong>古城内民宿</strong>（沉浸感强，但停车难、隔音差）或<strong>古城附近品牌酒店</strong>（步行10分钟进老城，停车方便，性价比高）。自驾旅行推荐后者。</div>
+
+    <div class="ht-night-cards">
+
+      <!-- Night 4 -->
+      <div class="ht-night" data-htid="ht4">
+        <div class="ht-night-head">
+          <div class="ht-night-label">
+            <div class="ht-nl-night" style="color:var(--lapis)">第4晚</div>
+            <div class="ht-nl-date">4月1日 周二</div>
+          </div>
+          <div class="ht-night-summary">
+            <div class="ht-ns-why">抵达14:00→办边防证→游老城·第1段入住（仅1晚，次日早出发塔县）</div>
+          </div>
+          <button class="ht-booked-btn" onclick="htBook(this)" title="标记已预订">✓</button>
+        </div>
+        <div class="ht-night-body">
+          <div class="ht-options">
+
+            <div class="ht-option recommended">
+              <div class="ht-opt-badge badge-rec">首选·自驾优先</div>
+              <div class="ht-opt-name">青皮树酒店（喀什噶尔古城店）</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag gold">连锁品牌·稳定</span>
+                <span class="ht-opt-tag green">免费停车</span>
+                <span class="ht-opt-tag blue">距古城约800m</span>
+                <span class="ht-opt-tag">色满路·步行约10分钟</span>
+                <span class="ht-opt-tag">约250–350元/晚</span>
+              </div>
+              <div class="ht-opt-desc">位于色满路，距喀什古城景区约800米步行可达，酒店对面是维吾尔医院，楼下餐饮齐全，距国际大巴扎约3公里（打车10元）。有停车场，自驾停车无压力。<strong>两段分开预订同一家（4月1日1晚 + 4月4–5日2晚），退房时可请前台寄存大行李至4月4日取回</strong>，帕米尔段轻装上阵。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn primary" href="https://hotels.ctrip.com/hotel/kashi21358/?keyword=青皮树+喀什+古城" target="_blank">携程搜索</a>
+              </div>
+            </div>
+
+            <div class="ht-option recommended">
+              <div class="ht-opt-badge badge-rec">首选·体验优先</div>
+              <div class="ht-opt-name">疆山民宿（喀什古城景区店）</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag gold">携程4.7分·2024年开业</span>
+                <span class="ht-opt-tag blue">古城景区内部</span>
+                <span class="ht-opt-tag warn">停车需附近路边</span>
+                <span class="ht-opt-tag">约280–420元/晚</span>
+              </div>
+              <div class="ht-opt-desc">位于阿热亚路，直接在古城景区内，出门就是老城街巷，沉浸感最强。2024年新开，携程4.7分评价稳定。缺点是停车只能在古城外路边找位，每天需要步行5–10分钟取车。适合对体验要求高、不介意停车麻烦的旅行方式。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn primary" href="https://hotels.ctrip.com/hotels/120193021.html" target="_blank">携程预订</a>
+              </div>
+            </div>
+
+            <div class="ht-option alt">
+              <div class="ht-opt-badge badge-alt2">高端备选</div>
+              <div class="ht-opt-name">喀什深业丽笙酒店（Radisson Blu）</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag blue">5星国际品牌</span>
+                <span class="ht-opt-tag green">大停车场</span>
+                <span class="ht-opt-tag">约450–650元/晚</span>
+              </div>
+              <div class="ht-opt-desc">喀什最高档的国际连锁酒店，设施顶级，距古城约15分钟步行。适合对住宿品质有较高要求的夫妻旅行，预算充裕的话三晚住这里是最舒适的选择。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn primary" href="https://www.radissonhotels.com/zh-cn/hotels/radisson-blu-kashgar" target="_blank">官网预订</a>
+              </div>
+            </div>
+
+          </div>
+          <div class="ht-location-note tip">
+            <strong>停车提示：</strong>喀什古城内部禁止车辆进入，无论住哪里，自驾车每天需停在古城外围停车场（艾提尕尔清真寺附近有公共停车场，约20元/天）或酒店自有停车场。选有停车场的酒店更省心。
+          </div>
+        </div>
+      </div>
+
+      <!-- Night 7 -->
+      <div class="ht-night" data-htid="ht7">
+        <div class="ht-night-head">
+          <div class="ht-night-label">
+            <div class="ht-nl-night" style="color:var(--lapis)">第7晚</div>
+            <div class="ht-nl-date">4月4日 周五（清明）</div>
+          </div>
+          <div class="ht-night-summary">
+            <div class="ht-ns-why">从塔县盘龙古道返回·17:30抵达·第2次入住喀什</div>
+          </div>
+          <button class="ht-booked-btn" onclick="htBook(this)" title="标记已预订">✓</button>
+        </div>
+        <div class="ht-night-body">
+          <div class="ht-location-note" style="margin:0">
+            <strong>第2段入住（2晚：4月4–5日）</strong>，和 Night 4 分开预订，但建议订同一家酒店。清明节当晚帕米尔返回喀什的自驾游客较多，需提前确保有房。如果 Night 4 退房时已寄存行李，今晚入住直接取回即可，无需重新收拾行李。
+          </div>
+        </div>
+      </div>
+
+      <!-- Night 8 -->
+      <div class="ht-night" data-htid="ht8">
+        <div class="ht-night-head">
+          <div class="ht-night-label">
+            <div class="ht-nl-night" style="color:var(--lapis)">第8晚</div>
+            <div class="ht-nl-date">4月5日 周六</div>
+          </div>
+          <div class="ht-night-summary">
+            <div class="ht-ns-why">喀什深度游·明天早上牛羊大巴扎·下午飞返深圳</div>
+          </div>
+          <button class="ht-booked-btn" onclick="htBook(this)" title="标记已预订">✓</button>
+        </div>
+        <div class="ht-night-body">
+          <div class="ht-location-note" style="margin:0">
+            连住 Night 7 同一家（4月4–5日共2晚，4月6日 checkout）。次日 Day9 行程：09:00→牛羊大巴扎→机场，退房后行李寄存（大多数酒店提供），中午前取行李去机场。机场距市区约10公里，打车约30元、30分钟。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Night 5/6: 塔县 ── -->
+  <div class="ht-city-block">
+    <div class="ht-city-header">
+      <div class="ht-city-dot" style="background:var(--jade-2)"></div>
+      <div class="ht-city-name">塔什库尔干（塔县）</div>
+      <div class="ht-city-nights">Night 5–6 · 4月2–3日（共2晚）</div>
+    </div>
+
+    <div class="ht-urgent-band" style="margin-bottom:12px">
+      ⚠ <strong>最需提前预订：</strong>塔县是边境小县城，全县酒店数量极少，4月杏花季是年度旺季峰值。<strong>建议出发前3–4周立即预订</strong>，连订2晚（4月2日/3日）。选有制氧机的酒店——3000m高原，制氧机能大幅改善睡眠质量。
+    </div>
+
+    <div class="ht-night-cards">
+
+      <div class="ht-night" data-htid="ht5">
+        <div class="ht-night-head">
+          <div class="ht-night-label">
+            <div class="ht-nl-night" style="color:var(--jade)">第5晚</div>
+            <div class="ht-nl-date">4月2日 周三</div>
+          </div>
+          <div class="ht-night-summary">
+            <div class="ht-ns-why">从喀什经白沙湖·喀拉库勒湖·17:00抵达·高原适应第一晚</div>
+          </div>
+          <button class="ht-booked-btn" onclick="htBook(this)" title="标记已预订">✓</button>
+        </div>
+        <div class="ht-night-body">
+          <div class="ht-options">
+
+            <div class="ht-option recommended">
+              <div class="ht-opt-badge badge-rec">首选</div>
+              <div class="ht-opt-name">帕米尔大酒店（塔县布尔洪路店）</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag gold">2024年新开·携程4.7分</span>
+                <span class="ht-opt-tag green">布尔洪路024号·县城中心</span>
+                <span class="ht-opt-tag blue">窗临雪山景</span>
+                <span class="ht-opt-tag">约280–400元/晚</span>
+              </div>
+              <div class="ht-opt-desc">2024年新开业，目前塔县评分最高的酒店（携程4.7分，324条评论）。游客评价："装修舒适，干净卫生，环境安静好睡，设施先进齐全，服务热情"；"因为第二天要去塔儿乡赏杏花，在这里先休整了一晚，第二天精神满满！"——这条评论和你们的行程场景完全一致。有停车场。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn primary" href="https://hotels.ctrip.com/hotels/117852588.html" target="_blank">携程预订</a>
+              </div>
+            </div>
+
+            <div class="ht-option alt">
+              <div class="ht-opt-badge badge-rec" style="background:var(--jade-2)">高原特供</div>
+              <div class="ht-opt-name">如家·neo（塔什库尔干帕米尔景区店）</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag green">中巴友谊路006号</span>
+                <span class="ht-opt-tag blue">含鼻吸式制氧机</span>
+                <span class="ht-opt-tag green">免费自助洗衣</span>
+                <span class="ht-opt-tag">约200–300元/晚</span>
+              </div>
+              <div class="ht-opt-desc">如家品牌连锁，品质稳定。最大亮点是<strong>房间内配有鼻吸式制氧机</strong>，3000m高原睡眠质量差的克星。另有免费自助洗衣、免费停车场、地暖+空调+加湿器全配。距游客中心700米步行可达，距汽车站350米。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn primary" href="https://bthhotels.com/wap/HotelInfo/099810?pt=info" target="_blank">如家官网</a>
+                <a class="ht-btn" href="https://hotels.ctrip.com/hotel/tashikuergan21067/?keyword=如家+塔什库尔干+帕米尔" target="_blank">携程搜索</a>
+              </div>
+            </div>
+
+            <div class="ht-option alt">
+              <div class="ht-opt-badge badge-alt2">体验型备选</div>
+              <div class="ht-opt-name">帕米尔生态花园酒店</div>
+              <div class="ht-opt-meta">
+                <span class="ht-opt-tag">赛马场旁·占地100亩</span>
+                <span class="ht-opt-tag blue">56栋独栋别墅+44顶蒙古包</span>
+                <span class="ht-opt-tag">含塔吉克歌舞篝火晚会（预约）</span>
+                <span class="ht-opt-tag">约300–500元/晚</span>
+              </div>
+              <div class="ht-opt-desc">远离县城，坐落于赛马场旁，草原风格独栋别墅或蒙古包住宿，足不出户可遥望慕士塔格峰。可提前预约塔吉克族歌舞篝火晚会，独特体验。适合追求沉浸式帕米尔氛围的旅行者。电话：13999919982。</div>
+              <div class="ht-opt-actions">
+                <a class="ht-btn" href="https://hotels.ctrip.com/hotel/tashikuergan21067/?keyword=帕米尔+生态+花园" target="_blank">携程搜索</a>
+              </div>
+            </div>
+
+          </div>
+          <div class="ht-location-note tip">
+            <strong>制氧机建议：</strong>无论选哪家，入住时主动询问前台是否有制氧机（鼻吸式或中央供氧）。塔县3000m，第一晚易出现轻微头疼和浅睡，制氧机能明显改善。部分酒店需提前告知需求才会安排。
+          </div>
+        </div>
+      </div>
+
+      <div class="ht-night" data-htid="ht6">
+        <div class="ht-night-head">
+          <div class="ht-night-label">
+            <div class="ht-nl-night" style="color:var(--jade)">第6晚</div>
+            <div class="ht-nl-date">4月3日 周四</div>
+          </div>
+          <div class="ht-night-summary">
+            <div class="ht-ns-why">杏花村返回·16:30回塔县·明天10:00才能进盘龙古道</div>
+          </div>
+          <button class="ht-booked-btn" onclick="htBook(this)" title="标记已预订">✓</button>
+        </div>
+        <div class="ht-night-body">
+          <div class="ht-location-note" style="margin:0">
+            连住同一家（Night 5预订时直接订2晚：4月2日/3日 checkout 4月4日）。杏花村返回约16:30–17:00，晚餐牦牛肉火锅（提前预订），明天盘龙古道10:00开放，可以睡个好觉，无需特别早起。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 汇总预订顺序 -->
+  <div style="background:#fff;border:0.5px solid var(--dust-3);border-radius:12px;padding:18px 22px;margin-top:8px;">
+    <div class="sl" style="margin-bottom:14px">建议预订顺序</div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--ink-2);">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="background:var(--crimson);color:#fff;border-radius:4px;padding:1px 8px;font-size:10px;font-weight:500;white-space:nowrap;">立即订</span>塔县 Night 5–6（帕米尔大酒店或如家neo，连订2晚）——最容易售罄</div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="background:var(--ochre-2);color:#fff;border-radius:4px;padding:1px 8px;font-size:10px;font-weight:500;white-space:nowrap;">同步订</span>喀什 Night 4（4月1日，1晚）+ Night 7–8（4月4–5日，2晚）——分两笔订同一家酒店；旺季古城附近热门房型建议同步订，并告知前台中间2晚寄存行李</div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="background:var(--jade-2);color:#fff;border-radius:4px;padding:1px 8px;font-size:10px;font-weight:500;white-space:nowrap;">出发前1周</span>库尔勒 Night 1、库车 Night 2、阿克苏 Night 3——酒店量充足，临近预订即可</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ PANEL: 美食指南 ═══ -->
+<div id="p-fd" class="panel">
+<div class="fd-wrap">
+
+  <div class="sl">美食指南 · 9天吃什么</div>
+  <p style="font-size:13px;color:var(--ink-3);line-height:1.8;margin-bottom:20px;">基于真实游客评价整理。南疆以清真餐厅为主，全程吃的是维吾尔族和塔吉克族风味。<strong>记住一个原则：不在景区里吃，找当地人排队的苍蝇小馆，味道和价格都更好。</strong></p>
+
+  <!-- 全程必吃榜 -->
+  <div class="fd-must-bar">
+    <div class="fd-must-title">9天必吃清单 · 错过会后悔的那些</div>
+    <div class="fd-must-grid">
+      <div class="fd-must-item"><span class="dish">博斯腾湖烤鱼</span><span class="city">库尔勒</span></div>
+      <div class="fd-must-item"><span class="dish">库车大馕</span><span class="city">库车</span></div>
+      <div class="fd-must-item"><span class="dish">馕坑羊排</span><span class="city">库车</span></div>
+      <div class="fd-must-item"><span class="dish">烤包子（2元/个）</span><span class="city">喀什老城</span></div>
+      <div class="fd-must-item"><span class="dish">羊腿抓饭</span><span class="city">喀什</span></div>
+      <div class="fd-must-item"><span class="dish">百年老茶馆花茶</span><span class="city">喀什老城</span></div>
+      <div class="fd-must-item"><span class="dish">石榴汁（鲜榨）</span><span class="city">喀什汗巴扎</span></div>
+      <div class="fd-must-item"><span class="dish">烤全羊</span><span class="city">喀什·告别晚餐</span></div>
+      <div class="fd-must-item"><span class="dish">牦牛肉火锅</span><span class="city">塔县</span></div>
+      <div class="fd-must-item"><span class="dish">塔吉克奶茶+薄饼</span><span class="city">塔县/杏花村</span></div>
+      <div class="fd-must-item"><span class="dish">牛羊大巴扎一米长烤肉</span><span class="city">喀什 Day9</span></div>
+    </div>
+  </div>
+
+  <!-- ── Day1: 库尔勒 ── -->
+  <div class="fd-city-block">
+    <div class="fd-city-header">
+      <div class="fd-city-dot" style="background:var(--ochre-2)"></div>
+      <div class="fd-city-name">库尔勒</div>
+      <div class="fd-city-days">Day 1 · 3月29日</div>
+    </div>
+    <div class="fd-meals">
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">☀️</div>
+          <div class="fd-meal-label" style="color:var(--ochre)">早餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">酒店早餐</div>
+            <div class="fd-dish-desc">飞机约15:00落地，今天只有晚餐。明天08:30出发前在酒店用早餐，多吃，长途车程。</div>
+          </div>
+        </div>
+      </div>
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">☀️</div>
+          <div class="fd-meal-label" style="color:var(--ochre)">午餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">—（飞机/机场解决）</div>
+            <div class="fd-dish-desc">北京时间约12:00在乌鲁木齐中转，机场内随意吃。</div>
+          </div>
+        </div>
+      </div>
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">🌙</div>
+          <div class="fd-meal-label" style="color:var(--lapis)">晚餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">博斯腾湖烤鱼 <span class="fd-tag fd-tag-must">必吃</span></div>
+            <div class="fd-dish-desc">库尔勒独有的淡水鱼，穿在小木棍上转烤，只放孜然+盐+酥油，清爽鲜甜。游客称"比烤全羊更适口"。</div>
+            <div class="fd-resto">推荐前往<strong>铁锅博湖鱼餐厅</strong>（库尔勒园林宾馆内，入选官方美食推荐），或问酒店前台推荐的博湖鱼馆。</div>
+          </div>
+          <div class="fd-dish">
+            <div class="fd-dish-name">蒙古手抓肉</div>
+            <div class="fd-dish-desc">库尔勒有蒙古族风味，手抓羊肉是当地特色，适合第一顿试试。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Day2: 库车 ── -->
+  <div class="fd-city-block">
+    <div class="fd-city-header">
+      <div class="fd-city-dot" style="background:var(--ochre-2)"></div>
+      <div class="fd-city-name">库车（龟兹）</div>
+      <div class="fd-city-days">Day 2 · 3月30日</div>
+    </div>
+    <div class="fd-drive-tip">
+      <strong>⚠ 今天是420km长途车程</strong>——08:30出发，13:30才到峡谷，途中没时间正经吃午饭。建议出发前在酒店早餐多吃一些，车里备足零食和水。午饭在路边任意服务区随意解决，不必追求什么特色。
+    </div>
+    <div class="fd-meals">
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">☀️</div>
+          <div class="fd-meal-label" style="color:var(--ochre)">早餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">酒店早餐 + 路上零食</div>
+            <div class="fd-dish-desc">酒店用完早餐出发，车里备好能量棒/坚果/馕。今天峡谷游览完约17点，到老街已是19点，中午几乎没时间正经吃。</div>
+          </div>
+        </div>
+      </div>
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">🌤</div>
+          <div class="fd-meal-label" style="color:var(--ochre)">午餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">路边维族小馆</div>
+            <div class="fd-dish-desc">到了库车附近约14:00，进峡谷前找一家当地人吃的小馆，拌面（20元）或手抓饭（25元）快速解决。不要在景区入口的餐厅吃，贵且不好。</div>
+          </div>
+        </div>
+      </div>
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">🌙</div>
+          <div class="fd-meal-label" style="color:var(--lapis)">晚餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">馕坑羊排 <span class="fd-tag fd-tag-must">必吃</span></div>
+            <div class="fd-dish-desc">将羊排贴在馕坑壁烤制，外焦里嫩，裹着蛋液，香得没道理。游客评价"一下就被吃完了，连拍照都忘了"。</div>
+          </div>
+          <div class="fd-dish">
+            <div class="fd-dish-name">野蘑菇拌面 + 大盘鸡</div>
+            <div class="fd-dish-desc">拌面面条劲道，野蘑菇爽口。大盘鸡配皮带面是南疆经典，够两人吃。</div>
+            <div class="fd-resto">推荐 <strong>亚克西姆新疆菜（库车店）</strong>——携程高分，游客评价"馕坑羊排和大盘鸡特推，晚上排队多可电话预约，还有歌舞表演"。</div>
+          </div>
+          <div class="fd-dish">
+            <div class="fd-dish-name">南湖夜市随意逛</div>
+            <div class="fd-dish-desc">库车南湖夜市是当地人去的夜市，红柳羊肉串10元、烤包子2元、鲜榨果汁5元，价格极实惠，不吃亏。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fd-special">
+      <div class="fd-special-title">🫓 库车大馕 · 带走必买</div>
+      <div class="fd-special-body">库车大馕直径可达60厘米，被誉为"馕中之王"，入列国家金牌旅游小吃。热斯坦老街逛时顺手买几个，车里当干粮吃，可以吃好几天。价格约5-8元/个。</div>
+    </div>
+  </div>
+
+  <!-- ── Day3: 阿克苏 ── -->
+  <div class="fd-city-block">
+    <div class="fd-city-header">
+      <div class="fd-city-dot" style="background:var(--ochre-2)"></div>
+      <div class="fd-city-name">阿克苏</div>
+      <div class="fd-city-days">Day 3 · 3月31日（过渡夜）</div>
+    </div>
+    <div class="fd-meals">
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">☀️</div>
+          <div class="fd-meal-label" style="color:var(--ochre)">早/午</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">路途中随意解决</div>
+            <div class="fd-dish-desc">今天09:00出发去红石林，途中在拜城附近随便找家维族小馆吃拌面或抓饭解决午餐，主要精力放在景点上。</div>
+          </div>
+        </div>
+      </div>
+      <div class="fd-meal" style="grid-column:span 2">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">🌙</div>
+          <div class="fd-meal-label" style="color:var(--lapis)">晚餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">阿克苏核桃仁炒菜 + 羊肉抓饭</div>
+            <div class="fd-dish-desc">阿克苏是著名核桃产地，核桃仁炒菜是当地特色，配羊肉抓饭是很好的一顿。这是纯过渡夜，明天460km，早睡更重要，吃饱就好，不必追求特色。</div>
+            <div class="fd-resto">在阿克苏市区随意找一家当地人多的清真餐厅，人均40-60元。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Day4 / Day7-8: 喀什 ── -->
+  <div class="fd-city-block">
+    <div class="fd-city-header">
+      <div class="fd-city-dot" style="background:var(--lapis-2)"></div>
+      <div class="fd-city-name">喀什噶尔</div>
+      <div class="fd-city-days">Day 4 · Day 7–8 · 共3天</div>
+    </div>
+    <div class="fd-drive-tip">
+      <strong>⚠ Day4 是460km长途：</strong>08:00出发，14:00才到喀什。今天早餐在阿克苏酒店吃好，午饭在路上服务区随意对付，14:00到后先办边防证再找地方吃东西。
+    </div>
+
+    <!-- 喀什早餐 -->
+    <div class="fd-special" style="margin-bottom:10px">
+      <div class="fd-special-title">☀️ 喀什早餐推荐</div>
+      <div class="fd-special-body">
+        <strong>烤包子</strong>（馕坑现烤，外酥里嫩，2元/个）——百年茶馆对面的"爱乐热木肉馕烤包子"是游客最爱，一定趁热吃。<br>
+        <strong>薄皮包子</strong>（皮薄馅大，咬一口汁水横流）——艾力扎提附近的小店都有。<br>
+        <strong>油塔子 + 奶茶</strong>——香软的层叠面食，配一杯热奶茶，喀什最地道的早晨。
+      </div>
+    </div>
+
+    <!-- 喀什三顿正餐 -->
+    <div class="fd-meals">
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">🌤</div>
+          <div class="fd-meal-label" style="color:var(--ochre)">午餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">羊腿抓饭 <span class="fd-tag fd-tag-must">必吃</span></div>
+            <div class="fd-dish-desc">喀什抓饭是全疆最好的，米饭金黄油润，羊腿肉软烂。<strong>抓饭要中午吃</strong>——很多店下午就卖完了，过了14:00可能扑空。一份25-30元，可免费续米。</div>
+            <div class="fd-resto">推荐 <strong>艾力扎提抓饭</strong>（塔吾古孜路17号，号称喀什第一，两家店味道一样，去丝路宾馆旁那家，环境更好）或 <strong>达瓦依合扎抓饭店</strong>（尤木拉克协海尔路127号，游客称"比点评第一的还好吃"）。</div>
+          </div>
+        </div>
+      </div>
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">🫖</div>
+          <div class="fd-meal-label" style="color:var(--jade)">下午茶</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">百年老茶馆 <span class="fd-tag fd-tag-must">必去</span></div>
+            <div class="fd-dish-desc">艾提尕尔清真寺旁，有上百年历史。主打老茶用藏红花、人参、玛咔等文火慢煮，加冰糖或蜂蜜喝，游客称"坐在这里一个下午，看维族老人喝茶下棋，是喀什最真实的日常"。</div>
+            <div class="fd-resto">地址：<strong>吾斯塘博依路百年茶馆</strong>，顺便在对面买烤包子。运气好能听到民族乐器演奏，甚至看到老人即兴起舞。</div>
+          </div>
+        </div>
+      </div>
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">🌙</div>
+          <div class="fd-meal-label" style="color:var(--lapis)">晚餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">汗巴扎夜市 <span class="fd-tag fd-tag-must">必去</span></div>
+            <div class="fd-dish-desc">艾提尕尔清真寺对面，烤全羊、烤鸽子、石榴汁（鲜榨）、酸奶粽子、羊杂碎……按新疆时差约21:00才是夜市最热闹的时候，氛围极好。</div>
+          </div>
+          <div class="fd-dish">
+            <div class="fd-dish-name">烤全羊 · 告别晚餐 <span class="fd-tag fd-tag-book">提前预订</span></div>
+            <div class="fd-dish-desc">Day8晚上的告别大餐，建议Day7抵达喀什时就预订。约300-500元/只，两人一只足够。大巴扎4号门旁"兄弟烤全羊"：游客评价"两个小份羊排+泡馕，只要85元，全是当地维族人在吃"。</div>
+          </div>
+          <div class="fd-dish">
+            <div class="fd-dish-name">丸子汤 + 茄子拌面（换口味）</div>
+            <div class="fd-dish-desc">连吃几天烤肉想换口味时，试试吉三张丸子汤饭店（丸子汤+牛骨头）或钻石茄子拉面馆（茄子拌面），都是游客口碑不错的轻食选择。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Day5-6: 帕米尔/塔县 ── -->
+  <div class="fd-city-block">
+    <div class="fd-city-header">
+      <div class="fd-city-dot" style="background:var(--jade-2)"></div>
+      <div class="fd-city-name">帕米尔高原 · 塔什库尔干（塔县）</div>
+      <div class="fd-city-days">Day 5–6 · 4月2–3日</div>
+    </div>
+    <div class="fd-altitude-warn">
+      <strong>高原饮食原则（3000m+）：</strong>少量多餐，不要撑着吃；不饮酒（加重高反）；多喝热水热茶；不吃过于油腻的食物（帕米尔路上餐厅本就偏清淡，正合适）。高原上消化变慢，八分饱最合适。
+    </div>
+
+    <!-- G314路途中 -->
+    <div class="fd-special" style="margin-bottom:10px">
+      <div class="fd-special-title">🚗 Day5 G314途中午餐（喀什→塔县路上）</div>
+      <div class="fd-special-body">
+        沿喀喇昆仑公路（G314）南行，途中经过布伦口乡小镇，有几家维族小餐馆，拌面或抓饭解决午餐，约20-30元/人。白沙湖和喀拉库勒湖景区内也有简单餐食，但<strong>价格偏贵且质量一般，建议景区外吃完再进</strong>。
+      </div>
+    </div>
+
+    <div class="fd-meals">
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">☀️</div>
+          <div class="fd-meal-label" style="color:var(--jade)">早餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">酒店自助早餐</div>
+            <div class="fd-dish-desc">塔县如家neo提供15元自助早餐，一品牦牛滋补火锅也有自助早餐。游客称"品种繁多，是当地最好的早餐"。高原早餐要吃，出发前补充能量。</div>
+          </div>
+        </div>
+      </div>
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">🌤</div>
+          <div class="fd-meal-label" style="color:var(--jade)">午餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">塔吉克族家庭午餐（Day6）<span class="fd-tag fd-tag-must">特别体验</span></div>
+            <div class="fd-dish-desc">杏花村游览时，在大同乡可以拜访愿意接待的塔吉克族家庭。主人通常端出奶茶、馕和酸奶。<strong>这不是正餐，但是整趟旅程最有意义的一顿。</strong>接受主人的热情招待，感受一下"路不拾遗、夜不闭户"的塔吉克族人情。</div>
+          </div>
+          <div class="fd-dish">
+            <div class="fd-dish-name">塔吉克族奶油薄饼 <span class="fd-tag fd-tag-must">必试</span></div>
+            <div class="fd-dish-desc">游客评价"太太太好吃了"，是塔吉克族特色点心，和牦牛肉搭配极佳。冰山来客餐厅有点心拼盘可以每样都尝到。</div>
+          </div>
+        </div>
+      </div>
+      <div class="fd-meal">
+        <div class="fd-meal-head">
+          <div class="fd-meal-icon">🌙</div>
+          <div class="fd-meal-label" style="color:var(--lapis)">晚餐</div>
+        </div>
+        <div class="fd-meal-body">
+          <div class="fd-dish">
+            <div class="fd-dish-name">牦牛肉火锅 <span class="fd-tag fd-tag-must">必吃</span><span class="fd-tag fd-tag-book">需预订</span></div>
+            <div class="fd-dish-desc">塔县标志性美食，选自海拔3000m以上的高原牦牛，牛大骨熬汤，加高原玛卡，汤极鲜美。游客评价"满满一大锅肉，撑的走不动路，来塔县必吃"、"两个人一百多吃到撑"。</div>
+            <div class="fd-resto">
+              首选 <strong>一品牦牛滋补火锅</strong>（布尔洪路024号，携程4分以上，2024年新开）；体验型 <strong>冰山上的来客</strong>（有塔吉克族歌舞表演，需提前预订，边吃饭边看表演）；平价 <strong>火炬快餐厅</strong>（塔什库尔干路160号，当地人最多，人均40-50元，薄皮包子强烈推荐）。
+            </div>
+          </div>
+          <div class="fd-dish">
+            <div class="fd-dish-name">牦牛肉抓饭（换口味）</div>
+            <div class="fd-dish-desc">塔县苏曼抓饭店，牦牛肉版抓饭，别的地方吃不到，抓饭粒粒分明、口感软糯。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Day7: 盘龙古道返喀什 ── -->
+  <div class="fd-city-block">
+    <div class="fd-city-header">
+      <div class="fd-city-dot" style="background:var(--sand)"></div>
+      <div class="fd-city-name">盘龙古道返程日</div>
+      <div class="fd-city-days">Day 7 · 4月4日（清明）</div>
+    </div>
+    <div class="fd-drive-tip">
+      <strong>今天是长途返程日（约400km，4-4.5小时）</strong>——10:00才进盘龙古道，13:00开始返程，约17:30抵达喀什。途中基本没时间正经吃饭，备好车内干粮和水，抵达喀什再好好吃晚饭。
+    </div>
+    <div class="fd-special">
+      <div class="fd-special-title">🌙 晚餐：屋顶露台餐厅，犒劳帕米尔段体力</div>
+      <div class="fd-special-body">
+        约20:00抵达喀什，找一家老城附近的屋顶露台餐厅，边看老城夜景边吃饭。推荐点<strong>椒麻鸡</strong>（喀什特色，麻而不辣，和内地版本口味不同）和<strong>缸缸肉</strong>（清炖羊肉+胡萝卜，汤清肉嫩，疲惫后喝一碗极暖）。记得提前预订 Day8 晚的烤全羊。
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Day9: 牛羊大巴扎 ── -->
+  <div class="fd-city-block">
+    <div class="fd-city-header">
+      <div class="fd-city-dot" style="background:var(--ink-4)"></div>
+      <div class="fd-city-name">最后一顿：牛羊大巴扎</div>
+      <div class="fd-city-days">Day 9 · 4月6日 周日</div>
+    </div>
+    <div class="fd-special">
+      <div class="fd-special-title">🥩 牛羊大巴扎美食区 · 8:00–10:00最热闹</div>
+      <div class="fd-special-body">
+        牛羊大巴扎除了牲畜交易，<strong>走出交易场整整一条路两边都摆满了食物</strong>——地道的喀什拌面、一米长的大烤肉、新鲜出炉的烤包子，全是当地牧民和摊主，<strong>没有内地游客，没有商业化</strong>，价格极实惠，现金支付为主。这是整趟旅程最后一顿，也是最真实的南疆味道，好好享受。
+      </div>
+    </div>
+  </div>
+
+  <!-- 全程实用贴士 -->
+  <div class="sl">饮食实用贴士</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;">
+    <div class="fd-special" style="margin:0">
+      <div class="fd-special-title">⏰ 新疆时差，晚饭要等</div>
+      <div class="fd-special-body">按北京时间，喀什晚饭高峰在21:00以后，很多饭店23:00还在营业。中午抓饭一定在14:00前吃，过了很多店就没了。</div>
+    </div>
+    <div class="fd-special" style="margin:0">
+      <div class="fd-special-title">🍽️ 选本地苍蝇馆</div>
+      <div class="fd-special-body">看到店里90%是维族人在吃，就是好馆子。不会说维语没关系——指着菜单比划，或用手势，老板都能懂。这是旅途中最好的经历之一。</div>
+    </div>
+    <div class="fd-special" style="margin:0">
+      <div class="fd-special-title">💧 多喝水，少喝酒</div>
+      <div class="fd-special-body">新疆气候干燥，每天保证2L以上饮水。高原段（Day5-7）严禁饮酒，会加剧高反。帕米尔大多餐厅不提供含酒精饮品。</div>
+    </div>
+    <div class="fd-special" style="margin:0">
+      <div class="fd-special-title">💰 现金备好</div>
+      <div class="fd-special-body">喀什大多数餐厅支持支付宝/微信，但牛羊大巴扎摊位、塔县部分小餐馆仍是现金，全程备好现金约1000-1500元。</div>
+    </div>
+    <div class="fd-special" style="margin:0">
+      <div class="fd-special-title">🥬 蔬菜匮乏容易上火</div>
+      <div class="fd-special-body">南疆餐饮以肉食为主，蔬菜很少，容易上火流鼻血。途中注意补充水果（新疆水果极甜但别过量），或带维生素片。</div>
+    </div>
+    <div class="fd-special" style="margin:0">
+      <div class="fd-special-title">🚗 长途备干粮</div>
+      <div class="fd-special-body">Day2（420km）、Day4（460km）、Day7（400km）三天都是长途，车里常备：库车大馕（放3天不坏）、坚果、能量棒、水。高速服务区间距远，不要把午饭全押注在服务区。</div>
+    </div>
   </div>
 
 </div>
@@ -2735,7 +3831,7 @@ footer .en{
 
 <script>
 // ── Nav switching ──
-const ALL_PANELS = ['ov','it','map','gl','rd','pr'];
+const ALL_PANELS = ['ov','it','map','gl','rd','ht','fd','pr'];
 function sw(id) {
   ALL_PANELS.forEach(k => {
     document.getElementById('p-'+k).classList.toggle('active', k===id);
@@ -3069,6 +4165,30 @@ function rdReset() {
 
 // 初始化总数
 rdUpdateProgress();
+
+// ══════════════════════════════════
+// 住宿计划预订追踪
+// ══════════════════════════════════
+function htBook(btn) {
+  const night = btn.closest('.ht-night');
+  night.classList.toggle('booked');
+  htUpdateProgress();
+}
+
+function htUpdateProgress() {
+  const total = document.querySelectorAll('.ht-night[data-htid]').length;
+  const done  = document.querySelectorAll('.ht-night[data-htid].booked').length;
+  document.getElementById('ht-done').textContent = done;
+  const pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById('ht-fill').style.width = pct + '%';
+}
+
+function htReset() {
+  document.querySelectorAll('.ht-night[data-htid]').forEach(n => n.classList.remove('booked'));
+  htUpdateProgress();
+}
+
+htUpdateProgress();
 </script>
 </body>
 </html>
